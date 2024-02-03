@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-def tsne_2dplot(X: np.ndarray, y: np.ndarray):
+def tsne_2dplot(X: np.ndarray, y: np.ndarray, categories: np.ndarray=None):
     """
     Generate a 2D t-SNE plot for visualizing embeddings.
 
@@ -19,21 +19,40 @@ def tsne_2dplot(X: np.ndarray, y: np.ndarray):
     Returns:
     - fig: Plotly figure object.
     """
+    scaler     = StandardScaler()
+    X = scaler.fit_transform(X, y=y)
 
     X_embedded        = TSNE(n_components=2, learning_rate='auto',
                     init='random').fit_transform(X)
-    
-    scaler     = StandardScaler()
-    X_embedded = scaler.fit_transform(X_embedded, y=y)
 
-    print(X_embedded)
+    # print(X_embedded)
 
     df           = pd.DataFrame()
     df["Modality"]      = ['Text' if i==1.0 else 'Image' for i in y]
     df["x"] = X_embedded[:,0]
     df["y"] = X_embedded[:,1]
 
-    fig = px.scatter(df, x="x", y="y", color="Modality")
+    if categories:
+        df['ImageNet Class'] = categories
+        fig = px.scatter(df, x="x", y="y",
+                    symbol='Modality',  # Use 'Category' as the symbol attribute
+                    color='ImageNet Class',   # Use 'Category' for coloring points
+                    size_max=30,
+                    # markers=dict(
+                    #     Image='circle',  # Use 'circle' marker for category A
+                    #     Text='square'   # Use 'square' marker for category B
+                    # ),
+        )
+    else:
+        fig = px.scatter(df, x="x", y="y",
+                        symbol='Modality',  # Use 'Category' as the symbol attribute
+                        color='Modality',   # Use 'Category' for coloring points
+                        size_max=30,
+                        # markers=dict(
+                        #     Image='circle',  # Use 'circle' marker for category A
+                        #     Text='square'   # Use 'square' marker for category B
+                        # ),
+        )
 
     fig.update_layout(
         autosize    = False,
@@ -43,9 +62,9 @@ def tsne_2dplot(X: np.ndarray, y: np.ndarray):
         font        = dict(
         family      = "Calibri",
         size        = 55,)
-        )
-
-    return fig
+    )
+    
+    return fig, X_embedded
 
 def off_diag(matrix):
     """

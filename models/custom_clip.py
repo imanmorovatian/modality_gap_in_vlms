@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+from PIL import Image
 
 import clip
 
@@ -12,7 +13,7 @@ class CustomCLIP():
     def __init__(self, model_name):
         
         self.vision_encoder = model_name.split('_')[-1]
-        self.model, self.transform = clip.load("ViT-B/32", device=DEVICE)
+        self.model, self.transform = clip.load(name2encoder[self.vision_encoder], device=DEVICE)
         self.model.to(DEVICE).eval()
 
         self.input_resolution = self.model.visual.input_resolution
@@ -29,7 +30,8 @@ class CustomCLIP():
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)
         return text_features.squeeze()
 
-    def encode_image(self, rgb_pil_image):
+    def encode_image(self, image_path: str):
+        rgb_pil_image = Image.open(image_path).convert('RGB')
         image       = self.transform(rgb_pil_image)
         image_input = torch.tensor(np.stack([image])).to(DEVICE)
         with torch.no_grad():

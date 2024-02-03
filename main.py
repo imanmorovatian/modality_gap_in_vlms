@@ -7,12 +7,14 @@ import csv
 import argparse
 import numpy as np
 
-from PIL import Image
-
-from utils.chart_utils import similarities, boxplot
+from utils.chart_utils import similarities, boxplot, tsne_2dplot
 from utils.metrics import CMD
 from models.custom_clip import CustomCLIP
 from models.custom_align import CustomALIGN
+from models.custom_imagebind import CustomImageBind
+from models.custom_cyclip import CustomCyCLIP
+from models.custom_flava import CustomFLAVA
+from models.custom_albef import CustomALBEF
 
 def create_path_if_not_existant(path):
     if not os.path.exists(path):
@@ -24,7 +26,10 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 model_name2model = {'CLIP_ViT-B32' : CustomCLIP('CLIP_ViT-B32'),
                     'CLIP_RN50'    : CustomCLIP('CLIP_RN50'),
                     'ALIGN'        : CustomALIGN(),
-                    'ALBEF'        : None,}
+                    'ImageBind'    : CustomImageBind(),
+                    'CyCLIP'       : CustomCyCLIP(),
+                    'FLAVA'        : CustomFLAVA(),
+                    'ALBEF'        : CustomALBEF(),}
 
 def write_csv(name, initial: List, values: List):
     with open(name, 'a', encoding='UTF8') as f:
@@ -92,8 +97,8 @@ def multimodal_similarities(model,
     for pair in img_data.values():
         if len(pair) == 2:
             img1, img2 = pair
-            img_feats1.append(model.encode_image(Image.open(os.path.join(image_root_path, 'images', f'{img1}.jpg')).convert('RGB')))
-            img_feats2.append(model.encode_image(Image.open(os.path.join(image_root_path, 'images', f'{img2}.jpg')).convert('RGB')))
+            img_feats1.append(model.encode_image(os.path.join(image_root_path, 'images', f'{img1}.jpg')))
+            img_feats2.append(model.encode_image(os.path.join(image_root_path, 'images', f'{img2}.jpg')))
 
     for pair in txt_data.values():
         if len(pair) == 2:
@@ -120,15 +125,90 @@ def multimodal_similarities(model,
 
     return all_sim_img, all_dissim_img, all_sim_txt, all_dissim_txt, all_sim_txtimg, all_dissim_txtimg
 
+def scatter(model,
+            test_dataset,
+            outfolder,
+            i,):
+
+    sampled_data = {}
+    with open(f'data/{test_dataset}_pairs_{i}.csv', 'r', newline='') as csvfile:
+        csvreader = csv.reader(csvfile)
+        header = next(csvreader)  # Read the header
+        for row in csvreader:
+            img_id, caption, category = row
+            if category not in sampled_data:
+                sampled_data[category] = []
+            sampled_data[category].append([img_id, caption])
+
+    vectorized_data = {}
+    for category, entries in sampled_data.items():
+        vectorized_category_data = []
+        for entry in entries:
+            img_id, caption = entry[0], entry[1]
+            image_path = os.path.join(image_root_path, 'images', f'{img_id}.jpg')
+            image_vector = model.encode_image(image_path)
+            text_vector = model.encode_text(caption)
+            vectorized_category_data.append([image_vector, text_vector])
+        vectorized_data[category] = vectorized_category_data
+
+    image_features_list = []
+    text_features_list = []
+    categories = []
+
+    for category, entries in vectorized_data.items():
+        for image_vector, text_vector in entries:
+            image_features_list.append(image_vector.cpu().numpy())
+            text_features_list.append(text_vector.cpu().numpy())
+            categories.append(str(category))
+
+    # Convert the lists to NumPy arrays for further processing or saving
+    image_features_array = np.array(image_features_list)
+    text_features_array = np.array(text_features_list)
+    categories_array = np.array(categories)
+
+    X = np.vstack((image_features_array, text_features_array))
+    y = [0]*len(image_features_array) + [1]*len(text_features_array)
+    categories = np.concatenate((categories_array, categories_array)).tolist()
+
+    fig, X_embedded = tsne_2dplot(X,y, categories=categories)
+    X_embedded = np.round(X_embedded, decimals=2)
+
+    fig.update_layout(
+            autosize    = False,
+            width       = 1000,
+            height      = 600,
+            plot_bgcolor  ='rgba(0,0,0,0)',
+            font        = dict(
+            family      = "Calibri",
+            size        = 25,)
+        )
+
+    fig.write_image(os.path.join(outfolder, f'scatter_{i}.png')) #, scale=2)
+    fig.write_html(os.path.join(outfolder, f'scatter_{i}.html'))
+    # Create a structured array with fields x, y, modality, category
+    structured_array = np.empty(X.shape[0], dtype=[('x', float), ('y', float), ('modality', 'U5'), ('category', 'U50')])
+    structured_array['x'] = X[:, 0]
+    structured_array['y'] = X[:, 1]
+    structured_array['modality'] = np.array(['text' if label == 1 else 'image' for label in y])
+    structured_array['category'] = categories
+    # Save the structured array to CSV
+    np.savetxt(os.path.join(outfolder, f'scatter_data_{i}.csv'),
+               structured_array, delimiter=',',
+               fmt=['%.2f', '%.2f', '%s', '%s'],
+               header=','.join(structured_array.dtype.names), comments='')
 
 def generate(test_dataset : str,
-            model_name : str,):
+            model_name : str,
+            image_root_path : str,):
 
     assert test_dataset in ['mscoco', 'flickr30k']
 
     assert model_name in ['CLIP_ViT-B32',
                           'CLIP_RN50',
                           'ALIGN',
+                          'ImageBind',
+                          'CyCLIP',
+                          'FLAVA',
                           'ALBEF',]
 
     model = model_name2model[model_name]
@@ -164,15 +244,21 @@ def generate(test_dataset : str,
               np.concatenate((['Pos']*len(all_sim), ['Neg']*len(all_dissim))),
               outfolder,
               'raw_distrib',)
+    
+    for i in range(5):
+        scatter(model,
+                test_dataset,
+                outfolder,
+                i+1,)
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="Process model name, test dataset, and image root path.")
 
     # Add command-line arguments
-    parser.add_argument("--modelname", type=str, default="CLIP_ViT-B32", help="Name of the model")
-    parser.add_argument("--dataset", type=str, default="mscoco", help="Path to the test dataset")
-    parser.add_argument("--imagerootpath", type=str, default="/nfs/datasets/MSCOCO", help="Root path of the images")
+    parser.add_argument("--modelname", default="CLIP_ViT-B32", help="Name of the model")
+    parser.add_argument("--dataset", default="mscoco", help="Name of the test dataset")
+    parser.add_argument("--imagerootpath", default="/nfs/datasets/MSCOCO", help="Root path of the images")
 
     # Parse the command-line arguments
     args = parser.parse_args()
@@ -191,5 +277,6 @@ if __name__ == '__main__':
             writer.writerow(['tested dataset', 'model name', 'Txt-Txt', 'Img-Img', 'Img-Txt'])
 
     generate(test_dataset = test_dataset,
-            model_name = model_name,)
+            model_name = model_name,
+            image_root_path = image_root_path,)
     

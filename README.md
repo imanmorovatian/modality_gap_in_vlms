@@ -23,7 +23,7 @@ The evaluation is performed on two datasets:
 1. **MSCOCO**
 2. **Flickr30k**
 
-## Evaluation Metrics
+## Evaluation
 
 ### 1. Similarity Distribution
 
@@ -36,6 +36,8 @@ Boxplots are generated to visualize the distribution of similarities among posit
 ### 2. t-SNE Visualization
 
 t-SNE (t-Distributed Stochastic Neighbor Embedding) plots are created to visualize the relationships and clustering of features in both images and text.
+
+
 
 ## How to Run
 

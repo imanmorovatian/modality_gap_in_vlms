@@ -2,6 +2,7 @@ import torch
 from PIL import Image
 
 from transformers import AutoImageProcessor, AutoTokenizer, FlavaModel
+from utils.model_utils import open_image
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -26,8 +27,8 @@ class CustomFLAVA():
         return text_features.squeeze().detach()
 
     def encode_image(self, image_path: str):
-        img = Image.open(image_path).convert('RGB')
-        inputs = self.processor(img, return_tensors="pt")
+        rgb_pil_image = open_image(image_path)
+        inputs = self.processor(rgb_pil_image, return_tensors="pt")
         with torch.no_grad():
             outputs = self.model.image_model(**inputs)
         image_features = outputs.last_hidden_state[:, 0, :]

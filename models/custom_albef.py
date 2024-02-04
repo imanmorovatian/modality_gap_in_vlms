@@ -6,6 +6,8 @@ from pkgs.ALBEF.tokenization_bert import BertTokenizer
 from PIL import Image
 from torchvision import transforms
 
+from utils.model_utils import open_image
+
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 class CustomALBEF:
@@ -48,7 +50,7 @@ class CustomALBEF:
         return text_features.squeeze()
     
     def encode_image(self, image_path: str):
-        rgb_pil_image           = Image.open(image_path).convert('RGB')
+        rgb_pil_image           = open_image(image_path).convert("RGB")
         img                     = self.transform(rgb_pil_image).to(DEVICE).unsqueeze(0)
         with torch.no_grad():
             image_features              = self.model.visual_encoder(img)

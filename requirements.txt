@@ -20,6 +20,8 @@ transformers
 kaleido
 datasets
 nbformat==4.2.0
+beautifulsoup4
+nltk
 
 # clip
 git+https://github.com/openai/CLIP.git

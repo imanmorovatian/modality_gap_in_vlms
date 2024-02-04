@@ -173,7 +173,18 @@ class BertTokenizer(PreTrainedTokenizer):
         strip_accents=None,
         **kwargs
     ):
+        
         self.vocab = load_vocab(vocab_file)
+        self.ids_to_tokens = collections.OrderedDict([(ids, tok) for tok, ids in self.vocab.items()])
+        self.do_basic_tokenize = do_basic_tokenize
+        if do_basic_tokenize:
+            self.basic_tokenizer = BasicTokenizer(
+                do_lower_case=do_lower_case,
+                never_split=never_split,
+                tokenize_chinese_chars=tokenize_chinese_chars,
+                strip_accents=strip_accents,
+            )
+
         super().__init__(
             do_lower_case=do_lower_case,
             do_basic_tokenize=do_basic_tokenize,
@@ -194,15 +205,15 @@ class BertTokenizer(PreTrainedTokenizer):
                 "model use `tokenizer = BertTokenizer.from_pretrained(PRETRAINED_MODEL_NAME)`".format(vocab_file)
             )
         # self.vocab = load_vocab(vocab_file)
-        self.ids_to_tokens = collections.OrderedDict([(ids, tok) for tok, ids in self.vocab.items()])
-        self.do_basic_tokenize = do_basic_tokenize
-        if do_basic_tokenize:
-            self.basic_tokenizer = BasicTokenizer(
-                do_lower_case=do_lower_case,
-                never_split=never_split,
-                tokenize_chinese_chars=tokenize_chinese_chars,
-                strip_accents=strip_accents,
-            )
+        # self.ids_to_tokens = collections.OrderedDict([(ids, tok) for tok, ids in self.vocab.items()])
+        # self.do_basic_tokenize = do_basic_tokenize
+        # if do_basic_tokenize:
+        #     self.basic_tokenizer = BasicTokenizer(
+        #         do_lower_case=do_lower_case,
+        #         never_split=never_split,
+        #         tokenize_chinese_chars=tokenize_chinese_chars,
+        #         strip_accents=strip_accents,
+        #     )
         self.wordpiece_tokenizer = WordpieceTokenizer(vocab=self.vocab, unk_token=self.unk_token)
 
     @property

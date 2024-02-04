@@ -2,6 +2,7 @@ import torch
 from PIL import Image, ImageFile
 
 from pkgs.CyCLIP.pkgs.openai.clip import load as load_model
+from utils.model_utils import open_image
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -34,7 +35,7 @@ class CustomCyCLIP():
         return text_features.squeeze()
 
     def encode_image(self, image_path: str):
-        img = Image.open(image_path)
+        img = open_image(image_path)
         input_image = self.processor.process_image(img).to(DEVICE).unsqueeze(0)
         with torch.no_grad():
             image_features = self.model.get_image_features(pixel_values = input_image)

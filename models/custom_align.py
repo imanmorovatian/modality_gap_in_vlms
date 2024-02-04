@@ -2,6 +2,8 @@ import torch
 from PIL import Image
 from transformers import AutoTokenizer, AutoProcessor, AlignModel
 
+from utils.model_utils import open_image
+
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 class CustomALIGN():
@@ -21,7 +23,7 @@ class CustomALIGN():
         return text_features.squeeze()
 
     def encode_image(self, image_path: str):
-        rgb_pil_image = Image.open(image_path).convert('RGB')
+        rgb_pil_image = open_image(image_path).convert("RGB")
         image       = self.processor(images=rgb_pil_image, return_tensors="pt")
         with torch.no_grad():
             image_features = self.align.get_image_features(**image).float()

@@ -3,13 +3,15 @@ import random
 import argparse
 import os
 
-file_path = "data/flickr30k_classified.csv"
+# file_path = "data/flickr30k_classified.csv"
 
 def datapath2name(datapath:str):
     if 'flickr30k' in datapath:
         return 'flickr30k'
     if 'mscoco' in datapath:
         return 'mscoco'
+    if 'amz' in datapath:
+        return 'amz-products'
     raise ValueError(f"Invalid data path: {datapath}")
 
 def save_pairs(datapath:str):
@@ -18,12 +20,17 @@ def save_pairs(datapath:str):
     data_dict = {}
     with open(datapath, 'r') as csvfile:
         csvreader = csv.reader(csvfile)
+        if dataname == 'amz-products':
+            next(csvreader)  # Skip the header row
         for row in csvreader:
-            category = int(row[2])
+            if dataname == 'amz-products':
+                category = row[2]
+            else:
+                category = row[3]
             if category not in data_dict:
                 data_dict[category] = []
-            img_id, caption = row[:2]
-            data_dict[category].append([img_id, caption.replace('\n', ' ')])
+            imgid_or_url, caption = row[:2]
+            data_dict[category].append([imgid_or_url, caption.replace('\n', ' ')])
 
     sorted_categories = sorted(data_dict, key=lambda x: len(data_dict[x]), reverse=True)
 

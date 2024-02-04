@@ -4,6 +4,8 @@ from PIL import Image
 
 import clip
 
+from utils.model_utils import open_image
+
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 name2encoder = {'ViT-B32' : 'ViT-B/32',
@@ -31,7 +33,7 @@ class CustomCLIP():
         return text_features.squeeze()
 
     def encode_image(self, image_path: str):
-        rgb_pil_image = Image.open(image_path).convert('RGB')
+        rgb_pil_image = open_image(image_path).convert("RGB")
         image       = self.transform(rgb_pil_image)
         image_input = torch.tensor(np.stack([image])).to(DEVICE)
         with torch.no_grad():

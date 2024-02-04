@@ -7,6 +7,9 @@ import csv
 import argparse
 import numpy as np
 
+from itertools import combinations
+import random
+
 from utils.chart_utils import similarities, boxplot, tsne_2dplot
 from utils.metrics import CMD
 from models.custom_clip import CustomCLIP
@@ -73,10 +76,25 @@ def save_data(model_name, test_dataset, values, pair_modality, pair_type, outfol
                              'Pair Type': pair[3],
                              'Cosine Similarity': pair[4]})
 
-def multimodal_similarities(model,
-                            test_dataset,
-                            image_root_path):
 
+def read_amazon_products():
+    img_data = {}
+    txt_data = {}
+
+    with open(os.path.join('data', 'amz-products.csv'), "r") as f:
+        total_lines = 50000
+
+        reader = csv.reader(f, delimiter=',')
+        for i, row in tqdm(enumerate(reader), total=total_lines, desc="Reading CSV"):
+            if i >= total_lines:
+                break
+            img_url, title, category = row
+            img_data.setdefault(category, []).append(img_url) if len(img_data.get(category, [])) < 20 else None
+            txt_data.setdefault(category, []).append(title) if len(txt_data.get(category, [])) < 20 else None
+    
+    return img_data, txt_data
+
+def read_coco_flickr30k(test_dataset):
     img_data = {}
     txt_data = {}
 
@@ -91,21 +109,40 @@ def multimodal_similarities(model,
                 img_data.setdefault(label, []).append(img_id) if len(img_data.get(label, [])) < 2 else None
                 txt_data.setdefault(label, []).append(caption) if len(txt_data.get(label, [])) < 2 else None
 
+    return img_data, txt_data
+
+def multimodal_similarities(model,
+                            test_dataset,
+                            image_root_path):
+
+    img_data = {}
+    txt_data = {}
+
+    if test_dataset == 'amz-products':
+        img_data, txt_data = read_amazon_products()
+    else:
+        img_data, txt_data = read_coco_flickr30k(test_dataset)
+        
     img_feats1, img_feats2 = [], []
     txt_feats1, txt_feats2 = [], []
-
-    for pair in img_data.values():
-        if len(pair) == 2:
-            img1, img2 = pair
-            img_feats1.append(model.encode_image(os.path.join(image_root_path, 'images', f'{img1}.jpg')))
-            img_feats2.append(model.encode_image(os.path.join(image_root_path, 'images', f'{img2}.jpg')))
-
-    for pair in txt_data.values():
-        if len(pair) == 2:
-            txt1, txt2 = pair
-            txt_feats1.append(model.encode_text(txt1))
-            txt_feats2.append(model.encode_text(txt2))
-
+    
+    for similar_images, similar_texts in tqdm(list(zip(img_data.values(), txt_data.values())), desc="Encoding Images and Texts"):
+        if len(similar_images) == len(similar_texts) >= 2:
+            sampled_indexes = random.sample(list(combinations(list(range(len(similar_images))), 2)), 1)
+            for index1, index2 in sampled_indexes:
+                img1, img2 = (similar_images[index1], similar_images[index2])
+                txt1, txt2 = (similar_texts[index1], similar_texts[index2])
+                if test_dataset in ['mscoco', 'flickr30k']:
+                    img1 = os.path.join(image_root_path, 'images', f'{img1}.jpg')
+                    img2 = os.path.join(image_root_path, 'images', f'{img2}.jpg')
+                try:
+                    img_feats1.append(model.encode_image(img1))
+                    img_feats2.append(model.encode_image(img2))
+                    txt_feats1.append(model.encode_text(txt1))
+                    txt_feats2.append(model.encode_text(txt2))
+                except:
+                    continue
+                    
     img_feats1, img_feats2 = torch.vstack(img_feats1), torch.vstack(img_feats2)
     txt_feats1, txt_feats2 = torch.vstack(txt_feats1), torch.vstack(txt_feats2)
 
@@ -135,19 +172,25 @@ def scatter(model,
         csvreader = csv.reader(csvfile)
         header = next(csvreader)  # Read the header
         for row in csvreader:
-            img_id, caption, category = row
+            imgid_or_url, caption, category = row
             if category not in sampled_data:
                 sampled_data[category] = []
-            sampled_data[category].append([img_id, caption])
+            sampled_data[category].append([imgid_or_url, caption])
 
     vectorized_data = {}
     for category, entries in sampled_data.items():
         vectorized_category_data = []
         for entry in entries:
-            img_id, caption = entry[0], entry[1]
-            image_path = os.path.join(image_root_path, 'images', f'{img_id}.jpg')
-            image_vector = model.encode_image(image_path)
-            text_vector = model.encode_text(caption)
+            imgid_or_url, caption = entry[0], entry[1]
+            if test_dataset == 'amz-products':
+                image_path = imgid_or_url
+            else:
+                image_path = os.path.join(image_root_path, 'images', f'{imgid_or_url}.jpg')
+            try:
+                image_vector = model.encode_image(image_path)
+                text_vector = model.encode_text(caption)
+            except:
+                continue
             vectorized_category_data.append([image_vector, text_vector])
         vectorized_data[category] = vectorized_category_data
 
@@ -201,7 +244,9 @@ def generate(test_dataset : str,
             model_name : str,
             image_root_path : str,):
 
-    assert test_dataset in ['mscoco', 'flickr30k']
+    assert test_dataset in ['mscoco',
+                            'flickr30k',
+                            'amz-products',]
 
     assert model_name in ['CLIP_ViT-B32',
                           'CLIP_RN50',

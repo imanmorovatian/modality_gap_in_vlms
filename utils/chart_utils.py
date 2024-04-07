@@ -54,15 +54,15 @@ def tsne_2dplot(X: np.ndarray, y: np.ndarray, categories: np.ndarray=None):
                         # ),
         )
 
-    fig.update_layout(
-        autosize    = False,
-        width       = 1000,
-        height      = 1000,
-        plot_bgcolor  ='rgba(0,0,0,0)',
-        font        = dict(
-        family      = "Calibri",
-        size        = 55,)
-    )
+    # fig.update_layout(
+    #     autosize    = False,
+    #     width       = 1000,
+    #     height      = 1000,
+    #     plot_bgcolor  ='rgba(0,0,0,0)',
+    #     font        = dict(
+    #     family      = "Calibri",
+    #     size        = 55,)
+    # )
     
     return fig, X_embedded
 

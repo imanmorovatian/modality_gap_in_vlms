@@ -1,0 +1,3 @@
+MODELNAME: "CyCLIP"
+DATASET: "mscoco"
+IMAGEROOTPATH: "/nfs/datasets/MSCOCO"

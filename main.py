@@ -4,7 +4,6 @@ import torch
 from tqdm import tqdm
 import os
 import csv
-import argparse
 import numpy as np
 
 from itertools import combinations
@@ -18,6 +17,8 @@ from models.custom_imagebind import CustomImageBind
 from models.custom_cyclip import CustomCyCLIP
 from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
+
+from arg_parser import parse_args
 
 def create_path_if_not_existant(path):
     if not os.path.exists(path):
@@ -229,15 +230,23 @@ def scatter(model,
     fig.write_image(os.path.join(outfolder, f'scatter_{i}.png')) #, scale=2)
     fig.write_html(os.path.join(outfolder, f'scatter_{i}.html'))
     # Create a structured array with fields x, y, modality, category
-    structured_array = np.empty(X.shape[0], dtype=[('x', float), ('y', float), ('modality', 'U5'), ('category', 'U50')])
-    structured_array['x'] = X[:, 0]
-    structured_array['y'] = X[:, 1]
+    structured_array = np.empty(X_embedded.shape[0], dtype=[('Model', 'U50'),
+                                                            ('Dataset', 'U50'),
+                                                            ('x', float),
+                                                            ('y', float),
+                                                            ('modality', 'U5'),
+                                                            ('category', 'U50'),
+                                                            ])
+    structured_array['Model'] = [model.name]*X_embedded.shape[0]
+    structured_array['Dataset'] = [test_dataset]*X_embedded.shape[0]
+    structured_array['x'] = X_embedded[:, 0]
+    structured_array['y'] = X_embedded[:, 1]
     structured_array['modality'] = np.array(['text' if label == 1 else 'image' for label in y])
     structured_array['category'] = categories
     # Save the structured array to CSV
     np.savetxt(os.path.join(outfolder, f'scatter_data_{i}.csv'),
                structured_array, delimiter=',',
-               fmt=['%.2f', '%.2f', '%s', '%s'],
+               fmt=['%s', '%s', '%.2f', '%.2f', '%s', '%s'],
                header=','.join(structured_array.dtype.names), comments='')
 
 def generate(test_dataset : str,
@@ -298,20 +307,13 @@ def generate(test_dataset : str,
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description="Process model name, test dataset, and image root path.")
-
-    # Add command-line arguments
-    parser.add_argument("--modelname", default="CLIP_ViT-B32", help="Name of the model")
-    parser.add_argument("--dataset", default="mscoco", help="Name of the test dataset")
-    parser.add_argument("--imagerootpath", default="/nfs/datasets/MSCOCO", help="Root path of the images")
-
     # Parse the command-line arguments
-    args = parser.parse_args()
+    args = parse_args()
 
     # Assign values to variables
-    model_name = args.modelname
-    test_dataset = args.dataset
-    image_root_path = args.imagerootpath
+    model_name = args.MODELNAME
+    test_dataset = args.DATASET
+    image_root_path = args.IMAGEROOTPATH
 
     create_path_if_not_existant('results')
     outfile = 'cmd.csv'

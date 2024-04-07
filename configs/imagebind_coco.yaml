@@ -1,0 +1,3 @@
+MODELNAME: "ImageBind"
+DATASET: "mscoco"
+IMAGEROOTPATH: "/nfs/datasets/MSCOCO"

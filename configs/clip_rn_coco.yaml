@@ -1,0 +1,3 @@
+MODELNAME: "CLIP_RN50"
+DATASET: "mscoco"
+IMAGEROOTPATH: "/nfs/datasets/MSCOCO"

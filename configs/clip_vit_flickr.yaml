@@ -1,0 +1,3 @@
+MODELNAME: "CLIP_ViT-B32"
+DATASET: "flickr30k"
+IMAGEROOTPATH: "/nfs/datasets/Flickr30k"

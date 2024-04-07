@@ -26,7 +26,7 @@ def save_pairs(datapath:str):
             if dataname == 'amz-products':
                 category = row[2]
             else:
-                category = row[3]
+                category = row[3].split(',')[-1].strip()
             if category not in data_dict:
                 data_dict[category] = []
             imgid_or_url, caption = row[:2]

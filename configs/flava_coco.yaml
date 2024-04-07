@@ -1,0 +1,3 @@
+MODELNAME: "FLAVA"
+DATASET: "mscoco"
+IMAGEROOTPATH: "/nfs/datasets/MSCOCO"

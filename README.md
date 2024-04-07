@@ -12,9 +12,9 @@ The following Visual-Language Models (VLMs) are evaluated in this project:
 2. **CLIP (ResNet50)**
 3. **ALIGN**
 4. **ALBEF**
-5. **Florence**
-6. **Uni-Perceiver**
+5. **FLAVA**
 7. **ImageBind**
+8. **CyCLIP**
 
 ## Datasets
 

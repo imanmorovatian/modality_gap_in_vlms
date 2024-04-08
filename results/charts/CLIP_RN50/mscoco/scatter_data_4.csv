@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+CLIP_RN50,mscoco,1.66,19.53,image,school bus
+CLIP_RN50,mscoco,2.95,20.86,image,school bus
+CLIP_RN50,mscoco,1.83,20.89,image,school bus
+CLIP_RN50,mscoco,-0.14,20.54,image,school bus
+CLIP_RN50,mscoco,0.48,18.50,image,school bus
+CLIP_RN50,mscoco,3.20,20.01,image,school bus
+CLIP_RN50,mscoco,-2.39,19.66,image,school bus
+CLIP_RN50,mscoco,0.85,18.46,image,school bus
+CLIP_RN50,mscoco,1.77,18.32,image,school bus
+CLIP_RN50,mscoco,2.79,18.90,image,school bus
+CLIP_RN50,mscoco,-0.57,19.71,image,school bus
+CLIP_RN50,mscoco,1.86,19.42,image,school bus
+CLIP_RN50,mscoco,1.50,17.78,image,school bus
+CLIP_RN50,mscoco,-1.98,21.04,image,school bus
+CLIP_RN50,mscoco,2.52,16.53,image,school bus
+CLIP_RN50,mscoco,-0.26,18.90,image,school bus
+CLIP_RN50,mscoco,-2.83,16.51,image,school bus
+CLIP_RN50,mscoco,3.22,21.13,image,school bus
+CLIP_RN50,mscoco,1.17,15.72,image,school bus
+CLIP_RN50,mscoco,-0.04,17.75,image,school bus
+CLIP_RN50,mscoco,-0.34,18.84,image,school bus
+CLIP_RN50,mscoco,-1.31,18.97,image,school bus
+CLIP_RN50,mscoco,0.94,19.93,image,school bus
+CLIP_RN50,mscoco,1.87,19.01,image,school bus
+CLIP_RN50,mscoco,-2.13,16.75,image,school bus
+CLIP_RN50,mscoco,1.55,17.01,image,school bus
+CLIP_RN50,mscoco,-1.66,18.82,image,school bus
+CLIP_RN50,mscoco,0.96,19.74,image,school bus
+CLIP_RN50,mscoco,1.22,20.99,image,school bus
+CLIP_RN50,mscoco,0.54,17.75,image,school bus
+CLIP_RN50,mscoco,-1.15,20.58,image,school bus
+CLIP_RN50,mscoco,0.59,16.85,image,school bus
+CLIP_RN50,mscoco,0.94,19.24,image,school bus
+CLIP_RN50,mscoco,0.16,20.37,image,school bus
+CLIP_RN50,mscoco,2.91,17.97,image,school bus
+CLIP_RN50,mscoco,-1.35,17.35,image,school bus
+CLIP_RN50,mscoco,-0.40,15.99,image,school bus
+CLIP_RN50,mscoco,-0.01,20.35,image,school bus
+CLIP_RN50,mscoco,1.04,18.50,image,school bus
+CLIP_RN50,mscoco,0.15,19.45,image,school bus
+CLIP_RN50,mscoco,1.51,19.91,image,school bus
+CLIP_RN50,mscoco,1.14,18.52,image,school bus
+CLIP_RN50,mscoco,-0.70,18.56,image,school bus
+CLIP_RN50,mscoco,0.55,21.15,image,school bus
+CLIP_RN50,mscoco,1.95,22.09,image,school bus
+CLIP_RN50,mscoco,-0.27,16.42,image,school bus
+CLIP_RN50,mscoco,1.04,19.49,image,school bus
+CLIP_RN50,mscoco,-0.45,21.75,image,school bus
+CLIP_RN50,mscoco,-2.87,16.48,image,school bus
+CLIP_RN50,mscoco,-0.32,18.31,image,school bus
+CLIP_RN50,mscoco,0.78,22.71,image,fire truck
+CLIP_RN50,mscoco,13.85,23.24,image,fire truck
+CLIP_RN50,mscoco,12.18,21.47,image,fire truck
+CLIP_RN50,mscoco,5.12,17.81,image,fire truck
+CLIP_RN50,mscoco,3.78,21.73,image,fire truck
+CLIP_RN50,mscoco,9.84,23.03,image,fire truck
+CLIP_RN50,mscoco,5.47,22.62,image,fire truck
+CLIP_RN50,mscoco,8.62,24.30,image,fire truck
+CLIP_RN50,mscoco,13.49,22.62,image,fire truck
+CLIP_RN50,mscoco,11.64,23.62,image,fire truck
+CLIP_RN50,mscoco,11.98,24.44,image,fire truck
+CLIP_RN50,mscoco,12.99,22.66,image,fire truck
+CLIP_RN50,mscoco,8.91,21.49,image,fire truck
+CLIP_RN50,mscoco,11.47,23.99,image,fire truck
+CLIP_RN50,mscoco,10.14,24.10,image,fire truck
+CLIP_RN50,mscoco,9.10,23.34,image,fire truck
+CLIP_RN50,mscoco,10.39,25.88,image,fire truck
+CLIP_RN50,mscoco,13.42,23.47,image,fire truck
+CLIP_RN50,mscoco,11.10,22.82,image,fire truck
+CLIP_RN50,mscoco,9.89,23.30,image,fire truck
+CLIP_RN50,mscoco,12.55,25.34,image,fire truck
+CLIP_RN50,mscoco,7.62,22.25,image,fire truck
+CLIP_RN50,mscoco,12.07,24.87,image,fire truck
+CLIP_RN50,mscoco,11.43,25.06,image,fire truck
+CLIP_RN50,mscoco,9.89,23.80,image,fire truck
+CLIP_RN50,mscoco,13.27,24.31,image,fire truck
+CLIP_RN50,mscoco,11.67,26.65,image,fire truck
+CLIP_RN50,mscoco,12.19,22.66,image,fire truck
+CLIP_RN50,mscoco,7.01,23.23,image,fire truck
+CLIP_RN50,mscoco,8.72,21.19,image,fire truck
+CLIP_RN50,mscoco,10.72,23.34,image,fire truck
+CLIP_RN50,mscoco,2.33,43.05,image,fire truck
+CLIP_RN50,mscoco,12.63,25.35,image,fire truck
+CLIP_RN50,mscoco,11.60,23.55,image,fire truck
+CLIP_RN50,mscoco,12.60,23.84,image,fire truck
+CLIP_RN50,mscoco,11.08,21.56,image,fire truck
+CLIP_RN50,mscoco,9.02,22.12,image,fire truck
+CLIP_RN50,mscoco,5.15,17.85,image,fire truck
+CLIP_RN50,mscoco,10.77,24.58,image,fire truck
+CLIP_RN50,mscoco,3.95,22.55,image,fire truck
+CLIP_RN50,mscoco,12.80,23.80,image,fire truck
+CLIP_RN50,mscoco,11.18,24.19,image,fire truck
+CLIP_RN50,mscoco,10.15,20.31,image,fire truck
+CLIP_RN50,mscoco,7.66,22.27,image,fire truck
+CLIP_RN50,mscoco,5.18,17.94,image,fire truck
+CLIP_RN50,mscoco,14.40,22.14,image,fire truck
+CLIP_RN50,mscoco,11.34,25.00,image,fire truck
+CLIP_RN50,mscoco,11.79,23.05,image,fire truck
+CLIP_RN50,mscoco,13.54,25.05,image,fire truck
+CLIP_RN50,mscoco,12.06,23.62,image,fire truck
+CLIP_RN50,mscoco,-0.72,0.22,image,suit of clothes
+CLIP_RN50,mscoco,-4.32,3.68,image,suit of clothes
+CLIP_RN50,mscoco,-6.14,5.94,image,suit of clothes
+CLIP_RN50,mscoco,-4.03,6.80,image,suit of clothes
+CLIP_RN50,mscoco,-3.27,4.74,image,suit of clothes
+CLIP_RN50,mscoco,-4.60,2.77,image,suit of clothes
+CLIP_RN50,mscoco,-3.41,1.71,image,suit of clothes
+CLIP_RN50,mscoco,-4.37,2.80,image,suit of clothes
+CLIP_RN50,mscoco,-0.80,0.34,image,suit of clothes
+CLIP_RN50,mscoco,-5.93,3.16,image,suit of clothes
+CLIP_RN50,mscoco,-3.69,3.34,image,suit of clothes
+CLIP_RN50,mscoco,-3.61,0.56,image,suit of clothes
+CLIP_RN50,mscoco,-6.04,3.69,image,suit of clothes
+CLIP_RN50,mscoco,-3.16,3.55,image,suit of clothes
+CLIP_RN50,mscoco,-0.37,8.02,image,suit of clothes
+CLIP_RN50,mscoco,-2.26,1.85,image,suit of clothes
+CLIP_RN50,mscoco,-6.14,4.67,image,suit of clothes
+CLIP_RN50,mscoco,-5.43,3.38,image,suit of clothes
+CLIP_RN50,mscoco,-0.57,3.89,image,suit of clothes
+CLIP_RN50,mscoco,-5.21,2.57,image,suit of clothes
+CLIP_RN50,mscoco,-3.76,3.23,image,suit of clothes
+CLIP_RN50,mscoco,-0.37,8.02,image,suit of clothes
+CLIP_RN50,mscoco,-6.55,1.43,image,suit of clothes
+CLIP_RN50,mscoco,-3.44,-0.19,image,suit of clothes
+CLIP_RN50,mscoco,-3.52,3.83,image,suit of clothes
+CLIP_RN50,mscoco,-4.95,5.68,image,suit of clothes
+CLIP_RN50,mscoco,-3.58,0.48,image,suit of clothes
+CLIP_RN50,mscoco,-5.35,4.81,image,suit of clothes
+CLIP_RN50,mscoco,-1.06,4.29,image,suit of clothes
+CLIP_RN50,mscoco,-0.94,4.53,image,suit of clothes
+CLIP_RN50,mscoco,-2.63,5.45,image,suit of clothes
+CLIP_RN50,mscoco,-5.28,4.02,image,suit of clothes
+CLIP_RN50,mscoco,-4.86,3.49,image,suit of clothes
+CLIP_RN50,mscoco,-3.55,2.74,image,suit of clothes
+CLIP_RN50,mscoco,-7.65,2.95,image,suit of clothes
+CLIP_RN50,mscoco,-7.38,4.36,image,suit of clothes
+CLIP_RN50,mscoco,-5.34,4.54,image,suit of clothes
+CLIP_RN50,mscoco,-2.70,5.38,image,suit of clothes
+CLIP_RN50,mscoco,-2.36,1.89,image,suit of clothes
+CLIP_RN50,mscoco,-4.30,4.44,image,suit of clothes
+CLIP_RN50,mscoco,-2.62,0.98,image,suit of clothes
+CLIP_RN50,mscoco,-4.73,2.06,image,suit of clothes
+CLIP_RN50,mscoco,-4.59,5.29,image,suit of clothes
+CLIP_RN50,mscoco,-6.64,2.83,image,suit of clothes
+CLIP_RN50,mscoco,-3.43,2.46,image,suit of clothes
+CLIP_RN50,mscoco,-2.66,3.13,image,suit of clothes
+CLIP_RN50,mscoco,-1.81,1.98,image,suit of clothes
+CLIP_RN50,mscoco,-5.66,3.66,image,suit of clothes
+CLIP_RN50,mscoco,-5.31,0.53,image,suit of clothes
+CLIP_RN50,mscoco,-5.90,1.91,image,suit of clothes
+CLIP_RN50,mscoco,-23.30,2.80,image,broccoli
+CLIP_RN50,mscoco,-24.18,4.44,image,broccoli
+CLIP_RN50,mscoco,-20.40,0.22,image,broccoli
+CLIP_RN50,mscoco,-22.44,0.01,image,broccoli
+CLIP_RN50,mscoco,-20.46,1.55,image,broccoli
+CLIP_RN50,mscoco,-22.11,2.14,image,broccoli
+CLIP_RN50,mscoco,-21.66,1.17,image,broccoli
+CLIP_RN50,mscoco,-23.01,1.03,image,broccoli
+CLIP_RN50,mscoco,-22.44,1.74,image,broccoli
+CLIP_RN50,mscoco,-25.10,2.85,image,broccoli
+CLIP_RN50,mscoco,-23.71,2.17,image,broccoli
+CLIP_RN50,mscoco,-23.07,5.02,image,broccoli
+CLIP_RN50,mscoco,-24.71,2.18,image,broccoli
+CLIP_RN50,mscoco,-23.27,2.54,image,broccoli
+CLIP_RN50,mscoco,-23.22,1.84,image,broccoli
+CLIP_RN50,mscoco,-23.07,1.57,image,broccoli
+CLIP_RN50,mscoco,-23.15,3.93,image,broccoli
+CLIP_RN50,mscoco,-19.48,-0.29,image,broccoli
+CLIP_RN50,mscoco,-19.33,-0.29,image,broccoli
+CLIP_RN50,mscoco,-25.75,1.49,image,broccoli
+CLIP_RN50,mscoco,-21.81,2.04,image,broccoli
+CLIP_RN50,mscoco,-23.34,4.15,image,broccoli
+CLIP_RN50,mscoco,-21.70,4.55,image,broccoli
+CLIP_RN50,mscoco,-24.24,0.96,image,broccoli
+CLIP_RN50,mscoco,-19.63,1.77,image,broccoli
+CLIP_RN50,mscoco,-22.69,2.50,image,broccoli
+CLIP_RN50,mscoco,-21.70,4.07,image,broccoli
+CLIP_RN50,mscoco,-23.01,5.15,image,broccoli
+CLIP_RN50,mscoco,-23.06,-0.51,image,broccoli
+CLIP_RN50,mscoco,-21.23,0.90,image,broccoli
+CLIP_RN50,mscoco,-21.23,0.98,image,broccoli
+CLIP_RN50,mscoco,-21.15,3.92,image,broccoli
+CLIP_RN50,mscoco,-20.77,0.22,image,broccoli
+CLIP_RN50,mscoco,-18.87,-0.58,image,broccoli
+CLIP_RN50,mscoco,-21.72,2.86,image,broccoli
+CLIP_RN50,mscoco,-23.38,0.57,image,broccoli
+CLIP_RN50,mscoco,-24.46,1.87,image,broccoli
+CLIP_RN50,mscoco,-20.96,-0.58,image,broccoli
+CLIP_RN50,mscoco,-18.91,-0.57,image,broccoli
+CLIP_RN50,mscoco,-24.59,-0.04,image,broccoli
+CLIP_RN50,mscoco,-23.98,2.77,image,broccoli
+CLIP_RN50,mscoco,-20.47,0.98,image,broccoli
+CLIP_RN50,mscoco,-21.34,0.01,image,broccoli
+CLIP_RN50,mscoco,-22.73,3.15,image,broccoli
+CLIP_RN50,mscoco,-21.94,1.02,image,broccoli
+CLIP_RN50,mscoco,-22.03,0.43,image,broccoli
+CLIP_RN50,mscoco,-25.60,3.63,image,broccoli
+CLIP_RN50,mscoco,-25.57,3.39,image,broccoli
+CLIP_RN50,mscoco,-25.69,2.48,image,broccoli
+CLIP_RN50,mscoco,-20.62,3.27,image,broccoli
+CLIP_RN50,mscoco,-0.94,42.89,image,steam locomotive
+CLIP_RN50,mscoco,0.19,40.27,image,steam locomotive
+CLIP_RN50,mscoco,-2.46,43.10,image,steam locomotive
+CLIP_RN50,mscoco,-1.80,40.55,image,steam locomotive
+CLIP_RN50,mscoco,-1.61,41.76,image,steam locomotive
+CLIP_RN50,mscoco,-3.65,41.27,image,steam locomotive
+CLIP_RN50,mscoco,0.39,44.05,image,steam locomotive
+CLIP_RN50,mscoco,-0.45,45.82,image,steam locomotive
+CLIP_RN50,mscoco,-1.71,42.39,image,steam locomotive
+CLIP_RN50,mscoco,-0.02,42.40,image,steam locomotive
+CLIP_RN50,mscoco,-1.40,42.00,image,steam locomotive
+CLIP_RN50,mscoco,-0.31,42.87,image,steam locomotive
+CLIP_RN50,mscoco,-0.17,40.33,image,steam locomotive
+CLIP_RN50,mscoco,1.53,44.23,image,steam locomotive
+CLIP_RN50,mscoco,-0.02,43.74,image,steam locomotive
+CLIP_RN50,mscoco,-2.78,40.30,image,steam locomotive
+CLIP_RN50,mscoco,-0.42,44.76,image,steam locomotive
+CLIP_RN50,mscoco,-3.23,43.47,image,steam locomotive
+CLIP_RN50,mscoco,-0.52,43.68,image,steam locomotive
+CLIP_RN50,mscoco,0.73,43.23,image,steam locomotive
+CLIP_RN50,mscoco,-2.54,42.35,image,steam locomotive
+CLIP_RN50,mscoco,-3.69,42.47,image,steam locomotive
+CLIP_RN50,mscoco,-0.47,43.56,image,steam locomotive
+CLIP_RN50,mscoco,1.27,39.92,image,steam locomotive
+CLIP_RN50,mscoco,-1.86,44.42,image,steam locomotive
+CLIP_RN50,mscoco,-1.10,44.89,image,steam locomotive
+CLIP_RN50,mscoco,-2.59,41.74,image,steam locomotive
+CLIP_RN50,mscoco,0.28,41.07,image,steam locomotive
+CLIP_RN50,mscoco,-0.08,45.02,image,steam locomotive
+CLIP_RN50,mscoco,2.42,40.99,image,steam locomotive
+CLIP_RN50,mscoco,-0.18,43.65,image,steam locomotive
+CLIP_RN50,mscoco,-0.10,40.01,image,steam locomotive
+CLIP_RN50,mscoco,-0.51,41.92,image,steam locomotive
+CLIP_RN50,mscoco,-2.18,45.22,image,steam locomotive
+CLIP_RN50,mscoco,-1.10,44.36,image,steam locomotive
+CLIP_RN50,mscoco,-1.32,40.53,image,steam locomotive
+CLIP_RN50,mscoco,-1.40,43.90,image,steam locomotive
+CLIP_RN50,mscoco,0.83,41.56,image,steam locomotive
+CLIP_RN50,mscoco,-1.20,43.21,image,steam locomotive
+CLIP_RN50,mscoco,1.73,41.16,image,steam locomotive
+CLIP_RN50,mscoco,-1.22,39.59,image,steam locomotive
+CLIP_RN50,mscoco,-1.29,44.15,image,steam locomotive
+CLIP_RN50,mscoco,0.86,42.59,image,steam locomotive
+CLIP_RN50,mscoco,2.11,41.05,image,steam locomotive
+CLIP_RN50,mscoco,-1.59,42.84,image,steam locomotive
+CLIP_RN50,mscoco,-1.12,42.22,image,steam locomotive
+CLIP_RN50,mscoco,-2.05,43.68,image,steam locomotive
+CLIP_RN50,mscoco,1.28,44.36,image,steam locomotive
+CLIP_RN50,mscoco,-1.59,41.18,image,steam locomotive
+CLIP_RN50,mscoco,-0.40,40.98,image,steam locomotive
+CLIP_RN50,mscoco,14.51,-16.99,text,school bus
+CLIP_RN50,mscoco,14.76,-15.60,text,school bus
+CLIP_RN50,mscoco,16.06,-11.96,text,school bus
+CLIP_RN50,mscoco,17.86,-13.22,text,school bus
+CLIP_RN50,mscoco,14.98,-16.03,text,school bus
+CLIP_RN50,mscoco,12.62,-16.57,text,school bus
+CLIP_RN50,mscoco,12.50,-13.60,text,school bus
+CLIP_RN50,mscoco,13.31,-14.80,text,school bus
+CLIP_RN50,mscoco,15.51,-14.67,text,school bus
+CLIP_RN50,mscoco,13.95,-14.82,text,school bus
+CLIP_RN50,mscoco,13.15,-14.34,text,school bus
+CLIP_RN50,mscoco,16.56,-15.28,text,school bus
+CLIP_RN50,mscoco,12.43,-14.28,text,school bus
+CLIP_RN50,mscoco,12.14,-15.33,text,school bus
+CLIP_RN50,mscoco,14.80,-14.44,text,school bus
+CLIP_RN50,mscoco,16.99,-17.12,text,school bus
+CLIP_RN50,mscoco,12.21,-10.81,text,school bus
+CLIP_RN50,mscoco,10.02,-17.88,text,school bus
+CLIP_RN50,mscoco,0.83,-11.67,text,school bus
+CLIP_RN50,mscoco,16.87,-14.82,text,school bus
+CLIP_RN50,mscoco,14.98,-16.03,text,school bus
+CLIP_RN50,mscoco,13.97,-13.82,text,school bus
+CLIP_RN50,mscoco,16.17,-13.66,text,school bus
+CLIP_RN50,mscoco,15.13,-13.51,text,school bus
+CLIP_RN50,mscoco,12.94,-11.15,text,school bus
+CLIP_RN50,mscoco,11.24,-13.50,text,school bus
+CLIP_RN50,mscoco,16.70,-16.24,text,school bus
+CLIP_RN50,mscoco,11.61,-15.16,text,school bus
+CLIP_RN50,mscoco,15.28,-12.39,text,school bus
+CLIP_RN50,mscoco,11.29,-14.55,text,school bus
+CLIP_RN50,mscoco,14.19,-14.40,text,school bus
+CLIP_RN50,mscoco,14.43,-13.80,text,school bus
+CLIP_RN50,mscoco,14.19,-16.54,text,school bus
+CLIP_RN50,mscoco,17.64,-13.29,text,school bus
+CLIP_RN50,mscoco,16.48,-16.34,text,school bus
+CLIP_RN50,mscoco,11.72,-11.07,text,school bus
+CLIP_RN50,mscoco,12.75,-12.79,text,school bus
+CLIP_RN50,mscoco,16.02,-13.68,text,school bus
+CLIP_RN50,mscoco,15.10,-15.97,text,school bus
+CLIP_RN50,mscoco,16.98,-12.79,text,school bus
+CLIP_RN50,mscoco,15.99,-15.09,text,school bus
+CLIP_RN50,mscoco,13.17,-14.75,text,school bus
+CLIP_RN50,mscoco,13.68,-13.37,text,school bus
+CLIP_RN50,mscoco,17.43,-12.71,text,school bus
+CLIP_RN50,mscoco,15.81,-13.06,text,school bus
+CLIP_RN50,mscoco,17.14,-15.43,text,school bus
+CLIP_RN50,mscoco,14.99,-15.31,text,school bus
+CLIP_RN50,mscoco,14.04,-12.54,text,school bus
+CLIP_RN50,mscoco,12.90,-10.80,text,school bus
+CLIP_RN50,mscoco,12.92,-14.18,text,school bus
+CLIP_RN50,mscoco,12.42,-19.93,text,fire truck
+CLIP_RN50,mscoco,14.39,-22.69,text,fire truck
+CLIP_RN50,mscoco,9.45,-24.07,text,fire truck
+CLIP_RN50,mscoco,12.71,-17.23,text,fire truck
+CLIP_RN50,mscoco,9.95,-18.04,text,fire truck
+CLIP_RN50,mscoco,9.78,-20.36,text,fire truck
+CLIP_RN50,mscoco,10.89,-23.36,text,fire truck
+CLIP_RN50,mscoco,9.54,-14.87,text,fire truck
+CLIP_RN50,mscoco,10.87,-21.18,text,fire truck
+CLIP_RN50,mscoco,11.46,-20.78,text,fire truck
+CLIP_RN50,mscoco,10.74,-20.07,text,fire truck
+CLIP_RN50,mscoco,8.61,-21.89,text,fire truck
+CLIP_RN50,mscoco,9.61,-23.19,text,fire truck
+CLIP_RN50,mscoco,10.59,-23.55,text,fire truck
+CLIP_RN50,mscoco,11.59,-22.61,text,fire truck
+CLIP_RN50,mscoco,10.72,-22.36,text,fire truck
+CLIP_RN50,mscoco,8.18,-21.52,text,fire truck
+CLIP_RN50,mscoco,7.28,-22.85,text,fire truck
+CLIP_RN50,mscoco,11.41,-20.84,text,fire truck
+CLIP_RN50,mscoco,9.81,-23.02,text,fire truck
+CLIP_RN50,mscoco,9.19,-21.87,text,fire truck
+CLIP_RN50,mscoco,12.07,-25.44,text,fire truck
+CLIP_RN50,mscoco,9.82,-22.23,text,fire truck
+CLIP_RN50,mscoco,14.39,-22.64,text,fire truck
+CLIP_RN50,mscoco,9.90,-22.34,text,fire truck
+CLIP_RN50,mscoco,8.36,-21.00,text,fire truck
+CLIP_RN50,mscoco,5.31,-14.90,text,fire truck
+CLIP_RN50,mscoco,8.65,-21.94,text,fire truck
+CLIP_RN50,mscoco,9.17,-18.48,text,fire truck
+CLIP_RN50,mscoco,6.15,-15.86,text,fire truck
+CLIP_RN50,mscoco,12.03,-20.92,text,fire truck
+CLIP_RN50,mscoco,2.22,-23.56,text,fire truck
+CLIP_RN50,mscoco,9.63,-21.60,text,fire truck
+CLIP_RN50,mscoco,10.91,-20.79,text,fire truck
+CLIP_RN50,mscoco,7.13,-22.72,text,fire truck
+CLIP_RN50,mscoco,8.08,-19.74,text,fire truck
+CLIP_RN50,mscoco,8.58,-23.19,text,fire truck
+CLIP_RN50,mscoco,12.25,-15.57,text,fire truck
+CLIP_RN50,mscoco,7.28,-23.48,text,fire truck
+CLIP_RN50,mscoco,3.74,-15.39,text,fire truck
+CLIP_RN50,mscoco,7.62,-23.42,text,fire truck
+CLIP_RN50,mscoco,9.95,-22.12,text,fire truck
+CLIP_RN50,mscoco,7.43,-18.57,text,fire truck
+CLIP_RN50,mscoco,12.07,-25.43,text,fire truck
+CLIP_RN50,mscoco,11.31,-16.23,text,fire truck
+CLIP_RN50,mscoco,14.48,-22.91,text,fire truck
+CLIP_RN50,mscoco,9.08,-20.64,text,fire truck
+CLIP_RN50,mscoco,11.35,-20.76,text,fire truck
+CLIP_RN50,mscoco,6.31,-16.04,text,fire truck
+CLIP_RN50,mscoco,8.99,-20.72,text,fire truck
+CLIP_RN50,mscoco,-0.17,-6.82,text,suit of clothes
+CLIP_RN50,mscoco,4.61,-6.73,text,suit of clothes
+CLIP_RN50,mscoco,2.58,-13.51,text,suit of clothes
+CLIP_RN50,mscoco,0.20,-12.43,text,suit of clothes
+CLIP_RN50,mscoco,4.64,-12.97,text,suit of clothes
+CLIP_RN50,mscoco,4.16,-5.72,text,suit of clothes
+CLIP_RN50,mscoco,0.57,-11.22,text,suit of clothes
+CLIP_RN50,mscoco,4.08,-5.94,text,suit of clothes
+CLIP_RN50,mscoco,3.83,-10.26,text,suit of clothes
+CLIP_RN50,mscoco,2.16,-6.54,text,suit of clothes
+CLIP_RN50,mscoco,0.12,-7.78,text,suit of clothes
+CLIP_RN50,mscoco,1.27,-7.29,text,suit of clothes
+CLIP_RN50,mscoco,-1.88,-6.80,text,suit of clothes
+CLIP_RN50,mscoco,-0.54,-9.30,text,suit of clothes
+CLIP_RN50,mscoco,4.91,-8.03,text,suit of clothes
+CLIP_RN50,mscoco,-0.40,-10.21,text,suit of clothes
+CLIP_RN50,mscoco,0.98,-9.40,text,suit of clothes
+CLIP_RN50,mscoco,0.51,-6.94,text,suit of clothes
+CLIP_RN50,mscoco,-1.87,-8.56,text,suit of clothes
+CLIP_RN50,mscoco,0.16,-8.08,text,suit of clothes
+CLIP_RN50,mscoco,0.12,-8.48,text,suit of clothes
+CLIP_RN50,mscoco,4.80,-7.41,text,suit of clothes
+CLIP_RN50,mscoco,2.68,-10.13,text,suit of clothes
+CLIP_RN50,mscoco,0.09,-4.88,text,suit of clothes
+CLIP_RN50,mscoco,2.14,-5.41,text,suit of clothes
+CLIP_RN50,mscoco,-1.14,-7.98,text,suit of clothes
+CLIP_RN50,mscoco,1.95,-7.60,text,suit of clothes
+CLIP_RN50,mscoco,2.01,-5.42,text,suit of clothes
+CLIP_RN50,mscoco,1.23,-8.19,text,suit of clothes
+CLIP_RN50,mscoco,0.82,-11.67,text,suit of clothes
+CLIP_RN50,mscoco,4.51,-13.22,text,suit of clothes
+CLIP_RN50,mscoco,3.67,-5.57,text,suit of clothes
+CLIP_RN50,mscoco,0.39,-8.73,text,suit of clothes
+CLIP_RN50,mscoco,1.27,-7.18,text,suit of clothes
+CLIP_RN50,mscoco,1.62,-12.13,text,suit of clothes
+CLIP_RN50,mscoco,3.75,-7.87,text,suit of clothes
+CLIP_RN50,mscoco,-1.62,-6.41,text,suit of clothes
+CLIP_RN50,mscoco,0.55,-7.50,text,suit of clothes
+CLIP_RN50,mscoco,1.74,-8.57,text,suit of clothes
+CLIP_RN50,mscoco,0.24,-6.48,text,suit of clothes
+CLIP_RN50,mscoco,-0.59,-8.92,text,suit of clothes
+CLIP_RN50,mscoco,2.66,-7.54,text,suit of clothes
+CLIP_RN50,mscoco,1.82,-5.48,text,suit of clothes
+CLIP_RN50,mscoco,1.32,-8.46,text,suit of clothes
+CLIP_RN50,mscoco,-0.53,-5.87,text,suit of clothes
+CLIP_RN50,mscoco,1.77,-9.30,text,suit of clothes
+CLIP_RN50,mscoco,1.26,-6.51,text,suit of clothes
+CLIP_RN50,mscoco,-0.69,-7.68,text,suit of clothes
+CLIP_RN50,mscoco,0.96,-6.17,text,suit of clothes
+CLIP_RN50,mscoco,3.07,-9.51,text,suit of clothes
+CLIP_RN50,mscoco,-13.56,-10.37,text,broccoli
+CLIP_RN50,mscoco,-13.70,-13.75,text,broccoli
+CLIP_RN50,mscoco,-15.04,-11.83,text,broccoli
+CLIP_RN50,mscoco,-12.61,-11.49,text,broccoli
+CLIP_RN50,mscoco,-12.22,-11.11,text,broccoli
+CLIP_RN50,mscoco,-13.34,-12.02,text,broccoli
+CLIP_RN50,mscoco,-8.59,-11.75,text,broccoli
+CLIP_RN50,mscoco,-13.67,-12.59,text,broccoli
+CLIP_RN50,mscoco,-12.47,-12.20,text,broccoli
+CLIP_RN50,mscoco,-15.51,-14.50,text,broccoli
+CLIP_RN50,mscoco,-14.21,-12.50,text,broccoli
+CLIP_RN50,mscoco,-14.85,-13.64,text,broccoli
+CLIP_RN50,mscoco,-12.95,-14.12,text,broccoli
+CLIP_RN50,mscoco,-7.65,-12.00,text,broccoli
+CLIP_RN50,mscoco,-15.19,-12.96,text,broccoli
+CLIP_RN50,mscoco,-7.63,-11.92,text,broccoli
+CLIP_RN50,mscoco,-14.86,-13.98,text,broccoli
+CLIP_RN50,mscoco,-15.54,-9.99,text,broccoli
+CLIP_RN50,mscoco,1.04,-14.85,text,broccoli
+CLIP_RN50,mscoco,-11.02,-12.99,text,broccoli
+CLIP_RN50,mscoco,-13.36,-12.37,text,broccoli
+CLIP_RN50,mscoco,-13.44,-13.43,text,broccoli
+CLIP_RN50,mscoco,-14.37,-13.76,text,broccoli
+CLIP_RN50,mscoco,-15.80,-13.79,text,broccoli
+CLIP_RN50,mscoco,-3.85,-11.57,text,broccoli
+CLIP_RN50,mscoco,-12.36,-13.49,text,broccoli
+CLIP_RN50,mscoco,-15.12,-12.34,text,broccoli
+CLIP_RN50,mscoco,-13.91,-14.63,text,broccoli
+CLIP_RN50,mscoco,-13.20,-12.90,text,broccoli
+CLIP_RN50,mscoco,-12.20,-9.18,text,broccoli
+CLIP_RN50,mscoco,-13.97,-10.86,text,broccoli
+CLIP_RN50,mscoco,-5.29,-11.46,text,broccoli
+CLIP_RN50,mscoco,-12.46,-9.02,text,broccoli
+CLIP_RN50,mscoco,-15.62,-10.14,text,broccoli
+CLIP_RN50,mscoco,-5.55,-11.61,text,broccoli
+CLIP_RN50,mscoco,-8.22,-11.02,text,broccoli
+CLIP_RN50,mscoco,-10.95,-12.91,text,broccoli
+CLIP_RN50,mscoco,-14.44,-9.84,text,broccoli
+CLIP_RN50,mscoco,-15.52,-10.17,text,broccoli
+CLIP_RN50,mscoco,-14.28,-10.91,text,broccoli
+CLIP_RN50,mscoco,-6.96,-12.58,text,broccoli
+CLIP_RN50,mscoco,-12.30,-9.20,text,broccoli
+CLIP_RN50,mscoco,-11.15,-11.55,text,broccoli
+CLIP_RN50,mscoco,-13.98,-14.69,text,broccoli
+CLIP_RN50,mscoco,-12.10,-12.04,text,broccoli
+CLIP_RN50,mscoco,-6.90,-11.71,text,broccoli
+CLIP_RN50,mscoco,-12.68,-14.59,text,broccoli
+CLIP_RN50,mscoco,-5.85,-11.81,text,broccoli
+CLIP_RN50,mscoco,-15.20,-13.68,text,broccoli
+CLIP_RN50,mscoco,-13.50,-13.99,text,broccoli
+CLIP_RN50,mscoco,1.89,-18.21,text,steam locomotive
+CLIP_RN50,mscoco,-1.14,-20.17,text,steam locomotive
+CLIP_RN50,mscoco,1.14,-21.65,text,steam locomotive
+CLIP_RN50,mscoco,1.56,-20.74,text,steam locomotive
+CLIP_RN50,mscoco,-3.03,-23.59,text,steam locomotive
+CLIP_RN50,mscoco,-0.14,-22.14,text,steam locomotive
+CLIP_RN50,mscoco,-1.25,-21.94,text,steam locomotive
+CLIP_RN50,mscoco,-0.84,-20.76,text,steam locomotive
+CLIP_RN50,mscoco,-2.58,-21.71,text,steam locomotive
+CLIP_RN50,mscoco,-0.29,-19.79,text,steam locomotive
+CLIP_RN50,mscoco,-0.11,-20.80,text,steam locomotive
+CLIP_RN50,mscoco,0.13,-23.01,text,steam locomotive
+CLIP_RN50,mscoco,-0.10,-24.00,text,steam locomotive
+CLIP_RN50,mscoco,0.98,-20.15,text,steam locomotive
+CLIP_RN50,mscoco,-1.80,-22.72,text,steam locomotive
+CLIP_RN50,mscoco,0.29,-20.92,text,steam locomotive
+CLIP_RN50,mscoco,0.84,-18.79,text,steam locomotive
+CLIP_RN50,mscoco,-0.09,-20.50,text,steam locomotive
+CLIP_RN50,mscoco,0.01,-22.01,text,steam locomotive
+CLIP_RN50,mscoco,1.90,-19.31,text,steam locomotive
+CLIP_RN50,mscoco,-1.52,-18.87,text,steam locomotive
+CLIP_RN50,mscoco,0.15,-19.59,text,steam locomotive
+CLIP_RN50,mscoco,-1.70,-22.59,text,steam locomotive
+CLIP_RN50,mscoco,-1.59,-22.52,text,steam locomotive
+CLIP_RN50,mscoco,-1.46,-23.64,text,steam locomotive
+CLIP_RN50,mscoco,-1.74,-23.78,text,steam locomotive
+CLIP_RN50,mscoco,2.34,-21.85,text,steam locomotive
+CLIP_RN50,mscoco,-0.31,-20.75,text,steam locomotive
+CLIP_RN50,mscoco,0.85,-20.43,text,steam locomotive
+CLIP_RN50,mscoco,-1.99,-20.92,text,steam locomotive
+CLIP_RN50,mscoco,2.20,-21.76,text,steam locomotive
+CLIP_RN50,mscoco,-2.60,-22.91,text,steam locomotive
+CLIP_RN50,mscoco,-1.18,-25.12,text,steam locomotive
+CLIP_RN50,mscoco,1.56,-20.74,text,steam locomotive
+CLIP_RN50,mscoco,-0.35,-18.44,text,steam locomotive
+CLIP_RN50,mscoco,-3.15,-21.13,text,steam locomotive
+CLIP_RN50,mscoco,-1.46,-19.07,text,steam locomotive
+CLIP_RN50,mscoco,-2.43,-22.32,text,steam locomotive
+CLIP_RN50,mscoco,-0.59,-21.28,text,steam locomotive
+CLIP_RN50,mscoco,0.85,-23.24,text,steam locomotive
+CLIP_RN50,mscoco,-1.28,-22.79,text,steam locomotive
+CLIP_RN50,mscoco,0.92,-21.99,text,steam locomotive
+CLIP_RN50,mscoco,1.53,-24.10,text,steam locomotive
+CLIP_RN50,mscoco,0.60,-19.06,text,steam locomotive
+CLIP_RN50,mscoco,0.53,-20.95,text,steam locomotive
+CLIP_RN50,mscoco,-2.25,-20.08,text,steam locomotive
+CLIP_RN50,mscoco,4.25,-18.46,text,steam locomotive
+CLIP_RN50,mscoco,0.90,-23.32,text,steam locomotive
+CLIP_RN50,mscoco,-1.08,-25.42,text,steam locomotive
+CLIP_RN50,mscoco,-3.60,-22.49,text,steam locomotive

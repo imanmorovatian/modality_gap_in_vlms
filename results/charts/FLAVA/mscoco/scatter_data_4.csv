@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+FLAVA,mscoco,5.49,-28.41,image,school bus
+FLAVA,mscoco,4.95,-26.79,image,school bus
+FLAVA,mscoco,2.31,-21.91,image,school bus
+FLAVA,mscoco,3.44,-25.47,image,school bus
+FLAVA,mscoco,4.56,-30.06,image,school bus
+FLAVA,mscoco,8.82,-17.15,image,school bus
+FLAVA,mscoco,9.52,-19.15,image,school bus
+FLAVA,mscoco,7.18,-27.18,image,school bus
+FLAVA,mscoco,9.55,-29.41,image,school bus
+FLAVA,mscoco,9.58,-25.94,image,school bus
+FLAVA,mscoco,5.13,-31.67,image,school bus
+FLAVA,mscoco,2.84,-26.65,image,school bus
+FLAVA,mscoco,8.06,-27.94,image,school bus
+FLAVA,mscoco,7.22,-30.61,image,school bus
+FLAVA,mscoco,9.83,-27.62,image,school bus
+FLAVA,mscoco,3.17,-30.89,image,school bus
+FLAVA,mscoco,0.59,-18.54,image,school bus
+FLAVA,mscoco,7.13,-28.54,image,school bus
+FLAVA,mscoco,7.14,-18.78,image,school bus
+FLAVA,mscoco,6.28,-25.72,image,school bus
+FLAVA,mscoco,3.93,-30.83,image,school bus
+FLAVA,mscoco,3.82,-29.38,image,school bus
+FLAVA,mscoco,3.89,-26.85,image,school bus
+FLAVA,mscoco,6.04,-31.51,image,school bus
+FLAVA,mscoco,0.66,-19.04,image,school bus
+FLAVA,mscoco,6.73,-27.02,image,school bus
+FLAVA,mscoco,2.28,-31.00,image,school bus
+FLAVA,mscoco,8.42,-26.51,image,school bus
+FLAVA,mscoco,4.92,-24.48,image,school bus
+FLAVA,mscoco,9.55,-29.41,image,school bus
+FLAVA,mscoco,6.00,-30.70,image,school bus
+FLAVA,mscoco,1.63,-23.99,image,school bus
+FLAVA,mscoco,6.92,-25.91,image,school bus
+FLAVA,mscoco,1.75,-26.57,image,school bus
+FLAVA,mscoco,10.57,-23.80,image,school bus
+FLAVA,mscoco,0.68,-19.25,image,school bus
+FLAVA,mscoco,1.17,-24.16,image,school bus
+FLAVA,mscoco,7.07,-30.33,image,school bus
+FLAVA,mscoco,8.34,-27.74,image,school bus
+FLAVA,mscoco,4.35,-30.18,image,school bus
+FLAVA,mscoco,2.01,-26.72,image,school bus
+FLAVA,mscoco,8.35,-27.61,image,school bus
+FLAVA,mscoco,4.54,-31.33,image,school bus
+FLAVA,mscoco,3.70,-28.79,image,school bus
+FLAVA,mscoco,3.51,-28.36,image,school bus
+FLAVA,mscoco,3.53,-26.89,image,school bus
+FLAVA,mscoco,5.62,-27.02,image,school bus
+FLAVA,mscoco,2.61,-29.41,image,school bus
+FLAVA,mscoco,0.69,-18.12,image,school bus
+FLAVA,mscoco,4.47,-31.00,image,school bus
+FLAVA,mscoco,14.55,-10.50,image,fire truck
+FLAVA,mscoco,22.76,-5.02,image,fire truck
+FLAVA,mscoco,11.07,-6.58,image,fire truck
+FLAVA,mscoco,6.17,-13.84,image,fire truck
+FLAVA,mscoco,7.85,-31.50,image,fire truck
+FLAVA,mscoco,21.49,-6.90,image,fire truck
+FLAVA,mscoco,17.33,-6.24,image,fire truck
+FLAVA,mscoco,13.10,-10.27,image,fire truck
+FLAVA,mscoco,23.41,-7.26,image,fire truck
+FLAVA,mscoco,22.37,-8.33,image,fire truck
+FLAVA,mscoco,20.49,-5.48,image,fire truck
+FLAVA,mscoco,23.23,-6.85,image,fire truck
+FLAVA,mscoco,16.12,-11.27,image,fire truck
+FLAVA,mscoco,17.84,-4.47,image,fire truck
+FLAVA,mscoco,19.39,-4.93,image,fire truck
+FLAVA,mscoco,18.75,-7.81,image,fire truck
+FLAVA,mscoco,17.15,-9.70,image,fire truck
+FLAVA,mscoco,22.81,-4.24,image,fire truck
+FLAVA,mscoco,20.89,-9.40,image,fire truck
+FLAVA,mscoco,18.51,-7.57,image,fire truck
+FLAVA,mscoco,20.10,-8.23,image,fire truck
+FLAVA,mscoco,18.45,-12.71,image,fire truck
+FLAVA,mscoco,19.21,-8.71,image,fire truck
+FLAVA,mscoco,21.83,-5.99,image,fire truck
+FLAVA,mscoco,18.14,-6.22,image,fire truck
+FLAVA,mscoco,20.30,-9.55,image,fire truck
+FLAVA,mscoco,15.59,-9.29,image,fire truck
+FLAVA,mscoco,19.48,-6.19,image,fire truck
+FLAVA,mscoco,9.97,-5.93,image,fire truck
+FLAVA,mscoco,17.02,-12.76,image,fire truck
+FLAVA,mscoco,22.55,-9.31,image,fire truck
+FLAVA,mscoco,6.93,5.12,image,fire truck
+FLAVA,mscoco,19.91,-8.21,image,fire truck
+FLAVA,mscoco,22.29,-8.48,image,fire truck
+FLAVA,mscoco,21.98,-3.39,image,fire truck
+FLAVA,mscoco,18.24,-9.94,image,fire truck
+FLAVA,mscoco,16.02,-3.44,image,fire truck
+FLAVA,mscoco,6.72,-14.57,image,fire truck
+FLAVA,mscoco,20.89,-4.64,image,fire truck
+FLAVA,mscoco,17.13,-8.05,image,fire truck
+FLAVA,mscoco,22.03,-3.32,image,fire truck
+FLAVA,mscoco,19.91,-5.24,image,fire truck
+FLAVA,mscoco,10.36,-10.11,image,fire truck
+FLAVA,mscoco,18.44,-12.70,image,fire truck
+FLAVA,mscoco,5.89,-13.71,image,fire truck
+FLAVA,mscoco,14.83,-1.29,image,fire truck
+FLAVA,mscoco,21.80,-5.98,image,fire truck
+FLAVA,mscoco,19.77,-6.10,image,fire truck
+FLAVA,mscoco,19.54,-2.83,image,fire truck
+FLAVA,mscoco,22.63,-6.32,image,fire truck
+FLAVA,mscoco,-11.19,-8.57,image,suit of clothes
+FLAVA,mscoco,-18.32,-6.72,image,suit of clothes
+FLAVA,mscoco,-8.01,-5.78,image,suit of clothes
+FLAVA,mscoco,5.14,-8.59,image,suit of clothes
+FLAVA,mscoco,-12.37,2.07,image,suit of clothes
+FLAVA,mscoco,-18.95,-7.26,image,suit of clothes
+FLAVA,mscoco,-19.75,-0.27,image,suit of clothes
+FLAVA,mscoco,-18.92,-7.00,image,suit of clothes
+FLAVA,mscoco,-11.21,-8.55,image,suit of clothes
+FLAVA,mscoco,-20.35,-6.98,image,suit of clothes
+FLAVA,mscoco,-14.91,-6.15,image,suit of clothes
+FLAVA,mscoco,-17.80,-0.62,image,suit of clothes
+FLAVA,mscoco,-15.51,-7.35,image,suit of clothes
+FLAVA,mscoco,-18.07,-5.42,image,suit of clothes
+FLAVA,mscoco,-8.30,2.54,image,suit of clothes
+FLAVA,mscoco,-18.71,-1.95,image,suit of clothes
+FLAVA,mscoco,-16.40,-8.06,image,suit of clothes
+FLAVA,mscoco,-20.24,-7.12,image,suit of clothes
+FLAVA,mscoco,-17.55,-1.52,image,suit of clothes
+FLAVA,mscoco,-16.36,-4.35,image,suit of clothes
+FLAVA,mscoco,-18.77,-5.09,image,suit of clothes
+FLAVA,mscoco,-8.29,2.55,image,suit of clothes
+FLAVA,mscoco,-9.27,-6.74,image,suit of clothes
+FLAVA,mscoco,-19.81,-1.50,image,suit of clothes
+FLAVA,mscoco,-21.28,-5.58,image,suit of clothes
+FLAVA,mscoco,-14.36,-8.01,image,suit of clothes
+FLAVA,mscoco,-19.57,-0.63,image,suit of clothes
+FLAVA,mscoco,-15.91,-6.13,image,suit of clothes
+FLAVA,mscoco,-18.16,-10.02,image,suit of clothes
+FLAVA,mscoco,-18.09,-10.28,image,suit of clothes
+FLAVA,mscoco,-13.38,-6.85,image,suit of clothes
+FLAVA,mscoco,-17.05,-6.11,image,suit of clothes
+FLAVA,mscoco,-20.07,-5.83,image,suit of clothes
+FLAVA,mscoco,-19.45,-4.61,image,suit of clothes
+FLAVA,mscoco,-10.55,-5.65,image,suit of clothes
+FLAVA,mscoco,-22.39,-3.99,image,suit of clothes
+FLAVA,mscoco,-17.84,-7.65,image,suit of clothes
+FLAVA,mscoco,-21.80,-6.86,image,suit of clothes
+FLAVA,mscoco,-18.32,-5.81,image,suit of clothes
+FLAVA,mscoco,-16.68,-8.61,image,suit of clothes
+FLAVA,mscoco,-19.30,-2.15,image,suit of clothes
+FLAVA,mscoco,-20.09,-8.17,image,suit of clothes
+FLAVA,mscoco,-15.03,-7.02,image,suit of clothes
+FLAVA,mscoco,-18.54,-9.04,image,suit of clothes
+FLAVA,mscoco,-17.41,-5.60,image,suit of clothes
+FLAVA,mscoco,-12.41,-5.64,image,suit of clothes
+FLAVA,mscoco,-18.51,-2.03,image,suit of clothes
+FLAVA,mscoco,-20.60,-6.70,image,suit of clothes
+FLAVA,mscoco,-17.83,-3.95,image,suit of clothes
+FLAVA,mscoco,-20.35,-5.84,image,suit of clothes
+FLAVA,mscoco,-16.78,37.74,image,broccoli
+FLAVA,mscoco,-22.10,36.75,image,broccoli
+FLAVA,mscoco,-10.75,35.64,image,broccoli
+FLAVA,mscoco,-13.95,37.50,image,broccoli
+FLAVA,mscoco,-12.30,38.27,image,broccoli
+FLAVA,mscoco,-17.73,36.06,image,broccoli
+FLAVA,mscoco,-12.38,37.98,image,broccoli
+FLAVA,mscoco,-13.96,38.81,image,broccoli
+FLAVA,mscoco,-13.97,37.07,image,broccoli
+FLAVA,mscoco,-21.21,35.73,image,broccoli
+FLAVA,mscoco,-16.47,40.16,image,broccoli
+FLAVA,mscoco,-19.79,37.86,image,broccoli
+FLAVA,mscoco,-19.94,35.35,image,broccoli
+FLAVA,mscoco,-16.42,38.70,image,broccoli
+FLAVA,mscoco,-17.25,37.36,image,broccoli
+FLAVA,mscoco,-17.68,38.81,image,broccoli
+FLAVA,mscoco,-19.38,36.57,image,broccoli
+FLAVA,mscoco,-9.85,33.49,image,broccoli
+FLAVA,mscoco,-9.59,33.58,image,broccoli
+FLAVA,mscoco,-15.01,40.74,image,broccoli
+FLAVA,mscoco,-18.29,35.70,image,broccoli
+FLAVA,mscoco,-17.41,41.72,image,broccoli
+FLAVA,mscoco,-20.55,38.11,image,broccoli
+FLAVA,mscoco,-16.65,36.21,image,broccoli
+FLAVA,mscoco,-11.68,38.97,image,broccoli
+FLAVA,mscoco,-16.62,38.06,image,broccoli
+FLAVA,mscoco,-19.50,38.12,image,broccoli
+FLAVA,mscoco,-19.39,38.56,image,broccoli
+FLAVA,mscoco,-14.87,36.82,image,broccoli
+FLAVA,mscoco,-11.91,37.09,image,broccoli
+FLAVA,mscoco,-13.15,37.29,image,broccoli
+FLAVA,mscoco,-20.15,39.82,image,broccoli
+FLAVA,mscoco,-13.56,38.32,image,broccoli
+FLAVA,mscoco,-9.72,33.22,image,broccoli
+FLAVA,mscoco,-21.24,35.84,image,broccoli
+FLAVA,mscoco,-15.90,37.30,image,broccoli
+FLAVA,mscoco,-15.95,39.65,image,broccoli
+FLAVA,mscoco,-12.18,28.20,image,broccoli
+FLAVA,mscoco,-9.76,33.28,image,broccoli
+FLAVA,mscoco,-21.17,32.56,image,broccoli
+FLAVA,mscoco,-16.81,40.87,image,broccoli
+FLAVA,mscoco,-10.85,35.97,image,broccoli
+FLAVA,mscoco,-12.94,35.53,image,broccoli
+FLAVA,mscoco,-19.06,38.23,image,broccoli
+FLAVA,mscoco,-13.63,35.65,image,broccoli
+FLAVA,mscoco,-14.70,38.60,image,broccoli
+FLAVA,mscoco,-17.39,41.97,image,broccoli
+FLAVA,mscoco,-17.41,41.92,image,broccoli
+FLAVA,mscoco,-20.10,34.83,image,broccoli
+FLAVA,mscoco,-22.39,36.85,image,broccoli
+FLAVA,mscoco,7.04,10.24,image,steam locomotive
+FLAVA,mscoco,11.46,10.36,image,steam locomotive
+FLAVA,mscoco,5.53,15.19,image,steam locomotive
+FLAVA,mscoco,1.01,12.05,image,steam locomotive
+FLAVA,mscoco,3.04,12.65,image,steam locomotive
+FLAVA,mscoco,3.69,16.85,image,steam locomotive
+FLAVA,mscoco,7.43,12.88,image,steam locomotive
+FLAVA,mscoco,5.82,12.85,image,steam locomotive
+FLAVA,mscoco,5.78,11.21,image,steam locomotive
+FLAVA,mscoco,11.27,10.98,image,steam locomotive
+FLAVA,mscoco,3.11,12.78,image,steam locomotive
+FLAVA,mscoco,5.61,12.81,image,steam locomotive
+FLAVA,mscoco,9.18,8.62,image,steam locomotive
+FLAVA,mscoco,9.92,14.02,image,steam locomotive
+FLAVA,mscoco,7.46,12.66,image,steam locomotive
+FLAVA,mscoco,6.82,13.79,image,steam locomotive
+FLAVA,mscoco,8.14,16.50,image,steam locomotive
+FLAVA,mscoco,5.19,11.77,image,steam locomotive
+FLAVA,mscoco,7.79,12.14,image,steam locomotive
+FLAVA,mscoco,4.95,16.53,image,steam locomotive
+FLAVA,mscoco,10.32,13.90,image,steam locomotive
+FLAVA,mscoco,3.99,16.79,image,steam locomotive
+FLAVA,mscoco,9.07,13.11,image,steam locomotive
+FLAVA,mscoco,11.13,9.43,image,steam locomotive
+FLAVA,mscoco,6.16,14.50,image,steam locomotive
+FLAVA,mscoco,8.95,15.54,image,steam locomotive
+FLAVA,mscoco,4.76,11.66,image,steam locomotive
+FLAVA,mscoco,7.35,9.26,image,steam locomotive
+FLAVA,mscoco,7.40,15.63,image,steam locomotive
+FLAVA,mscoco,11.56,7.33,image,steam locomotive
+FLAVA,mscoco,8.70,13.21,image,steam locomotive
+FLAVA,mscoco,9.24,8.45,image,steam locomotive
+FLAVA,mscoco,4.48,14.03,image,steam locomotive
+FLAVA,mscoco,9.11,12.46,image,steam locomotive
+FLAVA,mscoco,8.80,15.54,image,steam locomotive
+FLAVA,mscoco,1.04,12.09,image,steam locomotive
+FLAVA,mscoco,7.03,16.85,image,steam locomotive
+FLAVA,mscoco,7.25,9.27,image,steam locomotive
+FLAVA,mscoco,6.51,14.89,image,steam locomotive
+FLAVA,mscoco,6.49,8.69,image,steam locomotive
+FLAVA,mscoco,7.81,8.05,image,steam locomotive
+FLAVA,mscoco,7.06,16.75,image,steam locomotive
+FLAVA,mscoco,11.22,11.28,image,steam locomotive
+FLAVA,mscoco,11.55,7.43,image,steam locomotive
+FLAVA,mscoco,6.09,14.50,image,steam locomotive
+FLAVA,mscoco,3.17,14.46,image,steam locomotive
+FLAVA,mscoco,6.62,16.29,image,steam locomotive
+FLAVA,mscoco,9.19,13.17,image,steam locomotive
+FLAVA,mscoco,3.43,14.24,image,steam locomotive
+FLAVA,mscoco,8.81,8.91,image,steam locomotive
+FLAVA,mscoco,8.41,-21.73,text,school bus
+FLAVA,mscoco,7.92,-23.14,text,school bus
+FLAVA,mscoco,3.43,-21.74,text,school bus
+FLAVA,mscoco,3.91,-23.14,text,school bus
+FLAVA,mscoco,8.47,-22.93,text,school bus
+FLAVA,mscoco,8.27,-17.03,text,school bus
+FLAVA,mscoco,8.67,-19.25,text,school bus
+FLAVA,mscoco,6.01,-20.37,text,school bus
+FLAVA,mscoco,7.12,-22.09,text,school bus
+FLAVA,mscoco,6.86,-20.81,text,school bus
+FLAVA,mscoco,5.89,-20.49,text,school bus
+FLAVA,mscoco,6.97,-22.65,text,school bus
+FLAVA,mscoco,5.76,-21.02,text,school bus
+FLAVA,mscoco,7.16,-15.89,text,school bus
+FLAVA,mscoco,6.07,-21.94,text,school bus
+FLAVA,mscoco,10.48,-20.44,text,school bus
+FLAVA,mscoco,2.91,-17.15,text,school bus
+FLAVA,mscoco,7.70,-7.32,text,school bus
+FLAVA,mscoco,-5.61,-1.94,text,school bus
+FLAVA,mscoco,7.11,-22.48,text,school bus
+FLAVA,mscoco,8.47,-22.93,text,school bus
+FLAVA,mscoco,5.65,-21.11,text,school bus
+FLAVA,mscoco,5.53,-22.99,text,school bus
+FLAVA,mscoco,7.57,-20.38,text,school bus
+FLAVA,mscoco,2.96,-18.45,text,school bus
+FLAVA,mscoco,5.05,-19.06,text,school bus
+FLAVA,mscoco,10.39,-20.54,text,school bus
+FLAVA,mscoco,7.18,-15.83,text,school bus
+FLAVA,mscoco,4.54,-21.15,text,school bus
+FLAVA,mscoco,5.76,-17.40,text,school bus
+FLAVA,mscoco,6.16,-21.32,text,school bus
+FLAVA,mscoco,5.62,-21.94,text,school bus
+FLAVA,mscoco,7.73,-21.28,text,school bus
+FLAVA,mscoco,4.24,-23.11,text,school bus
+FLAVA,mscoco,9.99,-21.56,text,school bus
+FLAVA,mscoco,2.98,-17.09,text,school bus
+FLAVA,mscoco,5.90,-18.07,text,school bus
+FLAVA,mscoco,5.67,-22.79,text,school bus
+FLAVA,mscoco,8.79,-22.73,text,school bus
+FLAVA,mscoco,4.48,-22.24,text,school bus
+FLAVA,mscoco,6.88,-22.87,text,school bus
+FLAVA,mscoco,6.36,-19.86,text,school bus
+FLAVA,mscoco,3.93,-20.22,text,school bus
+FLAVA,mscoco,3.79,-22.66,text,school bus
+FLAVA,mscoco,4.65,-21.65,text,school bus
+FLAVA,mscoco,6.48,-23.24,text,school bus
+FLAVA,mscoco,7.71,-22.09,text,school bus
+FLAVA,mscoco,7.57,-19.77,text,school bus
+FLAVA,mscoco,2.99,-18.37,text,school bus
+FLAVA,mscoco,5.50,-20.00,text,school bus
+FLAVA,mscoco,14.36,-4.22,text,fire truck
+FLAVA,mscoco,13.93,-2.66,text,fire truck
+FLAVA,mscoco,11.81,-6.76,text,fire truck
+FLAVA,mscoco,8.91,-13.18,text,fire truck
+FLAVA,mscoco,7.79,-7.35,text,fire truck
+FLAVA,mscoco,12.34,-7.34,text,fire truck
+FLAVA,mscoco,15.96,-7.36,text,fire truck
+FLAVA,mscoco,12.38,-11.96,text,fire truck
+FLAVA,mscoco,14.50,-6.48,text,fire truck
+FLAVA,mscoco,14.32,-5.08,text,fire truck
+FLAVA,mscoco,13.90,-6.24,text,fire truck
+FLAVA,mscoco,12.96,-8.92,text,fire truck
+FLAVA,mscoco,14.27,-7.21,text,fire truck
+FLAVA,mscoco,15.46,-7.84,text,fire truck
+FLAVA,mscoco,15.46,-5.22,text,fire truck
+FLAVA,mscoco,15.88,-6.18,text,fire truck
+FLAVA,mscoco,12.59,-8.29,text,fire truck
+FLAVA,mscoco,10.79,-4.45,text,fire truck
+FLAVA,mscoco,14.35,-5.12,text,fire truck
+FLAVA,mscoco,14.78,-7.23,text,fire truck
+FLAVA,mscoco,13.60,-8.35,text,fire truck
+FLAVA,mscoco,12.59,-5.90,text,fire truck
+FLAVA,mscoco,15.25,-6.68,text,fire truck
+FLAVA,mscoco,13.77,-2.84,text,fire truck
+FLAVA,mscoco,14.26,-7.93,text,fire truck
+FLAVA,mscoco,13.14,-7.69,text,fire truck
+FLAVA,mscoco,2.72,-2.01,text,fire truck
+FLAVA,mscoco,13.15,-8.43,text,fire truck
+FLAVA,mscoco,8.93,-7.81,text,fire truck
+FLAVA,mscoco,8.41,-4.38,text,fire truck
+FLAVA,mscoco,14.58,-5.34,text,fire truck
+FLAVA,mscoco,5.83,5.13,text,fire truck
+FLAVA,mscoco,14.27,-8.76,text,fire truck
+FLAVA,mscoco,14.25,-6.49,text,fire truck
+FLAVA,mscoco,11.43,-4.79,text,fire truck
+FLAVA,mscoco,11.28,-8.75,text,fire truck
+FLAVA,mscoco,12.45,-5.37,text,fire truck
+FLAVA,mscoco,8.12,-14.35,text,fire truck
+FLAVA,mscoco,11.68,-3.72,text,fire truck
+FLAVA,mscoco,6.77,-5.99,text,fire truck
+FLAVA,mscoco,11.98,-4.52,text,fire truck
+FLAVA,mscoco,15.23,-6.88,text,fire truck
+FLAVA,mscoco,10.64,-9.64,text,fire truck
+FLAVA,mscoco,13.12,-5.96,text,fire truck
+FLAVA,mscoco,8.40,-13.94,text,fire truck
+FLAVA,mscoco,14.32,-1.77,text,fire truck
+FLAVA,mscoco,12.78,-7.46,text,fire truck
+FLAVA,mscoco,14.24,-5.11,text,fire truck
+FLAVA,mscoco,10.59,-7.80,text,fire truck
+FLAVA,mscoco,12.25,-7.86,text,fire truck
+FLAVA,mscoco,-13.95,-2.85,text,suit of clothes
+FLAVA,mscoco,-10.01,-1.47,text,suit of clothes
+FLAVA,mscoco,-3.37,-3.06,text,suit of clothes
+FLAVA,mscoco,2.38,-2.54,text,suit of clothes
+FLAVA,mscoco,-12.16,1.53,text,suit of clothes
+FLAVA,mscoco,-9.76,-2.54,text,suit of clothes
+FLAVA,mscoco,-5.87,-2.30,text,suit of clothes
+FLAVA,mscoco,-10.03,-2.37,text,suit of clothes
+FLAVA,mscoco,-10.78,-0.03,text,suit of clothes
+FLAVA,mscoco,-11.29,-2.05,text,suit of clothes
+FLAVA,mscoco,-13.86,-3.24,text,suit of clothes
+FLAVA,mscoco,-15.89,0.32,text,suit of clothes
+FLAVA,mscoco,-11.88,-3.95,text,suit of clothes
+FLAVA,mscoco,-13.60,-0.50,text,suit of clothes
+FLAVA,mscoco,-7.44,-2.32,text,suit of clothes
+FLAVA,mscoco,-10.78,-4.05,text,suit of clothes
+FLAVA,mscoco,-12.95,-3.53,text,suit of clothes
+FLAVA,mscoco,-13.07,-2.28,text,suit of clothes
+FLAVA,mscoco,-15.91,-1.71,text,suit of clothes
+FLAVA,mscoco,-15.23,-3.67,text,suit of clothes
+FLAVA,mscoco,-13.59,-3.63,text,suit of clothes
+FLAVA,mscoco,-7.48,-1.35,text,suit of clothes
+FLAVA,mscoco,-3.35,-1.57,text,suit of clothes
+FLAVA,mscoco,-13.64,-4.66,text,suit of clothes
+FLAVA,mscoco,-11.84,-1.51,text,suit of clothes
+FLAVA,mscoco,-15.10,-1.99,text,suit of clothes
+FLAVA,mscoco,-15.71,0.84,text,suit of clothes
+FLAVA,mscoco,-12.21,-1.23,text,suit of clothes
+FLAVA,mscoco,-12.80,-3.15,text,suit of clothes
+FLAVA,mscoco,-5.73,-2.18,text,suit of clothes
+FLAVA,mscoco,-3.55,-1.79,text,suit of clothes
+FLAVA,mscoco,-10.90,-2.52,text,suit of clothes
+FLAVA,mscoco,-14.18,-3.56,text,suit of clothes
+FLAVA,mscoco,-15.87,0.36,text,suit of clothes
+FLAVA,mscoco,-5.65,-2.38,text,suit of clothes
+FLAVA,mscoco,-7.60,-1.94,text,suit of clothes
+FLAVA,mscoco,-12.02,-2.36,text,suit of clothes
+FLAVA,mscoco,-14.86,-2.53,text,suit of clothes
+FLAVA,mscoco,-12.40,-2.94,text,suit of clothes
+FLAVA,mscoco,-13.47,-1.41,text,suit of clothes
+FLAVA,mscoco,-14.49,-1.16,text,suit of clothes
+FLAVA,mscoco,-15.46,1.58,text,suit of clothes
+FLAVA,mscoco,-12.35,-1.22,text,suit of clothes
+FLAVA,mscoco,-12.76,-3.77,text,suit of clothes
+FLAVA,mscoco,-13.93,-1.91,text,suit of clothes
+FLAVA,mscoco,-12.31,-4.95,text,suit of clothes
+FLAVA,mscoco,-12.36,-2.23,text,suit of clothes
+FLAVA,mscoco,-15.03,-2.30,text,suit of clothes
+FLAVA,mscoco,-12.97,-0.45,text,suit of clothes
+FLAVA,mscoco,-11.86,-0.29,text,suit of clothes
+FLAVA,mscoco,-15.34,30.62,text,broccoli
+FLAVA,mscoco,-17.23,32.83,text,broccoli
+FLAVA,mscoco,-14.76,30.21,text,broccoli
+FLAVA,mscoco,-15.27,31.95,text,broccoli
+FLAVA,mscoco,-14.90,30.98,text,broccoli
+FLAVA,mscoco,-16.45,31.26,text,broccoli
+FLAVA,mscoco,-14.02,32.52,text,broccoli
+FLAVA,mscoco,-15.96,31.52,text,broccoli
+FLAVA,mscoco,-14.34,32.29,text,broccoli
+FLAVA,mscoco,-18.90,33.14,text,broccoli
+FLAVA,mscoco,-17.13,32.35,text,broccoli
+FLAVA,mscoco,-17.67,32.46,text,broccoli
+FLAVA,mscoco,-17.91,33.66,text,broccoli
+FLAVA,mscoco,-15.04,34.06,text,broccoli
+FLAVA,mscoco,-16.51,32.54,text,broccoli
+FLAVA,mscoco,-15.25,34.05,text,broccoli
+FLAVA,mscoco,-18.16,32.23,text,broccoli
+FLAVA,mscoco,-13.75,29.87,text,broccoli
+FLAVA,mscoco,-11.53,29.63,text,broccoli
+FLAVA,mscoco,-14.07,33.63,text,broccoli
+FLAVA,mscoco,-16.28,31.28,text,broccoli
+FLAVA,mscoco,-19.27,31.26,text,broccoli
+FLAVA,mscoco,-17.98,32.22,text,broccoli
+FLAVA,mscoco,-19.14,33.11,text,broccoli
+FLAVA,mscoco,-13.84,28.30,text,broccoli
+FLAVA,mscoco,-16.92,30.68,text,broccoli
+FLAVA,mscoco,-17.46,31.71,text,broccoli
+FLAVA,mscoco,-18.18,31.51,text,broccoli
+FLAVA,mscoco,-15.75,32.12,text,broccoli
+FLAVA,mscoco,-15.94,28.95,text,broccoli
+FLAVA,mscoco,-14.16,30.78,text,broccoli
+FLAVA,mscoco,-18.74,29.54,text,broccoli
+FLAVA,mscoco,-16.15,29.49,text,broccoli
+FLAVA,mscoco,-13.33,29.92,text,broccoli
+FLAVA,mscoco,-18.88,29.53,text,broccoli
+FLAVA,mscoco,-15.60,28.51,text,broccoli
+FLAVA,mscoco,-13.86,33.56,text,broccoli
+FLAVA,mscoco,-12.92,29.20,text,broccoli
+FLAVA,mscoco,-13.53,29.93,text,broccoli
+FLAVA,mscoco,-20.34,32.25,text,broccoli
+FLAVA,mscoco,-16.57,33.58,text,broccoli
+FLAVA,mscoco,-15.83,29.16,text,broccoli
+FLAVA,mscoco,-12.71,31.20,text,broccoli
+FLAVA,mscoco,-18.12,31.37,text,broccoli
+FLAVA,mscoco,-14.17,31.71,text,broccoli
+FLAVA,mscoco,-14.99,34.18,text,broccoli
+FLAVA,mscoco,-17.10,33.77,text,broccoli
+FLAVA,mscoco,-19.49,29.38,text,broccoli
+FLAVA,mscoco,-18.31,32.87,text,broccoli
+FLAVA,mscoco,-19.18,31.75,text,broccoli
+FLAVA,mscoco,-2.70,-1.38,text,steam locomotive
+FLAVA,mscoco,6.27,1.94,text,steam locomotive
+FLAVA,mscoco,2.08,5.24,text,steam locomotive
+FLAVA,mscoco,2.69,5.93,text,steam locomotive
+FLAVA,mscoco,4.88,7.17,text,steam locomotive
+FLAVA,mscoco,1.43,8.80,text,steam locomotive
+FLAVA,mscoco,3.45,7.91,text,steam locomotive
+FLAVA,mscoco,1.81,6.30,text,steam locomotive
+FLAVA,mscoco,4.75,5.69,text,steam locomotive
+FLAVA,mscoco,3.60,3.93,text,steam locomotive
+FLAVA,mscoco,3.66,5.08,text,steam locomotive
+FLAVA,mscoco,1.45,8.27,text,steam locomotive
+FLAVA,mscoco,2.04,8.49,text,steam locomotive
+FLAVA,mscoco,0.21,5.87,text,steam locomotive
+FLAVA,mscoco,4.42,8.10,text,steam locomotive
+FLAVA,mscoco,3.53,5.77,text,steam locomotive
+FLAVA,mscoco,2.03,3.74,text,steam locomotive
+FLAVA,mscoco,1.24,4.71,text,steam locomotive
+FLAVA,mscoco,1.27,9.00,text,steam locomotive
+FLAVA,mscoco,1.97,2.11,text,steam locomotive
+FLAVA,mscoco,-0.82,3.37,text,steam locomotive
+FLAVA,mscoco,1.97,3.37,text,steam locomotive
+FLAVA,mscoco,3.80,7.86,text,steam locomotive
+FLAVA,mscoco,3.50,8.04,text,steam locomotive
+FLAVA,mscoco,4.45,8.76,text,steam locomotive
+FLAVA,mscoco,4.11,8.94,text,steam locomotive
+FLAVA,mscoco,5.86,2.48,text,steam locomotive
+FLAVA,mscoco,2.94,5.39,text,steam locomotive
+FLAVA,mscoco,0.39,5.86,text,steam locomotive
+FLAVA,mscoco,5.66,6.89,text,steam locomotive
+FLAVA,mscoco,-0.68,3.63,text,steam locomotive
+FLAVA,mscoco,4.29,7.82,text,steam locomotive
+FLAVA,mscoco,3.08,9.41,text,steam locomotive
+FLAVA,mscoco,2.69,5.93,text,steam locomotive
+FLAVA,mscoco,5.53,2.59,text,steam locomotive
+FLAVA,mscoco,2.81,3.64,text,steam locomotive
+FLAVA,mscoco,-0.72,3.53,text,steam locomotive
+FLAVA,mscoco,4.33,7.08,text,steam locomotive
+FLAVA,mscoco,3.30,5.42,text,steam locomotive
+FLAVA,mscoco,4.16,6.00,text,steam locomotive
+FLAVA,mscoco,3.15,7.70,text,steam locomotive
+FLAVA,mscoco,0.77,7.59,text,steam locomotive
+FLAVA,mscoco,5.44,5.20,text,steam locomotive
+FLAVA,mscoco,1.62,3.99,text,steam locomotive
+FLAVA,mscoco,3.47,4.71,text,steam locomotive
+FLAVA,mscoco,4.48,3.93,text,steam locomotive
+FLAVA,mscoco,3.43,2.73,text,steam locomotive
+FLAVA,mscoco,4.32,5.84,text,steam locomotive
+FLAVA,mscoco,6.18,2.22,text,steam locomotive
+FLAVA,mscoco,5.33,7.78,text,steam locomotive

@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+ImageBind,mscoco,19.79,-23.29,image,tup
+ImageBind,mscoco,19.87,-21.82,image,tup
+ImageBind,mscoco,20.26,-22.72,image,tup
+ImageBind,mscoco,18.35,-24.19,image,tup
+ImageBind,mscoco,17.96,-23.53,image,tup
+ImageBind,mscoco,17.03,-24.37,image,tup
+ImageBind,mscoco,18.33,-26.09,image,tup
+ImageBind,mscoco,16.48,-24.53,image,tup
+ImageBind,mscoco,16.85,-22.35,image,tup
+ImageBind,mscoco,16.16,-23.82,image,tup
+ImageBind,mscoco,17.51,-25.11,image,tup
+ImageBind,mscoco,18.54,-22.51,image,tup
+ImageBind,mscoco,18.11,-26.14,image,tup
+ImageBind,mscoco,16.95,-23.09,image,tup
+ImageBind,mscoco,18.95,-26.65,image,tup
+ImageBind,mscoco,19.61,-25.50,image,tup
+ImageBind,mscoco,21.04,-22.25,image,tup
+ImageBind,mscoco,18.59,-25.10,image,tup
+ImageBind,mscoco,17.12,-26.27,image,tup
+ImageBind,mscoco,14.40,-22.32,image,tup
+ImageBind,mscoco,20.53,-23.26,image,tup
+ImageBind,mscoco,15.77,-21.94,image,tup
+ImageBind,mscoco,18.12,-23.82,image,tup
+ImageBind,mscoco,18.54,-23.63,image,tup
+ImageBind,mscoco,19.45,-22.65,image,tup
+ImageBind,mscoco,15.78,-25.68,image,tup
+ImageBind,mscoco,20.33,-25.18,image,tup
+ImageBind,mscoco,17.46,-23.24,image,tup
+ImageBind,mscoco,16.84,-24.61,image,tup
+ImageBind,mscoco,16.35,-23.78,image,tup
+ImageBind,mscoco,14.70,-25.96,image,tup
+ImageBind,mscoco,15.68,-26.42,image,tup
+ImageBind,mscoco,18.29,-27.47,image,tup
+ImageBind,mscoco,17.50,-24.24,image,tup
+ImageBind,mscoco,15.23,-23.82,image,tup
+ImageBind,mscoco,15.86,-23.58,image,tup
+ImageBind,mscoco,18.90,-23.07,image,tup
+ImageBind,mscoco,14.40,-25.15,image,tup
+ImageBind,mscoco,19.61,-26.69,image,tup
+ImageBind,mscoco,16.05,-26.26,image,tup
+ImageBind,mscoco,19.72,-24.48,image,tup
+ImageBind,mscoco,14.93,-22.19,image,tup
+ImageBind,mscoco,17.91,-21.87,image,tup
+ImageBind,mscoco,18.98,-24.45,image,tup
+ImageBind,mscoco,20.52,-24.15,image,tup
+ImageBind,mscoco,18.63,-21.53,image,tup
+ImageBind,mscoco,19.50,-22.27,image,tup
+ImageBind,mscoco,17.25,-23.08,image,tup
+ImageBind,mscoco,14.89,-23.82,image,tup
+ImageBind,mscoco,16.18,-25.28,image,tup
+ImageBind,mscoco,-6.15,-6.59,image,bowtie
+ImageBind,mscoco,-9.18,-8.04,image,bowtie
+ImageBind,mscoco,-11.56,-5.70,image,bowtie
+ImageBind,mscoco,-8.00,-6.73,image,bowtie
+ImageBind,mscoco,-10.34,-5.61,image,bowtie
+ImageBind,mscoco,-5.87,-7.31,image,bowtie
+ImageBind,mscoco,-7.52,-4.63,image,bowtie
+ImageBind,mscoco,-0.43,-3.58,image,bowtie
+ImageBind,mscoco,-10.89,-5.29,image,bowtie
+ImageBind,mscoco,-5.44,-6.86,image,bowtie
+ImageBind,mscoco,-5.87,-1.00,image,bowtie
+ImageBind,mscoco,-6.80,-0.53,image,bowtie
+ImageBind,mscoco,-10.09,-7.95,image,bowtie
+ImageBind,mscoco,-5.50,-4.65,image,bowtie
+ImageBind,mscoco,-6.26,-6.55,image,bowtie
+ImageBind,mscoco,-2.87,-7.71,image,bowtie
+ImageBind,mscoco,-11.43,-4.99,image,bowtie
+ImageBind,mscoco,-3.13,-4.19,image,bowtie
+ImageBind,mscoco,-3.96,-5.76,image,bowtie
+ImageBind,mscoco,-6.84,-0.52,image,bowtie
+ImageBind,mscoco,-5.62,-1.25,image,bowtie
+ImageBind,mscoco,-5.20,-5.75,image,bowtie
+ImageBind,mscoco,-7.10,-7.15,image,bowtie
+ImageBind,mscoco,-9.02,-8.69,image,bowtie
+ImageBind,mscoco,-8.52,-9.44,image,bowtie
+ImageBind,mscoco,-2.89,-4.43,image,bowtie
+ImageBind,mscoco,-5.93,-7.70,image,bowtie
+ImageBind,mscoco,-11.49,-4.75,image,bowtie
+ImageBind,mscoco,-7.59,-4.52,image,bowtie
+ImageBind,mscoco,-7.31,-8.74,image,bowtie
+ImageBind,mscoco,-5.97,-4.58,image,bowtie
+ImageBind,mscoco,-8.48,-7.46,image,bowtie
+ImageBind,mscoco,-9.59,-9.48,image,bowtie
+ImageBind,mscoco,-8.74,-8.11,image,bowtie
+ImageBind,mscoco,-4.97,-6.26,image,bowtie
+ImageBind,mscoco,-5.53,-7.90,image,bowtie
+ImageBind,mscoco,-3.22,-7.57,image,bowtie
+ImageBind,mscoco,-6.17,-7.68,image,bowtie
+ImageBind,mscoco,-3.64,-2.27,image,bowtie
+ImageBind,mscoco,-3.67,-2.45,image,bowtie
+ImageBind,mscoco,-11.27,-5.87,image,bowtie
+ImageBind,mscoco,-10.77,-8.09,image,bowtie
+ImageBind,mscoco,-2.91,-7.68,image,bowtie
+ImageBind,mscoco,-6.80,-7.95,image,bowtie
+ImageBind,mscoco,-5.56,-8.79,image,bowtie
+ImageBind,mscoco,-9.39,-7.42,image,bowtie
+ImageBind,mscoco,-8.34,-8.48,image,bowtie
+ImageBind,mscoco,-4.78,-7.96,image,bowtie
+ImageBind,mscoco,-8.88,-6.67,image,bowtie
+ImageBind,mscoco,-9.30,-7.23,image,bowtie
+ImageBind,mscoco,2.47,11.59,image,stoplight
+ImageBind,mscoco,1.16,11.14,image,stoplight
+ImageBind,mscoco,3.54,11.50,image,stoplight
+ImageBind,mscoco,2.63,10.21,image,stoplight
+ImageBind,mscoco,0.23,10.57,image,stoplight
+ImageBind,mscoco,2.98,8.50,image,stoplight
+ImageBind,mscoco,1.70,9.46,image,stoplight
+ImageBind,mscoco,4.51,10.86,image,stoplight
+ImageBind,mscoco,3.70,7.33,image,stoplight
+ImageBind,mscoco,2.90,9.51,image,stoplight
+ImageBind,mscoco,5.11,9.36,image,stoplight
+ImageBind,mscoco,3.67,8.67,image,stoplight
+ImageBind,mscoco,0.30,11.53,image,stoplight
+ImageBind,mscoco,4.92,9.52,image,stoplight
+ImageBind,mscoco,4.29,10.84,image,stoplight
+ImageBind,mscoco,1.87,10.13,image,stoplight
+ImageBind,mscoco,2.45,7.54,image,stoplight
+ImageBind,mscoco,-1.55,8.48,image,stoplight
+ImageBind,mscoco,3.78,12.74,image,stoplight
+ImageBind,mscoco,2.17,8.27,image,stoplight
+ImageBind,mscoco,1.46,11.11,image,stoplight
+ImageBind,mscoco,4.82,7.38,image,stoplight
+ImageBind,mscoco,1.48,9.41,image,stoplight
+ImageBind,mscoco,0.05,9.10,image,stoplight
+ImageBind,mscoco,-0.52,11.08,image,stoplight
+ImageBind,mscoco,2.65,10.59,image,stoplight
+ImageBind,mscoco,1.50,13.53,image,stoplight
+ImageBind,mscoco,-0.14,8.50,image,stoplight
+ImageBind,mscoco,2.49,12.51,image,stoplight
+ImageBind,mscoco,1.13,11.30,image,stoplight
+ImageBind,mscoco,2.81,10.49,image,stoplight
+ImageBind,mscoco,3.76,9.81,image,stoplight
+ImageBind,mscoco,1.16,8.11,image,stoplight
+ImageBind,mscoco,-1.10,11.50,image,stoplight
+ImageBind,mscoco,2.11,10.26,image,stoplight
+ImageBind,mscoco,2.79,9.41,image,stoplight
+ImageBind,mscoco,1.10,8.73,image,stoplight
+ImageBind,mscoco,-1.18,10.84,image,stoplight
+ImageBind,mscoco,-0.38,10.93,image,stoplight
+ImageBind,mscoco,-2.77,9.72,image,stoplight
+ImageBind,mscoco,-1.52,10.81,image,stoplight
+ImageBind,mscoco,-1.52,12.02,image,stoplight
+ImageBind,mscoco,-1.02,12.21,image,stoplight
+ImageBind,mscoco,1.16,9.76,image,stoplight
+ImageBind,mscoco,1.04,12.84,image,stoplight
+ImageBind,mscoco,0.63,12.60,image,stoplight
+ImageBind,mscoco,2.70,10.06,image,stoplight
+ImageBind,mscoco,1.24,6.91,image,stoplight
+ImageBind,mscoco,-0.07,6.92,image,stoplight
+ImageBind,mscoco,-1.01,9.31,image,stoplight
+ImageBind,mscoco,-5.25,17.49,image,dustcart
+ImageBind,mscoco,-2.38,19.16,image,dustcart
+ImageBind,mscoco,-5.88,24.17,image,dustcart
+ImageBind,mscoco,-5.18,19.83,image,dustcart
+ImageBind,mscoco,-3.13,23.40,image,dustcart
+ImageBind,mscoco,-7.75,23.83,image,dustcart
+ImageBind,mscoco,-6.06,21.48,image,dustcart
+ImageBind,mscoco,-5.11,23.14,image,dustcart
+ImageBind,mscoco,-6.09,22.17,image,dustcart
+ImageBind,mscoco,-2.56,21.86,image,dustcart
+ImageBind,mscoco,-5.42,23.71,image,dustcart
+ImageBind,mscoco,-6.39,22.86,image,dustcart
+ImageBind,mscoco,-3.68,23.93,image,dustcart
+ImageBind,mscoco,-2.29,21.41,image,dustcart
+ImageBind,mscoco,-4.12,23.50,image,dustcart
+ImageBind,mscoco,-5.44,22.72,image,dustcart
+ImageBind,mscoco,-4.88,22.36,image,dustcart
+ImageBind,mscoco,-5.85,25.77,image,dustcart
+ImageBind,mscoco,-3.84,24.27,image,dustcart
+ImageBind,mscoco,-6.37,23.81,image,dustcart
+ImageBind,mscoco,-5.60,23.52,image,dustcart
+ImageBind,mscoco,-2.22,22.91,image,dustcart
+ImageBind,mscoco,-3.39,20.59,image,dustcart
+ImageBind,mscoco,-0.99,21.53,image,dustcart
+ImageBind,mscoco,-5.53,23.08,image,dustcart
+ImageBind,mscoco,-1.84,21.78,image,dustcart
+ImageBind,mscoco,-1.57,20.60,image,dustcart
+ImageBind,mscoco,-3.96,25.46,image,dustcart
+ImageBind,mscoco,-5.21,17.45,image,dustcart
+ImageBind,mscoco,-0.18,21.53,image,dustcart
+ImageBind,mscoco,-6.67,24.88,image,dustcart
+ImageBind,mscoco,-3.32,19.14,image,dustcart
+ImageBind,mscoco,-5.50,24.90,image,dustcart
+ImageBind,mscoco,-1.79,23.40,image,dustcart
+ImageBind,mscoco,-5.58,19.87,image,dustcart
+ImageBind,mscoco,-0.37,21.49,image,dustcart
+ImageBind,mscoco,-8.14,21.97,image,dustcart
+ImageBind,mscoco,-6.75,20.38,image,dustcart
+ImageBind,mscoco,-4.51,21.52,image,dustcart
+ImageBind,mscoco,-2.29,19.13,image,dustcart
+ImageBind,mscoco,-6.53,18.84,image,dustcart
+ImageBind,mscoco,-4.31,23.15,image,dustcart
+ImageBind,mscoco,-4.63,23.23,image,dustcart
+ImageBind,mscoco,-1.42,20.67,image,dustcart
+ImageBind,mscoco,-0.01,20.33,image,dustcart
+ImageBind,mscoco,-5.94,20.02,image,dustcart
+ImageBind,mscoco,-2.69,21.98,image,dustcart
+ImageBind,mscoco,-8.29,21.91,image,dustcart
+ImageBind,mscoco,-6.73,25.10,image,dustcart
+ImageBind,mscoco,-4.40,23.40,image,dustcart
+ImageBind,mscoco,-25.91,-2.77,image,red hot
+ImageBind,mscoco,-20.70,-5.30,image,red hot
+ImageBind,mscoco,-25.29,-0.78,image,red hot
+ImageBind,mscoco,-23.65,-2.74,image,red hot
+ImageBind,mscoco,-20.83,-6.05,image,red hot
+ImageBind,mscoco,-24.77,-3.56,image,red hot
+ImageBind,mscoco,-20.77,-6.73,image,red hot
+ImageBind,mscoco,-24.13,-3.61,image,red hot
+ImageBind,mscoco,-23.24,-5.30,image,red hot
+ImageBind,mscoco,-26.63,-2.94,image,red hot
+ImageBind,mscoco,-25.01,-1.90,image,red hot
+ImageBind,mscoco,-23.45,-4.43,image,red hot
+ImageBind,mscoco,-21.77,-3.91,image,red hot
+ImageBind,mscoco,-26.47,-6.52,image,red hot
+ImageBind,mscoco,-24.13,-4.37,image,red hot
+ImageBind,mscoco,-24.73,-2.52,image,red hot
+ImageBind,mscoco,-21.56,-3.52,image,red hot
+ImageBind,mscoco,-24.33,-4.98,image,red hot
+ImageBind,mscoco,-24.58,-6.22,image,red hot
+ImageBind,mscoco,-23.86,-6.04,image,red hot
+ImageBind,mscoco,-23.80,-4.06,image,red hot
+ImageBind,mscoco,-22.39,-4.95,image,red hot
+ImageBind,mscoco,-24.09,-1.69,image,red hot
+ImageBind,mscoco,-25.32,-4.32,image,red hot
+ImageBind,mscoco,-23.61,-4.67,image,red hot
+ImageBind,mscoco,-25.24,-6.81,image,red hot
+ImageBind,mscoco,-26.30,-5.92,image,red hot
+ImageBind,mscoco,-24.51,-3.75,image,red hot
+ImageBind,mscoco,-24.70,-5.93,image,red hot
+ImageBind,mscoco,-27.22,-4.01,image,red hot
+ImageBind,mscoco,-23.02,-6.04,image,red hot
+ImageBind,mscoco,-26.13,-1.71,image,red hot
+ImageBind,mscoco,-24.61,-4.28,image,red hot
+ImageBind,mscoco,-25.78,-4.59,image,red hot
+ImageBind,mscoco,-24.04,-5.39,image,red hot
+ImageBind,mscoco,-20.77,-5.48,image,red hot
+ImageBind,mscoco,-26.45,-4.89,image,red hot
+ImageBind,mscoco,-26.22,-3.85,image,red hot
+ImageBind,mscoco,-21.50,-2.47,image,red hot
+ImageBind,mscoco,-22.21,-2.26,image,red hot
+ImageBind,mscoco,-25.08,-5.12,image,red hot
+ImageBind,mscoco,-25.82,-5.42,image,red hot
+ImageBind,mscoco,-23.40,-7.20,image,red hot
+ImageBind,mscoco,-25.18,-3.35,image,red hot
+ImageBind,mscoco,-27.53,-3.05,image,red hot
+ImageBind,mscoco,-26.48,-3.72,image,red hot
+ImageBind,mscoco,-27.51,-4.92,image,red hot
+ImageBind,mscoco,-22.82,-3.26,image,red hot
+ImageBind,mscoco,-23.79,-6.64,image,red hot
+ImageBind,mscoco,-24.60,-4.76,image,red hot
+ImageBind,mscoco,21.58,-16.41,text,tup
+ImageBind,mscoco,19.91,-12.23,text,tup
+ImageBind,mscoco,13.98,-13.65,text,tup
+ImageBind,mscoco,14.27,-13.70,text,tup
+ImageBind,mscoco,16.84,-12.84,text,tup
+ImageBind,mscoco,15.73,-12.45,text,tup
+ImageBind,mscoco,18.18,-13.09,text,tup
+ImageBind,mscoco,15.16,-15.23,text,tup
+ImageBind,mscoco,17.72,-15.47,text,tup
+ImageBind,mscoco,16.96,-14.92,text,tup
+ImageBind,mscoco,18.00,-12.63,text,tup
+ImageBind,mscoco,20.50,-17.01,text,tup
+ImageBind,mscoco,18.08,-12.76,text,tup
+ImageBind,mscoco,14.69,-12.35,text,tup
+ImageBind,mscoco,18.18,-13.27,text,tup
+ImageBind,mscoco,18.53,-12.11,text,tup
+ImageBind,mscoco,20.05,-13.57,text,tup
+ImageBind,mscoco,16.12,-15.15,text,tup
+ImageBind,mscoco,21.38,-12.51,text,tup
+ImageBind,mscoco,16.79,-12.74,text,tup
+ImageBind,mscoco,21.36,-14.93,text,tup
+ImageBind,mscoco,16.49,-10.56,text,tup
+ImageBind,mscoco,14.79,-12.16,text,tup
+ImageBind,mscoco,20.51,-17.05,text,tup
+ImageBind,mscoco,20.54,-14.46,text,tup
+ImageBind,mscoco,17.74,-11.43,text,tup
+ImageBind,mscoco,18.56,-14.29,text,tup
+ImageBind,mscoco,16.66,-11.96,text,tup
+ImageBind,mscoco,17.14,-12.26,text,tup
+ImageBind,mscoco,16.30,-14.02,text,tup
+ImageBind,mscoco,17.70,-9.88,text,tup
+ImageBind,mscoco,20.26,-10.38,text,tup
+ImageBind,mscoco,15.72,-12.46,text,tup
+ImageBind,mscoco,17.27,-11.15,text,tup
+ImageBind,mscoco,16.51,-14.06,text,tup
+ImageBind,mscoco,15.23,-13.31,text,tup
+ImageBind,mscoco,20.94,-16.72,text,tup
+ImageBind,mscoco,18.48,-10.73,text,tup
+ImageBind,mscoco,19.01,-14.24,text,tup
+ImageBind,mscoco,20.36,-10.32,text,tup
+ImageBind,mscoco,19.76,-13.57,text,tup
+ImageBind,mscoco,17.12,-11.43,text,tup
+ImageBind,mscoco,21.67,-16.36,text,tup
+ImageBind,mscoco,18.87,-15.50,text,tup
+ImageBind,mscoco,22.74,-13.70,text,tup
+ImageBind,mscoco,17.56,-16.02,text,tup
+ImageBind,mscoco,18.62,-12.73,text,tup
+ImageBind,mscoco,18.21,-15.07,text,tup
+ImageBind,mscoco,15.21,-12.59,text,tup
+ImageBind,mscoco,19.92,-12.72,text,tup
+ImageBind,mscoco,-3.30,-14.61,text,bowtie
+ImageBind,mscoco,0.10,-13.67,text,bowtie
+ImageBind,mscoco,-0.11,-16.21,text,bowtie
+ImageBind,mscoco,-0.52,-11.25,text,bowtie
+ImageBind,mscoco,-2.18,-16.65,text,bowtie
+ImageBind,mscoco,-3.10,-13.85,text,bowtie
+ImageBind,mscoco,-2.52,-12.59,text,bowtie
+ImageBind,mscoco,-1.55,-15.48,text,bowtie
+ImageBind,mscoco,-0.79,-17.63,text,bowtie
+ImageBind,mscoco,-0.99,-10.10,text,bowtie
+ImageBind,mscoco,-1.95,-14.77,text,bowtie
+ImageBind,mscoco,0.86,-18.43,text,bowtie
+ImageBind,mscoco,-0.41,-11.51,text,bowtie
+ImageBind,mscoco,0.68,-13.24,text,bowtie
+ImageBind,mscoco,-1.95,-15.26,text,bowtie
+ImageBind,mscoco,-4.26,-12.06,text,bowtie
+ImageBind,mscoco,1.70,-15.70,text,bowtie
+ImageBind,mscoco,-0.60,-12.14,text,bowtie
+ImageBind,mscoco,1.48,-15.61,text,bowtie
+ImageBind,mscoco,-20.01,-14.10,text,bowtie
+ImageBind,mscoco,3.18,-16.47,text,bowtie
+ImageBind,mscoco,-2.17,-11.69,text,bowtie
+ImageBind,mscoco,6.17,-12.80,text,bowtie
+ImageBind,mscoco,-0.16,-12.73,text,bowtie
+ImageBind,mscoco,-3.05,-16.98,text,bowtie
+ImageBind,mscoco,-2.56,-4.49,text,bowtie
+ImageBind,mscoco,-1.38,-13.22,text,bowtie
+ImageBind,mscoco,0.99,-15.22,text,bowtie
+ImageBind,mscoco,-2.92,-13.46,text,bowtie
+ImageBind,mscoco,-2.34,-16.78,text,bowtie
+ImageBind,mscoco,-2.39,-16.65,text,bowtie
+ImageBind,mscoco,2.04,-12.91,text,bowtie
+ImageBind,mscoco,-1.73,-14.39,text,bowtie
+ImageBind,mscoco,-0.73,-12.50,text,bowtie
+ImageBind,mscoco,-2.01,-12.05,text,bowtie
+ImageBind,mscoco,-3.85,-10.34,text,bowtie
+ImageBind,mscoco,-3.05,-11.73,text,bowtie
+ImageBind,mscoco,-2.64,-13.30,text,bowtie
+ImageBind,mscoco,-3.17,-1.53,text,bowtie
+ImageBind,mscoco,-1.32,-13.24,text,bowtie
+ImageBind,mscoco,-0.14,-16.31,text,bowtie
+ImageBind,mscoco,0.67,-18.05,text,bowtie
+ImageBind,mscoco,-3.80,-11.80,text,bowtie
+ImageBind,mscoco,-1.69,-12.68,text,bowtie
+ImageBind,mscoco,-2.58,-10.63,text,bowtie
+ImageBind,mscoco,-19.32,-16.29,text,bowtie
+ImageBind,mscoco,6.22,-12.80,text,bowtie
+ImageBind,mscoco,-1.59,-11.82,text,bowtie
+ImageBind,mscoco,-5.48,-15.16,text,bowtie
+ImageBind,mscoco,-3.88,-15.56,text,bowtie
+ImageBind,mscoco,9.88,18.85,text,stoplight
+ImageBind,mscoco,10.94,17.55,text,stoplight
+ImageBind,mscoco,12.48,19.17,text,stoplight
+ImageBind,mscoco,11.84,14.67,text,stoplight
+ImageBind,mscoco,7.98,14.94,text,stoplight
+ImageBind,mscoco,9.57,13.68,text,stoplight
+ImageBind,mscoco,11.13,15.61,text,stoplight
+ImageBind,mscoco,14.13,14.47,text,stoplight
+ImageBind,mscoco,9.01,13.81,text,stoplight
+ImageBind,mscoco,13.00,14.36,text,stoplight
+ImageBind,mscoco,9.22,14.14,text,stoplight
+ImageBind,mscoco,12.60,12.49,text,stoplight
+ImageBind,mscoco,7.26,15.54,text,stoplight
+ImageBind,mscoco,12.14,16.65,text,stoplight
+ImageBind,mscoco,11.17,13.83,text,stoplight
+ImageBind,mscoco,13.02,14.76,text,stoplight
+ImageBind,mscoco,10.98,15.17,text,stoplight
+ImageBind,mscoco,9.83,13.25,text,stoplight
+ImageBind,mscoco,8.88,19.55,text,stoplight
+ImageBind,mscoco,11.87,18.27,text,stoplight
+ImageBind,mscoco,9.43,17.64,text,stoplight
+ImageBind,mscoco,8.92,12.52,text,stoplight
+ImageBind,mscoco,8.59,25.79,text,stoplight
+ImageBind,mscoco,7.99,16.85,text,stoplight
+ImageBind,mscoco,7.91,16.30,text,stoplight
+ImageBind,mscoco,10.34,16.26,text,stoplight
+ImageBind,mscoco,9.95,17.12,text,stoplight
+ImageBind,mscoco,10.51,21.11,text,stoplight
+ImageBind,mscoco,9.68,15.15,text,stoplight
+ImageBind,mscoco,11.53,18.16,text,stoplight
+ImageBind,mscoco,11.14,13.09,text,stoplight
+ImageBind,mscoco,11.40,14.49,text,stoplight
+ImageBind,mscoco,8.15,16.94,text,stoplight
+ImageBind,mscoco,8.84,15.86,text,stoplight
+ImageBind,mscoco,10.77,16.12,text,stoplight
+ImageBind,mscoco,13.35,14.70,text,stoplight
+ImageBind,mscoco,8.05,20.11,text,stoplight
+ImageBind,mscoco,10.65,19.51,text,stoplight
+ImageBind,mscoco,11.16,15.42,text,stoplight
+ImageBind,mscoco,12.28,18.77,text,stoplight
+ImageBind,mscoco,9.94,22.07,text,stoplight
+ImageBind,mscoco,7.93,18.16,text,stoplight
+ImageBind,mscoco,9.27,15.44,text,stoplight
+ImageBind,mscoco,12.19,15.85,text,stoplight
+ImageBind,mscoco,9.61,21.39,text,stoplight
+ImageBind,mscoco,10.94,14.34,text,stoplight
+ImageBind,mscoco,10.06,16.99,text,stoplight
+ImageBind,mscoco,9.85,22.34,text,stoplight
+ImageBind,mscoco,9.98,18.46,text,stoplight
+ImageBind,mscoco,9.14,15.89,text,stoplight
+ImageBind,mscoco,9.07,21.79,text,dustcart
+ImageBind,mscoco,6.29,25.32,text,dustcart
+ImageBind,mscoco,3.84,-11.11,text,dustcart
+ImageBind,mscoco,4.56,23.60,text,dustcart
+ImageBind,mscoco,6.72,24.87,text,dustcart
+ImageBind,mscoco,9.02,27.39,text,dustcart
+ImageBind,mscoco,8.68,24.02,text,dustcart
+ImageBind,mscoco,7.32,26.44,text,dustcart
+ImageBind,mscoco,4.69,28.82,text,dustcart
+ImageBind,mscoco,8.14,26.50,text,dustcart
+ImageBind,mscoco,4.32,27.33,text,dustcart
+ImageBind,mscoco,3.96,26.91,text,dustcart
+ImageBind,mscoco,7.28,26.39,text,dustcart
+ImageBind,mscoco,6.75,27.87,text,dustcart
+ImageBind,mscoco,6.91,25.05,text,dustcart
+ImageBind,mscoco,4.52,26.25,text,dustcart
+ImageBind,mscoco,6.45,26.24,text,dustcart
+ImageBind,mscoco,4.89,29.42,text,dustcart
+ImageBind,mscoco,6.82,24.07,text,dustcart
+ImageBind,mscoco,3.36,25.84,text,dustcart
+ImageBind,mscoco,4.16,27.90,text,dustcart
+ImageBind,mscoco,8.10,28.86,text,dustcart
+ImageBind,mscoco,13.20,20.49,text,dustcart
+ImageBind,mscoco,7.73,25.46,text,dustcart
+ImageBind,mscoco,2.56,27.68,text,dustcart
+ImageBind,mscoco,8.10,29.21,text,dustcart
+ImageBind,mscoco,9.06,25.83,text,dustcart
+ImageBind,mscoco,4.78,27.31,text,dustcart
+ImageBind,mscoco,13.46,16.90,text,dustcart
+ImageBind,mscoco,0.88,21.86,text,dustcart
+ImageBind,mscoco,5.69,28.70,text,dustcart
+ImageBind,mscoco,3.88,-13.33,text,dustcart
+ImageBind,mscoco,6.77,25.01,text,dustcart
+ImageBind,mscoco,9.55,27.40,text,dustcart
+ImageBind,mscoco,4.52,23.56,text,dustcart
+ImageBind,mscoco,7.91,27.06,text,dustcart
+ImageBind,mscoco,6.94,27.32,text,dustcart
+ImageBind,mscoco,6.22,23.09,text,dustcart
+ImageBind,mscoco,7.42,25.88,text,dustcart
+ImageBind,mscoco,5.73,25.33,text,dustcart
+ImageBind,mscoco,0.29,26.87,text,dustcart
+ImageBind,mscoco,4.08,25.56,text,dustcart
+ImageBind,mscoco,4.60,28.19,text,dustcart
+ImageBind,mscoco,6.35,29.83,text,dustcart
+ImageBind,mscoco,7.92,27.71,text,dustcart
+ImageBind,mscoco,5.93,24.09,text,dustcart
+ImageBind,mscoco,10.88,26.57,text,dustcart
+ImageBind,mscoco,7.50,23.51,text,dustcart
+ImageBind,mscoco,3.70,29.14,text,dustcart
+ImageBind,mscoco,5.64,27.20,text,dustcart
+ImageBind,mscoco,-27.47,-9.95,text,red hot
+ImageBind,mscoco,-21.79,-14.08,text,red hot
+ImageBind,mscoco,-27.42,-13.12,text,red hot
+ImageBind,mscoco,-22.88,-13.68,text,red hot
+ImageBind,mscoco,-21.58,-14.06,text,red hot
+ImageBind,mscoco,-28.42,-11.90,text,red hot
+ImageBind,mscoco,-20.51,-11.97,text,red hot
+ImageBind,mscoco,-25.71,-12.26,text,red hot
+ImageBind,mscoco,-22.77,-14.94,text,red hot
+ImageBind,mscoco,-28.03,-14.53,text,red hot
+ImageBind,mscoco,-21.66,-10.61,text,red hot
+ImageBind,mscoco,-22.95,-14.83,text,red hot
+ImageBind,mscoco,-22.00,-15.20,text,red hot
+ImageBind,mscoco,-21.73,-10.59,text,red hot
+ImageBind,mscoco,-25.49,-12.66,text,red hot
+ImageBind,mscoco,-29.20,-12.07,text,red hot
+ImageBind,mscoco,-21.09,-13.26,text,red hot
+ImageBind,mscoco,-26.93,-12.89,text,red hot
+ImageBind,mscoco,-26.13,-14.85,text,red hot
+ImageBind,mscoco,-25.93,-15.55,text,red hot
+ImageBind,mscoco,-22.29,-15.83,text,red hot
+ImageBind,mscoco,-24.70,-10.26,text,red hot
+ImageBind,mscoco,-27.90,-15.34,text,red hot
+ImageBind,mscoco,-26.05,-15.60,text,red hot
+ImageBind,mscoco,-25.06,-12.42,text,red hot
+ImageBind,mscoco,-26.12,-14.91,text,red hot
+ImageBind,mscoco,-25.74,-13.91,text,red hot
+ImageBind,mscoco,-27.25,-11.09,text,red hot
+ImageBind,mscoco,-24.69,-12.05,text,red hot
+ImageBind,mscoco,-29.62,-14.06,text,red hot
+ImageBind,mscoco,-26.61,-13.39,text,red hot
+ImageBind,mscoco,-24.54,-13.93,text,red hot
+ImageBind,mscoco,-22.89,-15.83,text,red hot
+ImageBind,mscoco,-27.24,-10.98,text,red hot
+ImageBind,mscoco,-22.38,-15.01,text,red hot
+ImageBind,mscoco,-21.65,-14.00,text,red hot
+ImageBind,mscoco,-27.39,-10.28,text,red hot
+ImageBind,mscoco,-28.47,-13.99,text,red hot
+ImageBind,mscoco,-22.02,-9.51,text,red hot
+ImageBind,mscoco,-21.88,-10.61,text,red hot
+ImageBind,mscoco,-23.65,-13.74,text,red hot
+ImageBind,mscoco,-24.36,-11.85,text,red hot
+ImageBind,mscoco,-25.18,-11.36,text,red hot
+ImageBind,mscoco,-27.51,-15.35,text,red hot
+ImageBind,mscoco,-28.90,-13.94,text,red hot
+ImageBind,mscoco,-28.72,-13.40,text,red hot
+ImageBind,mscoco,-26.85,-14.48,text,red hot
+ImageBind,mscoco,-20.37,-15.85,text,red hot
+ImageBind,mscoco,-28.45,-12.05,text,red hot
+ImageBind,mscoco,-26.55,-16.18,text,red hot

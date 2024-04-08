@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+ALIGN,mscoco,-7.62,-18.03,image,wash-hand basin
+ALIGN,mscoco,-11.36,-17.49,image,wash-hand basin
+ALIGN,mscoco,-5.14,-19.65,image,wash-hand basin
+ALIGN,mscoco,-6.23,-19.27,image,wash-hand basin
+ALIGN,mscoco,-8.36,-18.57,image,wash-hand basin
+ALIGN,mscoco,-1.87,-11.83,image,wash-hand basin
+ALIGN,mscoco,-9.72,-21.62,image,wash-hand basin
+ALIGN,mscoco,-5.99,-22.06,image,wash-hand basin
+ALIGN,mscoco,-6.50,-21.03,image,wash-hand basin
+ALIGN,mscoco,-11.33,-16.12,image,wash-hand basin
+ALIGN,mscoco,-10.60,-18.34,image,wash-hand basin
+ALIGN,mscoco,-5.30,-17.49,image,wash-hand basin
+ALIGN,mscoco,-6.32,-15.72,image,wash-hand basin
+ALIGN,mscoco,-6.71,-19.70,image,wash-hand basin
+ALIGN,mscoco,-5.15,-22.08,image,wash-hand basin
+ALIGN,mscoco,-4.43,-17.53,image,wash-hand basin
+ALIGN,mscoco,-9.39,-20.05,image,wash-hand basin
+ALIGN,mscoco,-4.66,-17.88,image,wash-hand basin
+ALIGN,mscoco,-1.94,-12.20,image,wash-hand basin
+ALIGN,mscoco,-7.95,-20.31,image,wash-hand basin
+ALIGN,mscoco,-8.69,-18.17,image,wash-hand basin
+ALIGN,mscoco,-7.72,-21.93,image,wash-hand basin
+ALIGN,mscoco,-8.34,-19.01,image,wash-hand basin
+ALIGN,mscoco,-8.02,-23.22,image,wash-hand basin
+ALIGN,mscoco,-10.15,-16.73,image,wash-hand basin
+ALIGN,mscoco,-1.93,-12.16,image,wash-hand basin
+ALIGN,mscoco,-7.32,-17.54,image,wash-hand basin
+ALIGN,mscoco,-8.02,-20.95,image,wash-hand basin
+ALIGN,mscoco,-6.87,-23.39,image,wash-hand basin
+ALIGN,mscoco,-9.92,-21.99,image,wash-hand basin
+ALIGN,mscoco,-5.84,-19.08,image,wash-hand basin
+ALIGN,mscoco,-9.02,-20.60,image,wash-hand basin
+ALIGN,mscoco,-6.33,-15.59,image,wash-hand basin
+ALIGN,mscoco,-6.65,-22.02,image,wash-hand basin
+ALIGN,mscoco,-8.87,-19.52,image,wash-hand basin
+ALIGN,mscoco,-4.22,-17.62,image,wash-hand basin
+ALIGN,mscoco,-10.93,-20.47,image,wash-hand basin
+ALIGN,mscoco,-11.42,-17.97,image,wash-hand basin
+ALIGN,mscoco,-11.60,-19.82,image,wash-hand basin
+ALIGN,mscoco,-9.65,-21.75,image,wash-hand basin
+ALIGN,mscoco,-7.44,-20.69,image,wash-hand basin
+ALIGN,mscoco,-7.45,-21.44,image,wash-hand basin
+ALIGN,mscoco,-6.36,-18.64,image,wash-hand basin
+ALIGN,mscoco,-6.85,-22.16,image,wash-hand basin
+ALIGN,mscoco,-8.89,-22.86,image,wash-hand basin
+ALIGN,mscoco,-8.68,-14.06,image,wash-hand basin
+ALIGN,mscoco,-8.62,-21.97,image,wash-hand basin
+ALIGN,mscoco,-1.91,-12.14,image,wash-hand basin
+ALIGN,mscoco,-10.08,-18.07,image,wash-hand basin
+ALIGN,mscoco,-12.64,-18.22,image,wash-hand basin
+ALIGN,mscoco,33.26,-15.52,image,Elephas maximus
+ALIGN,mscoco,30.40,-15.37,image,Elephas maximus
+ALIGN,mscoco,26.74,-12.97,image,Elephas maximus
+ALIGN,mscoco,28.77,-15.87,image,Elephas maximus
+ALIGN,mscoco,31.20,-15.28,image,Elephas maximus
+ALIGN,mscoco,27.91,-12.27,image,Elephas maximus
+ALIGN,mscoco,30.47,-15.02,image,Elephas maximus
+ALIGN,mscoco,30.57,-12.56,image,Elephas maximus
+ALIGN,mscoco,30.78,-13.33,image,Elephas maximus
+ALIGN,mscoco,30.38,-16.26,image,Elephas maximus
+ALIGN,mscoco,27.97,-13.17,image,Elephas maximus
+ALIGN,mscoco,28.33,-15.45,image,Elephas maximus
+ALIGN,mscoco,32.23,-13.95,image,Elephas maximus
+ALIGN,mscoco,32.57,-12.83,image,Elephas maximus
+ALIGN,mscoco,26.89,-16.89,image,Elephas maximus
+ALIGN,mscoco,30.75,-14.33,image,Elephas maximus
+ALIGN,mscoco,29.19,-18.13,image,Elephas maximus
+ALIGN,mscoco,31.16,-17.27,image,Elephas maximus
+ALIGN,mscoco,25.17,-16.51,image,Elephas maximus
+ALIGN,mscoco,31.29,-15.91,image,Elephas maximus
+ALIGN,mscoco,28.96,-13.42,image,Elephas maximus
+ALIGN,mscoco,29.91,-14.43,image,Elephas maximus
+ALIGN,mscoco,26.28,-17.10,image,Elephas maximus
+ALIGN,mscoco,31.30,-15.63,image,Elephas maximus
+ALIGN,mscoco,27.77,-12.83,image,Elephas maximus
+ALIGN,mscoco,32.52,-14.00,image,Elephas maximus
+ALIGN,mscoco,29.52,-13.11,image,Elephas maximus
+ALIGN,mscoco,31.96,-15.33,image,Elephas maximus
+ALIGN,mscoco,26.44,-12.37,image,Elephas maximus
+ALIGN,mscoco,27.49,-13.66,image,Elephas maximus
+ALIGN,mscoco,31.60,-11.56,image,Elephas maximus
+ALIGN,mscoco,30.55,-17.24,image,Elephas maximus
+ALIGN,mscoco,32.36,-17.62,image,Elephas maximus
+ALIGN,mscoco,31.85,-16.19,image,Elephas maximus
+ALIGN,mscoco,33.35,-14.43,image,Elephas maximus
+ALIGN,mscoco,30.97,-16.67,image,Elephas maximus
+ALIGN,mscoco,31.12,-13.76,image,Elephas maximus
+ALIGN,mscoco,32.52,-15.26,image,Elephas maximus
+ALIGN,mscoco,26.77,-15.88,image,Elephas maximus
+ALIGN,mscoco,26.80,-16.65,image,Elephas maximus
+ALIGN,mscoco,26.58,-13.93,image,Elephas maximus
+ALIGN,mscoco,31.28,-14.45,image,Elephas maximus
+ALIGN,mscoco,25.21,-16.50,image,Elephas maximus
+ALIGN,mscoco,32.18,-13.49,image,Elephas maximus
+ALIGN,mscoco,26.67,-12.81,image,Elephas maximus
+ALIGN,mscoco,33.25,-16.38,image,Elephas maximus
+ALIGN,mscoco,31.69,-14.36,image,Elephas maximus
+ALIGN,mscoco,28.62,-14.52,image,Elephas maximus
+ALIGN,mscoco,29.70,-17.01,image,Elephas maximus
+ALIGN,mscoco,33.72,-12.95,image,Elephas maximus
+ALIGN,mscoco,-4.78,18.80,image,stoplight
+ALIGN,mscoco,-5.22,25.18,image,stoplight
+ALIGN,mscoco,-4.47,24.46,image,stoplight
+ALIGN,mscoco,-8.06,19.30,image,stoplight
+ALIGN,mscoco,-4.50,24.10,image,stoplight
+ALIGN,mscoco,-5.52,23.40,image,stoplight
+ALIGN,mscoco,-10.16,23.49,image,stoplight
+ALIGN,mscoco,-6.47,20.94,image,stoplight
+ALIGN,mscoco,-9.56,26.20,image,stoplight
+ALIGN,mscoco,-8.66,25.25,image,stoplight
+ALIGN,mscoco,-10.46,14.76,image,stoplight
+ALIGN,mscoco,-9.93,25.38,image,stoplight
+ALIGN,mscoco,-4.03,21.62,image,stoplight
+ALIGN,mscoco,-11.74,21.91,image,stoplight
+ALIGN,mscoco,-9.64,23.21,image,stoplight
+ALIGN,mscoco,-13.01,23.12,image,stoplight
+ALIGN,mscoco,-7.02,22.20,image,stoplight
+ALIGN,mscoco,-10.05,25.28,image,stoplight
+ALIGN,mscoco,-4.00,24.10,image,stoplight
+ALIGN,mscoco,-8.28,23.29,image,stoplight
+ALIGN,mscoco,-6.91,20.76,image,stoplight
+ALIGN,mscoco,-8.28,22.43,image,stoplight
+ALIGN,mscoco,-7.06,24.34,image,stoplight
+ALIGN,mscoco,-9.95,20.20,image,stoplight
+ALIGN,mscoco,-6.23,18.91,image,stoplight
+ALIGN,mscoco,-5.66,24.45,image,stoplight
+ALIGN,mscoco,-5.48,26.01,image,stoplight
+ALIGN,mscoco,-9.44,22.90,image,stoplight
+ALIGN,mscoco,-4.94,22.78,image,stoplight
+ALIGN,mscoco,-8.85,24.24,image,stoplight
+ALIGN,mscoco,-11.49,22.38,image,stoplight
+ALIGN,mscoco,-11.65,23.01,image,stoplight
+ALIGN,mscoco,-6.71,21.32,image,stoplight
+ALIGN,mscoco,-7.96,23.36,image,stoplight
+ALIGN,mscoco,-7.00,19.67,image,stoplight
+ALIGN,mscoco,-5.39,21.58,image,stoplight
+ALIGN,mscoco,-9.31,22.97,image,stoplight
+ALIGN,mscoco,-8.39,16.82,image,stoplight
+ALIGN,mscoco,-4.78,20.32,image,stoplight
+ALIGN,mscoco,-10.85,21.63,image,stoplight
+ALIGN,mscoco,-6.10,20.58,image,stoplight
+ALIGN,mscoco,-6.90,22.89,image,stoplight
+ALIGN,mscoco,-12.99,23.16,image,stoplight
+ALIGN,mscoco,-3.32,24.44,image,stoplight
+ALIGN,mscoco,-11.23,22.21,image,stoplight
+ALIGN,mscoco,-9.30,20.14,image,stoplight
+ALIGN,mscoco,-8.58,21.52,image,stoplight
+ALIGN,mscoco,-8.18,20.26,image,stoplight
+ALIGN,mscoco,-8.32,22.36,image,stoplight
+ALIGN,mscoco,-6.05,21.53,image,stoplight
+ALIGN,mscoco,-25.42,-6.12,image,vase
+ALIGN,mscoco,-31.10,-1.10,image,vase
+ALIGN,mscoco,-30.27,-4.07,image,vase
+ALIGN,mscoco,-30.69,-5.36,image,vase
+ALIGN,mscoco,-26.87,-0.70,image,vase
+ALIGN,mscoco,-35.08,-4.89,image,vase
+ALIGN,mscoco,-30.58,-3.21,image,vase
+ALIGN,mscoco,-33.09,-0.76,image,vase
+ALIGN,mscoco,-32.37,-0.84,image,vase
+ALIGN,mscoco,-31.79,-7.62,image,vase
+ALIGN,mscoco,-31.85,-7.76,image,vase
+ALIGN,mscoco,-31.07,-8.87,image,vase
+ALIGN,mscoco,-30.36,-6.71,image,vase
+ALIGN,mscoco,-32.00,-2.68,image,vase
+ALIGN,mscoco,-32.32,-0.66,image,vase
+ALIGN,mscoco,-29.19,-6.16,image,vase
+ALIGN,mscoco,-29.92,-5.54,image,vase
+ALIGN,mscoco,-31.51,-5.29,image,vase
+ALIGN,mscoco,-31.32,-7.82,image,vase
+ALIGN,mscoco,-23.89,-6.68,image,vase
+ALIGN,mscoco,-29.12,-4.49,image,vase
+ALIGN,mscoco,-32.28,-5.39,image,vase
+ALIGN,mscoco,-33.67,-6.17,image,vase
+ALIGN,mscoco,-28.72,-3.47,image,vase
+ALIGN,mscoco,-32.19,-5.19,image,vase
+ALIGN,mscoco,-31.46,-1.44,image,vase
+ALIGN,mscoco,-34.68,-5.04,image,vase
+ALIGN,mscoco,-30.12,-3.71,image,vase
+ALIGN,mscoco,-29.43,-1.87,image,vase
+ALIGN,mscoco,-29.83,-2.84,image,vase
+ALIGN,mscoco,-29.19,-6.17,image,vase
+ALIGN,mscoco,-28.34,-7.91,image,vase
+ALIGN,mscoco,-32.98,-4.37,image,vase
+ALIGN,mscoco,-31.34,-6.81,image,vase
+ALIGN,mscoco,-15.94,-2.81,image,vase
+ALIGN,mscoco,-31.74,-3.87,image,vase
+ALIGN,mscoco,-34.00,-6.09,image,vase
+ALIGN,mscoco,-32.94,-1.36,image,vase
+ALIGN,mscoco,-31.72,-1.59,image,vase
+ALIGN,mscoco,-27.02,-5.27,image,vase
+ALIGN,mscoco,-15.92,-2.80,image,vase
+ALIGN,mscoco,-31.69,-3.83,image,vase
+ALIGN,mscoco,-29.83,-3.78,image,vase
+ALIGN,mscoco,-33.44,-1.99,image,vase
+ALIGN,mscoco,-32.38,-7.63,image,vase
+ALIGN,mscoco,-33.41,-3.31,image,vase
+ALIGN,mscoco,-29.35,-0.10,image,vase
+ALIGN,mscoco,-26.54,-3.30,image,vase
+ALIGN,mscoco,-25.56,-6.13,image,vase
+ALIGN,mscoco,-30.33,-0.40,image,vase
+ALIGN,mscoco,31.67,9.36,image,sorrel
+ALIGN,mscoco,30.74,10.65,image,sorrel
+ALIGN,mscoco,33.42,14.86,image,sorrel
+ALIGN,mscoco,28.77,8.94,image,sorrel
+ALIGN,mscoco,28.69,11.56,image,sorrel
+ALIGN,mscoco,29.46,10.64,image,sorrel
+ALIGN,mscoco,29.95,13.68,image,sorrel
+ALIGN,mscoco,27.00,11.00,image,sorrel
+ALIGN,mscoco,32.05,11.28,image,sorrel
+ALIGN,mscoco,29.95,13.93,image,sorrel
+ALIGN,mscoco,25.55,10.44,image,sorrel
+ALIGN,mscoco,28.99,12.35,image,sorrel
+ALIGN,mscoco,30.68,13.90,image,sorrel
+ALIGN,mscoco,33.41,14.82,image,sorrel
+ALIGN,mscoco,30.82,12.24,image,sorrel
+ALIGN,mscoco,30.32,15.09,image,sorrel
+ALIGN,mscoco,32.31,13.02,image,sorrel
+ALIGN,mscoco,32.85,12.89,image,sorrel
+ALIGN,mscoco,30.91,11.60,image,sorrel
+ALIGN,mscoco,29.75,10.20,image,sorrel
+ALIGN,mscoco,29.81,10.20,image,sorrel
+ALIGN,mscoco,29.45,15.59,image,sorrel
+ALIGN,mscoco,31.32,13.06,image,sorrel
+ALIGN,mscoco,27.63,15.02,image,sorrel
+ALIGN,mscoco,23.51,11.25,image,sorrel
+ALIGN,mscoco,28.68,15.37,image,sorrel
+ALIGN,mscoco,29.99,12.28,image,sorrel
+ALIGN,mscoco,32.25,10.39,image,sorrel
+ALIGN,mscoco,26.61,9.67,image,sorrel
+ALIGN,mscoco,32.87,9.99,image,sorrel
+ALIGN,mscoco,31.97,14.05,image,sorrel
+ALIGN,mscoco,25.72,10.01,image,sorrel
+ALIGN,mscoco,31.21,16.03,image,sorrel
+ALIGN,mscoco,26.54,13.39,image,sorrel
+ALIGN,mscoco,25.29,10.95,image,sorrel
+ALIGN,mscoco,30.93,12.82,image,sorrel
+ALIGN,mscoco,29.71,15.54,image,sorrel
+ALIGN,mscoco,29.62,11.49,image,sorrel
+ALIGN,mscoco,28.62,13.66,image,sorrel
+ALIGN,mscoco,26.54,13.32,image,sorrel
+ALIGN,mscoco,23.52,11.25,image,sorrel
+ALIGN,mscoco,31.05,14.74,image,sorrel
+ALIGN,mscoco,31.70,11.99,image,sorrel
+ALIGN,mscoco,27.42,12.57,image,sorrel
+ALIGN,mscoco,29.81,13.04,image,sorrel
+ALIGN,mscoco,28.35,10.01,image,sorrel
+ALIGN,mscoco,30.95,11.45,image,sorrel
+ALIGN,mscoco,25.24,10.74,image,sorrel
+ALIGN,mscoco,30.02,11.29,image,sorrel
+ALIGN,mscoco,29.73,14.41,image,sorrel
+ALIGN,mscoco,-11.94,-9.77,text,wash-hand basin
+ALIGN,mscoco,-10.87,-7.59,text,wash-hand basin
+ALIGN,mscoco,-8.94,-5.95,text,wash-hand basin
+ALIGN,mscoco,-9.61,-9.62,text,wash-hand basin
+ALIGN,mscoco,-8.51,-9.17,text,wash-hand basin
+ALIGN,mscoco,-6.37,-6.45,text,wash-hand basin
+ALIGN,mscoco,-9.89,-7.87,text,wash-hand basin
+ALIGN,mscoco,-8.70,-9.36,text,wash-hand basin
+ALIGN,mscoco,-13.98,-8.99,text,wash-hand basin
+ALIGN,mscoco,-10.76,-3.14,text,wash-hand basin
+ALIGN,mscoco,-8.90,-8.90,text,wash-hand basin
+ALIGN,mscoco,-5.96,-8.98,text,wash-hand basin
+ALIGN,mscoco,-7.52,-10.17,text,wash-hand basin
+ALIGN,mscoco,-8.51,-11.56,text,wash-hand basin
+ALIGN,mscoco,-8.06,-8.09,text,wash-hand basin
+ALIGN,mscoco,-5.74,-10.73,text,wash-hand basin
+ALIGN,mscoco,-14.18,-8.71,text,wash-hand basin
+ALIGN,mscoco,-7.32,-9.17,text,wash-hand basin
+ALIGN,mscoco,-6.03,-6.61,text,wash-hand basin
+ALIGN,mscoco,-10.69,-10.13,text,wash-hand basin
+ALIGN,mscoco,-7.15,-7.94,text,wash-hand basin
+ALIGN,mscoco,-12.02,-7.80,text,wash-hand basin
+ALIGN,mscoco,-12.05,-10.27,text,wash-hand basin
+ALIGN,mscoco,-8.54,-5.96,text,wash-hand basin
+ALIGN,mscoco,-9.04,-9.24,text,wash-hand basin
+ALIGN,mscoco,-6.86,-5.77,text,wash-hand basin
+ALIGN,mscoco,-10.76,-3.26,text,wash-hand basin
+ALIGN,mscoco,-8.96,-9.74,text,wash-hand basin
+ALIGN,mscoco,-11.33,-11.11,text,wash-hand basin
+ALIGN,mscoco,-8.94,-11.12,text,wash-hand basin
+ALIGN,mscoco,-9.00,-12.56,text,wash-hand basin
+ALIGN,mscoco,-9.05,-5.79,text,wash-hand basin
+ALIGN,mscoco,-9.13,-7.69,text,wash-hand basin
+ALIGN,mscoco,-10.16,-11.31,text,wash-hand basin
+ALIGN,mscoco,-14.45,-8.62,text,wash-hand basin
+ALIGN,mscoco,-5.82,-10.70,text,wash-hand basin
+ALIGN,mscoco,-10.85,-8.32,text,wash-hand basin
+ALIGN,mscoco,-7.88,-7.90,text,wash-hand basin
+ALIGN,mscoco,-8.76,-6.97,text,wash-hand basin
+ALIGN,mscoco,-10.18,-8.79,text,wash-hand basin
+ALIGN,mscoco,-15.02,-7.77,text,wash-hand basin
+ALIGN,mscoco,-9.30,-10.51,text,wash-hand basin
+ALIGN,mscoco,-11.38,-6.11,text,wash-hand basin
+ALIGN,mscoco,-11.75,-9.22,text,wash-hand basin
+ALIGN,mscoco,-10.41,-10.48,text,wash-hand basin
+ALIGN,mscoco,-11.20,-4.55,text,wash-hand basin
+ALIGN,mscoco,-10.35,-8.84,text,wash-hand basin
+ALIGN,mscoco,-5.86,-6.57,text,wash-hand basin
+ALIGN,mscoco,-10.21,-6.97,text,wash-hand basin
+ALIGN,mscoco,-10.49,-8.03,text,wash-hand basin
+ALIGN,mscoco,10.51,0.66,text,Elephas maximus
+ALIGN,mscoco,10.87,-0.22,text,Elephas maximus
+ALIGN,mscoco,13.06,-2.99,text,Elephas maximus
+ALIGN,mscoco,14.23,-3.81,text,Elephas maximus
+ALIGN,mscoco,6.57,2.10,text,Elephas maximus
+ALIGN,mscoco,13.04,-1.47,text,Elephas maximus
+ALIGN,mscoco,7.48,-1.37,text,Elephas maximus
+ALIGN,mscoco,9.35,0.54,text,Elephas maximus
+ALIGN,mscoco,8.91,-0.30,text,Elephas maximus
+ALIGN,mscoco,8.60,0.10,text,Elephas maximus
+ALIGN,mscoco,13.83,-2.09,text,Elephas maximus
+ALIGN,mscoco,14.11,-3.68,text,Elephas maximus
+ALIGN,mscoco,9.08,-2.23,text,Elephas maximus
+ALIGN,mscoco,9.49,-2.59,text,Elephas maximus
+ALIGN,mscoco,11.52,-5.57,text,Elephas maximus
+ALIGN,mscoco,10.32,1.26,text,Elephas maximus
+ALIGN,mscoco,6.35,-2.70,text,Elephas maximus
+ALIGN,mscoco,10.89,0.72,text,Elephas maximus
+ALIGN,mscoco,13.45,-5.33,text,Elephas maximus
+ALIGN,mscoco,8.30,-2.07,text,Elephas maximus
+ALIGN,mscoco,11.19,-1.32,text,Elephas maximus
+ALIGN,mscoco,10.77,-1.77,text,Elephas maximus
+ALIGN,mscoco,13.26,-4.88,text,Elephas maximus
+ALIGN,mscoco,8.43,-1.36,text,Elephas maximus
+ALIGN,mscoco,14.94,-2.98,text,Elephas maximus
+ALIGN,mscoco,7.82,-2.38,text,Elephas maximus
+ALIGN,mscoco,10.90,-1.78,text,Elephas maximus
+ALIGN,mscoco,9.79,-0.48,text,Elephas maximus
+ALIGN,mscoco,13.20,-2.95,text,Elephas maximus
+ALIGN,mscoco,13.99,-2.88,text,Elephas maximus
+ALIGN,mscoco,10.76,-0.48,text,Elephas maximus
+ALIGN,mscoco,10.11,-2.32,text,Elephas maximus
+ALIGN,mscoco,10.13,-4.49,text,Elephas maximus
+ALIGN,mscoco,5.97,-0.19,text,Elephas maximus
+ALIGN,mscoco,7.60,-3.43,text,Elephas maximus
+ALIGN,mscoco,8.51,-2.72,text,Elephas maximus
+ALIGN,mscoco,8.91,0.69,text,Elephas maximus
+ALIGN,mscoco,7.95,-1.42,text,Elephas maximus
+ALIGN,mscoco,6.63,1.05,text,Elephas maximus
+ALIGN,mscoco,11.87,-4.80,text,Elephas maximus
+ALIGN,mscoco,13.55,-4.29,text,Elephas maximus
+ALIGN,mscoco,6.57,1.95,text,Elephas maximus
+ALIGN,mscoco,14.60,-1.95,text,Elephas maximus
+ALIGN,mscoco,11.78,-0.02,text,Elephas maximus
+ALIGN,mscoco,13.94,-2.32,text,Elephas maximus
+ALIGN,mscoco,6.69,-0.46,text,Elephas maximus
+ALIGN,mscoco,11.52,-3.42,text,Elephas maximus
+ALIGN,mscoco,10.98,-3.55,text,Elephas maximus
+ALIGN,mscoco,6.16,-1.66,text,Elephas maximus
+ALIGN,mscoco,9.81,-0.88,text,Elephas maximus
+ALIGN,mscoco,-6.11,10.36,text,stoplight
+ALIGN,mscoco,-8.55,7.22,text,stoplight
+ALIGN,mscoco,-3.43,13.75,text,stoplight
+ALIGN,mscoco,-9.63,9.33,text,stoplight
+ALIGN,mscoco,-7.50,11.66,text,stoplight
+ALIGN,mscoco,-4.22,11.00,text,stoplight
+ALIGN,mscoco,-7.86,12.94,text,stoplight
+ALIGN,mscoco,-6.74,12.52,text,stoplight
+ALIGN,mscoco,-4.09,13.07,text,stoplight
+ALIGN,mscoco,-8.59,8.66,text,stoplight
+ALIGN,mscoco,-9.75,14.46,text,stoplight
+ALIGN,mscoco,-4.93,13.52,text,stoplight
+ALIGN,mscoco,-5.36,9.93,text,stoplight
+ALIGN,mscoco,-3.64,5.12,text,stoplight
+ALIGN,mscoco,-7.90,15.11,text,stoplight
+ALIGN,mscoco,-7.79,10.24,text,stoplight
+ALIGN,mscoco,-4.87,13.13,text,stoplight
+ALIGN,mscoco,-9.66,9.69,text,stoplight
+ALIGN,mscoco,-8.44,7.88,text,stoplight
+ALIGN,mscoco,-7.04,11.22,text,stoplight
+ALIGN,mscoco,-5.48,11.66,text,stoplight
+ALIGN,mscoco,-7.46,13.12,text,stoplight
+ALIGN,mscoco,-8.55,10.61,text,stoplight
+ALIGN,mscoco,-8.07,12.94,text,stoplight
+ALIGN,mscoco,-6.80,15.71,text,stoplight
+ALIGN,mscoco,-3.82,10.77,text,stoplight
+ALIGN,mscoco,8.44,10.60,text,stoplight
+ALIGN,mscoco,-6.18,13.97,text,stoplight
+ALIGN,mscoco,-8.74,13.25,text,stoplight
+ALIGN,mscoco,-6.99,15.20,text,stoplight
+ALIGN,mscoco,-4.43,7.88,text,stoplight
+ALIGN,mscoco,-6.79,10.33,text,stoplight
+ALIGN,mscoco,-6.68,15.07,text,stoplight
+ALIGN,mscoco,-6.99,13.30,text,stoplight
+ALIGN,mscoco,-6.83,1.36,text,stoplight
+ALIGN,mscoco,-4.67,13.72,text,stoplight
+ALIGN,mscoco,-5.59,15.28,text,stoplight
+ALIGN,mscoco,-10.46,5.91,text,stoplight
+ALIGN,mscoco,-8.19,9.17,text,stoplight
+ALIGN,mscoco,-4.42,7.81,text,stoplight
+ALIGN,mscoco,-9.88,8.84,text,stoplight
+ALIGN,mscoco,-8.88,11.97,text,stoplight
+ALIGN,mscoco,-0.71,12.52,text,stoplight
+ALIGN,mscoco,-6.93,9.50,text,stoplight
+ALIGN,mscoco,-6.10,8.96,text,stoplight
+ALIGN,mscoco,-6.35,12.72,text,stoplight
+ALIGN,mscoco,-6.22,11.75,text,stoplight
+ALIGN,mscoco,-7.55,14.06,text,stoplight
+ALIGN,mscoco,-8.21,14.11,text,stoplight
+ALIGN,mscoco,-5.91,10.78,text,stoplight
+ALIGN,mscoco,-22.84,-5.54,text,vase
+ALIGN,mscoco,-21.63,-0.86,text,vase
+ALIGN,mscoco,-12.94,1.98,text,vase
+ALIGN,mscoco,-21.88,-2.29,text,vase
+ALIGN,mscoco,-19.81,-2.82,text,vase
+ALIGN,mscoco,-22.02,-2.85,text,vase
+ALIGN,mscoco,-23.32,-1.42,text,vase
+ALIGN,mscoco,-20.73,-1.46,text,vase
+ALIGN,mscoco,-22.40,-2.83,text,vase
+ALIGN,mscoco,-23.26,-3.34,text,vase
+ALIGN,mscoco,-12.51,2.57,text,vase
+ALIGN,mscoco,-24.21,-2.31,text,vase
+ALIGN,mscoco,-22.65,-1.28,text,vase
+ALIGN,mscoco,-21.96,-5.54,text,vase
+ALIGN,mscoco,-21.96,-1.19,text,vase
+ALIGN,mscoco,-24.05,0.56,text,vase
+ALIGN,mscoco,-21.06,-3.11,text,vase
+ALIGN,mscoco,-13.31,1.50,text,vase
+ALIGN,mscoco,-24.11,-3.19,text,vase
+ALIGN,mscoco,-23.16,-5.75,text,vase
+ALIGN,mscoco,-13.36,1.60,text,vase
+ALIGN,mscoco,-19.72,-5.72,text,vase
+ALIGN,mscoco,-20.73,1.92,text,vase
+ALIGN,mscoco,-23.48,-1.91,text,vase
+ALIGN,mscoco,-20.76,2.05,text,vase
+ALIGN,mscoco,-24.69,-1.04,text,vase
+ALIGN,mscoco,-23.85,1.86,text,vase
+ALIGN,mscoco,-22.93,0.21,text,vase
+ALIGN,mscoco,-23.15,0.32,text,vase
+ALIGN,mscoco,-22.62,1.92,text,vase
+ALIGN,mscoco,-21.51,-6.08,text,vase
+ALIGN,mscoco,-22.19,-4.40,text,vase
+ALIGN,mscoco,-20.30,-1.32,text,vase
+ALIGN,mscoco,-22.25,-4.26,text,vase
+ALIGN,mscoco,-18.41,-0.66,text,vase
+ALIGN,mscoco,-19.74,1.17,text,vase
+ALIGN,mscoco,-19.34,-2.94,text,vase
+ALIGN,mscoco,-20.68,-3.18,text,vase
+ALIGN,mscoco,-23.94,-1.62,text,vase
+ALIGN,mscoco,-22.09,-4.12,text,vase
+ALIGN,mscoco,-18.29,-0.66,text,vase
+ALIGN,mscoco,-24.11,0.59,text,vase
+ALIGN,mscoco,-12.88,0.87,text,vase
+ALIGN,mscoco,-21.15,0.83,text,vase
+ALIGN,mscoco,-12.48,2.58,text,vase
+ALIGN,mscoco,-21.04,0.91,text,vase
+ALIGN,mscoco,-20.88,-3.38,text,vase
+ALIGN,mscoco,-23.68,-0.53,text,vase
+ALIGN,mscoco,-20.46,-4.59,text,vase
+ALIGN,mscoco,-21.64,-0.82,text,vase
+ALIGN,mscoco,15.57,5.38,text,sorrel
+ALIGN,mscoco,11.41,3.76,text,sorrel
+ALIGN,mscoco,12.39,8.35,text,sorrel
+ALIGN,mscoco,14.69,-0.11,text,sorrel
+ALIGN,mscoco,14.23,8.25,text,sorrel
+ALIGN,mscoco,11.88,5.53,text,sorrel
+ALIGN,mscoco,12.21,8.38,text,sorrel
+ALIGN,mscoco,15.92,5.62,text,sorrel
+ALIGN,mscoco,9.64,7.82,text,sorrel
+ALIGN,mscoco,11.00,8.31,text,sorrel
+ALIGN,mscoco,17.00,3.26,text,sorrel
+ALIGN,mscoco,7.97,5.41,text,sorrel
+ALIGN,mscoco,12.85,7.53,text,sorrel
+ALIGN,mscoco,12.57,8.15,text,sorrel
+ALIGN,mscoco,12.32,5.20,text,sorrel
+ALIGN,mscoco,11.52,7.24,text,sorrel
+ALIGN,mscoco,11.98,6.01,text,sorrel
+ALIGN,mscoco,11.59,5.50,text,sorrel
+ALIGN,mscoco,10.16,4.41,text,sorrel
+ALIGN,mscoco,6.83,7.99,text,sorrel
+ALIGN,mscoco,14.34,8.00,text,sorrel
+ALIGN,mscoco,9.86,8.50,text,sorrel
+ALIGN,mscoco,11.91,5.19,text,sorrel
+ALIGN,mscoco,13.35,6.74,text,sorrel
+ALIGN,mscoco,8.50,7.48,text,sorrel
+ALIGN,mscoco,9.97,9.54,text,sorrel
+ALIGN,mscoco,10.26,6.32,text,sorrel
+ALIGN,mscoco,9.22,9.63,text,sorrel
+ALIGN,mscoco,16.27,2.83,text,sorrel
+ALIGN,mscoco,15.92,6.10,text,sorrel
+ALIGN,mscoco,10.84,7.36,text,sorrel
+ALIGN,mscoco,16.55,2.52,text,sorrel
+ALIGN,mscoco,10.66,9.47,text,sorrel
+ALIGN,mscoco,7.61,6.49,text,sorrel
+ALIGN,mscoco,16.57,3.41,text,sorrel
+ALIGN,mscoco,7.50,6.22,text,sorrel
+ALIGN,mscoco,11.24,7.43,text,sorrel
+ALIGN,mscoco,9.90,5.00,text,sorrel
+ALIGN,mscoco,12.87,9.68,text,sorrel
+ALIGN,mscoco,16.23,5.54,text,sorrel
+ALIGN,mscoco,15.79,4.05,text,sorrel
+ALIGN,mscoco,11.48,8.76,text,sorrel
+ALIGN,mscoco,11.30,4.86,text,sorrel
+ALIGN,mscoco,15.14,4.24,text,sorrel
+ALIGN,mscoco,11.80,10.64,text,sorrel
+ALIGN,mscoco,16.44,5.23,text,sorrel
+ALIGN,mscoco,12.50,4.91,text,sorrel
+ALIGN,mscoco,17.74,2.76,text,sorrel
+ALIGN,mscoco,11.15,4.44,text,sorrel
+ALIGN,mscoco,11.73,9.30,text,sorrel

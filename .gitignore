@@ -201,4 +201,5 @@ pip-selfcheck.json
 # Added by myself
 
 VLPs/
+results/
 cython_constraint.txt

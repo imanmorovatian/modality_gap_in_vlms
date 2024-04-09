@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+ALIGN,flickr30k,16.76,-21.79,image,ski
+ALIGN,flickr30k,18.93,-26.40,image,ski
+ALIGN,flickr30k,21.74,-27.32,image,ski
+ALIGN,flickr30k,15.85,-22.92,image,ski
+ALIGN,flickr30k,21.26,-23.97,image,ski
+ALIGN,flickr30k,20.08,-21.28,image,ski
+ALIGN,flickr30k,17.06,-20.31,image,ski
+ALIGN,flickr30k,20.35,-22.72,image,ski
+ALIGN,flickr30k,16.93,-26.47,image,ski
+ALIGN,flickr30k,19.42,-23.76,image,ski
+ALIGN,flickr30k,18.52,-25.07,image,ski
+ALIGN,flickr30k,23.24,-25.14,image,ski
+ALIGN,flickr30k,20.20,-26.99,image,ski
+ALIGN,flickr30k,17.50,-22.24,image,ski
+ALIGN,flickr30k,19.98,-23.86,image,ski
+ALIGN,flickr30k,22.00,-22.59,image,ski
+ALIGN,flickr30k,21.62,-25.54,image,ski
+ALIGN,flickr30k,20.81,-20.55,image,ski
+ALIGN,flickr30k,21.65,-24.90,image,ski
+ALIGN,flickr30k,20.46,-28.05,image,ski
+ALIGN,flickr30k,20.87,-25.79,image,ski
+ALIGN,flickr30k,20.29,-24.54,image,ski
+ALIGN,flickr30k,21.66,-24.49,image,ski
+ALIGN,flickr30k,17.56,-21.48,image,ski
+ALIGN,flickr30k,16.27,-22.64,image,ski
+ALIGN,flickr30k,20.12,-22.11,image,ski
+ALIGN,flickr30k,17.78,-27.59,image,ski
+ALIGN,flickr30k,18.86,-23.75,image,ski
+ALIGN,flickr30k,23.01,-26.15,image,ski
+ALIGN,flickr30k,21.22,-21.88,image,ski
+ALIGN,flickr30k,18.14,-21.41,image,ski
+ALIGN,flickr30k,19.08,-24.37,image,ski
+ALIGN,flickr30k,19.58,-24.89,image,ski
+ALIGN,flickr30k,18.56,-20.93,image,ski
+ALIGN,flickr30k,22.09,-22.01,image,ski
+ALIGN,flickr30k,18.99,-26.68,image,ski
+ALIGN,flickr30k,17.55,-24.87,image,ski
+ALIGN,flickr30k,19.85,-25.94,image,ski
+ALIGN,flickr30k,16.38,-27.87,image,ski
+ALIGN,flickr30k,18.23,-24.03,image,ski
+ALIGN,flickr30k,16.22,-25.32,image,ski
+ALIGN,flickr30k,17.72,-25.63,image,ski
+ALIGN,flickr30k,19.99,-24.62,image,ski
+ALIGN,flickr30k,18.43,-23.10,image,ski
+ALIGN,flickr30k,17.39,-22.56,image,ski
+ALIGN,flickr30k,23.04,-24.59,image,ski
+ALIGN,flickr30k,17.19,-26.77,image,ski
+ALIGN,flickr30k,19.43,-22.95,image,ski
+ALIGN,flickr30k,15.01,-22.82,image,ski
+ALIGN,flickr30k,17.14,-24.07,image,ski
+ALIGN,flickr30k,-16.50,15.23,image,volleyball
+ALIGN,flickr30k,-22.37,14.70,image,volleyball
+ALIGN,flickr30k,-24.29,18.22,image,volleyball
+ALIGN,flickr30k,-19.33,16.41,image,volleyball
+ALIGN,flickr30k,-16.45,14.41,image,volleyball
+ALIGN,flickr30k,-18.97,16.59,image,volleyball
+ALIGN,flickr30k,-22.21,15.29,image,volleyball
+ALIGN,flickr30k,-22.30,18.69,image,volleyball
+ALIGN,flickr30k,-23.36,13.59,image,volleyball
+ALIGN,flickr30k,-24.47,17.90,image,volleyball
+ALIGN,flickr30k,-19.92,15.82,image,volleyball
+ALIGN,flickr30k,-24.26,17.34,image,volleyball
+ALIGN,flickr30k,-19.69,13.80,image,volleyball
+ALIGN,flickr30k,-19.42,13.73,image,volleyball
+ALIGN,flickr30k,-24.28,14.15,image,volleyball
+ALIGN,flickr30k,-19.31,18.78,image,volleyball
+ALIGN,flickr30k,-20.85,19.01,image,volleyball
+ALIGN,flickr30k,-22.52,15.09,image,volleyball
+ALIGN,flickr30k,-24.53,17.65,image,volleyball
+ALIGN,flickr30k,-20.98,17.45,image,volleyball
+ALIGN,flickr30k,-17.53,14.00,image,volleyball
+ALIGN,flickr30k,-19.86,17.02,image,volleyball
+ALIGN,flickr30k,-23.84,14.85,image,volleyball
+ALIGN,flickr30k,-15.97,16.57,image,volleyball
+ALIGN,flickr30k,-20.51,19.88,image,volleyball
+ALIGN,flickr30k,-19.17,17.02,image,volleyball
+ALIGN,flickr30k,-23.53,16.72,image,volleyball
+ALIGN,flickr30k,-19.46,5.86,image,volleyball
+ALIGN,flickr30k,-20.09,19.13,image,volleyball
+ALIGN,flickr30k,-17.94,15.78,image,volleyball
+ALIGN,flickr30k,-19.86,18.17,image,volleyball
+ALIGN,flickr30k,-19.33,18.95,image,volleyball
+ALIGN,flickr30k,-20.72,18.04,image,volleyball
+ALIGN,flickr30k,11.78,-18.15,image,volleyball
+ALIGN,flickr30k,-17.40,17.74,image,volleyball
+ALIGN,flickr30k,-22.74,13.91,image,volleyball
+ALIGN,flickr30k,-18.14,16.94,image,volleyball
+ALIGN,flickr30k,-20.68,19.44,image,volleyball
+ALIGN,flickr30k,-18.72,20.02,image,volleyball
+ALIGN,flickr30k,-15.44,15.72,image,volleyball
+ALIGN,flickr30k,-20.28,15.07,image,volleyball
+ALIGN,flickr30k,-17.75,14.71,image,volleyball
+ALIGN,flickr30k,-17.13,16.50,image,volleyball
+ALIGN,flickr30k,-21.72,13.45,image,volleyball
+ALIGN,flickr30k,-22.94,13.73,image,volleyball
+ALIGN,flickr30k,-23.43,14.74,image,volleyball
+ALIGN,flickr30k,-24.21,16.21,image,volleyball
+ALIGN,flickr30k,-20.34,6.99,image,volleyball
+ALIGN,flickr30k,-23.74,16.55,image,volleyball
+ALIGN,flickr30k,-17.92,14.87,image,volleyball
+ALIGN,flickr30k,15.98,8.11,image,umbrella
+ALIGN,flickr30k,23.02,3.74,image,umbrella
+ALIGN,flickr30k,23.52,9.32,image,umbrella
+ALIGN,flickr30k,18.89,7.19,image,umbrella
+ALIGN,flickr30k,18.90,8.61,image,umbrella
+ALIGN,flickr30k,23.33,7.51,image,umbrella
+ALIGN,flickr30k,21.41,5.49,image,umbrella
+ALIGN,flickr30k,19.60,4.75,image,umbrella
+ALIGN,flickr30k,16.63,5.18,image,umbrella
+ALIGN,flickr30k,20.27,6.16,image,umbrella
+ALIGN,flickr30k,-1.13,7.55,image,umbrella
+ALIGN,flickr30k,23.17,5.10,image,umbrella
+ALIGN,flickr30k,20.00,9.45,image,umbrella
+ALIGN,flickr30k,17.61,5.19,image,umbrella
+ALIGN,flickr30k,24.30,3.74,image,umbrella
+ALIGN,flickr30k,24.38,8.94,image,umbrella
+ALIGN,flickr30k,20.67,9.25,image,umbrella
+ALIGN,flickr30k,24.32,6.29,image,umbrella
+ALIGN,flickr30k,18.39,6.02,image,umbrella
+ALIGN,flickr30k,18.43,8.80,image,umbrella
+ALIGN,flickr30k,24.72,11.45,image,umbrella
+ALIGN,flickr30k,17.96,4.66,image,umbrella
+ALIGN,flickr30k,22.72,6.11,image,umbrella
+ALIGN,flickr30k,20.15,11.53,image,umbrella
+ALIGN,flickr30k,15.39,10.90,image,umbrella
+ALIGN,flickr30k,20.55,5.79,image,umbrella
+ALIGN,flickr30k,20.44,11.56,image,umbrella
+ALIGN,flickr30k,21.68,4.54,image,umbrella
+ALIGN,flickr30k,17.35,6.35,image,umbrella
+ALIGN,flickr30k,20.56,7.57,image,umbrella
+ALIGN,flickr30k,21.20,6.85,image,umbrella
+ALIGN,flickr30k,23.86,9.08,image,umbrella
+ALIGN,flickr30k,20.73,7.60,image,umbrella
+ALIGN,flickr30k,19.56,5.79,image,umbrella
+ALIGN,flickr30k,22.38,7.13,image,umbrella
+ALIGN,flickr30k,21.40,5.93,image,umbrella
+ALIGN,flickr30k,21.60,7.99,image,umbrella
+ALIGN,flickr30k,18.29,9.96,image,umbrella
+ALIGN,flickr30k,19.06,2.76,image,umbrella
+ALIGN,flickr30k,21.80,5.65,image,umbrella
+ALIGN,flickr30k,20.55,3.71,image,umbrella
+ALIGN,flickr30k,21.66,9.68,image,umbrella
+ALIGN,flickr30k,20.76,5.08,image,umbrella
+ALIGN,flickr30k,21.27,6.59,image,umbrella
+ALIGN,flickr30k,19.87,7.91,image,umbrella
+ALIGN,flickr30k,3.93,9.79,image,umbrella
+ALIGN,flickr30k,21.66,2.65,image,umbrella
+ALIGN,flickr30k,24.32,10.38,image,umbrella
+ALIGN,flickr30k,19.80,6.57,image,umbrella
+ALIGN,flickr30k,20.58,6.47,image,umbrella
+ALIGN,flickr30k,11.16,3.76,image,monocycle
+ALIGN,flickr30k,15.39,-0.22,image,monocycle
+ALIGN,flickr30k,14.35,-7.39,image,monocycle
+ALIGN,flickr30k,11.43,-8.12,image,monocycle
+ALIGN,flickr30k,14.61,-11.89,image,monocycle
+ALIGN,flickr30k,13.94,-14.49,image,monocycle
+ALIGN,flickr30k,13.55,-14.09,image,monocycle
+ALIGN,flickr30k,2.64,9.63,image,monocycle
+ALIGN,flickr30k,11.54,-9.31,image,monocycle
+ALIGN,flickr30k,17.57,-13.94,image,monocycle
+ALIGN,flickr30k,10.58,-7.06,image,monocycle
+ALIGN,flickr30k,13.22,-5.69,image,monocycle
+ALIGN,flickr30k,13.08,-14.66,image,monocycle
+ALIGN,flickr30k,14.63,-24.58,image,monocycle
+ALIGN,flickr30k,13.86,-6.16,image,monocycle
+ALIGN,flickr30k,12.11,-4.43,image,monocycle
+ALIGN,flickr30k,-3.46,-0.90,image,monocycle
+ALIGN,flickr30k,-8.32,-14.98,image,monocycle
+ALIGN,flickr30k,13.25,-6.78,image,monocycle
+ALIGN,flickr30k,14.19,-15.45,image,monocycle
+ALIGN,flickr30k,15.16,-2.55,image,monocycle
+ALIGN,flickr30k,16.50,-0.27,image,monocycle
+ALIGN,flickr30k,12.06,-12.47,image,monocycle
+ALIGN,flickr30k,16.78,-0.62,image,monocycle
+ALIGN,flickr30k,15.61,-6.15,image,monocycle
+ALIGN,flickr30k,13.31,-15.30,image,monocycle
+ALIGN,flickr30k,14.72,-16.49,image,monocycle
+ALIGN,flickr30k,13.04,-13.04,image,monocycle
+ALIGN,flickr30k,15.44,-12.88,image,monocycle
+ALIGN,flickr30k,15.83,-15.37,image,monocycle
+ALIGN,flickr30k,14.19,-13.52,image,monocycle
+ALIGN,flickr30k,12.51,-10.81,image,monocycle
+ALIGN,flickr30k,16.29,-14.96,image,monocycle
+ALIGN,flickr30k,13.09,-13.66,image,monocycle
+ALIGN,flickr30k,12.19,-14.42,image,monocycle
+ALIGN,flickr30k,14.65,-9.10,image,monocycle
+ALIGN,flickr30k,22.04,-19.12,image,monocycle
+ALIGN,flickr30k,16.57,-15.85,image,monocycle
+ALIGN,flickr30k,14.08,-13.97,image,monocycle
+ALIGN,flickr30k,13.65,-6.82,image,monocycle
+ALIGN,flickr30k,14.61,1.15,image,monocycle
+ALIGN,flickr30k,16.01,-15.02,image,monocycle
+ALIGN,flickr30k,11.48,-7.63,image,monocycle
+ALIGN,flickr30k,12.03,-14.49,image,monocycle
+ALIGN,flickr30k,14.17,-17.20,image,monocycle
+ALIGN,flickr30k,-3.69,-8.21,image,monocycle
+ALIGN,flickr30k,14.68,-8.60,image,monocycle
+ALIGN,flickr30k,12.81,-5.20,image,monocycle
+ALIGN,flickr30k,15.27,-6.21,image,monocycle
+ALIGN,flickr30k,-0.72,-0.39,image,monocycle
+ALIGN,flickr30k,-22.68,1.02,image,soccer ball
+ALIGN,flickr30k,-27.88,0.87,image,soccer ball
+ALIGN,flickr30k,-23.53,2.95,image,soccer ball
+ALIGN,flickr30k,-20.89,1.32,image,soccer ball
+ALIGN,flickr30k,-22.00,-0.00,image,soccer ball
+ALIGN,flickr30k,-21.61,3.19,image,soccer ball
+ALIGN,flickr30k,-22.52,2.18,image,soccer ball
+ALIGN,flickr30k,-23.16,-1.68,image,soccer ball
+ALIGN,flickr30k,-25.84,6.94,image,soccer ball
+ALIGN,flickr30k,-18.61,2.34,image,soccer ball
+ALIGN,flickr30k,-28.18,0.40,image,soccer ball
+ALIGN,flickr30k,-29.14,4.48,image,soccer ball
+ALIGN,flickr30k,-23.32,0.98,image,soccer ball
+ALIGN,flickr30k,-23.55,4.66,image,soccer ball
+ALIGN,flickr30k,-24.70,2.22,image,soccer ball
+ALIGN,flickr30k,-21.14,-1.19,image,soccer ball
+ALIGN,flickr30k,-21.82,3.76,image,soccer ball
+ALIGN,flickr30k,-28.94,1.62,image,soccer ball
+ALIGN,flickr30k,-28.45,3.78,image,soccer ball
+ALIGN,flickr30k,-26.30,3.38,image,soccer ball
+ALIGN,flickr30k,-26.22,5.10,image,soccer ball
+ALIGN,flickr30k,-23.06,0.84,image,soccer ball
+ALIGN,flickr30k,-27.61,4.22,image,soccer ball
+ALIGN,flickr30k,-22.98,-2.15,image,soccer ball
+ALIGN,flickr30k,-24.47,3.34,image,soccer ball
+ALIGN,flickr30k,-27.27,2.22,image,soccer ball
+ALIGN,flickr30k,-23.33,2.59,image,soccer ball
+ALIGN,flickr30k,-27.18,1.94,image,soccer ball
+ALIGN,flickr30k,-24.86,1.35,image,soccer ball
+ALIGN,flickr30k,-24.02,2.39,image,soccer ball
+ALIGN,flickr30k,-25.52,5.46,image,soccer ball
+ALIGN,flickr30k,-25.55,1.54,image,soccer ball
+ALIGN,flickr30k,-28.19,4.19,image,soccer ball
+ALIGN,flickr30k,-30.51,2.11,image,soccer ball
+ALIGN,flickr30k,-27.96,2.68,image,soccer ball
+ALIGN,flickr30k,-26.54,4.94,image,soccer ball
+ALIGN,flickr30k,-25.43,-0.32,image,soccer ball
+ALIGN,flickr30k,-24.78,3.84,image,soccer ball
+ALIGN,flickr30k,-23.18,3.54,image,soccer ball
+ALIGN,flickr30k,-22.58,-0.68,image,soccer ball
+ALIGN,flickr30k,-24.03,1.68,image,soccer ball
+ALIGN,flickr30k,-28.47,4.81,image,soccer ball
+ALIGN,flickr30k,-30.45,2.08,image,soccer ball
+ALIGN,flickr30k,-23.52,1.84,image,soccer ball
+ALIGN,flickr30k,-23.61,-0.05,image,soccer ball
+ALIGN,flickr30k,-25.16,2.54,image,soccer ball
+ALIGN,flickr30k,-28.16,4.65,image,soccer ball
+ALIGN,flickr30k,-18.51,2.35,image,soccer ball
+ALIGN,flickr30k,-21.01,1.42,image,soccer ball
+ALIGN,flickr30k,-25.99,5.79,image,soccer ball
+ALIGN,flickr30k,-0.00,-12.86,text,ski
+ALIGN,flickr30k,0.88,-6.80,text,ski
+ALIGN,flickr30k,5.57,-8.42,text,ski
+ALIGN,flickr30k,3.02,-4.50,text,ski
+ALIGN,flickr30k,1.35,-9.29,text,ski
+ALIGN,flickr30k,3.90,-5.75,text,ski
+ALIGN,flickr30k,-0.01,-12.54,text,ski
+ALIGN,flickr30k,4.14,-8.74,text,ski
+ALIGN,flickr30k,2.82,-8.69,text,ski
+ALIGN,flickr30k,2.74,-12.82,text,ski
+ALIGN,flickr30k,3.16,-9.56,text,ski
+ALIGN,flickr30k,0.82,-5.79,text,ski
+ALIGN,flickr30k,1.20,-7.43,text,ski
+ALIGN,flickr30k,5.33,-11.89,text,ski
+ALIGN,flickr30k,2.68,-10.61,text,ski
+ALIGN,flickr30k,4.07,-9.97,text,ski
+ALIGN,flickr30k,2.61,-9.58,text,ski
+ALIGN,flickr30k,2.92,-5.15,text,ski
+ALIGN,flickr30k,3.25,-10.57,text,ski
+ALIGN,flickr30k,0.59,-7.51,text,ski
+ALIGN,flickr30k,5.28,-11.14,text,ski
+ALIGN,flickr30k,3.19,-12.68,text,ski
+ALIGN,flickr30k,4.35,-5.81,text,ski
+ALIGN,flickr30k,-0.27,-13.17,text,ski
+ALIGN,flickr30k,-0.70,-11.80,text,ski
+ALIGN,flickr30k,3.70,-13.30,text,ski
+ALIGN,flickr30k,-0.29,-6.42,text,ski
+ALIGN,flickr30k,1.96,-10.81,text,ski
+ALIGN,flickr30k,4.78,-5.30,text,ski
+ALIGN,flickr30k,3.38,-7.40,text,ski
+ALIGN,flickr30k,1.18,-14.51,text,ski
+ALIGN,flickr30k,2.10,-9.67,text,ski
+ALIGN,flickr30k,3.10,-12.19,text,ski
+ALIGN,flickr30k,-0.46,-11.00,text,ski
+ALIGN,flickr30k,3.27,-7.30,text,ski
+ALIGN,flickr30k,2.34,-6.89,text,ski
+ALIGN,flickr30k,0.46,-10.88,text,ski
+ALIGN,flickr30k,2.82,-9.66,text,ski
+ALIGN,flickr30k,-0.85,-4.84,text,ski
+ALIGN,flickr30k,0.64,-10.28,text,ski
+ALIGN,flickr30k,5.02,-10.89,text,ski
+ALIGN,flickr30k,2.05,-10.00,text,ski
+ALIGN,flickr30k,2.13,-9.23,text,ski
+ALIGN,flickr30k,0.25,-12.35,text,ski
+ALIGN,flickr30k,0.02,-12.00,text,ski
+ALIGN,flickr30k,1.25,-5.57,text,ski
+ALIGN,flickr30k,0.58,-6.63,text,ski
+ALIGN,flickr30k,1.45,-12.15,text,ski
+ALIGN,flickr30k,0.81,-14.01,text,ski
+ALIGN,flickr30k,6.25,-11.54,text,ski
+ALIGN,flickr30k,-9.63,5.54,text,volleyball
+ALIGN,flickr30k,-8.58,10.46,text,volleyball
+ALIGN,flickr30k,-10.23,9.86,text,volleyball
+ALIGN,flickr30k,-5.12,10.20,text,volleyball
+ALIGN,flickr30k,-5.07,7.56,text,volleyball
+ALIGN,flickr30k,-5.04,8.76,text,volleyball
+ALIGN,flickr30k,-7.58,11.15,text,volleyball
+ALIGN,flickr30k,-10.74,8.93,text,volleyball
+ALIGN,flickr30k,-8.39,11.27,text,volleyball
+ALIGN,flickr30k,-9.93,8.12,text,volleyball
+ALIGN,flickr30k,-6.37,10.17,text,volleyball
+ALIGN,flickr30k,-6.30,12.09,text,volleyball
+ALIGN,flickr30k,-6.64,10.04,text,volleyball
+ALIGN,flickr30k,-8.01,6.74,text,volleyball
+ALIGN,flickr30k,-8.03,12.93,text,volleyball
+ALIGN,flickr30k,-7.26,8.73,text,volleyball
+ALIGN,flickr30k,-8.12,9.48,text,volleyball
+ALIGN,flickr30k,-4.45,5.36,text,volleyball
+ALIGN,flickr30k,-10.23,8.05,text,volleyball
+ALIGN,flickr30k,-7.50,9.99,text,volleyball
+ALIGN,flickr30k,-1.11,12.62,text,volleyball
+ALIGN,flickr30k,-8.45,9.80,text,volleyball
+ALIGN,flickr30k,-7.03,12.24,text,volleyball
+ALIGN,flickr30k,-5.85,8.44,text,volleyball
+ALIGN,flickr30k,-4.29,8.97,text,volleyball
+ALIGN,flickr30k,-6.78,8.61,text,volleyball
+ALIGN,flickr30k,-1.69,-3.83,text,volleyball
+ALIGN,flickr30k,-11.16,1.32,text,volleyball
+ALIGN,flickr30k,-5.96,9.51,text,volleyball
+ALIGN,flickr30k,-6.50,7.36,text,volleyball
+ALIGN,flickr30k,-5.91,9.30,text,volleyball
+ALIGN,flickr30k,-5.82,11.80,text,volleyball
+ALIGN,flickr30k,-10.45,11.82,text,volleyball
+ALIGN,flickr30k,-5.09,2.28,text,volleyball
+ALIGN,flickr30k,-7.80,6.55,text,volleyball
+ALIGN,flickr30k,-9.22,9.14,text,volleyball
+ALIGN,flickr30k,-9.01,7.60,text,volleyball
+ALIGN,flickr30k,-9.73,11.20,text,volleyball
+ALIGN,flickr30k,-10.56,11.95,text,volleyball
+ALIGN,flickr30k,-9.33,-5.02,text,volleyball
+ALIGN,flickr30k,-13.22,-3.71,text,volleyball
+ALIGN,flickr30k,-6.34,6.63,text,volleyball
+ALIGN,flickr30k,-9.53,7.43,text,volleyball
+ALIGN,flickr30k,0.45,-2.71,text,volleyball
+ALIGN,flickr30k,-9.05,9.17,text,volleyball
+ALIGN,flickr30k,-8.62,12.56,text,volleyball
+ALIGN,flickr30k,-9.24,9.14,text,volleyball
+ALIGN,flickr30k,-11.32,6.65,text,volleyball
+ALIGN,flickr30k,-9.45,10.00,text,volleyball
+ALIGN,flickr30k,-7.11,7.02,text,volleyball
+ALIGN,flickr30k,11.70,9.48,text,umbrella
+ALIGN,flickr30k,10.96,12.19,text,umbrella
+ALIGN,flickr30k,9.07,9.77,text,umbrella
+ALIGN,flickr30k,10.37,11.69,text,umbrella
+ALIGN,flickr30k,9.28,8.52,text,umbrella
+ALIGN,flickr30k,2.69,0.07,text,umbrella
+ALIGN,flickr30k,10.86,6.67,text,umbrella
+ALIGN,flickr30k,11.70,7.96,text,umbrella
+ALIGN,flickr30k,7.28,9.50,text,umbrella
+ALIGN,flickr30k,10.34,8.11,text,umbrella
+ALIGN,flickr30k,-2.12,7.18,text,umbrella
+ALIGN,flickr30k,9.53,7.15,text,umbrella
+ALIGN,flickr30k,11.49,10.79,text,umbrella
+ALIGN,flickr30k,10.04,12.48,text,umbrella
+ALIGN,flickr30k,2.56,2.32,text,umbrella
+ALIGN,flickr30k,9.22,9.36,text,umbrella
+ALIGN,flickr30k,7.84,6.22,text,umbrella
+ALIGN,flickr30k,12.81,9.99,text,umbrella
+ALIGN,flickr30k,4.86,1.91,text,umbrella
+ALIGN,flickr30k,9.07,8.31,text,umbrella
+ALIGN,flickr30k,6.18,-8.26,text,umbrella
+ALIGN,flickr30k,8.41,6.88,text,umbrella
+ALIGN,flickr30k,-2.01,-10.17,text,umbrella
+ALIGN,flickr30k,8.26,11.69,text,umbrella
+ALIGN,flickr30k,14.42,10.77,text,umbrella
+ALIGN,flickr30k,11.73,9.35,text,umbrella
+ALIGN,flickr30k,-2.78,2.14,text,umbrella
+ALIGN,flickr30k,8.21,6.70,text,umbrella
+ALIGN,flickr30k,8.67,12.93,text,umbrella
+ALIGN,flickr30k,10.56,7.68,text,umbrella
+ALIGN,flickr30k,13.11,9.00,text,umbrella
+ALIGN,flickr30k,8.79,7.90,text,umbrella
+ALIGN,flickr30k,10.45,7.90,text,umbrella
+ALIGN,flickr30k,12.78,9.92,text,umbrella
+ALIGN,flickr30k,7.96,8.75,text,umbrella
+ALIGN,flickr30k,13.02,7.32,text,umbrella
+ALIGN,flickr30k,10.62,10.47,text,umbrella
+ALIGN,flickr30k,7.02,8.01,text,umbrella
+ALIGN,flickr30k,10.14,8.85,text,umbrella
+ALIGN,flickr30k,9.46,5.76,text,umbrella
+ALIGN,flickr30k,11.85,6.54,text,umbrella
+ALIGN,flickr30k,8.93,12.86,text,umbrella
+ALIGN,flickr30k,11.32,11.91,text,umbrella
+ALIGN,flickr30k,10.55,7.69,text,umbrella
+ALIGN,flickr30k,9.50,11.40,text,umbrella
+ALIGN,flickr30k,6.59,10.27,text,umbrella
+ALIGN,flickr30k,10.02,12.53,text,umbrella
+ALIGN,flickr30k,11.89,12.31,text,umbrella
+ALIGN,flickr30k,12.98,11.26,text,umbrella
+ALIGN,flickr30k,10.44,13.73,text,umbrella
+ALIGN,flickr30k,10.91,4.66,text,monocycle
+ALIGN,flickr30k,6.66,1.09,text,monocycle
+ALIGN,flickr30k,6.46,-0.21,text,monocycle
+ALIGN,flickr30k,3.53,-1.01,text,monocycle
+ALIGN,flickr30k,-7.40,-11.98,text,monocycle
+ALIGN,flickr30k,-4.65,-12.83,text,monocycle
+ALIGN,flickr30k,-3.91,-11.97,text,monocycle
+ALIGN,flickr30k,-4.73,13.00,text,monocycle
+ALIGN,flickr30k,-5.26,-13.84,text,monocycle
+ALIGN,flickr30k,-2.86,-13.65,text,monocycle
+ALIGN,flickr30k,3.00,1.75,text,monocycle
+ALIGN,flickr30k,8.60,-2.38,text,monocycle
+ALIGN,flickr30k,-4.80,-13.02,text,monocycle
+ALIGN,flickr30k,-6.23,-5.09,text,monocycle
+ALIGN,flickr30k,-5.91,-8.57,text,monocycle
+ALIGN,flickr30k,8.89,-2.34,text,monocycle
+ALIGN,flickr30k,-4.45,-0.67,text,monocycle
+ALIGN,flickr30k,-7.91,-13.98,text,monocycle
+ALIGN,flickr30k,7.92,-2.26,text,monocycle
+ALIGN,flickr30k,-4.79,-11.41,text,monocycle
+ALIGN,flickr30k,6.22,-0.23,text,monocycle
+ALIGN,flickr30k,5.72,0.74,text,monocycle
+ALIGN,flickr30k,-5.37,-10.00,text,monocycle
+ALIGN,flickr30k,-4.22,-9.58,text,monocycle
+ALIGN,flickr30k,3.56,-1.03,text,monocycle
+ALIGN,flickr30k,-4.10,-12.60,text,monocycle
+ALIGN,flickr30k,-3.85,-14.68,text,monocycle
+ALIGN,flickr30k,-4.50,-9.68,text,monocycle
+ALIGN,flickr30k,-7.88,-13.88,text,monocycle
+ALIGN,flickr30k,-2.91,-14.87,text,monocycle
+ALIGN,flickr30k,-5.49,-12.65,text,monocycle
+ALIGN,flickr30k,-7.23,-12.05,text,monocycle
+ALIGN,flickr30k,-4.14,-15.65,text,monocycle
+ALIGN,flickr30k,3.22,-14.25,text,monocycle
+ALIGN,flickr30k,-3.53,-12.03,text,monocycle
+ALIGN,flickr30k,-5.91,-10.58,text,monocycle
+ALIGN,flickr30k,-7.80,-7.75,text,monocycle
+ALIGN,flickr30k,-1.76,-15.20,text,monocycle
+ALIGN,flickr30k,-4.92,-12.36,text,monocycle
+ALIGN,flickr30k,7.22,-1.41,text,monocycle
+ALIGN,flickr30k,7.58,3.24,text,monocycle
+ALIGN,flickr30k,-3.07,-14.30,text,monocycle
+ALIGN,flickr30k,2.95,1.52,text,monocycle
+ALIGN,flickr30k,-3.42,-12.27,text,monocycle
+ALIGN,flickr30k,-5.92,-16.20,text,monocycle
+ALIGN,flickr30k,-2.81,-8.55,text,monocycle
+ALIGN,flickr30k,-4.01,-9.88,text,monocycle
+ALIGN,flickr30k,9.34,-2.26,text,monocycle
+ALIGN,flickr30k,6.96,-0.58,text,monocycle
+ALIGN,flickr30k,-0.56,-0.10,text,monocycle
+ALIGN,flickr30k,-11.66,-3.03,text,soccer ball
+ALIGN,flickr30k,-7.05,1.29,text,soccer ball
+ALIGN,flickr30k,-8.35,-0.14,text,soccer ball
+ALIGN,flickr30k,-11.66,-1.75,text,soccer ball
+ALIGN,flickr30k,-10.61,-1.64,text,soccer ball
+ALIGN,flickr30k,-10.84,3.55,text,soccer ball
+ALIGN,flickr30k,-9.95,0.41,text,soccer ball
+ALIGN,flickr30k,-13.67,-5.59,text,soccer ball
+ALIGN,flickr30k,-12.86,-0.76,text,soccer ball
+ALIGN,flickr30k,-8.74,-0.61,text,soccer ball
+ALIGN,flickr30k,-6.48,-3.55,text,soccer ball
+ALIGN,flickr30k,-8.83,3.33,text,soccer ball
+ALIGN,flickr30k,-10.62,-4.06,text,soccer ball
+ALIGN,flickr30k,-11.85,-3.33,text,soccer ball
+ALIGN,flickr30k,-8.25,0.05,text,soccer ball
+ALIGN,flickr30k,-13.86,-0.88,text,soccer ball
+ALIGN,flickr30k,-10.99,-0.57,text,soccer ball
+ALIGN,flickr30k,-7.07,0.05,text,soccer ball
+ALIGN,flickr30k,-7.33,0.65,text,soccer ball
+ALIGN,flickr30k,-8.38,2.46,text,soccer ball
+ALIGN,flickr30k,-7.28,-0.51,text,soccer ball
+ALIGN,flickr30k,-11.51,-2.75,text,soccer ball
+ALIGN,flickr30k,-12.56,3.20,text,soccer ball
+ALIGN,flickr30k,-13.72,-5.67,text,soccer ball
+ALIGN,flickr30k,-9.14,-4.21,text,soccer ball
+ALIGN,flickr30k,-6.90,3.16,text,soccer ball
+ALIGN,flickr30k,-10.27,0.41,text,soccer ball
+ALIGN,flickr30k,-12.99,-0.09,text,soccer ball
+ALIGN,flickr30k,-10.32,0.09,text,soccer ball
+ALIGN,flickr30k,-9.24,-2.96,text,soccer ball
+ALIGN,flickr30k,-8.28,1.90,text,soccer ball
+ALIGN,flickr30k,-9.97,0.65,text,soccer ball
+ALIGN,flickr30k,-8.16,-3.19,text,soccer ball
+ALIGN,flickr30k,-6.55,1.25,text,soccer ball
+ALIGN,flickr30k,-6.38,0.49,text,soccer ball
+ALIGN,flickr30k,-6.70,0.30,text,soccer ball
+ALIGN,flickr30k,-10.63,-5.49,text,soccer ball
+ALIGN,flickr30k,-6.52,-3.47,text,soccer ball
+ALIGN,flickr30k,-9.93,2.68,text,soccer ball
+ALIGN,flickr30k,-10.05,-3.09,text,soccer ball
+ALIGN,flickr30k,-9.19,1.37,text,soccer ball
+ALIGN,flickr30k,-9.63,2.58,text,soccer ball
+ALIGN,flickr30k,-6.27,-0.65,text,soccer ball
+ALIGN,flickr30k,-9.52,0.08,text,soccer ball
+ALIGN,flickr30k,-12.62,-0.88,text,soccer ball
+ALIGN,flickr30k,-9.66,-4.20,text,soccer ball
+ALIGN,flickr30k,-8.72,-3.97,text,soccer ball
+ALIGN,flickr30k,-12.16,1.62,text,soccer ball
+ALIGN,flickr30k,-10.07,1.00,text,soccer ball
+ALIGN,flickr30k,-13.17,-2.69,text,soccer ball

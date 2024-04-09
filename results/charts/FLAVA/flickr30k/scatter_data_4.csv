@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+FLAVA,flickr30k,-13.94,-8.83,image,baseball player
+FLAVA,flickr30k,-12.30,-11.11,image,baseball player
+FLAVA,flickr30k,-11.90,-14.23,image,baseball player
+FLAVA,flickr30k,-13.09,-11.78,image,baseball player
+FLAVA,flickr30k,-12.77,-17.48,image,baseball player
+FLAVA,flickr30k,-4.49,-20.03,image,baseball player
+FLAVA,flickr30k,-4.26,-0.61,image,baseball player
+FLAVA,flickr30k,-15.99,-13.80,image,baseball player
+FLAVA,flickr30k,-12.84,-15.72,image,baseball player
+FLAVA,flickr30k,-14.79,-16.44,image,baseball player
+FLAVA,flickr30k,-5.26,-15.84,image,baseball player
+FLAVA,flickr30k,-16.44,-12.33,image,baseball player
+FLAVA,flickr30k,-13.99,-17.23,image,baseball player
+FLAVA,flickr30k,-5.24,-15.80,image,baseball player
+FLAVA,flickr30k,-13.57,-14.84,image,baseball player
+FLAVA,flickr30k,-14.04,-15.77,image,baseball player
+FLAVA,flickr30k,-4.41,-20.51,image,baseball player
+FLAVA,flickr30k,-15.68,-15.88,image,baseball player
+FLAVA,flickr30k,-11.83,-7.84,image,baseball player
+FLAVA,flickr30k,0.76,-1.70,image,baseball player
+FLAVA,flickr30k,-5.28,-17.53,image,baseball player
+FLAVA,flickr30k,-12.83,-9.83,image,baseball player
+FLAVA,flickr30k,-14.10,-8.57,image,baseball player
+FLAVA,flickr30k,-13.51,-7.00,image,baseball player
+FLAVA,flickr30k,-15.50,-16.43,image,baseball player
+FLAVA,flickr30k,-3.38,-20.03,image,baseball player
+FLAVA,flickr30k,-11.28,-13.41,image,baseball player
+FLAVA,flickr30k,-12.26,-13.38,image,baseball player
+FLAVA,flickr30k,-9.70,3.66,image,baseball player
+FLAVA,flickr30k,-3.40,-20.01,image,baseball player
+FLAVA,flickr30k,-12.22,-14.15,image,baseball player
+FLAVA,flickr30k,-15.79,-13.57,image,baseball player
+FLAVA,flickr30k,-14.78,-16.79,image,baseball player
+FLAVA,flickr30k,-3.78,-21.53,image,baseball player
+FLAVA,flickr30k,-3.92,-19.44,image,baseball player
+FLAVA,flickr30k,-4.45,-20.60,image,baseball player
+FLAVA,flickr30k,-14.34,-15.00,image,baseball player
+FLAVA,flickr30k,-12.76,-13.10,image,baseball player
+FLAVA,flickr30k,-3.19,-21.01,image,baseball player
+FLAVA,flickr30k,-14.64,-12.51,image,baseball player
+FLAVA,flickr30k,-10.92,-14.98,image,baseball player
+FLAVA,flickr30k,-11.95,-8.80,image,baseball player
+FLAVA,flickr30k,-12.72,-10.24,image,baseball player
+FLAVA,flickr30k,-15.20,-11.38,image,baseball player
+FLAVA,flickr30k,-11.94,-15.84,image,baseball player
+FLAVA,flickr30k,-2.37,-21.13,image,baseball player
+FLAVA,flickr30k,-11.16,-13.68,image,baseball player
+FLAVA,flickr30k,-15.28,-10.89,image,baseball player
+FLAVA,flickr30k,-14.93,-11.47,image,baseball player
+FLAVA,flickr30k,-12.67,-9.73,image,baseball player
+FLAVA,flickr30k,-22.72,10.04,image,fountain
+FLAVA,flickr30k,-16.25,9.96,image,fountain
+FLAVA,flickr30k,-24.84,13.50,image,fountain
+FLAVA,flickr30k,-23.61,14.28,image,fountain
+FLAVA,flickr30k,-25.51,16.34,image,fountain
+FLAVA,flickr30k,-24.61,15.45,image,fountain
+FLAVA,flickr30k,-26.30,13.11,image,fountain
+FLAVA,flickr30k,-23.48,16.75,image,fountain
+FLAVA,flickr30k,-26.93,12.78,image,fountain
+FLAVA,flickr30k,-25.00,16.01,image,fountain
+FLAVA,flickr30k,-12.57,7.13,image,fountain
+FLAVA,flickr30k,-20.19,16.47,image,fountain
+FLAVA,flickr30k,-19.88,10.80,image,fountain
+FLAVA,flickr30k,-24.00,18.68,image,fountain
+FLAVA,flickr30k,-26.42,11.72,image,fountain
+FLAVA,flickr30k,-28.03,15.55,image,fountain
+FLAVA,flickr30k,-24.69,11.79,image,fountain
+FLAVA,flickr30k,-24.99,18.52,image,fountain
+FLAVA,flickr30k,-23.47,15.50,image,fountain
+FLAVA,flickr30k,-22.79,10.40,image,fountain
+FLAVA,flickr30k,-23.63,19.17,image,fountain
+FLAVA,flickr30k,-23.10,18.21,image,fountain
+FLAVA,flickr30k,-18.22,12.64,image,fountain
+FLAVA,flickr30k,-19.32,17.73,image,fountain
+FLAVA,flickr30k,-14.11,8.50,image,fountain
+FLAVA,flickr30k,-20.28,13.81,image,fountain
+FLAVA,flickr30k,-20.54,13.96,image,fountain
+FLAVA,flickr30k,-23.33,15.85,image,fountain
+FLAVA,flickr30k,-26.26,18.08,image,fountain
+FLAVA,flickr30k,-22.16,16.72,image,fountain
+FLAVA,flickr30k,-13.44,7.85,image,fountain
+FLAVA,flickr30k,-24.14,17.07,image,fountain
+FLAVA,flickr30k,-25.09,12.96,image,fountain
+FLAVA,flickr30k,-26.10,15.64,image,fountain
+FLAVA,flickr30k,-20.18,16.60,image,fountain
+FLAVA,flickr30k,-23.67,14.57,image,fountain
+FLAVA,flickr30k,-26.14,17.49,image,fountain
+FLAVA,flickr30k,-28.06,13.62,image,fountain
+FLAVA,flickr30k,-19.63,10.16,image,fountain
+FLAVA,flickr30k,-26.56,16.88,image,fountain
+FLAVA,flickr30k,-25.01,18.10,image,fountain
+FLAVA,flickr30k,-21.38,17.22,image,fountain
+FLAVA,flickr30k,-22.48,19.10,image,fountain
+FLAVA,flickr30k,-22.54,14.90,image,fountain
+FLAVA,flickr30k,-25.84,14.18,image,fountain
+FLAVA,flickr30k,-16.11,10.21,image,fountain
+FLAVA,flickr30k,-18.82,7.56,image,fountain
+FLAVA,flickr30k,-25.72,19.69,image,fountain
+FLAVA,flickr30k,-22.66,16.10,image,fountain
+FLAVA,flickr30k,-24.69,16.87,image,fountain
+FLAVA,flickr30k,22.19,-16.64,image,rugby ball
+FLAVA,flickr30k,3.16,5.22,image,rugby ball
+FLAVA,flickr30k,-11.67,-0.65,image,rugby ball
+FLAVA,flickr30k,22.44,-15.19,image,rugby ball
+FLAVA,flickr30k,15.42,-14.31,image,rugby ball
+FLAVA,flickr30k,10.64,-9.67,image,rugby ball
+FLAVA,flickr30k,21.66,-14.29,image,rugby ball
+FLAVA,flickr30k,18.74,-14.54,image,rugby ball
+FLAVA,flickr30k,17.83,-12.51,image,rugby ball
+FLAVA,flickr30k,18.72,-18.90,image,rugby ball
+FLAVA,flickr30k,19.49,-18.36,image,rugby ball
+FLAVA,flickr30k,17.90,-14.68,image,rugby ball
+FLAVA,flickr30k,21.35,-8.86,image,rugby ball
+FLAVA,flickr30k,19.58,-19.11,image,rugby ball
+FLAVA,flickr30k,13.72,-12.44,image,rugby ball
+FLAVA,flickr30k,13.13,-12.52,image,rugby ball
+FLAVA,flickr30k,9.65,-12.55,image,rugby ball
+FLAVA,flickr30k,16.95,-22.73,image,rugby ball
+FLAVA,flickr30k,20.02,-18.41,image,rugby ball
+FLAVA,flickr30k,15.65,-17.44,image,rugby ball
+FLAVA,flickr30k,14.81,-13.78,image,rugby ball
+FLAVA,flickr30k,7.98,-10.50,image,rugby ball
+FLAVA,flickr30k,20.35,-14.62,image,rugby ball
+FLAVA,flickr30k,18.33,-17.02,image,rugby ball
+FLAVA,flickr30k,20.22,-15.53,image,rugby ball
+FLAVA,flickr30k,21.33,-8.82,image,rugby ball
+FLAVA,flickr30k,16.10,-12.11,image,rugby ball
+FLAVA,flickr30k,18.03,-19.36,image,rugby ball
+FLAVA,flickr30k,13.66,-12.53,image,rugby ball
+FLAVA,flickr30k,17.61,-22.08,image,rugby ball
+FLAVA,flickr30k,17.89,-18.76,image,rugby ball
+FLAVA,flickr30k,-0.41,3.83,image,rugby ball
+FLAVA,flickr30k,19.91,-13.60,image,rugby ball
+FLAVA,flickr30k,13.84,-10.76,image,rugby ball
+FLAVA,flickr30k,20.11,-19.07,image,rugby ball
+FLAVA,flickr30k,15.57,-14.46,image,rugby ball
+FLAVA,flickr30k,16.93,-16.15,image,rugby ball
+FLAVA,flickr30k,18.55,-15.56,image,rugby ball
+FLAVA,flickr30k,-18.60,6.91,image,rugby ball
+FLAVA,flickr30k,21.35,-15.31,image,rugby ball
+FLAVA,flickr30k,21.19,-16.78,image,rugby ball
+FLAVA,flickr30k,19.90,-15.75,image,rugby ball
+FLAVA,flickr30k,20.76,-16.42,image,rugby ball
+FLAVA,flickr30k,-1.74,1.10,image,rugby ball
+FLAVA,flickr30k,21.10,-8.40,image,rugby ball
+FLAVA,flickr30k,18.14,-16.12,image,rugby ball
+FLAVA,flickr30k,19.28,-16.89,image,rugby ball
+FLAVA,flickr30k,19.50,-15.33,image,rugby ball
+FLAVA,flickr30k,20.00,-16.44,image,rugby ball
+FLAVA,flickr30k,17.20,-18.51,image,rugby ball
+FLAVA,flickr30k,8.48,17.11,image,stage
+FLAVA,flickr30k,8.44,19.32,image,stage
+FLAVA,flickr30k,13.30,22.58,image,stage
+FLAVA,flickr30k,11.85,12.16,image,stage
+FLAVA,flickr30k,9.63,22.84,image,stage
+FLAVA,flickr30k,4.10,25.46,image,stage
+FLAVA,flickr30k,12.88,22.23,image,stage
+FLAVA,flickr30k,7.29,21.01,image,stage
+FLAVA,flickr30k,-1.08,23.43,image,stage
+FLAVA,flickr30k,4.88,19.86,image,stage
+FLAVA,flickr30k,11.95,17.58,image,stage
+FLAVA,flickr30k,8.61,20.97,image,stage
+FLAVA,flickr30k,11.00,14.22,image,stage
+FLAVA,flickr30k,11.30,21.28,image,stage
+FLAVA,flickr30k,4.12,25.49,image,stage
+FLAVA,flickr30k,2.79,19.49,image,stage
+FLAVA,flickr30k,8.77,24.11,image,stage
+FLAVA,flickr30k,8.32,20.27,image,stage
+FLAVA,flickr30k,11.61,20.14,image,stage
+FLAVA,flickr30k,7.34,25.77,image,stage
+FLAVA,flickr30k,3.30,21.47,image,stage
+FLAVA,flickr30k,10.54,25.96,image,stage
+FLAVA,flickr30k,10.85,23.00,image,stage
+FLAVA,flickr30k,6.64,27.12,image,stage
+FLAVA,flickr30k,11.61,20.36,image,stage
+FLAVA,flickr30k,9.90,17.98,image,stage
+FLAVA,flickr30k,6.57,22.51,image,stage
+FLAVA,flickr30k,12.40,17.91,image,stage
+FLAVA,flickr30k,-3.93,12.53,image,stage
+FLAVA,flickr30k,10.15,17.78,image,stage
+FLAVA,flickr30k,-3.90,12.53,image,stage
+FLAVA,flickr30k,4.05,9.23,image,stage
+FLAVA,flickr30k,10.74,23.34,image,stage
+FLAVA,flickr30k,13.78,21.24,image,stage
+FLAVA,flickr30k,4.82,11.03,image,stage
+FLAVA,flickr30k,10.04,20.55,image,stage
+FLAVA,flickr30k,10.91,23.39,image,stage
+FLAVA,flickr30k,8.54,24.17,image,stage
+FLAVA,flickr30k,5.40,22.96,image,stage
+FLAVA,flickr30k,10.03,15.37,image,stage
+FLAVA,flickr30k,9.03,22.15,image,stage
+FLAVA,flickr30k,3.30,21.49,image,stage
+FLAVA,flickr30k,13.94,23.33,image,stage
+FLAVA,flickr30k,13.21,18.78,image,stage
+FLAVA,flickr30k,-1.03,23.44,image,stage
+FLAVA,flickr30k,11.15,13.11,image,stage
+FLAVA,flickr30k,13.60,21.45,image,stage
+FLAVA,flickr30k,6.60,27.19,image,stage
+FLAVA,flickr30k,4.34,21.38,image,stage
+FLAVA,flickr30k,7.05,22.59,image,stage
+FLAVA,flickr30k,8.48,-24.18,image,volleyball
+FLAVA,flickr30k,-6.01,0.30,image,volleyball
+FLAVA,flickr30k,7.55,-24.63,image,volleyball
+FLAVA,flickr30k,4.32,-31.74,image,volleyball
+FLAVA,flickr30k,7.39,-23.24,image,volleyball
+FLAVA,flickr30k,3.58,-28.80,image,volleyball
+FLAVA,flickr30k,5.99,-27.24,image,volleyball
+FLAVA,flickr30k,9.27,-21.35,image,volleyball
+FLAVA,flickr30k,9.51,-19.98,image,volleyball
+FLAVA,flickr30k,6.52,-28.55,image,volleyball
+FLAVA,flickr30k,5.81,-22.18,image,volleyball
+FLAVA,flickr30k,3.63,-28.86,image,volleyball
+FLAVA,flickr30k,6.37,-23.07,image,volleyball
+FLAVA,flickr30k,6.79,-28.19,image,volleyball
+FLAVA,flickr30k,7.95,-24.71,image,volleyball
+FLAVA,flickr30k,7.59,-20.91,image,volleyball
+FLAVA,flickr30k,5.07,-21.04,image,volleyball
+FLAVA,flickr30k,8.14,-24.32,image,volleyball
+FLAVA,flickr30k,7.34,-16.44,image,volleyball
+FLAVA,flickr30k,8.22,-17.30,image,volleyball
+FLAVA,flickr30k,-7.82,1.10,image,volleyball
+FLAVA,flickr30k,8.12,-18.23,image,volleyball
+FLAVA,flickr30k,4.24,-29.84,image,volleyball
+FLAVA,flickr30k,4.80,-26.23,image,volleyball
+FLAVA,flickr30k,5.16,-30.79,image,volleyball
+FLAVA,flickr30k,5.72,-29.65,image,volleyball
+FLAVA,flickr30k,8.10,-20.17,image,volleyball
+FLAVA,flickr30k,6.01,-31.04,image,volleyball
+FLAVA,flickr30k,3.87,-31.08,image,volleyball
+FLAVA,flickr30k,10.64,-24.02,image,volleyball
+FLAVA,flickr30k,7.52,-23.93,image,volleyball
+FLAVA,flickr30k,8.95,-25.94,image,volleyball
+FLAVA,flickr30k,4.58,-23.09,image,volleyball
+FLAVA,flickr30k,-4.70,1.12,image,volleyball
+FLAVA,flickr30k,8.51,-23.30,image,volleyball
+FLAVA,flickr30k,7.47,-22.47,image,volleyball
+FLAVA,flickr30k,8.80,-21.87,image,volleyball
+FLAVA,flickr30k,4.81,-26.18,image,volleyball
+FLAVA,flickr30k,6.30,-27.46,image,volleyball
+FLAVA,flickr30k,5.27,-28.75,image,volleyball
+FLAVA,flickr30k,8.82,-25.83,image,volleyball
+FLAVA,flickr30k,4.28,-31.22,image,volleyball
+FLAVA,flickr30k,6.63,-19.87,image,volleyball
+FLAVA,flickr30k,11.20,-14.90,image,volleyball
+FLAVA,flickr30k,7.53,-22.49,image,volleyball
+FLAVA,flickr30k,4.27,-31.25,image,volleyball
+FLAVA,flickr30k,5.34,-27.27,image,volleyball
+FLAVA,flickr30k,6.11,-30.52,image,volleyball
+FLAVA,flickr30k,4.99,-13.75,image,volleyball
+FLAVA,flickr30k,7.04,-21.67,image,volleyball
+FLAVA,flickr30k,-1.89,-3.50,text,baseball player
+FLAVA,flickr30k,-5.22,-1.44,text,baseball player
+FLAVA,flickr30k,-4.84,-3.08,text,baseball player
+FLAVA,flickr30k,-4.42,-2.46,text,baseball player
+FLAVA,flickr30k,-2.61,-7.57,text,baseball player
+FLAVA,flickr30k,-8.37,-1.33,text,baseball player
+FLAVA,flickr30k,6.63,-2.16,text,baseball player
+FLAVA,flickr30k,-8.04,-5.08,text,baseball player
+FLAVA,flickr30k,-6.98,-5.94,text,baseball player
+FLAVA,flickr30k,-9.10,-4.43,text,baseball player
+FLAVA,flickr30k,-7.39,-2.14,text,baseball player
+FLAVA,flickr30k,-3.69,-2.08,text,baseball player
+FLAVA,flickr30k,-3.29,-6.80,text,baseball player
+FLAVA,flickr30k,-8.09,-3.32,text,baseball player
+FLAVA,flickr30k,-4.61,-9.32,text,baseball player
+FLAVA,flickr30k,-7.72,-4.50,text,baseball player
+FLAVA,flickr30k,2.98,9.14,text,baseball player
+FLAVA,flickr30k,-7.25,-7.35,text,baseball player
+FLAVA,flickr30k,-2.84,-0.28,text,baseball player
+FLAVA,flickr30k,1.44,-2.76,text,baseball player
+FLAVA,flickr30k,-0.86,-0.11,text,baseball player
+FLAVA,flickr30k,-2.80,-0.75,text,baseball player
+FLAVA,flickr30k,-6.29,-2.45,text,baseball player
+FLAVA,flickr30k,-1.45,-1.94,text,baseball player
+FLAVA,flickr30k,-1.06,-0.88,text,baseball player
+FLAVA,flickr30k,0.39,-0.23,text,baseball player
+FLAVA,flickr30k,-5.39,-6.08,text,baseball player
+FLAVA,flickr30k,-4.19,-5.24,text,baseball player
+FLAVA,flickr30k,-9.21,3.62,text,baseball player
+FLAVA,flickr30k,-0.17,-2.48,text,baseball player
+FLAVA,flickr30k,-5.18,-6.19,text,baseball player
+FLAVA,flickr30k,-8.59,-5.78,text,baseball player
+FLAVA,flickr30k,-7.44,-4.82,text,baseball player
+FLAVA,flickr30k,2.85,-2.31,text,baseball player
+FLAVA,flickr30k,3.73,-1.79,text,baseball player
+FLAVA,flickr30k,1.89,-0.71,text,baseball player
+FLAVA,flickr30k,-3.35,-7.04,text,baseball player
+FLAVA,flickr30k,-3.70,-4.69,text,baseball player
+FLAVA,flickr30k,2.78,-2.56,text,baseball player
+FLAVA,flickr30k,-4.76,-8.68,text,baseball player
+FLAVA,flickr30k,-4.73,-3.71,text,baseball player
+FLAVA,flickr30k,-1.98,-2.63,text,baseball player
+FLAVA,flickr30k,-4.51,-7.16,text,baseball player
+FLAVA,flickr30k,-6.15,-4.22,text,baseball player
+FLAVA,flickr30k,-4.00,-1.76,text,baseball player
+FLAVA,flickr30k,3.52,-2.82,text,baseball player
+FLAVA,flickr30k,-3.08,-5.10,text,baseball player
+FLAVA,flickr30k,-6.08,-4.19,text,baseball player
+FLAVA,flickr30k,-3.29,-2.08,text,baseball player
+FLAVA,flickr30k,-5.55,-8.17,text,baseball player
+FLAVA,flickr30k,-11.01,11.22,text,fountain
+FLAVA,flickr30k,-7.46,8.19,text,fountain
+FLAVA,flickr30k,-14.88,15.45,text,fountain
+FLAVA,flickr30k,-11.84,12.34,text,fountain
+FLAVA,flickr30k,-10.16,9.43,text,fountain
+FLAVA,flickr30k,-13.02,20.05,text,fountain
+FLAVA,flickr30k,-15.35,13.40,text,fountain
+FLAVA,flickr30k,-11.18,15.14,text,fountain
+FLAVA,flickr30k,-13.89,13.81,text,fountain
+FLAVA,flickr30k,-13.42,18.41,text,fountain
+FLAVA,flickr30k,-11.92,8.06,text,fountain
+FLAVA,flickr30k,-12.73,12.08,text,fountain
+FLAVA,flickr30k,-9.16,14.07,text,fountain
+FLAVA,flickr30k,-12.48,16.95,text,fountain
+FLAVA,flickr30k,-9.13,16.74,text,fountain
+FLAVA,flickr30k,-13.03,10.77,text,fountain
+FLAVA,flickr30k,7.62,5.93,text,fountain
+FLAVA,flickr30k,-11.28,13.23,text,fountain
+FLAVA,flickr30k,-12.22,17.82,text,fountain
+FLAVA,flickr30k,-10.17,11.17,text,fountain
+FLAVA,flickr30k,-10.75,17.02,text,fountain
+FLAVA,flickr30k,-12.45,16.16,text,fountain
+FLAVA,flickr30k,-12.18,12.82,text,fountain
+FLAVA,flickr30k,-11.57,16.53,text,fountain
+FLAVA,flickr30k,-11.45,8.90,text,fountain
+FLAVA,flickr30k,-14.35,12.15,text,fountain
+FLAVA,flickr30k,-11.69,16.76,text,fountain
+FLAVA,flickr30k,-12.58,19.83,text,fountain
+FLAVA,flickr30k,-10.16,13.62,text,fountain
+FLAVA,flickr30k,-12.76,14.13,text,fountain
+FLAVA,flickr30k,-11.28,7.50,text,fountain
+FLAVA,flickr30k,-10.50,15.84,text,fountain
+FLAVA,flickr30k,-12.45,11.52,text,fountain
+FLAVA,flickr30k,-15.53,15.14,text,fountain
+FLAVA,flickr30k,-9.53,12.84,text,fountain
+FLAVA,flickr30k,-14.69,16.05,text,fountain
+FLAVA,flickr30k,-11.38,9.31,text,fountain
+FLAVA,flickr30k,-11.98,14.78,text,fountain
+FLAVA,flickr30k,-7.79,6.14,text,fountain
+FLAVA,flickr30k,-14.50,14.53,text,fountain
+FLAVA,flickr30k,-12.31,19.25,text,fountain
+FLAVA,flickr30k,-10.27,14.82,text,fountain
+FLAVA,flickr30k,-10.56,15.59,text,fountain
+FLAVA,flickr30k,-11.42,17.85,text,fountain
+FLAVA,flickr30k,-13.41,15.49,text,fountain
+FLAVA,flickr30k,-12.69,12.70,text,fountain
+FLAVA,flickr30k,-4.40,7.60,text,fountain
+FLAVA,flickr30k,-13.35,11.89,text,fountain
+FLAVA,flickr30k,-12.58,20.10,text,fountain
+FLAVA,flickr30k,-13.11,17.27,text,fountain
+FLAVA,flickr30k,6.34,-3.92,text,rugby ball
+FLAVA,flickr30k,2.67,7.64,text,rugby ball
+FLAVA,flickr30k,-11.53,0.03,text,rugby ball
+FLAVA,flickr30k,3.84,-5.55,text,rugby ball
+FLAVA,flickr30k,3.03,1.34,text,rugby ball
+FLAVA,flickr30k,1.21,-2.56,text,rugby ball
+FLAVA,flickr30k,7.17,-8.97,text,rugby ball
+FLAVA,flickr30k,2.86,-10.17,text,rugby ball
+FLAVA,flickr30k,4.68,-3.41,text,rugby ball
+FLAVA,flickr30k,-0.07,-3.55,text,rugby ball
+FLAVA,flickr30k,2.40,-7.52,text,rugby ball
+FLAVA,flickr30k,5.54,-6.81,text,rugby ball
+FLAVA,flickr30k,3.78,3.90,text,rugby ball
+FLAVA,flickr30k,1.87,-8.07,text,rugby ball
+FLAVA,flickr30k,0.91,-4.79,text,rugby ball
+FLAVA,flickr30k,5.42,0.05,text,rugby ball
+FLAVA,flickr30k,5.23,2.71,text,rugby ball
+FLAVA,flickr30k,2.51,-0.86,text,rugby ball
+FLAVA,flickr30k,4.25,-7.72,text,rugby ball
+FLAVA,flickr30k,7.25,-6.55,text,rugby ball
+FLAVA,flickr30k,1.54,0.82,text,rugby ball
+FLAVA,flickr30k,7.32,-8.97,text,rugby ball
+FLAVA,flickr30k,1.22,-3.77,text,rugby ball
+FLAVA,flickr30k,3.38,1.12,text,rugby ball
+FLAVA,flickr30k,3.31,-8.42,text,rugby ball
+FLAVA,flickr30k,3.87,4.09,text,rugby ball
+FLAVA,flickr30k,-4.29,7.07,text,rugby ball
+FLAVA,flickr30k,4.64,-8.41,text,rugby ball
+FLAVA,flickr30k,0.66,-6.30,text,rugby ball
+FLAVA,flickr30k,3.34,-5.63,text,rugby ball
+FLAVA,flickr30k,2.27,-7.90,text,rugby ball
+FLAVA,flickr30k,-0.07,2.60,text,rugby ball
+FLAVA,flickr30k,-0.46,-9.93,text,rugby ball
+FLAVA,flickr30k,6.15,-2.22,text,rugby ball
+FLAVA,flickr30k,0.04,0.96,text,rugby ball
+FLAVA,flickr30k,4.50,-9.60,text,rugby ball
+FLAVA,flickr30k,0.96,-7.06,text,rugby ball
+FLAVA,flickr30k,-0.18,-8.63,text,rugby ball
+FLAVA,flickr30k,-5.46,8.95,text,rugby ball
+FLAVA,flickr30k,3.39,-1.76,text,rugby ball
+FLAVA,flickr30k,1.41,-10.56,text,rugby ball
+FLAVA,flickr30k,3.53,-8.47,text,rugby ball
+FLAVA,flickr30k,3.32,-6.86,text,rugby ball
+FLAVA,flickr30k,2.50,-4.44,text,rugby ball
+FLAVA,flickr30k,3.77,3.28,text,rugby ball
+FLAVA,flickr30k,3.21,-7.63,text,rugby ball
+FLAVA,flickr30k,5.26,-5.27,text,rugby ball
+FLAVA,flickr30k,4.36,-3.77,text,rugby ball
+FLAVA,flickr30k,4.46,-1.14,text,rugby ball
+FLAVA,flickr30k,4.10,-6.85,text,rugby ball
+FLAVA,flickr30k,4.98,12.67,text,stage
+FLAVA,flickr30k,-0.97,7.84,text,stage
+FLAVA,flickr30k,1.67,12.79,text,stage
+FLAVA,flickr30k,3.67,13.05,text,stage
+FLAVA,flickr30k,3.67,11.45,text,stage
+FLAVA,flickr30k,1.20,17.89,text,stage
+FLAVA,flickr30k,3.42,13.45,text,stage
+FLAVA,flickr30k,3.67,17.34,text,stage
+FLAVA,flickr30k,8.33,9.78,text,stage
+FLAVA,flickr30k,4.64,14.98,text,stage
+FLAVA,flickr30k,1.32,17.71,text,stage
+FLAVA,flickr30k,5.99,16.91,text,stage
+FLAVA,flickr30k,2.94,14.75,text,stage
+FLAVA,flickr30k,6.16,11.68,text,stage
+FLAVA,flickr30k,1.35,17.76,text,stage
+FLAVA,flickr30k,0.41,17.16,text,stage
+FLAVA,flickr30k,2.72,12.32,text,stage
+FLAVA,flickr30k,7.97,14.20,text,stage
+FLAVA,flickr30k,4.82,7.10,text,stage
+FLAVA,flickr30k,1.62,11.12,text,stage
+FLAVA,flickr30k,0.97,18.68,text,stage
+FLAVA,flickr30k,-3.23,9.48,text,stage
+FLAVA,flickr30k,5.74,13.89,text,stage
+FLAVA,flickr30k,-0.46,7.19,text,stage
+FLAVA,flickr30k,3.58,10.70,text,stage
+FLAVA,flickr30k,5.29,13.65,text,stage
+FLAVA,flickr30k,0.77,14.37,text,stage
+FLAVA,flickr30k,6.20,15.87,text,stage
+FLAVA,flickr30k,-0.19,10.49,text,stage
+FLAVA,flickr30k,7.12,15.10,text,stage
+FLAVA,flickr30k,-2.45,11.16,text,stage
+FLAVA,flickr30k,3.72,10.03,text,stage
+FLAVA,flickr30k,0.52,12.18,text,stage
+FLAVA,flickr30k,3.40,17.35,text,stage
+FLAVA,flickr30k,1.87,9.35,text,stage
+FLAVA,flickr30k,6.66,10.64,text,stage
+FLAVA,flickr30k,2.77,14.18,text,stage
+FLAVA,flickr30k,-0.66,14.91,text,stage
+FLAVA,flickr30k,-0.14,14.81,text,stage
+FLAVA,flickr30k,1.40,13.51,text,stage
+FLAVA,flickr30k,5.55,16.13,text,stage
+FLAVA,flickr30k,-0.28,18.61,text,stage
+FLAVA,flickr30k,8.38,10.06,text,stage
+FLAVA,flickr30k,3.33,16.42,text,stage
+FLAVA,flickr30k,9.07,10.51,text,stage
+FLAVA,flickr30k,5.55,9.16,text,stage
+FLAVA,flickr30k,7.88,12.81,text,stage
+FLAVA,flickr30k,5.36,14.39,text,stage
+FLAVA,flickr30k,5.73,14.86,text,stage
+FLAVA,flickr30k,7.22,13.95,text,stage
+FLAVA,flickr30k,13.86,-1.97,text,volleyball
+FLAVA,flickr30k,1.75,2.78,text,volleyball
+FLAVA,flickr30k,12.57,-4.44,text,volleyball
+FLAVA,flickr30k,15.77,-0.86,text,volleyball
+FLAVA,flickr30k,10.36,-1.25,text,volleyball
+FLAVA,flickr30k,12.57,1.42,text,volleyball
+FLAVA,flickr30k,16.16,1.31,text,volleyball
+FLAVA,flickr30k,10.44,-0.24,text,volleyball
+FLAVA,flickr30k,14.69,-1.36,text,volleyball
+FLAVA,flickr30k,17.36,-1.19,text,volleyball
+FLAVA,flickr30k,12.54,-4.22,text,volleyball
+FLAVA,flickr30k,14.23,1.14,text,volleyball
+FLAVA,flickr30k,11.53,-1.58,text,volleyball
+FLAVA,flickr30k,16.42,-0.29,text,volleyball
+FLAVA,flickr30k,14.60,-5.26,text,volleyball
+FLAVA,flickr30k,8.84,-3.65,text,volleyball
+FLAVA,flickr30k,13.00,-3.81,text,volleyball
+FLAVA,flickr30k,13.29,-1.38,text,volleyball
+FLAVA,flickr30k,6.80,0.53,text,volleyball
+FLAVA,flickr30k,9.41,-4.66,text,volleyball
+FLAVA,flickr30k,-4.17,3.97,text,volleyball
+FLAVA,flickr30k,-1.86,7.63,text,volleyball
+FLAVA,flickr30k,10.79,1.49,text,volleyball
+FLAVA,flickr30k,-3.17,2.06,text,volleyball
+FLAVA,flickr30k,16.22,-1.57,text,volleyball
+FLAVA,flickr30k,-1.42,-5.06,text,volleyball
+FLAVA,flickr30k,11.02,-5.57,text,volleyball
+FLAVA,flickr30k,15.40,-3.12,text,volleyball
+FLAVA,flickr30k,14.45,-3.92,text,volleyball
+FLAVA,flickr30k,13.51,-3.08,text,volleyball
+FLAVA,flickr30k,10.08,0.24,text,volleyball
+FLAVA,flickr30k,11.05,-3.47,text,volleyball
+FLAVA,flickr30k,-5.83,2.94,text,volleyball
+FLAVA,flickr30k,-2.31,4.86,text,volleyball
+FLAVA,flickr30k,11.82,-4.22,text,volleyball
+FLAVA,flickr30k,11.18,-1.82,text,volleyball
+FLAVA,flickr30k,10.57,-1.72,text,volleyball
+FLAVA,flickr30k,15.09,0.34,text,volleyball
+FLAVA,flickr30k,16.12,-2.60,text,volleyball
+FLAVA,flickr30k,12.14,0.15,text,volleyball
+FLAVA,flickr30k,14.84,-5.94,text,volleyball
+FLAVA,flickr30k,14.10,-0.21,text,volleyball
+FLAVA,flickr30k,7.54,-2.61,text,volleyball
+FLAVA,flickr30k,12.36,-3.17,text,volleyball
+FLAVA,flickr30k,11.25,-0.11,text,volleyball
+FLAVA,flickr30k,14.81,-3.73,text,volleyball
+FLAVA,flickr30k,15.51,-1.12,text,volleyball
+FLAVA,flickr30k,12.48,-0.13,text,volleyball
+FLAVA,flickr30k,8.38,-2.35,text,volleyball
+FLAVA,flickr30k,9.87,-4.27,text,volleyball

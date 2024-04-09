@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+CLIP_ViT-B32,flickr30k,-6.99,18.96,image,swing
+CLIP_ViT-B32,flickr30k,-5.37,21.75,image,swing
+CLIP_ViT-B32,flickr30k,-6.55,20.26,image,swing
+CLIP_ViT-B32,flickr30k,-5.85,22.00,image,swing
+CLIP_ViT-B32,flickr30k,-4.13,24.40,image,swing
+CLIP_ViT-B32,flickr30k,-3.53,19.95,image,swing
+CLIP_ViT-B32,flickr30k,-7.06,20.88,image,swing
+CLIP_ViT-B32,flickr30k,-8.13,22.97,image,swing
+CLIP_ViT-B32,flickr30k,-8.01,20.64,image,swing
+CLIP_ViT-B32,flickr30k,-5.10,22.56,image,swing
+CLIP_ViT-B32,flickr30k,-6.16,21.20,image,swing
+CLIP_ViT-B32,flickr30k,-5.39,22.36,image,swing
+CLIP_ViT-B32,flickr30k,-7.24,22.77,image,swing
+CLIP_ViT-B32,flickr30k,-8.99,21.29,image,swing
+CLIP_ViT-B32,flickr30k,-7.56,20.94,image,swing
+CLIP_ViT-B32,flickr30k,-5.24,18.98,image,swing
+CLIP_ViT-B32,flickr30k,-3.97,20.07,image,swing
+CLIP_ViT-B32,flickr30k,-5.49,23.49,image,swing
+CLIP_ViT-B32,flickr30k,-7.56,20.17,image,swing
+CLIP_ViT-B32,flickr30k,-4.69,18.56,image,swing
+CLIP_ViT-B32,flickr30k,-5.39,19.14,image,swing
+CLIP_ViT-B32,flickr30k,-4.26,23.26,image,swing
+CLIP_ViT-B32,flickr30k,-6.12,19.98,image,swing
+CLIP_ViT-B32,flickr30k,-6.08,23.44,image,swing
+CLIP_ViT-B32,flickr30k,-5.75,20.70,image,swing
+CLIP_ViT-B32,flickr30k,-2.66,21.25,image,swing
+CLIP_ViT-B32,flickr30k,-5.72,18.13,image,swing
+CLIP_ViT-B32,flickr30k,-2.22,20.20,image,swing
+CLIP_ViT-B32,flickr30k,-6.88,24.11,image,swing
+CLIP_ViT-B32,flickr30k,-6.39,21.74,image,swing
+CLIP_ViT-B32,flickr30k,-5.11,23.72,image,swing
+CLIP_ViT-B32,flickr30k,-5.25,24.54,image,swing
+CLIP_ViT-B32,flickr30k,-6.00,23.56,image,swing
+CLIP_ViT-B32,flickr30k,-8.93,24.04,image,swing
+CLIP_ViT-B32,flickr30k,-6.66,24.51,image,swing
+CLIP_ViT-B32,flickr30k,-7.15,21.70,image,swing
+CLIP_ViT-B32,flickr30k,-8.51,19.35,image,swing
+CLIP_ViT-B32,flickr30k,-6.13,23.94,image,swing
+CLIP_ViT-B32,flickr30k,-6.99,23.57,image,swing
+CLIP_ViT-B32,flickr30k,-6.67,21.82,image,swing
+CLIP_ViT-B32,flickr30k,-3.71,22.29,image,swing
+CLIP_ViT-B32,flickr30k,-6.04,24.83,image,swing
+CLIP_ViT-B32,flickr30k,-6.36,22.88,image,swing
+CLIP_ViT-B32,flickr30k,-9.09,24.13,image,swing
+CLIP_ViT-B32,flickr30k,-6.57,21.65,image,swing
+CLIP_ViT-B32,flickr30k,-6.75,19.76,image,swing
+CLIP_ViT-B32,flickr30k,-7.94,21.63,image,swing
+CLIP_ViT-B32,flickr30k,-4.12,21.14,image,swing
+CLIP_ViT-B32,flickr30k,-4.90,21.40,image,swing
+CLIP_ViT-B32,flickr30k,-6.85,22.36,image,swing
+CLIP_ViT-B32,flickr30k,13.13,12.62,image,volleyball
+CLIP_ViT-B32,flickr30k,12.97,16.10,image,volleyball
+CLIP_ViT-B32,flickr30k,9.76,18.07,image,volleyball
+CLIP_ViT-B32,flickr30k,12.95,15.77,image,volleyball
+CLIP_ViT-B32,flickr30k,12.04,13.04,image,volleyball
+CLIP_ViT-B32,flickr30k,12.44,13.05,image,volleyball
+CLIP_ViT-B32,flickr30k,12.10,12.84,image,volleyball
+CLIP_ViT-B32,flickr30k,-3.51,16.36,image,volleyball
+CLIP_ViT-B32,flickr30k,12.00,12.15,image,volleyball
+CLIP_ViT-B32,flickr30k,14.20,13.05,image,volleyball
+CLIP_ViT-B32,flickr30k,14.48,12.58,image,volleyball
+CLIP_ViT-B32,flickr30k,13.42,11.31,image,volleyball
+CLIP_ViT-B32,flickr30k,16.02,15.93,image,volleyball
+CLIP_ViT-B32,flickr30k,15.41,12.73,image,volleyball
+CLIP_ViT-B32,flickr30k,15.25,15.46,image,volleyball
+CLIP_ViT-B32,flickr30k,12.90,17.65,image,volleyball
+CLIP_ViT-B32,flickr30k,12.00,12.96,image,volleyball
+CLIP_ViT-B32,flickr30k,14.55,12.32,image,volleyball
+CLIP_ViT-B32,flickr30k,13.07,12.40,image,volleyball
+CLIP_ViT-B32,flickr30k,10.04,16.55,image,volleyball
+CLIP_ViT-B32,flickr30k,14.35,15.64,image,volleyball
+CLIP_ViT-B32,flickr30k,-0.61,15.19,image,volleyball
+CLIP_ViT-B32,flickr30k,13.93,16.52,image,volleyball
+CLIP_ViT-B32,flickr30k,14.66,15.39,image,volleyball
+CLIP_ViT-B32,flickr30k,12.79,15.67,image,volleyball
+CLIP_ViT-B32,flickr30k,14.49,16.39,image,volleyball
+CLIP_ViT-B32,flickr30k,14.76,14.79,image,volleyball
+CLIP_ViT-B32,flickr30k,14.68,11.70,image,volleyball
+CLIP_ViT-B32,flickr30k,14.20,12.82,image,volleyball
+CLIP_ViT-B32,flickr30k,14.11,17.66,image,volleyball
+CLIP_ViT-B32,flickr30k,11.39,16.03,image,volleyball
+CLIP_ViT-B32,flickr30k,13.88,16.09,image,volleyball
+CLIP_ViT-B32,flickr30k,13.24,15.02,image,volleyball
+CLIP_ViT-B32,flickr30k,13.55,15.69,image,volleyball
+CLIP_ViT-B32,flickr30k,11.42,17.08,image,volleyball
+CLIP_ViT-B32,flickr30k,14.47,15.51,image,volleyball
+CLIP_ViT-B32,flickr30k,16.05,16.55,image,volleyball
+CLIP_ViT-B32,flickr30k,12.30,17.22,image,volleyball
+CLIP_ViT-B32,flickr30k,11.13,13.58,image,volleyball
+CLIP_ViT-B32,flickr30k,10.98,17.86,image,volleyball
+CLIP_ViT-B32,flickr30k,10.95,18.95,image,volleyball
+CLIP_ViT-B32,flickr30k,15.47,12.73,image,volleyball
+CLIP_ViT-B32,flickr30k,13.46,11.04,image,volleyball
+CLIP_ViT-B32,flickr30k,13.54,16.06,image,volleyball
+CLIP_ViT-B32,flickr30k,11.53,16.80,image,volleyball
+CLIP_ViT-B32,flickr30k,10.56,16.55,image,volleyball
+CLIP_ViT-B32,flickr30k,11.90,12.79,image,volleyball
+CLIP_ViT-B32,flickr30k,14.89,16.56,image,volleyball
+CLIP_ViT-B32,flickr30k,15.47,15.31,image,volleyball
+CLIP_ViT-B32,flickr30k,-6.23,16.82,image,volleyball
+CLIP_ViT-B32,flickr30k,9.50,28.10,image,racquet
+CLIP_ViT-B32,flickr30k,9.08,24.21,image,racquet
+CLIP_ViT-B32,flickr30k,8.71,28.62,image,racquet
+CLIP_ViT-B32,flickr30k,9.36,30.10,image,racquet
+CLIP_ViT-B32,flickr30k,11.71,26.46,image,racquet
+CLIP_ViT-B32,flickr30k,9.89,25.62,image,racquet
+CLIP_ViT-B32,flickr30k,13.10,28.10,image,racquet
+CLIP_ViT-B32,flickr30k,12.22,26.73,image,racquet
+CLIP_ViT-B32,flickr30k,9.37,30.16,image,racquet
+CLIP_ViT-B32,flickr30k,11.54,26.91,image,racquet
+CLIP_ViT-B32,flickr30k,11.92,27.48,image,racquet
+CLIP_ViT-B32,flickr30k,13.53,28.60,image,racquet
+CLIP_ViT-B32,flickr30k,7.58,23.99,image,racquet
+CLIP_ViT-B32,flickr30k,8.52,28.29,image,racquet
+CLIP_ViT-B32,flickr30k,13.30,27.34,image,racquet
+CLIP_ViT-B32,flickr30k,10.57,27.87,image,racquet
+CLIP_ViT-B32,flickr30k,10.19,26.38,image,racquet
+CLIP_ViT-B32,flickr30k,11.01,26.94,image,racquet
+CLIP_ViT-B32,flickr30k,11.46,27.89,image,racquet
+CLIP_ViT-B32,flickr30k,9.20,25.67,image,racquet
+CLIP_ViT-B32,flickr30k,13.31,27.29,image,racquet
+CLIP_ViT-B32,flickr30k,12.72,26.06,image,racquet
+CLIP_ViT-B32,flickr30k,11.35,29.00,image,racquet
+CLIP_ViT-B32,flickr30k,11.62,27.62,image,racquet
+CLIP_ViT-B32,flickr30k,8.24,24.92,image,racquet
+CLIP_ViT-B32,flickr30k,9.50,29.16,image,racquet
+CLIP_ViT-B32,flickr30k,7.82,27.89,image,racquet
+CLIP_ViT-B32,flickr30k,9.43,30.24,image,racquet
+CLIP_ViT-B32,flickr30k,-2.96,13.83,image,racquet
+CLIP_ViT-B32,flickr30k,8.72,27.25,image,racquet
+CLIP_ViT-B32,flickr30k,7.40,26.22,image,racquet
+CLIP_ViT-B32,flickr30k,11.05,25.58,image,racquet
+CLIP_ViT-B32,flickr30k,7.29,26.16,image,racquet
+CLIP_ViT-B32,flickr30k,10.26,26.81,image,racquet
+CLIP_ViT-B32,flickr30k,-1.57,20.03,image,racquet
+CLIP_ViT-B32,flickr30k,10.95,24.17,image,racquet
+CLIP_ViT-B32,flickr30k,6.75,24.48,image,racquet
+CLIP_ViT-B32,flickr30k,10.88,25.50,image,racquet
+CLIP_ViT-B32,flickr30k,8.46,24.82,image,racquet
+CLIP_ViT-B32,flickr30k,11.38,26.13,image,racquet
+CLIP_ViT-B32,flickr30k,10.03,27.41,image,racquet
+CLIP_ViT-B32,flickr30k,12.02,28.41,image,racquet
+CLIP_ViT-B32,flickr30k,7.48,26.16,image,racquet
+CLIP_ViT-B32,flickr30k,12.21,25.30,image,racquet
+CLIP_ViT-B32,flickr30k,7.20,24.61,image,racquet
+CLIP_ViT-B32,flickr30k,12.97,27.98,image,racquet
+CLIP_ViT-B32,flickr30k,10.59,25.83,image,racquet
+CLIP_ViT-B32,flickr30k,11.85,27.63,image,racquet
+CLIP_ViT-B32,flickr30k,11.92,29.83,image,racquet
+CLIP_ViT-B32,flickr30k,10.06,25.46,image,racquet
+CLIP_ViT-B32,flickr30k,-17.95,10.10,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.20,8.89,image,off-roader
+CLIP_ViT-B32,flickr30k,-9.79,17.00,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.35,8.08,image,off-roader
+CLIP_ViT-B32,flickr30k,-18.37,9.08,image,off-roader
+CLIP_ViT-B32,flickr30k,-19.20,7.06,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.38,7.90,image,off-roader
+CLIP_ViT-B32,flickr30k,-15.21,11.47,image,off-roader
+CLIP_ViT-B32,flickr30k,-15.35,6.70,image,off-roader
+CLIP_ViT-B32,flickr30k,-14.29,10.07,image,off-roader
+CLIP_ViT-B32,flickr30k,-18.33,10.06,image,off-roader
+CLIP_ViT-B32,flickr30k,-14.46,6.83,image,off-roader
+CLIP_ViT-B32,flickr30k,-13.73,7.69,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.71,5.45,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.68,6.39,image,off-roader
+CLIP_ViT-B32,flickr30k,-13.98,7.59,image,off-roader
+CLIP_ViT-B32,flickr30k,-19.27,9.69,image,off-roader
+CLIP_ViT-B32,flickr30k,-15.62,6.23,image,off-roader
+CLIP_ViT-B32,flickr30k,-18.08,7.98,image,off-roader
+CLIP_ViT-B32,flickr30k,-15.36,7.66,image,off-roader
+CLIP_ViT-B32,flickr30k,-15.06,5.70,image,off-roader
+CLIP_ViT-B32,flickr30k,-14.98,8.72,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.46,9.88,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.76,8.61,image,off-roader
+CLIP_ViT-B32,flickr30k,-12.70,6.86,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.86,7.56,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.76,10.89,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.45,10.53,image,off-roader
+CLIP_ViT-B32,flickr30k,-13.87,6.53,image,off-roader
+CLIP_ViT-B32,flickr30k,-18.49,9.64,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.89,7.69,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.31,9.02,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.29,9.38,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.50,6.27,image,off-roader
+CLIP_ViT-B32,flickr30k,-14.63,7.79,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.01,8.19,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.71,8.95,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.62,8.76,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.11,8.50,image,off-roader
+CLIP_ViT-B32,flickr30k,-15.50,7.82,image,off-roader
+CLIP_ViT-B32,flickr30k,-14.26,8.82,image,off-roader
+CLIP_ViT-B32,flickr30k,-19.76,8.99,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.87,10.75,image,off-roader
+CLIP_ViT-B32,flickr30k,-18.69,10.84,image,off-roader
+CLIP_ViT-B32,flickr30k,-17.11,11.85,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.34,6.94,image,off-roader
+CLIP_ViT-B32,flickr30k,-12.67,6.82,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.75,9.39,image,off-roader
+CLIP_ViT-B32,flickr30k,-15.60,8.57,image,off-roader
+CLIP_ViT-B32,flickr30k,-16.94,7.13,image,off-roader
+CLIP_ViT-B32,flickr30k,-5.84,10.06,image,rugby ball
+CLIP_ViT-B32,flickr30k,-4.97,10.60,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.16,8.29,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.11,13.22,image,rugby ball
+CLIP_ViT-B32,flickr30k,-5.51,10.13,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.40,14.29,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.27,8.85,image,rugby ball
+CLIP_ViT-B32,flickr30k,-2.91,17.25,image,rugby ball
+CLIP_ViT-B32,flickr30k,2.09,9.40,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.53,9.71,image,rugby ball
+CLIP_ViT-B32,flickr30k,-1.06,12.18,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.26,6.31,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.34,13.94,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.88,11.31,image,rugby ball
+CLIP_ViT-B32,flickr30k,-6.11,10.03,image,rugby ball
+CLIP_ViT-B32,flickr30k,0.62,8.47,image,rugby ball
+CLIP_ViT-B32,flickr30k,8.51,10.40,image,rugby ball
+CLIP_ViT-B32,flickr30k,-3.22,16.63,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.56,7.79,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.91,7.54,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.10,9.10,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.51,7.13,image,rugby ball
+CLIP_ViT-B32,flickr30k,-6.65,10.57,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.34,10.64,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.39,12.57,image,rugby ball
+CLIP_ViT-B32,flickr30k,2.37,7.42,image,rugby ball
+CLIP_ViT-B32,flickr30k,2.15,8.92,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.65,14.12,image,rugby ball
+CLIP_ViT-B32,flickr30k,0.48,9.79,image,rugby ball
+CLIP_ViT-B32,flickr30k,4.86,12.07,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.74,8.91,image,rugby ball
+CLIP_ViT-B32,flickr30k,-1.30,12.92,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.33,6.93,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.83,13.00,image,rugby ball
+CLIP_ViT-B32,flickr30k,-1.55,11.87,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.68,9.22,image,rugby ball
+CLIP_ViT-B32,flickr30k,0.59,11.35,image,rugby ball
+CLIP_ViT-B32,flickr30k,-0.70,12.95,image,rugby ball
+CLIP_ViT-B32,flickr30k,-6.70,10.60,image,rugby ball
+CLIP_ViT-B32,flickr30k,0.79,9.13,image,rugby ball
+CLIP_ViT-B32,flickr30k,4.85,12.07,image,rugby ball
+CLIP_ViT-B32,flickr30k,-6.03,9.70,image,rugby ball
+CLIP_ViT-B32,flickr30k,2.21,6.44,image,rugby ball
+CLIP_ViT-B32,flickr30k,0.47,12.04,image,rugby ball
+CLIP_ViT-B32,flickr30k,0.72,10.54,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.03,10.48,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.09,12.14,image,rugby ball
+CLIP_ViT-B32,flickr30k,2.55,9.64,image,rugby ball
+CLIP_ViT-B32,flickr30k,2.40,6.77,image,rugby ball
+CLIP_ViT-B32,flickr30k,1.17,9.54,image,rugby ball
+CLIP_ViT-B32,flickr30k,-8.31,-26.61,text,swing
+CLIP_ViT-B32,flickr30k,-6.58,-27.94,text,swing
+CLIP_ViT-B32,flickr30k,-4.73,-28.93,text,swing
+CLIP_ViT-B32,flickr30k,-6.63,-29.66,text,swing
+CLIP_ViT-B32,flickr30k,-6.50,-27.27,text,swing
+CLIP_ViT-B32,flickr30k,-7.34,-28.53,text,swing
+CLIP_ViT-B32,flickr30k,-3.77,-28.93,text,swing
+CLIP_ViT-B32,flickr30k,-5.09,-29.83,text,swing
+CLIP_ViT-B32,flickr30k,-7.50,-27.78,text,swing
+CLIP_ViT-B32,flickr30k,-5.30,-27.68,text,swing
+CLIP_ViT-B32,flickr30k,-10.09,-27.21,text,swing
+CLIP_ViT-B32,flickr30k,-6.27,-28.89,text,swing
+CLIP_ViT-B32,flickr30k,-5.76,-28.27,text,swing
+CLIP_ViT-B32,flickr30k,-3.76,-30.21,text,swing
+CLIP_ViT-B32,flickr30k,-8.89,-28.14,text,swing
+CLIP_ViT-B32,flickr30k,-3.91,-27.98,text,swing
+CLIP_ViT-B32,flickr30k,-6.01,-29.34,text,swing
+CLIP_ViT-B32,flickr30k,-7.97,-30.99,text,swing
+CLIP_ViT-B32,flickr30k,-6.21,-27.75,text,swing
+CLIP_ViT-B32,flickr30k,-5.73,-28.74,text,swing
+CLIP_ViT-B32,flickr30k,-4.58,-28.60,text,swing
+CLIP_ViT-B32,flickr30k,-2.21,-26.12,text,swing
+CLIP_ViT-B32,flickr30k,-4.92,-27.26,text,swing
+CLIP_ViT-B32,flickr30k,-6.98,-26.15,text,swing
+CLIP_ViT-B32,flickr30k,-6.09,-29.14,text,swing
+CLIP_ViT-B32,flickr30k,-8.29,-28.82,text,swing
+CLIP_ViT-B32,flickr30k,0.09,-16.60,text,swing
+CLIP_ViT-B32,flickr30k,-7.30,-29.08,text,swing
+CLIP_ViT-B32,flickr30k,-4.74,-25.23,text,swing
+CLIP_ViT-B32,flickr30k,-8.96,-26.86,text,swing
+CLIP_ViT-B32,flickr30k,-5.76,-26.56,text,swing
+CLIP_ViT-B32,flickr30k,-7.47,-31.44,text,swing
+CLIP_ViT-B32,flickr30k,-8.53,-30.97,text,swing
+CLIP_ViT-B32,flickr30k,-3.01,-30.00,text,swing
+CLIP_ViT-B32,flickr30k,-9.24,-30.63,text,swing
+CLIP_ViT-B32,flickr30k,-5.70,-26.05,text,swing
+CLIP_ViT-B32,flickr30k,-6.31,-31.46,text,swing
+CLIP_ViT-B32,flickr30k,-5.07,-31.47,text,swing
+CLIP_ViT-B32,flickr30k,-5.60,-30.64,text,swing
+CLIP_ViT-B32,flickr30k,-5.47,-29.05,text,swing
+CLIP_ViT-B32,flickr30k,-7.45,-27.11,text,swing
+CLIP_ViT-B32,flickr30k,-5.83,-27.09,text,swing
+CLIP_ViT-B32,flickr30k,-4.78,-30.81,text,swing
+CLIP_ViT-B32,flickr30k,-6.20,-30.23,text,swing
+CLIP_ViT-B32,flickr30k,-5.32,-29.60,text,swing
+CLIP_ViT-B32,flickr30k,-7.32,-30.29,text,swing
+CLIP_ViT-B32,flickr30k,-4.37,-26.31,text,swing
+CLIP_ViT-B32,flickr30k,-5.76,-28.27,text,swing
+CLIP_ViT-B32,flickr30k,-8.01,-28.74,text,swing
+CLIP_ViT-B32,flickr30k,-9.32,-26.90,text,swing
+CLIP_ViT-B32,flickr30k,11.68,-11.70,text,volleyball
+CLIP_ViT-B32,flickr30k,13.06,-12.43,text,volleyball
+CLIP_ViT-B32,flickr30k,11.81,-7.95,text,volleyball
+CLIP_ViT-B32,flickr30k,11.03,-9.52,text,volleyball
+CLIP_ViT-B32,flickr30k,9.88,-10.17,text,volleyball
+CLIP_ViT-B32,flickr30k,10.88,-9.42,text,volleyball
+CLIP_ViT-B32,flickr30k,11.47,-9.81,text,volleyball
+CLIP_ViT-B32,flickr30k,-0.19,-10.41,text,volleyball
+CLIP_ViT-B32,flickr30k,10.50,-12.13,text,volleyball
+CLIP_ViT-B32,flickr30k,9.00,-10.18,text,volleyball
+CLIP_ViT-B32,flickr30k,13.15,-8.97,text,volleyball
+CLIP_ViT-B32,flickr30k,8.68,-11.72,text,volleyball
+CLIP_ViT-B32,flickr30k,13.72,-8.30,text,volleyball
+CLIP_ViT-B32,flickr30k,1.14,-9.77,text,volleyball
+CLIP_ViT-B32,flickr30k,9.79,-11.70,text,volleyball
+CLIP_ViT-B32,flickr30k,12.73,-12.56,text,volleyball
+CLIP_ViT-B32,flickr30k,11.31,-9.51,text,volleyball
+CLIP_ViT-B32,flickr30k,9.89,-10.26,text,volleyball
+CLIP_ViT-B32,flickr30k,8.95,-17.25,text,volleyball
+CLIP_ViT-B32,flickr30k,14.36,-12.64,text,volleyball
+CLIP_ViT-B32,flickr30k,13.86,-11.88,text,volleyball
+CLIP_ViT-B32,flickr30k,-0.48,-11.71,text,volleyball
+CLIP_ViT-B32,flickr30k,14.08,-8.71,text,volleyball
+CLIP_ViT-B32,flickr30k,10.55,-10.26,text,volleyball
+CLIP_ViT-B32,flickr30k,13.24,-10.37,text,volleyball
+CLIP_ViT-B32,flickr30k,14.52,-11.28,text,volleyball
+CLIP_ViT-B32,flickr30k,12.86,-10.85,text,volleyball
+CLIP_ViT-B32,flickr30k,10.46,-7.54,text,volleyball
+CLIP_ViT-B32,flickr30k,10.87,-7.72,text,volleyball
+CLIP_ViT-B32,flickr30k,10.97,-10.33,text,volleyball
+CLIP_ViT-B32,flickr30k,4.39,-15.42,text,volleyball
+CLIP_ViT-B32,flickr30k,14.23,-11.24,text,volleyball
+CLIP_ViT-B32,flickr30k,10.36,-10.54,text,volleyball
+CLIP_ViT-B32,flickr30k,12.96,-11.05,text,volleyball
+CLIP_ViT-B32,flickr30k,12.17,-10.25,text,volleyball
+CLIP_ViT-B32,flickr30k,12.70,-13.25,text,volleyball
+CLIP_ViT-B32,flickr30k,12.96,-11.54,text,volleyball
+CLIP_ViT-B32,flickr30k,10.45,-11.27,text,volleyball
+CLIP_ViT-B32,flickr30k,11.14,-8.48,text,volleyball
+CLIP_ViT-B32,flickr30k,11.78,-10.56,text,volleyball
+CLIP_ViT-B32,flickr30k,9.75,-24.29,text,volleyball
+CLIP_ViT-B32,flickr30k,9.65,-11.28,text,volleyball
+CLIP_ViT-B32,flickr30k,9.13,-8.66,text,volleyball
+CLIP_ViT-B32,flickr30k,14.06,-11.85,text,volleyball
+CLIP_ViT-B32,flickr30k,11.95,-7.65,text,volleyball
+CLIP_ViT-B32,flickr30k,14.22,-10.05,text,volleyball
+CLIP_ViT-B32,flickr30k,10.33,-8.52,text,volleyball
+CLIP_ViT-B32,flickr30k,13.22,-12.06,text,volleyball
+CLIP_ViT-B32,flickr30k,13.15,-8.86,text,volleyball
+CLIP_ViT-B32,flickr30k,0.57,-10.99,text,volleyball
+CLIP_ViT-B32,flickr30k,10.60,-20.14,text,racquet
+CLIP_ViT-B32,flickr30k,7.86,-18.31,text,racquet
+CLIP_ViT-B32,flickr30k,11.61,-23.71,text,racquet
+CLIP_ViT-B32,flickr30k,10.30,-20.07,text,racquet
+CLIP_ViT-B32,flickr30k,9.94,-21.53,text,racquet
+CLIP_ViT-B32,flickr30k,10.18,-21.28,text,racquet
+CLIP_ViT-B32,flickr30k,10.53,-18.48,text,racquet
+CLIP_ViT-B32,flickr30k,10.82,-18.59,text,racquet
+CLIP_ViT-B32,flickr30k,7.78,-22.82,text,racquet
+CLIP_ViT-B32,flickr30k,11.63,-21.66,text,racquet
+CLIP_ViT-B32,flickr30k,10.16,-17.66,text,racquet
+CLIP_ViT-B32,flickr30k,6.85,-19.27,text,racquet
+CLIP_ViT-B32,flickr30k,8.00,-20.45,text,racquet
+CLIP_ViT-B32,flickr30k,10.98,-23.63,text,racquet
+CLIP_ViT-B32,flickr30k,6.35,-20.12,text,racquet
+CLIP_ViT-B32,flickr30k,9.36,-20.14,text,racquet
+CLIP_ViT-B32,flickr30k,10.02,-21.39,text,racquet
+CLIP_ViT-B32,flickr30k,12.13,-18.82,text,racquet
+CLIP_ViT-B32,flickr30k,9.38,-19.13,text,racquet
+CLIP_ViT-B32,flickr30k,9.19,-23.08,text,racquet
+CLIP_ViT-B32,flickr30k,8.57,-21.54,text,racquet
+CLIP_ViT-B32,flickr30k,8.54,-19.45,text,racquet
+CLIP_ViT-B32,flickr30k,9.53,-19.04,text,racquet
+CLIP_ViT-B32,flickr30k,11.16,-17.82,text,racquet
+CLIP_ViT-B32,flickr30k,10.22,-22.79,text,racquet
+CLIP_ViT-B32,flickr30k,10.42,-19.71,text,racquet
+CLIP_ViT-B32,flickr30k,11.19,-23.31,text,racquet
+CLIP_ViT-B32,flickr30k,12.69,-22.42,text,racquet
+CLIP_ViT-B32,flickr30k,3.12,-17.80,text,racquet
+CLIP_ViT-B32,flickr30k,10.54,-22.94,text,racquet
+CLIP_ViT-B32,flickr30k,11.79,-20.76,text,racquet
+CLIP_ViT-B32,flickr30k,7.28,-21.63,text,racquet
+CLIP_ViT-B32,flickr30k,12.55,-21.10,text,racquet
+CLIP_ViT-B32,flickr30k,9.62,-19.08,text,racquet
+CLIP_ViT-B32,flickr30k,-3.00,-10.11,text,racquet
+CLIP_ViT-B32,flickr30k,-3.40,-18.26,text,racquet
+CLIP_ViT-B32,flickr30k,6.35,-16.54,text,racquet
+CLIP_ViT-B32,flickr30k,10.59,-21.51,text,racquet
+CLIP_ViT-B32,flickr30k,7.41,-21.92,text,racquet
+CLIP_ViT-B32,flickr30k,11.63,-23.39,text,racquet
+CLIP_ViT-B32,flickr30k,10.34,-21.94,text,racquet
+CLIP_ViT-B32,flickr30k,7.02,-18.54,text,racquet
+CLIP_ViT-B32,flickr30k,10.37,-21.97,text,racquet
+CLIP_ViT-B32,flickr30k,9.32,-21.11,text,racquet
+CLIP_ViT-B32,flickr30k,7.46,-19.05,text,racquet
+CLIP_ViT-B32,flickr30k,9.13,-20.02,text,racquet
+CLIP_ViT-B32,flickr30k,10.11,-18.83,text,racquet
+CLIP_ViT-B32,flickr30k,9.10,-19.38,text,racquet
+CLIP_ViT-B32,flickr30k,12.52,-19.47,text,racquet
+CLIP_ViT-B32,flickr30k,10.84,-18.99,text,racquet
+CLIP_ViT-B32,flickr30k,-6.36,-13.22,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.36,-11.39,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.83,-12.16,text,off-roader
+CLIP_ViT-B32,flickr30k,-12.59,-9.63,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.09,-11.98,text,off-roader
+CLIP_ViT-B32,flickr30k,-7.26,-10.37,text,off-roader
+CLIP_ViT-B32,flickr30k,-9.07,-8.64,text,off-roader
+CLIP_ViT-B32,flickr30k,-3.76,-10.30,text,off-roader
+CLIP_ViT-B32,flickr30k,-7.30,-8.65,text,off-roader
+CLIP_ViT-B32,flickr30k,-11.33,-10.50,text,off-roader
+CLIP_ViT-B32,flickr30k,-6.96,-11.73,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.67,-10.67,text,off-roader
+CLIP_ViT-B32,flickr30k,-5.91,-9.37,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.97,-8.58,text,off-roader
+CLIP_ViT-B32,flickr30k,-9.99,-9.31,text,off-roader
+CLIP_ViT-B32,flickr30k,-5.51,-11.95,text,off-roader
+CLIP_ViT-B32,flickr30k,-6.73,-12.01,text,off-roader
+CLIP_ViT-B32,flickr30k,-6.84,-9.77,text,off-roader
+CLIP_ViT-B32,flickr30k,-12.67,-10.88,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.35,-9.13,text,off-roader
+CLIP_ViT-B32,flickr30k,-9.69,-13.26,text,off-roader
+CLIP_ViT-B32,flickr30k,-12.18,-8.75,text,off-roader
+CLIP_ViT-B32,flickr30k,-7.55,-12.89,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.49,-9.77,text,off-roader
+CLIP_ViT-B32,flickr30k,-5.41,-11.14,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.11,-8.80,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.51,-13.53,text,off-roader
+CLIP_ViT-B32,flickr30k,-6.70,-15.12,text,off-roader
+CLIP_ViT-B32,flickr30k,-12.55,-11.79,text,off-roader
+CLIP_ViT-B32,flickr30k,-7.17,-12.00,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.75,-10.60,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.07,-12.13,text,off-roader
+CLIP_ViT-B32,flickr30k,-6.18,-13.24,text,off-roader
+CLIP_ViT-B32,flickr30k,-9.68,-11.87,text,off-roader
+CLIP_ViT-B32,flickr30k,-9.28,-11.18,text,off-roader
+CLIP_ViT-B32,flickr30k,-12.71,-9.71,text,off-roader
+CLIP_ViT-B32,flickr30k,-11.25,-11.21,text,off-roader
+CLIP_ViT-B32,flickr30k,-7.62,-10.84,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.77,-10.59,text,off-roader
+CLIP_ViT-B32,flickr30k,-11.26,-10.38,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.34,-9.91,text,off-roader
+CLIP_ViT-B32,flickr30k,-7.20,-10.87,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.24,-7.56,text,off-roader
+CLIP_ViT-B32,flickr30k,-7.48,-13.15,text,off-roader
+CLIP_ViT-B32,flickr30k,-9.40,-10.21,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.43,-9.33,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.10,-10.94,text,off-roader
+CLIP_ViT-B32,flickr30k,-6.96,-14.35,text,off-roader
+CLIP_ViT-B32,flickr30k,-8.96,-8.66,text,off-roader
+CLIP_ViT-B32,flickr30k,-10.96,-9.54,text,off-roader
+CLIP_ViT-B32,flickr30k,-1.85,-12.33,text,rugby ball
+CLIP_ViT-B32,flickr30k,-3.28,-12.33,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.09,-12.77,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.97,-13.45,text,rugby ball
+CLIP_ViT-B32,flickr30k,-1.61,-13.18,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.03,-14.49,text,rugby ball
+CLIP_ViT-B32,flickr30k,0.30,-10.76,text,rugby ball
+CLIP_ViT-B32,flickr30k,-0.09,-9.20,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.00,-9.42,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.17,-12.14,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.05,-14.94,text,rugby ball
+CLIP_ViT-B32,flickr30k,1.19,-10.89,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.76,-12.87,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.28,-11.83,text,rugby ball
+CLIP_ViT-B32,flickr30k,-2.88,-11.82,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.08,-8.77,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.06,-11.92,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.53,-15.98,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.79,-9.55,text,rugby ball
+CLIP_ViT-B32,flickr30k,1.43,-12.02,text,rugby ball
+CLIP_ViT-B32,flickr30k,0.30,-15.40,text,rugby ball
+CLIP_ViT-B32,flickr30k,1.85,-12.41,text,rugby ball
+CLIP_ViT-B32,flickr30k,-3.22,-12.14,text,rugby ball
+CLIP_ViT-B32,flickr30k,5.34,-14.47,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.84,-17.37,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.29,-9.97,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.73,-8.75,text,rugby ball
+CLIP_ViT-B32,flickr30k,-4.39,-14.42,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.17,-12.87,text,rugby ball
+CLIP_ViT-B32,flickr30k,5.37,-11.68,text,rugby ball
+CLIP_ViT-B32,flickr30k,0.89,-15.71,text,rugby ball
+CLIP_ViT-B32,flickr30k,0.57,-12.42,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.41,-9.90,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.74,-17.12,text,rugby ball
+CLIP_ViT-B32,flickr30k,-0.38,-15.24,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.64,-9.98,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.74,-10.56,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.16,-16.57,text,rugby ball
+CLIP_ViT-B32,flickr30k,-3.63,-18.80,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.40,-10.30,text,rugby ball
+CLIP_ViT-B32,flickr30k,5.05,-12.11,text,rugby ball
+CLIP_ViT-B32,flickr30k,-1.32,-13.92,text,rugby ball
+CLIP_ViT-B32,flickr30k,4.58,-9.73,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.58,-13.70,text,rugby ball
+CLIP_ViT-B32,flickr30k,-1.30,-13.43,text,rugby ball
+CLIP_ViT-B32,flickr30k,2.63,-14.57,text,rugby ball
+CLIP_ViT-B32,flickr30k,6.35,-11.82,text,rugby ball
+CLIP_ViT-B32,flickr30k,1.45,-15.32,text,rugby ball
+CLIP_ViT-B32,flickr30k,3.24,-9.31,text,rugby ball
+CLIP_ViT-B32,flickr30k,0.40,-15.31,text,rugby ball

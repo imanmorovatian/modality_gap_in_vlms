@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+CLIP_ViT-B32,mscoco,-2.93,35.31,image,tup
+CLIP_ViT-B32,mscoco,-2.23,35.85,image,tup
+CLIP_ViT-B32,mscoco,-2.46,34.93,image,tup
+CLIP_ViT-B32,mscoco,-2.01,36.68,image,tup
+CLIP_ViT-B32,mscoco,-2.93,36.43,image,tup
+CLIP_ViT-B32,mscoco,-1.91,37.11,image,tup
+CLIP_ViT-B32,mscoco,-1.29,37.32,image,tup
+CLIP_ViT-B32,mscoco,-1.92,38.12,image,tup
+CLIP_ViT-B32,mscoco,-3.71,36.55,image,tup
+CLIP_ViT-B32,mscoco,-2.86,37.77,image,tup
+CLIP_ViT-B32,mscoco,-4.32,39.59,image,tup
+CLIP_ViT-B32,mscoco,-3.86,35.33,image,tup
+CLIP_ViT-B32,mscoco,-1.00,37.26,image,tup
+CLIP_ViT-B32,mscoco,-2.52,37.44,image,tup
+CLIP_ViT-B32,mscoco,0.16,36.50,image,tup
+CLIP_ViT-B32,mscoco,-0.86,36.22,image,tup
+CLIP_ViT-B32,mscoco,-2.60,34.30,image,tup
+CLIP_ViT-B32,mscoco,-2.06,33.51,image,tup
+CLIP_ViT-B32,mscoco,-0.36,37.29,image,tup
+CLIP_ViT-B32,mscoco,-1.76,40.52,image,tup
+CLIP_ViT-B32,mscoco,-3.58,34.11,image,tup
+CLIP_ViT-B32,mscoco,-5.31,37.11,image,tup
+CLIP_ViT-B32,mscoco,-2.31,36.40,image,tup
+CLIP_ViT-B32,mscoco,-4.00,37.83,image,tup
+CLIP_ViT-B32,mscoco,-2.98,35.44,image,tup
+CLIP_ViT-B32,mscoco,-0.93,38.84,image,tup
+CLIP_ViT-B32,mscoco,-1.07,34.62,image,tup
+CLIP_ViT-B32,mscoco,-3.74,37.17,image,tup
+CLIP_ViT-B32,mscoco,-2.15,37.77,image,tup
+CLIP_ViT-B32,mscoco,-3.35,38.48,image,tup
+CLIP_ViT-B32,mscoco,-0.17,39.73,image,tup
+CLIP_ViT-B32,mscoco,-1.70,39.42,image,tup
+CLIP_ViT-B32,mscoco,0.98,37.75,image,tup
+CLIP_ViT-B32,mscoco,-2.12,37.45,image,tup
+CLIP_ViT-B32,mscoco,-3.06,39.13,image,tup
+CLIP_ViT-B32,mscoco,-3.11,38.57,image,tup
+CLIP_ViT-B32,mscoco,-4.16,35.68,image,tup
+CLIP_ViT-B32,mscoco,-1.02,39.50,image,tup
+CLIP_ViT-B32,mscoco,0.51,35.56,image,tup
+CLIP_ViT-B32,mscoco,-1.24,38.48,image,tup
+CLIP_ViT-B32,mscoco,-1.36,35.32,image,tup
+CLIP_ViT-B32,mscoco,-5.22,37.98,image,tup
+CLIP_ViT-B32,mscoco,-4.24,36.74,image,tup
+CLIP_ViT-B32,mscoco,-1.20,36.52,image,tup
+CLIP_ViT-B32,mscoco,-0.67,35.43,image,tup
+CLIP_ViT-B32,mscoco,-5.18,35.13,image,tup
+CLIP_ViT-B32,mscoco,-1.69,36.14,image,tup
+CLIP_ViT-B32,mscoco,-3.10,36.78,image,tup
+CLIP_ViT-B32,mscoco,-2.41,39.14,image,tup
+CLIP_ViT-B32,mscoco,-0.29,38.15,image,tup
+CLIP_ViT-B32,mscoco,6.61,-9.44,image,bowtie
+CLIP_ViT-B32,mscoco,5.27,-12.24,image,bowtie
+CLIP_ViT-B32,mscoco,6.04,-14.85,image,bowtie
+CLIP_ViT-B32,mscoco,4.39,-11.96,image,bowtie
+CLIP_ViT-B32,mscoco,6.93,-13.11,image,bowtie
+CLIP_ViT-B32,mscoco,5.77,-8.98,image,bowtie
+CLIP_ViT-B32,mscoco,2.94,-10.95,image,bowtie
+CLIP_ViT-B32,mscoco,17.48,3.72,image,bowtie
+CLIP_ViT-B32,mscoco,5.32,-14.44,image,bowtie
+CLIP_ViT-B32,mscoco,5.97,-8.86,image,bowtie
+CLIP_ViT-B32,mscoco,1.28,-5.04,image,bowtie
+CLIP_ViT-B32,mscoco,0.83,-6.82,image,bowtie
+CLIP_ViT-B32,mscoco,4.96,-12.34,image,bowtie
+CLIP_ViT-B32,mscoco,1.32,-7.94,image,bowtie
+CLIP_ViT-B32,mscoco,4.74,-11.36,image,bowtie
+CLIP_ViT-B32,mscoco,4.00,-7.12,image,bowtie
+CLIP_ViT-B32,mscoco,4.99,-14.43,image,bowtie
+CLIP_ViT-B32,mscoco,3.18,-12.53,image,bowtie
+CLIP_ViT-B32,mscoco,7.50,-6.58,image,bowtie
+CLIP_ViT-B32,mscoco,0.78,-6.76,image,bowtie
+CLIP_ViT-B32,mscoco,1.32,-4.95,image,bowtie
+CLIP_ViT-B32,mscoco,5.42,-7.60,image,bowtie
+CLIP_ViT-B32,mscoco,7.35,-11.95,image,bowtie
+CLIP_ViT-B32,mscoco,5.58,-11.89,image,bowtie
+CLIP_ViT-B32,mscoco,5.62,-10.34,image,bowtie
+CLIP_ViT-B32,mscoco,2.75,-12.89,image,bowtie
+CLIP_ViT-B32,mscoco,5.64,-9.34,image,bowtie
+CLIP_ViT-B32,mscoco,4.69,-14.46,image,bowtie
+CLIP_ViT-B32,mscoco,3.01,-10.98,image,bowtie
+CLIP_ViT-B32,mscoco,7.23,-9.99,image,bowtie
+CLIP_ViT-B32,mscoco,2.91,-9.38,image,bowtie
+CLIP_ViT-B32,mscoco,5.61,-10.37,image,bowtie
+CLIP_ViT-B32,mscoco,5.23,-10.52,image,bowtie
+CLIP_ViT-B32,mscoco,6.04,-11.37,image,bowtie
+CLIP_ViT-B32,mscoco,6.00,-8.23,image,bowtie
+CLIP_ViT-B32,mscoco,5.90,-8.22,image,bowtie
+CLIP_ViT-B32,mscoco,4.22,-7.37,image,bowtie
+CLIP_ViT-B32,mscoco,5.33,-8.98,image,bowtie
+CLIP_ViT-B32,mscoco,2.74,-2.91,image,bowtie
+CLIP_ViT-B32,mscoco,2.76,-2.91,image,bowtie
+CLIP_ViT-B32,mscoco,6.10,-14.82,image,bowtie
+CLIP_ViT-B32,mscoco,8.28,-11.17,image,bowtie
+CLIP_ViT-B32,mscoco,3.91,-7.02,image,bowtie
+CLIP_ViT-B32,mscoco,4.73,-10.14,image,bowtie
+CLIP_ViT-B32,mscoco,6.41,-7.40,image,bowtie
+CLIP_ViT-B32,mscoco,5.12,-12.62,image,bowtie
+CLIP_ViT-B32,mscoco,6.68,-11.15,image,bowtie
+CLIP_ViT-B32,mscoco,7.26,-8.46,image,bowtie
+CLIP_ViT-B32,mscoco,6.12,-11.75,image,bowtie
+CLIP_ViT-B32,mscoco,6.08,-12.38,image,bowtie
+CLIP_ViT-B32,mscoco,17.95,-4.16,image,stoplight
+CLIP_ViT-B32,mscoco,16.89,-0.66,image,stoplight
+CLIP_ViT-B32,mscoco,15.95,0.90,image,stoplight
+CLIP_ViT-B32,mscoco,15.42,-2.40,image,stoplight
+CLIP_ViT-B32,mscoco,14.06,-2.03,image,stoplight
+CLIP_ViT-B32,mscoco,15.41,-3.59,image,stoplight
+CLIP_ViT-B32,mscoco,16.64,-3.49,image,stoplight
+CLIP_ViT-B32,mscoco,14.98,0.16,image,stoplight
+CLIP_ViT-B32,mscoco,15.35,-3.16,image,stoplight
+CLIP_ViT-B32,mscoco,14.65,-3.53,image,stoplight
+CLIP_ViT-B32,mscoco,13.33,0.35,image,stoplight
+CLIP_ViT-B32,mscoco,14.75,-4.38,image,stoplight
+CLIP_ViT-B32,mscoco,12.44,-3.68,image,stoplight
+CLIP_ViT-B32,mscoco,13.48,0.21,image,stoplight
+CLIP_ViT-B32,mscoco,14.96,-0.12,image,stoplight
+CLIP_ViT-B32,mscoco,15.55,-1.09,image,stoplight
+CLIP_ViT-B32,mscoco,12.12,-1.63,image,stoplight
+CLIP_ViT-B32,mscoco,14.45,-5.53,image,stoplight
+CLIP_ViT-B32,mscoco,17.74,-5.34,image,stoplight
+CLIP_ViT-B32,mscoco,15.75,-3.39,image,stoplight
+CLIP_ViT-B32,mscoco,17.24,-0.59,image,stoplight
+CLIP_ViT-B32,mscoco,15.41,-4.66,image,stoplight
+CLIP_ViT-B32,mscoco,17.40,-4.77,image,stoplight
+CLIP_ViT-B32,mscoco,17.17,-3.12,image,stoplight
+CLIP_ViT-B32,mscoco,13.04,-2.85,image,stoplight
+CLIP_ViT-B32,mscoco,14.73,-1.30,image,stoplight
+CLIP_ViT-B32,mscoco,17.25,-2.12,image,stoplight
+CLIP_ViT-B32,mscoco,13.03,-4.98,image,stoplight
+CLIP_ViT-B32,mscoco,14.19,-3.07,image,stoplight
+CLIP_ViT-B32,mscoco,17.14,-0.54,image,stoplight
+CLIP_ViT-B32,mscoco,15.49,-1.96,image,stoplight
+CLIP_ViT-B32,mscoco,14.97,-1.15,image,stoplight
+CLIP_ViT-B32,mscoco,12.15,-0.95,image,stoplight
+CLIP_ViT-B32,mscoco,12.79,-2.53,image,stoplight
+CLIP_ViT-B32,mscoco,16.04,-2.26,image,stoplight
+CLIP_ViT-B32,mscoco,14.58,-3.76,image,stoplight
+CLIP_ViT-B32,mscoco,16.36,-4.13,image,stoplight
+CLIP_ViT-B32,mscoco,12.96,-2.03,image,stoplight
+CLIP_ViT-B32,mscoco,13.90,-2.41,image,stoplight
+CLIP_ViT-B32,mscoco,18.86,-3.24,image,stoplight
+CLIP_ViT-B32,mscoco,13.17,-2.74,image,stoplight
+CLIP_ViT-B32,mscoco,11.79,-2.53,image,stoplight
+CLIP_ViT-B32,mscoco,13.37,-1.22,image,stoplight
+CLIP_ViT-B32,mscoco,17.80,-4.56,image,stoplight
+CLIP_ViT-B32,mscoco,17.89,-1.32,image,stoplight
+CLIP_ViT-B32,mscoco,16.58,-2.47,image,stoplight
+CLIP_ViT-B32,mscoco,14.99,-2.09,image,stoplight
+CLIP_ViT-B32,mscoco,16.63,-5.26,image,stoplight
+CLIP_ViT-B32,mscoco,15.64,-5.78,image,stoplight
+CLIP_ViT-B32,mscoco,13.66,-4.50,image,stoplight
+CLIP_ViT-B32,mscoco,21.75,-0.60,image,dustcart
+CLIP_ViT-B32,mscoco,23.32,2.81,image,dustcart
+CLIP_ViT-B32,mscoco,25.88,1.38,image,dustcart
+CLIP_ViT-B32,mscoco,22.02,1.52,image,dustcart
+CLIP_ViT-B32,mscoco,25.67,4.46,image,dustcart
+CLIP_ViT-B32,mscoco,27.57,3.55,image,dustcart
+CLIP_ViT-B32,mscoco,21.58,3.65,image,dustcart
+CLIP_ViT-B32,mscoco,25.85,2.10,image,dustcart
+CLIP_ViT-B32,mscoco,24.67,2.10,image,dustcart
+CLIP_ViT-B32,mscoco,23.13,4.07,image,dustcart
+CLIP_ViT-B32,mscoco,25.13,1.86,image,dustcart
+CLIP_ViT-B32,mscoco,26.08,0.44,image,dustcart
+CLIP_ViT-B32,mscoco,25.82,3.96,image,dustcart
+CLIP_ViT-B32,mscoco,22.17,5.80,image,dustcart
+CLIP_ViT-B32,mscoco,25.12,3.23,image,dustcart
+CLIP_ViT-B32,mscoco,26.10,1.98,image,dustcart
+CLIP_ViT-B32,mscoco,26.34,3.17,image,dustcart
+CLIP_ViT-B32,mscoco,24.12,4.84,image,dustcart
+CLIP_ViT-B32,mscoco,26.59,4.09,image,dustcart
+CLIP_ViT-B32,mscoco,25.59,0.03,image,dustcart
+CLIP_ViT-B32,mscoco,26.35,1.82,image,dustcart
+CLIP_ViT-B32,mscoco,22.53,4.76,image,dustcart
+CLIP_ViT-B32,mscoco,20.89,4.56,image,dustcart
+CLIP_ViT-B32,mscoco,23.13,5.66,image,dustcart
+CLIP_ViT-B32,mscoco,26.68,2.19,image,dustcart
+CLIP_ViT-B32,mscoco,22.43,5.46,image,dustcart
+CLIP_ViT-B32,mscoco,21.51,6.84,image,dustcart
+CLIP_ViT-B32,mscoco,27.90,2.06,image,dustcart
+CLIP_ViT-B32,mscoco,21.67,-0.78,image,dustcart
+CLIP_ViT-B32,mscoco,23.99,6.35,image,dustcart
+CLIP_ViT-B32,mscoco,25.06,0.10,image,dustcart
+CLIP_ViT-B32,mscoco,20.95,3.07,image,dustcart
+CLIP_ViT-B32,mscoco,24.42,0.57,image,dustcart
+CLIP_ViT-B32,mscoco,22.41,4.62,image,dustcart
+CLIP_ViT-B32,mscoco,21.75,1.18,image,dustcart
+CLIP_ViT-B32,mscoco,24.13,6.44,image,dustcart
+CLIP_ViT-B32,mscoco,21.61,6.83,image,dustcart
+CLIP_ViT-B32,mscoco,22.68,1.13,image,dustcart
+CLIP_ViT-B32,mscoco,23.24,0.54,image,dustcart
+CLIP_ViT-B32,mscoco,23.77,2.78,image,dustcart
+CLIP_ViT-B32,mscoco,26.94,0.22,image,dustcart
+CLIP_ViT-B32,mscoco,25.94,2.84,image,dustcart
+CLIP_ViT-B32,mscoco,25.54,2.90,image,dustcart
+CLIP_ViT-B32,mscoco,21.63,5.13,image,dustcart
+CLIP_ViT-B32,mscoco,24.11,5.41,image,dustcart
+CLIP_ViT-B32,mscoco,21.78,1.13,image,dustcart
+CLIP_ViT-B32,mscoco,22.92,4.09,image,dustcart
+CLIP_ViT-B32,mscoco,23.05,2.42,image,dustcart
+CLIP_ViT-B32,mscoco,25.05,0.22,image,dustcart
+CLIP_ViT-B32,mscoco,25.85,3.62,image,dustcart
+CLIP_ViT-B32,mscoco,-1.58,-35.67,image,red hot
+CLIP_ViT-B32,mscoco,-1.07,-28.98,image,red hot
+CLIP_ViT-B32,mscoco,-3.21,-30.46,image,red hot
+CLIP_ViT-B32,mscoco,-0.80,-33.43,image,red hot
+CLIP_ViT-B32,mscoco,-0.77,-29.22,image,red hot
+CLIP_ViT-B32,mscoco,-2.08,-33.56,image,red hot
+CLIP_ViT-B32,mscoco,-0.00,-29.28,image,red hot
+CLIP_ViT-B32,mscoco,-2.27,-33.65,image,red hot
+CLIP_ViT-B32,mscoco,-3.12,-32.85,image,red hot
+CLIP_ViT-B32,mscoco,-2.62,-35.39,image,red hot
+CLIP_ViT-B32,mscoco,-1.68,-34.89,image,red hot
+CLIP_ViT-B32,mscoco,-1.37,-32.75,image,red hot
+CLIP_ViT-B32,mscoco,0.94,-30.83,image,red hot
+CLIP_ViT-B32,mscoco,-2.68,-31.72,image,red hot
+CLIP_ViT-B32,mscoco,-2.68,-32.56,image,red hot
+CLIP_ViT-B32,mscoco,-1.47,-34.67,image,red hot
+CLIP_ViT-B32,mscoco,-0.18,-31.84,image,red hot
+CLIP_ViT-B32,mscoco,-3.43,-33.60,image,red hot
+CLIP_ViT-B32,mscoco,-4.62,-31.32,image,red hot
+CLIP_ViT-B32,mscoco,-4.94,-32.09,image,red hot
+CLIP_ViT-B32,mscoco,-2.35,-32.98,image,red hot
+CLIP_ViT-B32,mscoco,0.42,-33.11,image,red hot
+CLIP_ViT-B32,mscoco,-2.84,-30.68,image,red hot
+CLIP_ViT-B32,mscoco,-3.67,-34.55,image,red hot
+CLIP_ViT-B32,mscoco,-1.60,-33.08,image,red hot
+CLIP_ViT-B32,mscoco,-4.17,-31.85,image,red hot
+CLIP_ViT-B32,mscoco,-4.36,-34.62,image,red hot
+CLIP_ViT-B32,mscoco,-1.68,-34.04,image,red hot
+CLIP_ViT-B32,mscoco,-3.72,-32.18,image,red hot
+CLIP_ViT-B32,mscoco,-2.88,-36.22,image,red hot
+CLIP_ViT-B32,mscoco,-5.39,-32.89,image,red hot
+CLIP_ViT-B32,mscoco,-0.25,-34.71,image,red hot
+CLIP_ViT-B32,mscoco,-2.41,-34.12,image,red hot
+CLIP_ViT-B32,mscoco,-2.06,-33.28,image,red hot
+CLIP_ViT-B32,mscoco,-3.06,-33.12,image,red hot
+CLIP_ViT-B32,mscoco,-1.04,-29.02,image,red hot
+CLIP_ViT-B32,mscoco,-2.87,-34.19,image,red hot
+CLIP_ViT-B32,mscoco,-2.94,-35.09,image,red hot
+CLIP_ViT-B32,mscoco,-0.58,-32.13,image,red hot
+CLIP_ViT-B32,mscoco,-1.80,-31.92,image,red hot
+CLIP_ViT-B32,mscoco,-4.24,-33.86,image,red hot
+CLIP_ViT-B32,mscoco,-4.98,-33.88,image,red hot
+CLIP_ViT-B32,mscoco,-4.07,-32.97,image,red hot
+CLIP_ViT-B32,mscoco,-0.49,-34.29,image,red hot
+CLIP_ViT-B32,mscoco,-3.99,-35.62,image,red hot
+CLIP_ViT-B32,mscoco,-3.38,-35.35,image,red hot
+CLIP_ViT-B32,mscoco,-1.91,-31.23,image,red hot
+CLIP_ViT-B32,mscoco,0.92,-30.79,image,red hot
+CLIP_ViT-B32,mscoco,-4.65,-32.94,image,red hot
+CLIP_ViT-B32,mscoco,-3.44,-33.49,image,red hot
+CLIP_ViT-B32,mscoco,-16.42,17.21,text,tup
+CLIP_ViT-B32,mscoco,-18.27,12.70,text,tup
+CLIP_ViT-B32,mscoco,-18.40,16.43,text,tup
+CLIP_ViT-B32,mscoco,-21.39,12.52,text,tup
+CLIP_ViT-B32,mscoco,-20.89,15.40,text,tup
+CLIP_ViT-B32,mscoco,-21.16,13.91,text,tup
+CLIP_ViT-B32,mscoco,-18.54,14.01,text,tup
+CLIP_ViT-B32,mscoco,-21.10,12.07,text,tup
+CLIP_ViT-B32,mscoco,-19.45,17.60,text,tup
+CLIP_ViT-B32,mscoco,-19.64,17.61,text,tup
+CLIP_ViT-B32,mscoco,-19.34,14.23,text,tup
+CLIP_ViT-B32,mscoco,-14.68,15.89,text,tup
+CLIP_ViT-B32,mscoco,-19.48,14.16,text,tup
+CLIP_ViT-B32,mscoco,-21.48,14.62,text,tup
+CLIP_ViT-B32,mscoco,-18.80,13.97,text,tup
+CLIP_ViT-B32,mscoco,-19.16,14.21,text,tup
+CLIP_ViT-B32,mscoco,-18.11,15.07,text,tup
+CLIP_ViT-B32,mscoco,-19.31,16.20,text,tup
+CLIP_ViT-B32,mscoco,-17.21,13.49,text,tup
+CLIP_ViT-B32,mscoco,-21.86,15.72,text,tup
+CLIP_ViT-B32,mscoco,-17.39,16.57,text,tup
+CLIP_ViT-B32,mscoco,-19.96,15.20,text,tup
+CLIP_ViT-B32,mscoco,-21.16,14.10,text,tup
+CLIP_ViT-B32,mscoco,-14.66,15.90,text,tup
+CLIP_ViT-B32,mscoco,-17.41,15.91,text,tup
+CLIP_ViT-B32,mscoco,-20.44,14.20,text,tup
+CLIP_ViT-B32,mscoco,-17.66,14.12,text,tup
+CLIP_ViT-B32,mscoco,-21.35,16.06,text,tup
+CLIP_ViT-B32,mscoco,-20.53,14.67,text,tup
+CLIP_ViT-B32,mscoco,-20.50,15.99,text,tup
+CLIP_ViT-B32,mscoco,-17.27,11.94,text,tup
+CLIP_ViT-B32,mscoco,-19.80,11.65,text,tup
+CLIP_ViT-B32,mscoco,-21.15,13.79,text,tup
+CLIP_ViT-B32,mscoco,-20.36,13.64,text,tup
+CLIP_ViT-B32,mscoco,-19.59,15.84,text,tup
+CLIP_ViT-B32,mscoco,-22.47,13.68,text,tup
+CLIP_ViT-B32,mscoco,-16.37,16.94,text,tup
+CLIP_ViT-B32,mscoco,-19.84,12.89,text,tup
+CLIP_ViT-B32,mscoco,-17.56,13.75,text,tup
+CLIP_ViT-B32,mscoco,-19.49,11.68,text,tup
+CLIP_ViT-B32,mscoco,-18.21,15.12,text,tup
+CLIP_ViT-B32,mscoco,-20.93,15.38,text,tup
+CLIP_ViT-B32,mscoco,-16.33,17.73,text,tup
+CLIP_ViT-B32,mscoco,-16.00,13.80,text,tup
+CLIP_ViT-B32,mscoco,-16.20,12.98,text,tup
+CLIP_ViT-B32,mscoco,-16.57,14.89,text,tup
+CLIP_ViT-B32,mscoco,-19.01,13.45,text,tup
+CLIP_ViT-B32,mscoco,-17.14,14.45,text,tup
+CLIP_ViT-B32,mscoco,-21.91,14.29,text,tup
+CLIP_ViT-B32,mscoco,-18.26,12.77,text,tup
+CLIP_ViT-B32,mscoco,-7.16,-4.95,text,bowtie
+CLIP_ViT-B32,mscoco,-5.00,-5.37,text,bowtie
+CLIP_ViT-B32,mscoco,-7.68,-2.51,text,bowtie
+CLIP_ViT-B32,mscoco,-9.08,-8.10,text,bowtie
+CLIP_ViT-B32,mscoco,-6.84,-3.74,text,bowtie
+CLIP_ViT-B32,mscoco,-7.12,-5.67,text,bowtie
+CLIP_ViT-B32,mscoco,-7.03,-7.26,text,bowtie
+CLIP_ViT-B32,mscoco,-7.95,-3.71,text,bowtie
+CLIP_ViT-B32,mscoco,-5.98,-0.83,text,bowtie
+CLIP_ViT-B32,mscoco,-8.27,-8.56,text,bowtie
+CLIP_ViT-B32,mscoco,-8.12,-4.67,text,bowtie
+CLIP_ViT-B32,mscoco,-4.99,-0.08,text,bowtie
+CLIP_ViT-B32,mscoco,-9.07,-7.95,text,bowtie
+CLIP_ViT-B32,mscoco,-9.96,-5.44,text,bowtie
+CLIP_ViT-B32,mscoco,-6.26,-4.94,text,bowtie
+CLIP_ViT-B32,mscoco,-4.33,-7.40,text,bowtie
+CLIP_ViT-B32,mscoco,-6.41,-1.98,text,bowtie
+CLIP_ViT-B32,mscoco,-9.44,-6.66,text,bowtie
+CLIP_ViT-B32,mscoco,-6.60,-2.07,text,bowtie
+CLIP_ViT-B32,mscoco,-3.63,-3.70,text,bowtie
+CLIP_ViT-B32,mscoco,-3.33,-2.93,text,bowtie
+CLIP_ViT-B32,mscoco,-6.00,-6.97,text,bowtie
+CLIP_ViT-B32,mscoco,-11.04,-0.45,text,bowtie
+CLIP_ViT-B32,mscoco,-9.53,-6.31,text,bowtie
+CLIP_ViT-B32,mscoco,-5.98,-3.89,text,bowtie
+CLIP_ViT-B32,mscoco,-2.48,-4.27,text,bowtie
+CLIP_ViT-B32,mscoco,-8.40,-5.54,text,bowtie
+CLIP_ViT-B32,mscoco,-4.88,-5.30,text,bowtie
+CLIP_ViT-B32,mscoco,-7.22,-6.35,text,bowtie
+CLIP_ViT-B32,mscoco,-6.63,-3.61,text,bowtie
+CLIP_ViT-B32,mscoco,-6.64,-3.80,text,bowtie
+CLIP_ViT-B32,mscoco,-9.25,-3.30,text,bowtie
+CLIP_ViT-B32,mscoco,-8.43,-4.44,text,bowtie
+CLIP_ViT-B32,mscoco,-8.29,-6.90,text,bowtie
+CLIP_ViT-B32,mscoco,-5.50,-6.42,text,bowtie
+CLIP_ViT-B32,mscoco,-7.02,-8.02,text,bowtie
+CLIP_ViT-B32,mscoco,-6.14,-8.05,text,bowtie
+CLIP_ViT-B32,mscoco,-7.54,-6.65,text,bowtie
+CLIP_ViT-B32,mscoco,-4.22,-2.95,text,bowtie
+CLIP_ViT-B32,mscoco,-8.46,-5.52,text,bowtie
+CLIP_ViT-B32,mscoco,-7.90,-2.40,text,bowtie
+CLIP_ViT-B32,mscoco,-5.84,-0.51,text,bowtie
+CLIP_ViT-B32,mscoco,-4.65,-7.05,text,bowtie
+CLIP_ViT-B32,mscoco,-7.75,-6.97,text,bowtie
+CLIP_ViT-B32,mscoco,-7.90,-6.01,text,bowtie
+CLIP_ViT-B32,mscoco,-3.70,-3.02,text,bowtie
+CLIP_ViT-B32,mscoco,-11.06,-0.43,text,bowtie
+CLIP_ViT-B32,mscoco,-6.85,-6.71,text,bowtie
+CLIP_ViT-B32,mscoco,-4.08,-4.04,text,bowtie
+CLIP_ViT-B32,mscoco,-4.88,-4.18,text,bowtie
+CLIP_ViT-B32,mscoco,1.77,8.71,text,stoplight
+CLIP_ViT-B32,mscoco,3.52,9.57,text,stoplight
+CLIP_ViT-B32,mscoco,2.65,7.41,text,stoplight
+CLIP_ViT-B32,mscoco,7.67,11.49,text,stoplight
+CLIP_ViT-B32,mscoco,5.03,13.24,text,stoplight
+CLIP_ViT-B32,mscoco,5.92,12.58,text,stoplight
+CLIP_ViT-B32,mscoco,6.62,11.07,text,stoplight
+CLIP_ViT-B32,mscoco,5.59,8.78,text,stoplight
+CLIP_ViT-B32,mscoco,6.08,12.98,text,stoplight
+CLIP_ViT-B32,mscoco,7.73,10.27,text,stoplight
+CLIP_ViT-B32,mscoco,5.96,8.24,text,stoplight
+CLIP_ViT-B32,mscoco,6.69,6.96,text,stoplight
+CLIP_ViT-B32,mscoco,5.01,7.64,text,stoplight
+CLIP_ViT-B32,mscoco,4.10,10.54,text,stoplight
+CLIP_ViT-B32,mscoco,8.02,9.69,text,stoplight
+CLIP_ViT-B32,mscoco,7.01,9.78,text,stoplight
+CLIP_ViT-B32,mscoco,6.85,11.40,text,stoplight
+CLIP_ViT-B32,mscoco,6.18,12.02,text,stoplight
+CLIP_ViT-B32,mscoco,2.72,10.36,text,stoplight
+CLIP_ViT-B32,mscoco,3.79,8.89,text,stoplight
+CLIP_ViT-B32,mscoco,4.26,13.14,text,stoplight
+CLIP_ViT-B32,mscoco,6.81,13.60,text,stoplight
+CLIP_ViT-B32,mscoco,-2.64,8.50,text,stoplight
+CLIP_ViT-B32,mscoco,5.17,8.38,text,stoplight
+CLIP_ViT-B32,mscoco,3.52,11.78,text,stoplight
+CLIP_ViT-B32,mscoco,6.17,10.51,text,stoplight
+CLIP_ViT-B32,mscoco,5.41,10.54,text,stoplight
+CLIP_ViT-B32,mscoco,1.05,11.78,text,stoplight
+CLIP_ViT-B32,mscoco,4.98,10.34,text,stoplight
+CLIP_ViT-B32,mscoco,3.72,8.93,text,stoplight
+CLIP_ViT-B32,mscoco,5.38,9.26,text,stoplight
+CLIP_ViT-B32,mscoco,7.37,10.82,text,stoplight
+CLIP_ViT-B32,mscoco,4.05,9.48,text,stoplight
+CLIP_ViT-B32,mscoco,4.29,11.37,text,stoplight
+CLIP_ViT-B32,mscoco,6.08,10.08,text,stoplight
+CLIP_ViT-B32,mscoco,6.81,9.02,text,stoplight
+CLIP_ViT-B32,mscoco,2.00,10.63,text,stoplight
+CLIP_ViT-B32,mscoco,2.37,8.87,text,stoplight
+CLIP_ViT-B32,mscoco,6.57,10.96,text,stoplight
+CLIP_ViT-B32,mscoco,3.41,8.29,text,stoplight
+CLIP_ViT-B32,mscoco,0.34,10.23,text,stoplight
+CLIP_ViT-B32,mscoco,4.36,6.95,text,stoplight
+CLIP_ViT-B32,mscoco,4.62,11.06,text,stoplight
+CLIP_ViT-B32,mscoco,7.08,8.38,text,stoplight
+CLIP_ViT-B32,mscoco,0.25,11.22,text,stoplight
+CLIP_ViT-B32,mscoco,5.19,9.38,text,stoplight
+CLIP_ViT-B32,mscoco,5.29,10.26,text,stoplight
+CLIP_ViT-B32,mscoco,0.11,9.98,text,stoplight
+CLIP_ViT-B32,mscoco,5.90,10.88,text,stoplight
+CLIP_ViT-B32,mscoco,4.80,11.56,text,stoplight
+CLIP_ViT-B32,mscoco,-1.13,11.08,text,dustcart
+CLIP_ViT-B32,mscoco,-3.62,8.33,text,dustcart
+CLIP_ViT-B32,mscoco,-2.49,-1.47,text,dustcart
+CLIP_ViT-B32,mscoco,-4.73,7.97,text,dustcart
+CLIP_ViT-B32,mscoco,-3.26,8.03,text,dustcart
+CLIP_ViT-B32,mscoco,-1.68,8.02,text,dustcart
+CLIP_ViT-B32,mscoco,0.07,4.68,text,dustcart
+CLIP_ViT-B32,mscoco,-5.10,9.70,text,dustcart
+CLIP_ViT-B32,mscoco,-5.77,5.02,text,dustcart
+CLIP_ViT-B32,mscoco,-2.42,7.65,text,dustcart
+CLIP_ViT-B32,mscoco,-3.10,4.68,text,dustcart
+CLIP_ViT-B32,mscoco,-3.33,5.02,text,dustcart
+CLIP_ViT-B32,mscoco,-5.09,9.68,text,dustcart
+CLIP_ViT-B32,mscoco,-5.60,6.06,text,dustcart
+CLIP_ViT-B32,mscoco,-3.52,8.27,text,dustcart
+CLIP_ViT-B32,mscoco,-3.94,5.80,text,dustcart
+CLIP_ViT-B32,mscoco,-3.66,7.26,text,dustcart
+CLIP_ViT-B32,mscoco,-1.77,5.50,text,dustcart
+CLIP_ViT-B32,mscoco,-2.84,8.42,text,dustcart
+CLIP_ViT-B32,mscoco,-4.10,4.51,text,dustcart
+CLIP_ViT-B32,mscoco,-3.48,4.91,text,dustcart
+CLIP_ViT-B32,mscoco,-3.26,10.46,text,dustcart
+CLIP_ViT-B32,mscoco,2.31,6.77,text,dustcart
+CLIP_ViT-B32,mscoco,-4.19,9.63,text,dustcart
+CLIP_ViT-B32,mscoco,-2.85,3.71,text,dustcart
+CLIP_ViT-B32,mscoco,-6.72,8.73,text,dustcart
+CLIP_ViT-B32,mscoco,-2.78,9.42,text,dustcart
+CLIP_ViT-B32,mscoco,-3.15,5.11,text,dustcart
+CLIP_ViT-B32,mscoco,3.39,13.57,text,dustcart
+CLIP_ViT-B32,mscoco,-0.99,7.15,text,dustcart
+CLIP_ViT-B32,mscoco,-6.01,6.17,text,dustcart
+CLIP_ViT-B32,mscoco,-3.93,-1.88,text,dustcart
+CLIP_ViT-B32,mscoco,-3.54,7.98,text,dustcart
+CLIP_ViT-B32,mscoco,-1.06,8.30,text,dustcart
+CLIP_ViT-B32,mscoco,-4.60,7.89,text,dustcart
+CLIP_ViT-B32,mscoco,-2.11,7.00,text,dustcart
+CLIP_ViT-B32,mscoco,-4.34,10.68,text,dustcart
+CLIP_ViT-B32,mscoco,-5.74,8.32,text,dustcart
+CLIP_ViT-B32,mscoco,-4.05,9.17,text,dustcart
+CLIP_ViT-B32,mscoco,-4.46,6.92,text,dustcart
+CLIP_ViT-B32,mscoco,0.24,4.10,text,dustcart
+CLIP_ViT-B32,mscoco,-4.52,4.03,text,dustcart
+CLIP_ViT-B32,mscoco,-5.20,5.48,text,dustcart
+CLIP_ViT-B32,mscoco,-2.30,6.01,text,dustcart
+CLIP_ViT-B32,mscoco,-1.90,6.61,text,dustcart
+CLIP_ViT-B32,mscoco,-2.77,7.24,text,dustcart
+CLIP_ViT-B32,mscoco,0.44,6.33,text,dustcart
+CLIP_ViT-B32,mscoco,-2.22,9.22,text,dustcart
+CLIP_ViT-B32,mscoco,-3.45,6.33,text,dustcart
+CLIP_ViT-B32,mscoco,-1.04,6.41,text,dustcart
+CLIP_ViT-B32,mscoco,-14.07,-22.15,text,red hot
+CLIP_ViT-B32,mscoco,-11.27,-17.97,text,red hot
+CLIP_ViT-B32,mscoco,-16.11,-17.37,text,red hot
+CLIP_ViT-B32,mscoco,-13.95,-19.26,text,red hot
+CLIP_ViT-B32,mscoco,-11.24,-18.23,text,red hot
+CLIP_ViT-B32,mscoco,-15.37,-18.34,text,red hot
+CLIP_ViT-B32,mscoco,-14.34,-13.45,text,red hot
+CLIP_ViT-B32,mscoco,-13.19,-20.05,text,red hot
+CLIP_ViT-B32,mscoco,-12.07,-19.66,text,red hot
+CLIP_ViT-B32,mscoco,-15.74,-20.86,text,red hot
+CLIP_ViT-B32,mscoco,-14.04,-14.30,text,red hot
+CLIP_ViT-B32,mscoco,-11.41,-19.32,text,red hot
+CLIP_ViT-B32,mscoco,-11.71,-17.21,text,red hot
+CLIP_ViT-B32,mscoco,-13.98,-14.31,text,red hot
+CLIP_ViT-B32,mscoco,-13.02,-20.46,text,red hot
+CLIP_ViT-B32,mscoco,-16.97,-17.53,text,red hot
+CLIP_ViT-B32,mscoco,-10.23,-17.88,text,red hot
+CLIP_ViT-B32,mscoco,-14.42,-17.86,text,red hot
+CLIP_ViT-B32,mscoco,-15.58,-19.57,text,red hot
+CLIP_ViT-B32,mscoco,-16.38,-19.09,text,red hot
+CLIP_ViT-B32,mscoco,-12.19,-18.43,text,red hot
+CLIP_ViT-B32,mscoco,-11.71,-20.67,text,red hot
+CLIP_ViT-B32,mscoco,-16.16,-20.92,text,red hot
+CLIP_ViT-B32,mscoco,-16.13,-19.28,text,red hot
+CLIP_ViT-B32,mscoco,-12.94,-20.62,text,red hot
+CLIP_ViT-B32,mscoco,-15.93,-19.17,text,red hot
+CLIP_ViT-B32,mscoco,-14.52,-20.33,text,red hot
+CLIP_ViT-B32,mscoco,-14.78,-18.81,text,red hot
+CLIP_ViT-B32,mscoco,-13.51,-21.04,text,red hot
+CLIP_ViT-B32,mscoco,-15.54,-16.25,text,red hot
+CLIP_ViT-B32,mscoco,-13.98,-17.56,text,red hot
+CLIP_ViT-B32,mscoco,-15.54,-21.99,text,red hot
+CLIP_ViT-B32,mscoco,-12.82,-17.74,text,red hot
+CLIP_ViT-B32,mscoco,-13.28,-18.62,text,red hot
+CLIP_ViT-B32,mscoco,-11.86,-18.05,text,red hot
+CLIP_ViT-B32,mscoco,-11.16,-18.20,text,red hot
+CLIP_ViT-B32,mscoco,-14.07,-22.44,text,red hot
+CLIP_ViT-B32,mscoco,-14.58,-21.30,text,red hot
+CLIP_ViT-B32,mscoco,-13.27,-14.25,text,red hot
+CLIP_ViT-B32,mscoco,-13.57,-14.41,text,red hot
+CLIP_ViT-B32,mscoco,-14.16,-20.57,text,red hot
+CLIP_ViT-B32,mscoco,-12.82,-21.82,text,red hot
+CLIP_ViT-B32,mscoco,-12.84,-19.47,text,red hot
+CLIP_ViT-B32,mscoco,-16.88,-20.39,text,red hot
+CLIP_ViT-B32,mscoco,-15.39,-17.07,text,red hot
+CLIP_ViT-B32,mscoco,-15.26,-17.44,text,red hot
+CLIP_ViT-B32,mscoco,-14.98,-20.09,text,red hot
+CLIP_ViT-B32,mscoco,-9.91,-16.08,text,red hot
+CLIP_ViT-B32,mscoco,-15.28,-18.13,text,red hot
+CLIP_ViT-B32,mscoco,-16.45,-18.41,text,red hot

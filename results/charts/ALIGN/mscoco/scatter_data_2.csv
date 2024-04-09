@@ -1,0 +1,501 @@
+Model,Dataset,x,y,modality,category
+ALIGN,mscoco,-25.81,4.51,image,broccoli
+ALIGN,mscoco,-26.71,3.07,image,broccoli
+ALIGN,mscoco,-26.46,0.89,image,broccoli
+ALIGN,mscoco,-26.09,2.62,image,broccoli
+ALIGN,mscoco,-30.88,1.64,image,broccoli
+ALIGN,mscoco,-27.97,-0.12,image,broccoli
+ALIGN,mscoco,-23.54,8.67,image,broccoli
+ALIGN,mscoco,-28.88,2.25,image,broccoli
+ALIGN,mscoco,-26.54,5.79,image,broccoli
+ALIGN,mscoco,-27.35,-0.36,image,broccoli
+ALIGN,mscoco,-26.87,-1.87,image,broccoli
+ALIGN,mscoco,-28.66,4.21,image,broccoli
+ALIGN,mscoco,-23.81,8.69,image,broccoli
+ALIGN,mscoco,-30.41,2.24,image,broccoli
+ALIGN,mscoco,-30.30,-0.06,image,broccoli
+ALIGN,mscoco,-25.11,3.75,image,broccoli
+ALIGN,mscoco,-24.12,8.71,image,broccoli
+ALIGN,mscoco,-26.54,3.81,image,broccoli
+ALIGN,mscoco,-29.27,5.47,image,broccoli
+ALIGN,mscoco,-30.30,-0.75,image,broccoli
+ALIGN,mscoco,-28.96,-0.19,image,broccoli
+ALIGN,mscoco,-31.09,1.63,image,broccoli
+ALIGN,mscoco,-24.53,1.38,image,broccoli
+ALIGN,mscoco,-28.17,3.33,image,broccoli
+ALIGN,mscoco,-31.00,3.00,image,broccoli
+ALIGN,mscoco,-30.18,2.24,image,broccoli
+ALIGN,mscoco,-24.52,8.42,image,broccoli
+ALIGN,mscoco,-28.46,3.55,image,broccoli
+ALIGN,mscoco,-27.50,3.16,image,broccoli
+ALIGN,mscoco,-25.43,5.09,image,broccoli
+ALIGN,mscoco,-29.52,1.16,image,broccoli
+ALIGN,mscoco,-29.73,0.10,image,broccoli
+ALIGN,mscoco,-27.42,5.06,image,broccoli
+ALIGN,mscoco,-29.85,2.38,image,broccoli
+ALIGN,mscoco,-26.47,4.39,image,broccoli
+ALIGN,mscoco,-24.33,0.73,image,broccoli
+ALIGN,mscoco,-28.33,1.34,image,broccoli
+ALIGN,mscoco,-27.79,4.49,image,broccoli
+ALIGN,mscoco,-23.90,3.97,image,broccoli
+ALIGN,mscoco,-28.92,-1.74,image,broccoli
+ALIGN,mscoco,-27.70,2.51,image,broccoli
+ALIGN,mscoco,-24.27,0.57,image,broccoli
+ALIGN,mscoco,-28.73,2.14,image,broccoli
+ALIGN,mscoco,-27.31,1.73,image,broccoli
+ALIGN,mscoco,-29.02,-1.79,image,broccoli
+ALIGN,mscoco,-27.18,1.69,image,broccoli
+ALIGN,mscoco,-30.02,3.89,image,broccoli
+ALIGN,mscoco,-23.56,9.51,image,broccoli
+ALIGN,mscoco,-27.44,-1.26,image,broccoli
+ALIGN,mscoco,-23.89,8.73,image,broccoli
+ALIGN,mscoco,-11.53,-24.76,image,beigel
+ALIGN,mscoco,-15.37,-23.34,image,beigel
+ALIGN,mscoco,-16.13,-16.85,image,beigel
+ALIGN,mscoco,-15.58,-18.56,image,beigel
+ALIGN,mscoco,-13.33,-22.83,image,beigel
+ALIGN,mscoco,-14.66,-22.16,image,beigel
+ALIGN,mscoco,-14.05,-22.60,image,beigel
+ALIGN,mscoco,-16.16,-16.68,image,beigel
+ALIGN,mscoco,-14.72,-23.17,image,beigel
+ALIGN,mscoco,-12.41,-24.64,image,beigel
+ALIGN,mscoco,-11.67,-22.42,image,beigel
+ALIGN,mscoco,-13.35,-20.55,image,beigel
+ALIGN,mscoco,-11.68,-21.58,image,beigel
+ALIGN,mscoco,-12.33,-19.71,image,beigel
+ALIGN,mscoco,-15.74,-20.48,image,beigel
+ALIGN,mscoco,-16.85,-22.17,image,beigel
+ALIGN,mscoco,-14.05,-20.07,image,beigel
+ALIGN,mscoco,-14.76,-18.79,image,beigel
+ALIGN,mscoco,-12.08,-20.44,image,beigel
+ALIGN,mscoco,-15.16,-24.04,image,beigel
+ALIGN,mscoco,-14.26,-25.60,image,beigel
+ALIGN,mscoco,-12.92,-26.09,image,beigel
+ALIGN,mscoco,-16.71,-23.12,image,beigel
+ALIGN,mscoco,-13.73,-12.49,image,beigel
+ALIGN,mscoco,-14.16,-18.60,image,beigel
+ALIGN,mscoco,-12.48,-23.58,image,beigel
+ALIGN,mscoco,-15.47,-25.19,image,beigel
+ALIGN,mscoco,-14.24,-23.69,image,beigel
+ALIGN,mscoco,-10.36,-23.56,image,beigel
+ALIGN,mscoco,-17.85,-23.37,image,beigel
+ALIGN,mscoco,-12.50,-17.92,image,beigel
+ALIGN,mscoco,-15.14,-21.81,image,beigel
+ALIGN,mscoco,-16.88,-21.02,image,beigel
+ALIGN,mscoco,-12.84,-20.23,image,beigel
+ALIGN,mscoco,-12.03,-23.20,image,beigel
+ALIGN,mscoco,-13.27,-21.98,image,beigel
+ALIGN,mscoco,-13.11,-21.56,image,beigel
+ALIGN,mscoco,-12.53,-22.52,image,beigel
+ALIGN,mscoco,-13.06,-23.28,image,beigel
+ALIGN,mscoco,-10.80,-21.48,image,beigel
+ALIGN,mscoco,-14.91,-22.60,image,beigel
+ALIGN,mscoco,-15.61,-20.69,image,beigel
+ALIGN,mscoco,-13.88,-24.44,image,beigel
+ALIGN,mscoco,-16.86,-24.57,image,beigel
+ALIGN,mscoco,-14.69,-21.37,image,beigel
+ALIGN,mscoco,-14.33,-24.04,image,beigel
+ALIGN,mscoco,-15.99,-22.51,image,beigel
+ALIGN,mscoco,-12.08,-20.32,image,beigel
+ALIGN,mscoco,-12.41,-21.99,image,beigel
+ALIGN,mscoco,-10.23,-20.47,image,beigel
+ALIGN,mscoco,36.90,4.96,image,racquet
+ALIGN,mscoco,40.79,3.49,image,racquet
+ALIGN,mscoco,39.10,2.80,image,racquet
+ALIGN,mscoco,35.09,3.23,image,racquet
+ALIGN,mscoco,40.41,2.38,image,racquet
+ALIGN,mscoco,33.51,3.94,image,racquet
+ALIGN,mscoco,38.25,-1.49,image,racquet
+ALIGN,mscoco,39.71,3.95,image,racquet
+ALIGN,mscoco,38.76,5.57,image,racquet
+ALIGN,mscoco,39.76,-0.11,image,racquet
+ALIGN,mscoco,42.03,3.27,image,racquet
+ALIGN,mscoco,37.80,1.91,image,racquet
+ALIGN,mscoco,40.72,3.12,image,racquet
+ALIGN,mscoco,35.75,0.37,image,racquet
+ALIGN,mscoco,40.30,1.33,image,racquet
+ALIGN,mscoco,41.55,2.12,image,racquet
+ALIGN,mscoco,37.89,2.25,image,racquet
+ALIGN,mscoco,35.70,2.84,image,racquet
+ALIGN,mscoco,40.21,3.68,image,racquet
+ALIGN,mscoco,38.97,0.23,image,racquet
+ALIGN,mscoco,39.18,3.82,image,racquet
+ALIGN,mscoco,39.90,0.98,image,racquet
+ALIGN,mscoco,35.74,1.70,image,racquet
+ALIGN,mscoco,37.66,-0.04,image,racquet
+ALIGN,mscoco,38.56,4.08,image,racquet
+ALIGN,mscoco,39.93,-0.82,image,racquet
+ALIGN,mscoco,37.18,2.52,image,racquet
+ALIGN,mscoco,35.91,2.61,image,racquet
+ALIGN,mscoco,36.07,3.75,image,racquet
+ALIGN,mscoco,37.45,3.25,image,racquet
+ALIGN,mscoco,41.26,3.00,image,racquet
+ALIGN,mscoco,41.40,-0.89,image,racquet
+ALIGN,mscoco,36.95,1.81,image,racquet
+ALIGN,mscoco,37.12,-1.05,image,racquet
+ALIGN,mscoco,39.83,-0.41,image,racquet
+ALIGN,mscoco,36.55,1.30,image,racquet
+ALIGN,mscoco,39.63,2.98,image,racquet
+ALIGN,mscoco,39.32,-0.45,image,racquet
+ALIGN,mscoco,38.67,0.79,image,racquet
+ALIGN,mscoco,36.61,0.68,image,racquet
+ALIGN,mscoco,38.57,2.91,image,racquet
+ALIGN,mscoco,37.38,0.32,image,racquet
+ALIGN,mscoco,35.23,2.38,image,racquet
+ALIGN,mscoco,38.05,-0.36,image,racquet
+ALIGN,mscoco,41.12,4.22,image,racquet
+ALIGN,mscoco,34.11,2.10,image,racquet
+ALIGN,mscoco,35.63,-0.95,image,racquet
+ALIGN,mscoco,37.06,4.54,image,racquet
+ALIGN,mscoco,41.00,5.28,image,racquet
+ALIGN,mscoco,34.64,1.38,image,racquet
+ALIGN,mscoco,0.62,23.04,image,microwave oven
+ALIGN,mscoco,-2.88,24.48,image,microwave oven
+ALIGN,mscoco,-2.19,23.56,image,microwave oven
+ALIGN,mscoco,-2.09,20.31,image,microwave oven
+ALIGN,mscoco,0.54,20.00,image,microwave oven
+ALIGN,mscoco,-0.35,20.89,image,microwave oven
+ALIGN,mscoco,-1.05,25.02,image,microwave oven
+ALIGN,mscoco,0.88,20.20,image,microwave oven
+ALIGN,mscoco,-7.13,19.09,image,microwave oven
+ALIGN,mscoco,0.58,19.66,image,microwave oven
+ALIGN,mscoco,4.83,2.44,image,microwave oven
+ALIGN,mscoco,1.89,20.04,image,microwave oven
+ALIGN,mscoco,-1.76,22.62,image,microwave oven
+ALIGN,mscoco,-0.91,19.38,image,microwave oven
+ALIGN,mscoco,-2.91,19.14,image,microwave oven
+ALIGN,mscoco,-3.94,22.90,image,microwave oven
+ALIGN,mscoco,-1.56,22.50,image,microwave oven
+ALIGN,mscoco,-2.88,21.96,image,microwave oven
+ALIGN,mscoco,-3.82,21.37,image,microwave oven
+ALIGN,mscoco,-2.21,24.22,image,microwave oven
+ALIGN,mscoco,-5.87,18.53,image,microwave oven
+ALIGN,mscoco,-0.80,22.80,image,microwave oven
+ALIGN,mscoco,-1.77,17.11,image,microwave oven
+ALIGN,mscoco,-1.94,21.55,image,microwave oven
+ALIGN,mscoco,-1.11,25.72,image,microwave oven
+ALIGN,mscoco,-6.48,22.10,image,microwave oven
+ALIGN,mscoco,1.10,22.81,image,microwave oven
+ALIGN,mscoco,-7.37,19.38,image,microwave oven
+ALIGN,mscoco,-4.40,23.75,image,microwave oven
+ALIGN,mscoco,-3.11,24.52,image,microwave oven
+ALIGN,mscoco,-6.70,18.66,image,microwave oven
+ALIGN,mscoco,-4.21,21.19,image,microwave oven
+ALIGN,mscoco,-0.91,25.42,image,microwave oven
+ALIGN,mscoco,-2.31,24.96,image,microwave oven
+ALIGN,mscoco,-2.25,25.09,image,microwave oven
+ALIGN,mscoco,-4.51,22.59,image,microwave oven
+ALIGN,mscoco,0.39,21.77,image,microwave oven
+ALIGN,mscoco,0.95,19.11,image,microwave oven
+ALIGN,mscoco,-4.34,16.77,image,microwave oven
+ALIGN,mscoco,-6.23,18.52,image,microwave oven
+ALIGN,mscoco,-6.24,21.85,image,microwave oven
+ALIGN,mscoco,-7.35,18.05,image,microwave oven
+ALIGN,mscoco,-3.32,22.12,image,microwave oven
+ALIGN,mscoco,-1.03,21.93,image,microwave oven
+ALIGN,mscoco,-0.18,20.83,image,microwave oven
+ALIGN,mscoco,-4.46,23.73,image,microwave oven
+ALIGN,mscoco,-6.27,22.01,image,microwave oven
+ALIGN,mscoco,0.09,22.65,image,microwave oven
+ALIGN,mscoco,-5.65,23.47,image,microwave oven
+ALIGN,mscoco,-2.66,25.37,image,microwave oven
+ALIGN,mscoco,13.06,-18.14,image,umbrella
+ALIGN,mscoco,5.57,1.50,image,umbrella
+ALIGN,mscoco,16.31,-8.75,image,umbrella
+ALIGN,mscoco,8.64,-10.22,image,umbrella
+ALIGN,mscoco,16.31,-14.82,image,umbrella
+ALIGN,mscoco,9.45,-15.84,image,umbrella
+ALIGN,mscoco,14.89,-14.33,image,umbrella
+ALIGN,mscoco,15.66,-18.11,image,umbrella
+ALIGN,mscoco,16.19,-16.06,image,umbrella
+ALIGN,mscoco,12.33,-19.11,image,umbrella
+ALIGN,mscoco,13.33,-13.84,image,umbrella
+ALIGN,mscoco,14.72,-17.20,image,umbrella
+ALIGN,mscoco,14.06,-17.46,image,umbrella
+ALIGN,mscoco,15.43,-19.53,image,umbrella
+ALIGN,mscoco,15.32,-17.16,image,umbrella
+ALIGN,mscoco,5.61,1.44,image,umbrella
+ALIGN,mscoco,13.86,-16.23,image,umbrella
+ALIGN,mscoco,13.90,-15.49,image,umbrella
+ALIGN,mscoco,13.22,-16.51,image,umbrella
+ALIGN,mscoco,14.70,-12.96,image,umbrella
+ALIGN,mscoco,12.99,-17.77,image,umbrella
+ALIGN,mscoco,13.92,-19.61,image,umbrella
+ALIGN,mscoco,11.94,-16.22,image,umbrella
+ALIGN,mscoco,14.08,-18.05,image,umbrella
+ALIGN,mscoco,15.65,-18.27,image,umbrella
+ALIGN,mscoco,17.16,-14.27,image,umbrella
+ALIGN,mscoco,13.30,-10.60,image,umbrella
+ALIGN,mscoco,14.67,-15.98,image,umbrella
+ALIGN,mscoco,12.80,-14.68,image,umbrella
+ALIGN,mscoco,14.77,-13.68,image,umbrella
+ALIGN,mscoco,14.95,-15.44,image,umbrella
+ALIGN,mscoco,18.64,-13.16,image,umbrella
+ALIGN,mscoco,17.11,-16.96,image,umbrella
+ALIGN,mscoco,13.97,-17.21,image,umbrella
+ALIGN,mscoco,13.43,-13.24,image,umbrella
+ALIGN,mscoco,11.29,-12.37,image,umbrella
+ALIGN,mscoco,11.48,-19.68,image,umbrella
+ALIGN,mscoco,12.02,-16.47,image,umbrella
+ALIGN,mscoco,16.08,-13.04,image,umbrella
+ALIGN,mscoco,14.00,-14.41,image,umbrella
+ALIGN,mscoco,11.49,-15.22,image,umbrella
+ALIGN,mscoco,10.27,-14.67,image,umbrella
+ALIGN,mscoco,11.50,-12.05,image,umbrella
+ALIGN,mscoco,13.94,-15.47,image,umbrella
+ALIGN,mscoco,10.83,-12.73,image,umbrella
+ALIGN,mscoco,18.61,-13.18,image,umbrella
+ALIGN,mscoco,10.19,-16.83,image,umbrella
+ALIGN,mscoco,11.96,-17.12,image,umbrella
+ALIGN,mscoco,15.16,-15.42,image,umbrella
+ALIGN,mscoco,11.06,-17.57,image,umbrella
+ALIGN,mscoco,-16.08,5.99,text,broccoli
+ALIGN,mscoco,-17.47,4.82,text,broccoli
+ALIGN,mscoco,-15.22,4.82,text,broccoli
+ALIGN,mscoco,-19.35,4.43,text,broccoli
+ALIGN,mscoco,-16.03,3.34,text,broccoli
+ALIGN,mscoco,-14.17,2.20,text,broccoli
+ALIGN,mscoco,-18.71,7.23,text,broccoli
+ALIGN,mscoco,-17.35,5.47,text,broccoli
+ALIGN,mscoco,-16.01,7.04,text,broccoli
+ALIGN,mscoco,-14.08,0.82,text,broccoli
+ALIGN,mscoco,-12.82,0.20,text,broccoli
+ALIGN,mscoco,-13.17,0.77,text,broccoli
+ALIGN,mscoco,-18.61,7.46,text,broccoli
+ALIGN,mscoco,-16.21,3.58,text,broccoli
+ALIGN,mscoco,-16.78,1.64,text,broccoli
+ALIGN,mscoco,-18.44,4.93,text,broccoli
+ALIGN,mscoco,-18.83,7.69,text,broccoli
+ALIGN,mscoco,-17.85,5.84,text,broccoli
+ALIGN,mscoco,-12.77,5.42,text,broccoli
+ALIGN,mscoco,-14.97,0.42,text,broccoli
+ALIGN,mscoco,-16.82,1.10,text,broccoli
+ALIGN,mscoco,-16.54,4.47,text,broccoli
+ALIGN,mscoco,-18.45,2.72,text,broccoli
+ALIGN,mscoco,-17.72,3.11,text,broccoli
+ALIGN,mscoco,-13.99,0.64,text,broccoli
+ALIGN,mscoco,-16.67,3.24,text,broccoli
+ALIGN,mscoco,-17.96,9.09,text,broccoli
+ALIGN,mscoco,-18.51,4.17,text,broccoli
+ALIGN,mscoco,-18.65,4.81,text,broccoli
+ALIGN,mscoco,-15.10,6.48,text,broccoli
+ALIGN,mscoco,-13.28,1.99,text,broccoli
+ALIGN,mscoco,-14.79,0.52,text,broccoli
+ALIGN,mscoco,-13.97,2.83,text,broccoli
+ALIGN,mscoco,-16.71,2.89,text,broccoli
+ALIGN,mscoco,-17.72,3.71,text,broccoli
+ALIGN,mscoco,-18.09,1.82,text,broccoli
+ALIGN,mscoco,-18.99,3.37,text,broccoli
+ALIGN,mscoco,-13.21,5.27,text,broccoli
+ALIGN,mscoco,-19.82,6.44,text,broccoli
+ALIGN,mscoco,-15.57,1.43,text,broccoli
+ALIGN,mscoco,-17.57,3.91,text,broccoli
+ALIGN,mscoco,-19.08,1.63,text,broccoli
+ALIGN,mscoco,-19.66,4.39,text,broccoli
+ALIGN,mscoco,-14.80,3.79,text,broccoli
+ALIGN,mscoco,-15.94,-0.14,text,broccoli
+ALIGN,mscoco,-14.95,4.71,text,broccoli
+ALIGN,mscoco,-14.56,-0.54,text,broccoli
+ALIGN,mscoco,-18.36,6.20,text,broccoli
+ALIGN,mscoco,-17.09,1.96,text,broccoli
+ALIGN,mscoco,-18.99,8.46,text,broccoli
+ALIGN,mscoco,-5.79,-3.66,text,beigel
+ALIGN,mscoco,-8.50,-6.27,text,beigel
+ALIGN,mscoco,-12.22,-5.27,text,beigel
+ALIGN,mscoco,-12.85,-5.72,text,beigel
+ALIGN,mscoco,-6.05,-8.57,text,beigel
+ALIGN,mscoco,-11.10,-7.34,text,beigel
+ALIGN,mscoco,-6.06,-9.44,text,beigel
+ALIGN,mscoco,-13.09,-4.54,text,beigel
+ALIGN,mscoco,-9.31,-7.85,text,beigel
+ALIGN,mscoco,-7.80,-5.81,text,beigel
+ALIGN,mscoco,-6.03,-6.18,text,beigel
+ALIGN,mscoco,-6.89,-6.78,text,beigel
+ALIGN,mscoco,-5.65,-7.45,text,beigel
+ALIGN,mscoco,-10.85,-7.22,text,beigel
+ALIGN,mscoco,-7.29,-4.92,text,beigel
+ALIGN,mscoco,-10.80,-7.29,text,beigel
+ALIGN,mscoco,-4.46,-6.19,text,beigel
+ALIGN,mscoco,-11.37,-4.42,text,beigel
+ALIGN,mscoco,-5.71,-6.85,text,beigel
+ALIGN,mscoco,-7.68,-8.87,text,beigel
+ALIGN,mscoco,-10.14,-8.80,text,beigel
+ALIGN,mscoco,-11.89,-10.75,text,beigel
+ALIGN,mscoco,-9.67,-9.11,text,beigel
+ALIGN,mscoco,-13.30,-11.58,text,beigel
+ALIGN,mscoco,-12.58,-8.64,text,beigel
+ALIGN,mscoco,-6.22,-6.46,text,beigel
+ALIGN,mscoco,-10.70,-10.70,text,beigel
+ALIGN,mscoco,-8.13,-7.40,text,beigel
+ALIGN,mscoco,-8.98,-9.17,text,beigel
+ALIGN,mscoco,-11.40,-4.40,text,beigel
+ALIGN,mscoco,-4.59,3.67,text,beigel
+ALIGN,mscoco,-12.24,-9.51,text,beigel
+ALIGN,mscoco,-11.65,-6.07,text,beigel
+ALIGN,mscoco,-5.81,-5.58,text,beigel
+ALIGN,mscoco,-7.05,-6.23,text,beigel
+ALIGN,mscoco,-4.59,2.73,text,beigel
+ALIGN,mscoco,-5.58,-7.38,text,beigel
+ALIGN,mscoco,-5.43,-8.48,text,beigel
+ALIGN,mscoco,-7.62,-7.76,text,beigel
+ALIGN,mscoco,-4.59,2.65,text,beigel
+ALIGN,mscoco,-8.59,-6.54,text,beigel
+ALIGN,mscoco,-8.70,-6.00,text,beigel
+ALIGN,mscoco,-8.77,-8.26,text,beigel
+ALIGN,mscoco,-12.06,-9.63,text,beigel
+ALIGN,mscoco,-12.67,-9.16,text,beigel
+ALIGN,mscoco,-9.07,-8.32,text,beigel
+ALIGN,mscoco,-10.06,-7.36,text,beigel
+ALIGN,mscoco,-6.56,-8.28,text,beigel
+ALIGN,mscoco,-5.40,-7.16,text,beigel
+ALIGN,mscoco,-12.32,-10.58,text,beigel
+ALIGN,mscoco,23.96,6.24,text,racquet
+ALIGN,mscoco,16.77,6.11,text,racquet
+ALIGN,mscoco,22.36,5.16,text,racquet
+ALIGN,mscoco,25.10,2.93,text,racquet
+ALIGN,mscoco,19.89,6.47,text,racquet
+ALIGN,mscoco,26.53,4.62,text,racquet
+ALIGN,mscoco,22.09,3.13,text,racquet
+ALIGN,mscoco,16.71,6.12,text,racquet
+ALIGN,mscoco,23.47,5.76,text,racquet
+ALIGN,mscoco,21.99,1.69,text,racquet
+ALIGN,mscoco,22.02,5.64,text,racquet
+ALIGN,mscoco,19.31,7.07,text,racquet
+ALIGN,mscoco,22.67,4.24,text,racquet
+ALIGN,mscoco,18.96,6.33,text,racquet
+ALIGN,mscoco,23.72,4.78,text,racquet
+ALIGN,mscoco,20.11,7.61,text,racquet
+ALIGN,mscoco,18.74,5.78,text,racquet
+ALIGN,mscoco,21.01,4.49,text,racquet
+ALIGN,mscoco,22.91,4.32,text,racquet
+ALIGN,mscoco,21.02,2.40,text,racquet
+ALIGN,mscoco,22.83,5.69,text,racquet
+ALIGN,mscoco,24.64,5.18,text,racquet
+ALIGN,mscoco,24.44,6.81,text,racquet
+ALIGN,mscoco,21.73,2.29,text,racquet
+ALIGN,mscoco,22.17,4.45,text,racquet
+ALIGN,mscoco,21.71,3.50,text,racquet
+ALIGN,mscoco,19.33,5.66,text,racquet
+ALIGN,mscoco,19.16,6.53,text,racquet
+ALIGN,mscoco,22.98,5.19,text,racquet
+ALIGN,mscoco,22.03,6.46,text,racquet
+ALIGN,mscoco,22.51,0.58,text,racquet
+ALIGN,mscoco,24.79,1.63,text,racquet
+ALIGN,mscoco,19.50,6.16,text,racquet
+ALIGN,mscoco,22.00,2.74,text,racquet
+ALIGN,mscoco,19.74,2.77,text,racquet
+ALIGN,mscoco,21.41,3.21,text,racquet
+ALIGN,mscoco,15.92,6.29,text,racquet
+ALIGN,mscoco,20.29,3.71,text,racquet
+ALIGN,mscoco,22.94,3.15,text,racquet
+ALIGN,mscoco,22.78,1.86,text,racquet
+ALIGN,mscoco,20.87,6.30,text,racquet
+ALIGN,mscoco,22.37,2.77,text,racquet
+ALIGN,mscoco,23.64,2.43,text,racquet
+ALIGN,mscoco,20.69,3.13,text,racquet
+ALIGN,mscoco,23.03,7.03,text,racquet
+ALIGN,mscoco,25.98,3.93,text,racquet
+ALIGN,mscoco,21.03,1.53,text,racquet
+ALIGN,mscoco,25.16,4.09,text,racquet
+ALIGN,mscoco,24.21,3.83,text,racquet
+ALIGN,mscoco,24.11,2.56,text,racquet
+ALIGN,mscoco,-5.08,14.80,text,microwave oven
+ALIGN,mscoco,-1.71,10.23,text,microwave oven
+ALIGN,mscoco,-3.64,7.39,text,microwave oven
+ALIGN,mscoco,-4.43,9.35,text,microwave oven
+ALIGN,mscoco,-7.23,11.32,text,microwave oven
+ALIGN,mscoco,-5.54,9.84,text,microwave oven
+ALIGN,mscoco,-3.94,14.17,text,microwave oven
+ALIGN,mscoco,-6.42,9.71,text,microwave oven
+ALIGN,mscoco,-6.82,14.06,text,microwave oven
+ALIGN,mscoco,-4.12,5.43,text,microwave oven
+ALIGN,mscoco,-6.16,8.86,text,microwave oven
+ALIGN,mscoco,-0.47,8.53,text,microwave oven
+ALIGN,mscoco,-4.77,14.82,text,microwave oven
+ALIGN,mscoco,-6.10,10.21,text,microwave oven
+ALIGN,mscoco,-3.87,13.74,text,microwave oven
+ALIGN,mscoco,-2.55,9.39,text,microwave oven
+ALIGN,mscoco,-5.71,11.71,text,microwave oven
+ALIGN,mscoco,-5.45,12.35,text,microwave oven
+ALIGN,mscoco,-2.82,13.88,text,microwave oven
+ALIGN,mscoco,-4.43,10.69,text,microwave oven
+ALIGN,mscoco,-3.54,11.79,text,microwave oven
+ALIGN,mscoco,-1.26,10.30,text,microwave oven
+ALIGN,mscoco,-2.59,7.12,text,microwave oven
+ALIGN,mscoco,-3.21,13.03,text,microwave oven
+ALIGN,mscoco,-7.61,12.05,text,microwave oven
+ALIGN,mscoco,-3.92,11.73,text,microwave oven
+ALIGN,mscoco,-3.81,6.88,text,microwave oven
+ALIGN,mscoco,-3.08,8.05,text,microwave oven
+ALIGN,mscoco,-3.89,8.14,text,microwave oven
+ALIGN,mscoco,-3.39,7.03,text,microwave oven
+ALIGN,mscoco,-3.87,10.40,text,microwave oven
+ALIGN,mscoco,-4.66,13.24,text,microwave oven
+ALIGN,mscoco,-1.72,14.06,text,microwave oven
+ALIGN,mscoco,-2.77,11.84,text,microwave oven
+ALIGN,mscoco,-1.46,12.64,text,microwave oven
+ALIGN,mscoco,-6.62,13.83,text,microwave oven
+ALIGN,mscoco,-5.60,10.53,text,microwave oven
+ALIGN,mscoco,-7.04,10.00,text,microwave oven
+ALIGN,mscoco,-3.38,10.20,text,microwave oven
+ALIGN,mscoco,-2.09,11.43,text,microwave oven
+ALIGN,mscoco,-3.13,7.37,text,microwave oven
+ALIGN,mscoco,-2.32,12.78,text,microwave oven
+ALIGN,mscoco,-2.67,14.37,text,microwave oven
+ALIGN,mscoco,-5.86,12.62,text,microwave oven
+ALIGN,mscoco,-6.00,10.81,text,microwave oven
+ALIGN,mscoco,-4.58,13.11,text,microwave oven
+ALIGN,mscoco,-2.96,10.88,text,microwave oven
+ALIGN,mscoco,-4.22,11.68,text,microwave oven
+ALIGN,mscoco,-3.62,12.12,text,microwave oven
+ALIGN,mscoco,-4.55,11.18,text,microwave oven
+ALIGN,mscoco,10.03,-5.69,text,umbrella
+ALIGN,mscoco,13.19,-2.43,text,umbrella
+ALIGN,mscoco,19.75,-0.05,text,umbrella
+ALIGN,mscoco,9.32,-9.21,text,umbrella
+ALIGN,mscoco,14.13,-5.52,text,umbrella
+ALIGN,mscoco,10.26,-7.04,text,umbrella
+ALIGN,mscoco,14.62,-3.96,text,umbrella
+ALIGN,mscoco,14.73,-6.36,text,umbrella
+ALIGN,mscoco,15.01,-3.49,text,umbrella
+ALIGN,mscoco,11.60,-5.45,text,umbrella
+ALIGN,mscoco,16.17,0.38,text,umbrella
+ALIGN,mscoco,10.92,-5.57,text,umbrella
+ALIGN,mscoco,10.37,-4.48,text,umbrella
+ALIGN,mscoco,12.32,-5.68,text,umbrella
+ALIGN,mscoco,14.24,-6.64,text,umbrella
+ALIGN,mscoco,13.21,-2.49,text,umbrella
+ALIGN,mscoco,13.39,-4.71,text,umbrella
+ALIGN,mscoco,12.57,-4.10,text,umbrella
+ALIGN,mscoco,8.20,-5.16,text,umbrella
+ALIGN,mscoco,14.28,-7.95,text,umbrella
+ALIGN,mscoco,10.56,-4.58,text,umbrella
+ALIGN,mscoco,10.56,-3.11,text,umbrella
+ALIGN,mscoco,9.45,-7.75,text,umbrella
+ALIGN,mscoco,10.29,-3.94,text,umbrella
+ALIGN,mscoco,8.56,-4.25,text,umbrella
+ALIGN,mscoco,15.41,-6.36,text,umbrella
+ALIGN,mscoco,12.09,-6.97,text,umbrella
+ALIGN,mscoco,13.27,-5.28,text,umbrella
+ALIGN,mscoco,11.63,-6.77,text,umbrella
+ALIGN,mscoco,16.89,-5.80,text,umbrella
+ALIGN,mscoco,13.96,-4.78,text,umbrella
+ALIGN,mscoco,15.74,-4.47,text,umbrella
+ALIGN,mscoco,15.47,-2.81,text,umbrella
+ALIGN,mscoco,10.90,-5.64,text,umbrella
+ALIGN,mscoco,12.21,-8.01,text,umbrella
+ALIGN,mscoco,9.66,-9.03,text,umbrella
+ALIGN,mscoco,11.91,1.11,text,umbrella
+ALIGN,mscoco,7.84,-5.36,text,umbrella
+ALIGN,mscoco,15.05,-5.50,text,umbrella
+ALIGN,mscoco,15.74,-7.09,text,umbrella
+ALIGN,mscoco,8.42,-7.60,text,umbrella
+ALIGN,mscoco,8.79,-7.98,text,umbrella
+ALIGN,mscoco,13.08,-8.01,text,umbrella
+ALIGN,mscoco,14.65,-6.30,text,umbrella
+ALIGN,mscoco,9.37,-8.85,text,umbrella
+ALIGN,mscoco,15.71,-4.42,text,umbrella
+ALIGN,mscoco,10.32,-7.35,text,umbrella
+ALIGN,mscoco,7.44,-6.40,text,umbrella
+ALIGN,mscoco,16.44,-5.80,text,umbrella
+ALIGN,mscoco,14.80,-7.33,text,umbrella

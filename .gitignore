@@ -200,6 +200,10 @@ pip-selfcheck.json
 
 # Added by myself
 
+.vscode/
 VLPs/
 results/
+data/mscoco_val_2017/
+pkgs/ALBEF/ALBEF.pth
+
 cython_constraint.txt

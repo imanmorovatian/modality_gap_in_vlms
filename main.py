@@ -11,11 +11,11 @@ import random
 
 from utils.chart_utils import similarities, boxplot, tsne_2dplot
 from utils.metrics import CMD
-from models.custom_clip import CustomCLIP
-from models.custom_align import CustomALIGN
-from models.custom_imagebind import CustomImageBind
-from models.custom_cyclip import CustomCyCLIP
-from models.custom_flava import CustomFLAVA
+# from models.custom_clip import CustomCLIP
+# from models.custom_align import CustomALIGN
+# from models.custom_imagebind import CustomImageBind
+# from models.custom_cyclip import CustomCyCLIP
+# from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 
 from arg_parser import parse_args
@@ -27,13 +27,15 @@ def create_path_if_not_existant(path):
 cmd = CMD()
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-model_name2model = {'CLIP_ViT-B32' : CustomCLIP('CLIP_ViT-B32'),
-                    'CLIP_RN50'    : CustomCLIP('CLIP_RN50'),
-                    'ALIGN'        : CustomALIGN(),
-                    'ImageBind'    : CustomImageBind(),
-                    'CyCLIP'       : CustomCyCLIP(),
-                    'FLAVA'        : CustomFLAVA(),
-                    'ALBEF'        : CustomALBEF(),}
+model_name2model = {
+    # 'CLIP_ViT-B32' : CustomCLIP('CLIP_ViT-B32'),
+    # 'CLIP_RN50'    : CustomCLIP('CLIP_RN50'),
+    # 'ALIGN'        : CustomALIGN(),
+    # 'ImageBind'    : CustomImageBind(),
+    # 'CyCLIP'       : CustomCyCLIP(),
+    # 'FLAVA'        : CustomFLAVA(),
+    'ALBEF'        : CustomALBEF()
+    }
 
 def write_csv(name, initial: List, values: List):
     with open(name, 'a', encoding='UTF8') as f:

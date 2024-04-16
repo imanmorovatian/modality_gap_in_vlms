@@ -267,7 +267,7 @@ def generate(test_dataset : str,
 
     assert test_dataset in ['mscoco',
                             'flickr30k',
-                            'amz-products',]
+                            'amazon_products',]
 
     assert model_name in ['CLIP_ViT-B32',
                           'CLIP_RN50',

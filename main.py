@@ -1,3 +1,12 @@
+import sys
+
+# if it is going to be executed on Google Colab, it will be needed to add the location of the virtual environment into
+# the path variable
+
+sys.path.append(
+    '/content/drive/MyDrive/Colab Notebooks/PoliTo: Thesis/modality-invariance-VLMs/VLPs_env/lib/python3.10/site-packages/'
+    )
+
 from typing import List
 import plotly.graph_objects as go
 import torch
@@ -11,6 +20,7 @@ import random
 
 from utils.chart_utils import similarities, boxplot, tsne_2dplot
 from utils.metrics import CMD
+from utils.read_dataset import read_dataset
 # from models.custom_clip import CustomCLIP
 # from models.custom_align import CustomALIGN
 # from models.custom_imagebind import CustomImageBind
@@ -121,8 +131,8 @@ def multimodal_similarities(model,
     img_data = {}
     txt_data = {}
 
-    if test_dataset == 'amz-products':
-        img_data, txt_data = read_amazon_products()
+    if test_dataset == 'amazon_products':
+        img_data, txt_data = read_dataset(test_dataset)
     else:
         img_data, txt_data = read_coco_flickr30k(test_dataset)
         

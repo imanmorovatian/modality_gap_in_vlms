@@ -207,3 +207,4 @@ data/mscoco_val_2017/
 pkgs/ALBEF/ALBEF.pth
 
 cython_constraint.txt
+temp.py

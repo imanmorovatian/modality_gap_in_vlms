@@ -2,6 +2,10 @@ import csv
 import random
 import argparse
 import os
+import sys
+
+
+csv.field_size_limit(sys.maxsize)
 
 # file_path = "data/flickr30k_classified.csv"
 
@@ -10,7 +14,7 @@ def datapath2name(datapath:str):
         return 'flickr30k'
     if 'mscoco' in datapath:
         return 'mscoco'
-    if 'amz' in datapath:
+    if 'amazon' in datapath:
         return 'amz-products'
     raise ValueError(f"Invalid data path: {datapath}")
 

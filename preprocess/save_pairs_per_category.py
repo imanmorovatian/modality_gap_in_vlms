@@ -15,7 +15,7 @@ def datapath2name(datapath:str):
     if 'mscoco' in datapath:
         return 'mscoco'
     if 'amazon' in datapath:
-        return 'amz-products'
+        return 'amazon_products'
     raise ValueError(f"Invalid data path: {datapath}")
 
 def save_pairs(datapath:str):
@@ -24,10 +24,10 @@ def save_pairs(datapath:str):
     data_dict = {}
     with open(datapath, 'r') as csvfile:
         csvreader = csv.reader(csvfile)
-        if dataname == 'amz-products':
+        if dataname == 'amazon_products':
             next(csvreader)  # Skip the header row
         for row in csvreader:
-            if dataname == 'amz-products':
+            if dataname == 'amazon_products':
                 category = row[2]
             else:
                 category = row[3].split(',')[-1].strip()

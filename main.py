@@ -195,7 +195,7 @@ def scatter(model,
         vectorized_category_data = []
         for entry in entries:
             imgid_or_url, caption = entry[0], entry[1]
-            if test_dataset == 'amz-products':
+            if test_dataset == 'amazon_products':
                 image_path = imgid_or_url
             else:
                 image_path = os.path.join(image_root_path, 'images', f'{imgid_or_url}.jpg')

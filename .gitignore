@@ -203,7 +203,8 @@ pip-selfcheck.json
 .vscode/
 VLPs/
 results/
-data/mscoco_val_2017/
+data/mscoco-val2017-images/
+data/flickr30k-images/
 pkgs/ALBEF/ALBEF.pth
 
 cython_constraint.txt

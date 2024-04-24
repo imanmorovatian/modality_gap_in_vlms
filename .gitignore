@@ -206,6 +206,7 @@ results/
 data/mscoco-val2017-images/
 data/flickr30k-images/
 pkgs/ALBEF/ALBEF.pth
-
+preprocess/amazon_categories/
+preprocess/amazon_edited_categories/
 cython_constraint.txt
 temp.py

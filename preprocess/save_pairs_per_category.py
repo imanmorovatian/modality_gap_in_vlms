@@ -24,7 +24,7 @@ def save_pairs(datapath:str):
     data_dict = {}
     with open(datapath, 'r') as csvfile:
         csvreader = csv.reader(csvfile)
-        if dataname == 'amazon_products':
+        if dataname == 'amazon_products' or dataname == 'mscoco':
             next(csvreader)  # Skip the header row
         for row in csvreader:
             if dataname == 'amazon_products':

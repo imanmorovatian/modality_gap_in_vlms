@@ -34,7 +34,7 @@ The instances file has the following format:
     ----------------------------
 """
 
-with open('mscoco_json_files/captions_val2017.json') as f:
+with open('preprocess/mscoco_json_files/captions_val2017.json') as f:
     json_file = json.load(f)
     
     captions = json_file['annotations']
@@ -61,7 +61,7 @@ with open('mscoco_json_files/captions_val2017.json') as f:
     )
 
 
-    with open('mscoco_json_files/instances_val2017.json') as f:
+    with open('preprocess/mscoco_json_files/instances_val2017.json') as f:
         json_file = json.load(f)
 
         df_img_cat = pd.DataFrame(
@@ -104,4 +104,5 @@ with open('mscoco_json_files/captions_val2017.json') as f:
         classes = df_final['super_categories'].unique().tolist()
         class_ids = {name:idx for idx, name in enumerate(classes)}
         df_final['class'] = df_final['super_categories'].apply(lambda x: class_ids[x])
-        df_final.to_csv('temp.csv', index=False)
+        df_final = df_final[['coco_url', 'caption', 'class', 'super_categories']]
+        df_final.to_csv('data/mscoco_classified.csv', index=False)

@@ -5,13 +5,13 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Train a change detection model for landslide delineation')
 
     # name of the model
-    parser.add_argument("--modelname", type=str, default="CLIP_ViT-B32", help="Name of the model", dest='MODELNAME')
+    parser.add_argument("--modelname", type=str, required=True, help="Name of the model", dest='MODELNAME')
 
     # name of the dataset
-    parser.add_argument("--dataset", type=str, default="mscoco", help="Name of the test dataset", dest='DATASET')
+    parser.add_argument("--dataset", type=str, required=True, help="Name of the test dataset", dest='DATASET')
 
     # path to the dataset images
-    parser.add_argument("--imagerootpath", type=str, default="/nfs/datasets/MSCOCO", help="Root path of the images", dest='IMAGEROOTPATH')
+    parser.add_argument("--imagerootpath", type=str, help="Root path of the images", dest='IMAGEROOTPATH')
 
     # YAML config file
     parser.add_argument('--yaml', type=str, default=None, help='YAML file containing arguments to override (default: None)', dest='YAML')

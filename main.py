@@ -7,28 +7,28 @@ sys.path.append(
     '/content/drive/MyDrive/Colab Notebooks/PoliTo: Thesis/modality-invariance-VLMs/VLPs_env/lib/python3.10/site-packages/'
     )
 
-from typing import List
-import plotly.graph_objects as go
-import torch
-from tqdm import tqdm
 import os
-import csv
 import numpy as np
-
-from itertools import combinations
+import torch
+import csv
 import random
+from itertools import combinations
+from typing import List
+from tqdm import tqdm
+import plotly.graph_objects as go
 
+from utils.arg_parser import parse_args
 from utils.chart_utils import similarities, boxplot, tsne_2dplot
 from utils.metrics import CMD
 from utils.read_dataset import read_dataset
-# from models.custom_clip import CustomCLIP
-# from models.custom_align import CustomALIGN
-# from models.custom_imagebind import CustomImageBind
-# from models.custom_cyclip import CustomCyCLIP
-# from models.custom_flava import CustomFLAVA
+
+from models.custom_clip import CustomCLIP
+from models.custom_align import CustomALIGN
+from models.custom_imagebind import CustomImageBind
+from models.custom_cyclip import CustomCyCLIP
+from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 
-from arg_parser import parse_args
 
 def create_path_if_not_existant(path):
     if not os.path.exists(path):
@@ -338,4 +338,3 @@ if __name__ == '__main__':
     generate(test_dataset = test_dataset,
             model_name = model_name,
             image_root_path = image_root_path,)
-    

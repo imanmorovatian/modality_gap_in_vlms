@@ -59,7 +59,7 @@ def save_pairs(datapath:str):
         flat_sampled_data = [(img_id, caption, category) for category, samples in sampled_data.items() for img_id, caption in samples]
 
         # Write to CSV
-        with open(f'data/{dataname}_pairs_{i+1}.csv', 'w', newline='') as csvfile:
+        with open(f'data/pairs/{dataname}_pairs_{i+1}.csv', 'w', newline='') as csvfile:
             csvwriter = csv.writer(csvfile)
             csvwriter.writerow(['img id', 'caption', 'category'])
             csvwriter.writerows(flat_sampled_data)

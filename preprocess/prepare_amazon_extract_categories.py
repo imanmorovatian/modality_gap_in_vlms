@@ -19,12 +19,12 @@ def edit_dataframe(df):
     return pd.concat([df, categories], axis=1)
 
 
-files = os.listdir('amazoon_categories/')
+files = os.listdir('preprocess/amazon_categories/')
 
 total_files = len(files)
 
 for idx, csv_file in enumerate(files):
     print(f'Processing {csv_file} {idx+1}/{total_files}')
-    df_temp = pd.read_csv('amazoon_categories/'+csv_file)
+    df_temp = pd.read_csv('preprocess/amazon_categories/'+csv_file)
     df_temp = edit_dataframe(df_temp)
-    df_temp.to_csv(f'amazoon_edited_categories/{csv_file}', index=False)
+    df_temp.to_csv(f'preprocess/amazon_edited_categories/{csv_file}', index=False)

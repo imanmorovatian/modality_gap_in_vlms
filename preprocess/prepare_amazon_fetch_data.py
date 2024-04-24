@@ -136,7 +136,7 @@ for category, (url, no_records) in categories.items():
     print()
 
     if usefulness:
-        df.to_csv('amazoon_categories/{category}.csv', index=False)
+        df.to_csv('preprocess/amazon_categories/{category}.csv', index=False)
     else:
         print('No useful records!')
 

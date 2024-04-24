@@ -7,7 +7,7 @@ no_imgs_per_cat = 400
 # better to combine the categories
 
 file_names = ['CDs and Vinyl.csv', 'Movies and TV.csv', 'Software.csv', 'Video Games.csv']
-file_names = ['amazoon_edited_categories/'+name for name in file_names]
+file_names = ['preprocess/amazon_edited_categories/'+name for name in file_names]
 temp = pd.concat(map(pd.read_csv, file_names), ignore_index=True)
 temp = temp[['title', 'imageURLHighRes']]
 temp['class'] = 'Digital Media'
@@ -42,7 +42,7 @@ categories = {
 
 for csv_file, hierarchy_level in categories.items():
     print(f'Wokring on {csv_file}')
-    df_temp = pd.read_csv('amazoon_edited_categories/'+csv_file)
+    df_temp = pd.read_csv('preprocess/amazon_edited_categories/'+csv_file)
     hierarchies = dict(df_temp[hierarchy_level].value_counts())
     hierarchies = [h for h,count in hierarchies.items() if count >= no_imgs_per_cat]
 
@@ -55,4 +55,4 @@ for csv_file, hierarchy_level in categories.items():
 
 df_final = pd.concat(dfs, ignore_index=True)
 df_final = df_final[['imageURLHighRes', 'title', 'class']]
-df_final.to_csv('../data/amazon_products.csv', index=False)
+df_final.to_csv('data/amazon_products.csv', index=False)

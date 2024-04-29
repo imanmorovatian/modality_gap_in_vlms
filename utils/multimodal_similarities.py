@@ -6,12 +6,12 @@ import numpy as np
 from itertools import combinations
 from tqdm import tqdm
 
-from read_dataset import read_dataset
-from chart_utils import similarities
-from metrics import CMD
+from utils.read_dataset import read_dataset
+from utils.chart_utils import similarities
+from utils.metrics import CMD
 
 
-def multimodal_similarities(model, test_dataset, image_root_path):
+def multimodal_similarities(model, test_dataset):
     cmd = CMD()
 
     img_data, txt_data = read_dataset(test_dataset)
@@ -25,9 +25,9 @@ def multimodal_similarities(model, test_dataset, image_root_path):
             for index1, index2 in sampled_indexes:
                 img1, img2 = (similar_images[index1], similar_images[index2])
                 txt1, txt2 = (similar_texts[index1], similar_texts[index2])
-                if test_dataset in ['mscoco', 'flickr30k']:
-                    img1 = os.path.join(image_root_path, 'images', f'{img1}.jpg')
-                    img2 = os.path.join(image_root_path, 'images', f'{img2}.jpg')
+                if test_dataset == 'flickr30k':
+                    img1 = os.path.join('data/flickr30k-images/', f'{img1}.jpg')
+                    img2 = os.path.join('data/flickr30k-images/', f'{img2}.jpg')
                 try:
                     img_feats1.append(model.encode_image(img1))
                     img_feats2.append(model.encode_image(img2))

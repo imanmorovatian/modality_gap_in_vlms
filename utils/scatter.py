@@ -2,9 +2,9 @@ import os
 import csv
 import numpy as np
 
-from chart_utils import tsne_2dplot
+from utils.chart_utils import tsne_2dplot
 
-def scatter(model, test_dataset, outfolder, image_root_path, i,):
+def scatter(model, test_dataset, outfolder, image_root_path, i):
 
     sampled_data = {}
 

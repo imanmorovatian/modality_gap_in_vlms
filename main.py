@@ -13,16 +13,16 @@ import numpy as np
 
 from utils.arg_parser import parse_args
 from utils.multimodal_similarities import multimodal_similarities
+from utils.chart_utils import boxplot
 from utils.save_objects import save_objects
 from utils.save_data import save_data
-from utils.chart_utils import boxplot
 from utils.scatter import scatter
 
-from models.custom_clip import CustomCLIP
-from models.custom_align import CustomALIGN
-from models.custom_imagebind import CustomImageBind
-from models.custom_cyclip import CustomCyCLIP
-from models.custom_flava import CustomFLAVA
+# from models.custom_clip import CustomCLIP
+# from models.custom_align import CustomALIGN
+# from models.custom_imagebind import CustomImageBind
+# from models.custom_cyclip import CustomCyCLIP
+# from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 
 
@@ -71,10 +71,8 @@ if __name__ == '__main__':
 
     model = model_name2model[model_name]
 
-    all_sim_img, all_dissim_img,\
-        all_sim_txt, all_dissim_txt,\
-            all_sim_txtimg,\
-                all_dissim_txtimg = multimodal_similarities(model,test_dataset,image_root_path,)
+    all_sim_img, all_dissim_img, all_sim_txt, all_dissim_txt, all_sim_txtimg, all_dissim_txtimg = \
+        multimodal_similarities(model, test_dataset)
 
     pos_type = ['Txt-Txt']*len(all_sim_txt)
     pos_type.extend(['Img-Img']*len(all_sim_img))
@@ -90,7 +88,6 @@ if __name__ == '__main__':
 
     outfolder = os.path.join('results', 'charts', model_name, test_dataset,)
     create_path_if_not_existant(outfolder)
-
     save_objects([pos_gobj, neg_gobj], outfolder, name='sim_distrib')
 
     save_data([model_name]*len(np.concatenate((all_sim, all_dissim))),
@@ -102,4 +99,4 @@ if __name__ == '__main__':
               'raw_distrib',)
     
     for i in range(5):
-        scatter(model, test_dataset, outfolder, image_root_path, i+1,)
+        scatter(model, test_dataset, outfolder, image_root_path, i+1)

@@ -10,13 +10,12 @@ sys.path.append(
 import os
 import csv
 import numpy as np
-from typing import List
 
 from utils.arg_parser import parse_args
 from utils.multimodal_similarities import multimodal_similarities
 from utils.save_objects import save_objects
 from utils.save_data import save_data
-from utils.chart_utils import boxplot, tsne_2dplot
+from utils.chart_utils import boxplot
 from utils.scatter import scatter
 
 from models.custom_clip import CustomCLIP
@@ -44,21 +43,11 @@ if __name__ == '__main__':
     'ALBEF'        : CustomALBEF()
     }
     
-    # Parse the command-line arguments
+    # Parse the command-line arguments and assign values to variables
     args = parse_args()
-
-    # Assign values to variables
     model_name = args.MODELNAME
     test_dataset = args.DATASET
     image_root_path = args.IMAGEROOTPATH
-
-    create_path_if_not_existant('results')
-    outfile = 'cmd.csv'
-
-    if not os.path.exists(os.path.join('results',outfile)):
-        with open(os.path.join('results',outfile), 'w', encoding='UTF8') as f:
-            writer = csv.writer(f)
-            writer.writerow(['tested dataset', 'model name', 'Txt-Txt', 'Img-Img', 'Img-Txt'])
 
     assert test_dataset in ['mscoco',
                             'flickr30k',
@@ -71,6 +60,14 @@ if __name__ == '__main__':
                           'CyCLIP',
                           'FLAVA',
                           'ALBEF',]
+    
+    # Create the csv file of results
+    create_path_if_not_existant('results')
+    outfile = 'cmd.csv'
+    if not os.path.exists(os.path.join('results',outfile)):
+        with open(os.path.join('results',outfile), 'w', encoding='UTF8') as f:
+            writer = csv.writer(f)
+            writer.writerow(['tested dataset', 'model name', 'Txt-Txt', 'Img-Img', 'Img-Txt'])
 
     model = model_name2model[model_name]
 

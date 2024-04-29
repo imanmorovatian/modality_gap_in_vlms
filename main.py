@@ -15,9 +15,10 @@ import random
 from itertools import combinations
 from typing import List
 from tqdm import tqdm
-import plotly.graph_objects as go
 
 from utils.arg_parser import parse_args
+from utils.save_objects import save_objects
+from utils.save_data import save_data
 from utils.chart_utils import similarities, boxplot, tsne_2dplot
 from utils.metrics import CMD
 from utils.read_dataset import read_dataset
@@ -51,43 +52,6 @@ def write_csv(name, initial: List, values: List):
     with open(name, 'a', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerow(initial + values)
-
-def saveobjects(gobjs: List, outfolder: str, name: str):
-    fig = go.Figure()
-    for gobj in gobjs:
-        fig.add_trace(gobj)
-
-    fig.update_layout(
-        boxmode='group',
-        font=dict(size=58),
-        yaxis_title = "Cosine similarity",
-        autosize    = False,
-        width       = 1000,
-        height      = 1000,
-    )
-
-    fig.update_layout(yaxis_range=[-0.2,1])
-    fig.write_image(os.path.join(outfolder, f'{name}.png'), scale=2)
-    fig.write_html(os.path.join(outfolder, f'{name}.html'))
-
-def save_data(model_name, test_dataset, values, pair_modality, pair_type, outfolder, name):
-    
-    data = list(zip(model_name, test_dataset, pair_modality, pair_type, values))
-
-    with open(os.path.join(outfolder, f'{name}.csv'), 'w', newline='') as csvfile:
-        fieldnames = ['Model', 'Dataset', 'Pair Modality', 'Pair Type', 'Cosine Similarity']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-        # Write the header
-        writer.writeheader()
-
-        # Write the data
-        for pair in data:
-            writer.writerow({'Model': pair[0],
-                             'Dataset': pair[1],
-                             'Pair Modality': pair[2],
-                             'Pair Type': pair[3],
-                             'Cosine Similarity': pair[4]})
 
 def multimodal_similarities(model, test_dataset, image_root_path):
 
@@ -259,7 +223,7 @@ def generate(test_dataset : str,
 
     create_path_if_not_existant(outfolder)
 
-    saveobjects([pos_gobj, neg_gobj], outfolder, name='sim_distrib')
+    save_objects([pos_gobj, neg_gobj], outfolder, name='sim_distrib')
     save_data([model_name]*len(np.concatenate((all_sim, all_dissim))),
               [test_dataset]*len(np.concatenate((all_sim, all_dissim))),
               np.concatenate((all_sim, all_dissim)),

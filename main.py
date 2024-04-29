@@ -89,52 +89,9 @@ def save_data(model_name, test_dataset, values, pair_modality, pair_type, outfol
                              'Pair Type': pair[3],
                              'Cosine Similarity': pair[4]})
 
+def multimodal_similarities(model, test_dataset, image_root_path):
 
-def read_amazon_products():
-    img_data = {}
-    txt_data = {}
-
-    with open(os.path.join('data', 'amz-products.csv'), "r") as f:
-        total_lines = 50000
-
-        reader = csv.reader(f, delimiter=',')
-        for i, row in tqdm(enumerate(reader), total=total_lines, desc="Reading CSV"):
-            if i >= total_lines:
-                break
-            img_url, title, category = row
-            img_data.setdefault(category, []).append(img_url) if len(img_data.get(category, [])) < 20 else None
-            txt_data.setdefault(category, []).append(title) if len(txt_data.get(category, [])) < 20 else None
-    
-    return img_data, txt_data
-
-def read_coco_flickr30k(test_dataset):
-    img_data = {}
-    txt_data = {}
-
-    with open(os.path.join('data', f'{test_dataset}_classified.csv'), "r") as f:
-        total_lines = sum(1 for _ in f)
-
-    with open(os.path.join('data', f'{test_dataset}_classified.csv'), "r") as f:
-        reader = csv.reader(f, delimiter=',')
-        for row in tqdm(reader, total=total_lines, desc="Reading CSV"):
-            img_id, caption, label, _ = row
-            if len(caption) <= 77:
-                img_data.setdefault(label, []).append(img_id) if len(img_data.get(label, [])) < 2 else None
-                txt_data.setdefault(label, []).append(caption) if len(txt_data.get(label, [])) < 2 else None
-
-    return img_data, txt_data
-
-def multimodal_similarities(model,
-                            test_dataset,
-                            image_root_path):
-
-    img_data = {}
-    txt_data = {}
-
-    if test_dataset == 'amazon_products':
-        img_data, txt_data = read_dataset(test_dataset)
-    else:
-        img_data, txt_data = read_coco_flickr30k(test_dataset)
+    img_data, txt_data = read_dataset(test_dataset)
         
     img_feats1, img_feats2 = [], []
     txt_feats1, txt_feats2 = [], []

@@ -7,7 +7,7 @@ def read_dataset(dataset_name):
 
     if 'flickr30k' in dataset_name:
         df = pd.read_csv(
-            'data/'+dataset_name+'.csv',
+            'data/flickr30k_classified.csv',
             names=['img_id', 'caption', 'class_id', 'class'],
             header=None)
         print(df.head())
@@ -16,13 +16,13 @@ def read_dataset(dataset_name):
             txt_data[key] = table['caption'].to_list()
 
     elif 'mscoco' in dataset_name:
-        df = pd.read_csv('data/'+dataset_name+'.csv')
+        df = pd.read_csv('data/mscoco_classified.csv')
         for key, table in df.groupby('class'):
             img_data[key] = table['coco_url'].to_list()
             txt_data[key] = table['caption'].to_list()
     
     elif 'amazon' in dataset_name:
-        df = pd.read_csv('data/'+dataset_name+'.csv')
+        df = pd.read_csv('data/amazon_products.csv')
         for key, table in df.groupby('class'):
             img_data[key] = table['imageURLHighRes'].to_list()
             txt_data[key] = table['title'].to_list()

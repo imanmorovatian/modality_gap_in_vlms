@@ -22,10 +22,10 @@ def scatter(model, test_dataset, outfolder, image_root_path, i):
         vectorized_category_data = []
         for entry in entries:
             imgid_or_url, caption = entry[0], entry[1]
-            if test_dataset == 'amazon_products':
-                image_path = imgid_or_url
+            if test_dataset == 'flickr30k':
+                image_path = os.path.join('data/flickr30k-images/', f'{imgid_or_url}.jpg')
             else:
-                image_path = os.path.join(image_root_path, 'images', f'{imgid_or_url}.jpg')
+                image_path = imgid_or_url
             try:
                 image_vector = model.encode_image(image_path)
                 text_vector = model.encode_text(caption)

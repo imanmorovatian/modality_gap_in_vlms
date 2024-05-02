@@ -10,7 +10,6 @@ def read_dataset(dataset_name):
             'data/flickr30k_classified.csv',
             names=['img_id', 'caption', 'class_id', 'class'],
             header=None)
-        print(df.head())
         for key, table in df.groupby('class'):
             img_data[key] = table['img_id'].to_list()
             txt_data[key] = table['caption'].to_list()

@@ -8,15 +8,18 @@ sys.path.append(
     )
 
 import os
-import csv
-import numpy as np
+# import csv
+# import numpy as np
+
+from torchvision.datasets import CocoCaptions
 
 from utils.arg_parser import parse_args
-from utils.multimodal_similarities import multimodal_similarities
-from utils.chart_utils import boxplot
-from utils.save_objects import save_objects
-from utils.save_data import save_data
-from utils.scatter import scatter
+from utils.datasets.flickr30k_captions import Flickr30kCaptions
+# from utils.multimodal_similarities import multimodal_similarities
+# from utils.chart_utils import boxplot
+# from utils.save_objects import save_objects
+# from utils.save_data import save_data
+# from utils.scatter import scatter
 
 # from models.custom_clip import CustomCLIP
 # from models.custom_align import CustomALIGN
@@ -26,32 +29,25 @@ from utils.scatter import scatter
 from models.custom_albef import CustomALBEF
 
 
-def create_path_if_not_existant(path):
-    if not os.path.exists(path):
-        os.makedirs(path)
+def creat_model(name: str):
+    if name == 'ALBEF':
+        return CustomALBEF()
+    else:
+        raise ValueError('The selected model is not implemented yet')
 
 
 if __name__ == '__main__':
 
-    model_name2model = {
-    # 'CLIP_ViT-B32' : CustomCLIP('CLIP_ViT-B32'),
-    # 'CLIP_RN50'    : CustomCLIP('CLIP_RN50'),
-    # 'ALIGN'        : CustomALIGN(),
-    # 'ImageBind'    : CustomImageBind(),
-    # 'CyCLIP'       : CustomCyCLIP(),
-    # 'FLAVA'        : CustomFLAVA(),
-    'ALBEF'        : CustomALBEF()
-    }
-    
     # Parse the command-line arguments and assign values to variables
     args = parse_args()
     model_name = args.MODELNAME
     test_dataset = args.DATASET
     image_root_path = args.IMAGEROOTPATH
 
+    # Check whether dataset and model are valid
     assert test_dataset in ['mscoco',
                             'flickr30k',
-                            'amazon_products',]
+                            'amazon_products']
 
     assert model_name in ['CLIP_ViT-B32',
                           'CLIP_RN50',
@@ -59,44 +55,64 @@ if __name__ == '__main__':
                           'ImageBind',
                           'CyCLIP',
                           'FLAVA',
-                          'ALBEF',]
+                          'ALBEF']
+
+    root_dir = os.path.dirname(os.path.realpath(__file__))
+    result_dir = root_dir + '/reults'
+
+    if not os.path.exists(result_dir):
+        os.makedirs(result_dir)
+        
+    # compute central difference (Mind the Gap paper)
+    if test_dataset == 'mscoco':
+        dataset = CocoCaptions(root = root_dir + '/data/images/mscoco_val2017/',
+						annFile = root_dir + '/data/annotations/mscoco_val2017/captions_val2017.json')
+        
+    elif test_dataset == 'flickr30k':
+        dataset = Flickr30kCaptions(root = root_dir + '/data/images/flickr30k/',
+						annFile = root_dir + '/data/annotations/flickr30k/results_20130124.token')
+
+    else:
+        raise ValueError('The selected dataset is not supported')
     
-    # Create the csv file of results
-    create_path_if_not_existant('results')
-    outfile = 'cmd.csv'
-    if not os.path.exists(os.path.join('results',outfile)):
-        with open(os.path.join('results',outfile), 'w', encoding='UTF8') as f:
-            writer = csv.writer(f)
-            writer.writerow(['tested dataset', 'model name', 'Txt-Txt', 'Img-Img', 'Img-Txt'])
+    model = creat_model(model_name)
 
-    model = model_name2model[model_name]
+    # # Create the csv file of results
+    # create_path_if_not_existant('results')
+    # outfile = 'cmd.csv'
+    # if not os.path.exists(os.path.join('results',outfile)):
+    #     with open(os.path.join('results',outfile), 'w', encoding='UTF8') as f:
+    #         writer = csv.writer(f)
+    #         writer.writerow(['tested dataset', 'model name', 'Txt-Txt', 'Img-Img', 'Img-Txt'])
 
-    all_sim_img, all_dissim_img, all_sim_txt, all_dissim_txt, all_sim_txtimg, all_dissim_txtimg = \
-        multimodal_similarities(model, test_dataset)
+    # model = model_name2model[model_name]
 
-    pos_type = ['Txt-Txt']*len(all_sim_txt)
-    pos_type.extend(['Img-Img']*len(all_sim_img))
-    pos_type.extend(['Txt-Img']*len(all_sim_txtimg))
-    all_sim = np.concatenate((all_sim_txt, all_sim_img, all_sim_txtimg))
-    pos_gobj = boxplot(all_sim, pos_type, 'Pos', 'dodgerblue')
+    # all_sim_img, all_dissim_img, all_sim_txt, all_dissim_txt, all_sim_txtimg, all_dissim_txtimg = \
+    #     multimodal_similarities(model, test_dataset)
 
-    neg_type = ['Txt-Txt']*len(all_dissim_txt)
-    neg_type.extend(['Img-Img']*len(all_dissim_img))
-    neg_type.extend(['Txt-Img']*len(all_dissim_txtimg))
-    all_dissim = np.concatenate((all_dissim_txt, all_dissim_img, all_dissim_txtimg))
-    neg_gobj = boxplot(all_dissim, neg_type, 'Neg', 'indianred')
+    # pos_type = ['Txt-Txt']*len(all_sim_txt)
+    # pos_type.extend(['Img-Img']*len(all_sim_img))
+    # pos_type.extend(['Txt-Img']*len(all_sim_txtimg))
+    # all_sim = np.concatenate((all_sim_txt, all_sim_img, all_sim_txtimg))
+    # pos_gobj = boxplot(all_sim, pos_type, 'Pos', 'dodgerblue')
 
-    outfolder = os.path.join('results', 'charts', model_name, test_dataset,)
-    create_path_if_not_existant(outfolder)
-    save_objects([pos_gobj, neg_gobj], outfolder, name='sim_distrib')
+    # neg_type = ['Txt-Txt']*len(all_dissim_txt)
+    # neg_type.extend(['Img-Img']*len(all_dissim_img))
+    # neg_type.extend(['Txt-Img']*len(all_dissim_txtimg))
+    # all_dissim = np.concatenate((all_dissim_txt, all_dissim_img, all_dissim_txtimg))
+    # neg_gobj = boxplot(all_dissim, neg_type, 'Neg', 'indianred')
 
-    save_data([model_name]*len(np.concatenate((all_sim, all_dissim))),
-              [test_dataset]*len(np.concatenate((all_sim, all_dissim))),
-              np.concatenate((all_sim, all_dissim)),
-              np.concatenate((pos_type, neg_type)),
-              np.concatenate((['Pos']*len(all_sim), ['Neg']*len(all_dissim))),
-              outfolder,
-              'raw_distrib',)
+    # outfolder = os.path.join('results', 'charts', model_name, test_dataset,)
+    # create_path_if_not_existant(outfolder)
+    # save_objects([pos_gobj, neg_gobj], outfolder, name='sim_distrib')
+
+    # save_data([model_name]*len(np.concatenate((all_sim, all_dissim))),
+    #           [test_dataset]*len(np.concatenate((all_sim, all_dissim))),
+    #           np.concatenate((all_sim, all_dissim)),
+    #           np.concatenate((pos_type, neg_type)),
+    #           np.concatenate((['Pos']*len(all_sim), ['Neg']*len(all_dissim))),
+    #           outfolder,
+    #           'raw_distrib',)
     
-    for i in range(5):
-        scatter(model, test_dataset, outfolder, image_root_path, i+1)
+    # for i in range(5):
+    #     scatter(model, test_dataset, outfolder, image_root_path, i+1)

@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 from utils.read_dataset import read_dataset
 from utils.chart_utils import similarities
-from utils.metrics import CMD
+from utils.metrics.metrics import CMD
 
 
 def multimodal_similarities(model, test_dataset):

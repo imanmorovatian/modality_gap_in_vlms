@@ -203,8 +203,8 @@ pip-selfcheck.json
 .vscode/
 VLPs/
 results/
-data/mscoco-val2017-images/
-data/flickr30k-images/
+data/images/
+data/annotations/
 data/pairs/
 pkgs/ALBEF/ALBEF.pth
 preprocess/amazon_categories/

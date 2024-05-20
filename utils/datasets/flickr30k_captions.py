@@ -46,7 +46,7 @@ class Flickr30kCaptions(Dataset):
                 self.annotations[img_id].append(caption)
 
         for img_id, captions in self.annotations.items():
-            self.annotations[img_id] = random.choice(self.annotations[img_id])
+            self.annotations[img_id] = random.choices(captions, k=no_cap_per_img)
         self.ids = list(self.annotations.keys())
 
     def __getitem__(self, index: int):

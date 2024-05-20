@@ -58,24 +58,27 @@ if __name__ == '__main__':
                           'ALBEF']
 
     root_dir = os.path.dirname(os.path.realpath(__file__))
-    result_dir = root_dir + '/reults'
 
-    if not os.path.exists(result_dir):
-        os.makedirs(result_dir)
-        
-    # compute central difference (Mind the Gap paper)
+    model = creat_model(model_name)
+
     if test_dataset == 'mscoco':
-        dataset = CocoCaptions(root = root_dir + '/data/images/mscoco_val2017/',
-						annFile = root_dir + '/data/annotations/mscoco_val2017/captions_val2017.json')
+        dataset = CocoCaptions(root=root_dir + '/data/images/mscoco_val2017/',
+						annFile=root_dir + '/data/annotations/mscoco_val2017/captions_val2017.json',
+                        transform=model.transform)
         
     elif test_dataset == 'flickr30k':
-        dataset = Flickr30kCaptions(root = root_dir + '/data/images/flickr30k/',
-						annFile = root_dir + '/data/annotations/flickr30k/results_20130124.token')
+        dataset = Flickr30kCaptions(root=root_dir + '/data/images/flickr30k/',
+						annFile=root_dir + '/data/annotations/flickr30k/results_20130124.token',
+                        transform=model.transform)
 
     else:
         raise ValueError('The selected dataset is not supported')
+
+    text_features, image_features = model.encode(dataset, batch_size=32)
     
-    model = creat_model(model_name)
+    # result_dir = root_dir + '/reults'
+    # if not os.path.exists(result_dir):
+    #     os.makedirs(result_dir)
 
     # # Create the csv file of results
     # create_path_if_not_existant('results')

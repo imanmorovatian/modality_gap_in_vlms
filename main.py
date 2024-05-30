@@ -38,7 +38,7 @@ def creat_model(name: str):
         raise ValueError('The selected model is not implemented yet')
 
 
-def apply_model(model, dataset):
+def apply_model(model, dataset, root_dir):
     text_features, image_features = model.encode(dataset, batch_size=32)
 
     result_dir = root_dir + f'/reults/embeddings/{dataset.name}/{model.name}'
@@ -88,7 +88,7 @@ if __name__ == '__main__':
         raise ValueError('The selected dataset is not supported')
 
 
-    apply_model(model, dataset)
+    apply_model(model, dataset, root_dir)
 
     # # Create the csv file of results
     # create_path_if_not_existant('results')

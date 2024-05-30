@@ -21,7 +21,8 @@ class CustomALBEF:
         self.tokenizer = BertTokenizer.from_pretrained(self.text_encoder)
         self.model = ALBEF(config=config, tokenizer=self.tokenizer, text_encoder=self.text_encoder)
         self.model.load_state_dict(torch.load('pkgs/ALBEF/ALBEF.pth',
-                                              map_location=torch.device(DEVICE))['model'])
+                                              map_location=torch.device(self.device))['model'])
+        self.model = self.model.to(self.device)
         self.model.eval()
         self.name = 'ALBEF'
 
@@ -70,20 +71,22 @@ class CustomALBEF:
             for batch in tqdm(dataloader):
                 images, text = batch
 
-                text = torch.cat( [self.pre_caption(t) for t in text] )
-                text = self.tokenizer(text, return_tensors="pt").to(self.device)
+                text = text[0]
+                text = [self.pre_caption(t) for t in text]
+                text = self.tokenizer(text, padding=True, truncation=True, return_tensors="pt")
+                text = text.to(self.device)
                 text = self.model.text_encoder.bert(text.input_ids,
                                                    attention_mask = text.attention_mask,
                                                    return_dict = True,
-                                                   mode = 'text',)
+                                                   mode = 'text')
                 text = text.last_hidden_state
-                text = self.model.text_proj(text_features[:,:,0,:])
+                text = self.model.text_proj(text[:,0,:])
                 
                 text_features.append(text)
 
                 images = images.to(self.device)
                 images = self.model.visual_encoder(images)
-                images = self.model.vision_proj(images[:,:,0,:])
+                images = self.model.vision_proj(images[:,0,:])
 
                 image_features.append(images)
 

@@ -11,10 +11,12 @@ import os
 # import csv
 # import numpy as np
 
+import torch
 from torchvision.datasets import CocoCaptions
 
 from utils.arg_parser import parse_args
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
+from utils.metrics.metrics import CD
 # from utils.multimodal_similarities import multimodal_similarities
 # from utils.chart_utils import boxplot
 # from utils.save_objects import save_objects
@@ -34,6 +36,17 @@ def creat_model(name: str):
         return CustomALBEF()
     else:
         raise ValueError('The selected model is not implemented yet')
+
+
+def apply_model(model, dataset):
+    text_features, image_features = model.encode(dataset, batch_size=32)
+
+    result_dir = root_dir + f'/reults/embeddings/{dataset.name}/{model.name}'
+    if not os.path.exists(result_dir):
+        os.makedirs(result_dir)
+    
+    torch.save(text_features, result_dir+'/text.pt')
+    torch.save(image_features, result_dir+'/image.pt')
 
 
 if __name__ == '__main__':
@@ -68,17 +81,14 @@ if __name__ == '__main__':
         
     elif test_dataset == 'flickr30k':
         dataset = Flickr30kCaptions(root=root_dir + '/data/images/flickr30k/',
-						annFile=root_dir + '/data/annotations/flickr30k/results_20130124.token',
+						annFile=root_dir + '/data/annotations/flickr30k/1000_random_samples.token',
                         transform=model.transform)
 
     else:
         raise ValueError('The selected dataset is not supported')
 
-    text_features, image_features = model.encode(dataset, batch_size=32)
-    
-    # result_dir = root_dir + '/reults'
-    # if not os.path.exists(result_dir):
-    #     os.makedirs(result_dir)
+
+    apply_model(model, dataset)
 
     # # Create the csv file of results
     # create_path_if_not_existant('results')

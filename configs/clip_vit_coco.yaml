@@ -1,3 +1,0 @@
-MODELNAME: "CLIP_ViT-B32"
-DATASET: "mscoco"
-IMAGEROOTPATH: "/nfs/datasets/MSCOCO"

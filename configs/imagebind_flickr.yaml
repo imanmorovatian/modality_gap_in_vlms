@@ -1,3 +1,0 @@
-MODELNAME: "ImageBind"
-DATASET: "flickr30k"
-IMAGEROOTPATH: "/nfs/datasets/Flickr30k"

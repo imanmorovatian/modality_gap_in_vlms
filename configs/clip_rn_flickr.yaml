@@ -1,3 +1,0 @@
-MODELNAME: "CLIP_RN50"
-DATASET: "flickr30k"
-IMAGEROOTPATH: "/nfs/datasets/Flickr30k"

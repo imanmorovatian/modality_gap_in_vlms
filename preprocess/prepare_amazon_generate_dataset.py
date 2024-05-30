@@ -55,4 +55,4 @@ for csv_file, hierarchy_level in categories.items():
 
 df_final = pd.concat(dfs, ignore_index=True)
 df_final = df_final[['imageURLHighRes', 'title', 'class']]
-df_final.to_csv('data/amazon_products.csv', index=False)
+df_final.to_csv('data/classified/amazon_products.csv', index=False)

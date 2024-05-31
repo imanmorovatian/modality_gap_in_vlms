@@ -7,8 +7,6 @@ import torch
 from torch.utils.data import DataLoader
 from torchvision import transforms
 
-from utils.model_utils import open_image
-
 from pkgs.ALBEF.model_pretrain import ALBEF
 from pkgs.ALBEF.tokenization_bert import BertTokenizer
 
@@ -97,25 +95,3 @@ class CustomALBEF:
             image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)
 
         return text_features.cpu().squeeze(), image_features.cpu().squeeze()
-
-    def encode_text(self, caption: str):
-        text                    = self.pre_caption(caption)
-        text_input              = self.tokenizer(text, return_tensors="pt").to(DEVICE)
-        text_output             = self.model.text_encoder.bert(text_input.input_ids,
-                                                            attention_mask = text_input.attention_mask,
-                                                            return_dict = True,
-                                                            mode = 'text',)
-        with torch.no_grad():
-            text_features               = text_output.last_hidden_state
-            text_features               = self.model.text_proj(text_features[:,0,:])
-        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
-        return text_features.squeeze()
-    
-    def encode_image(self, image_path: str):
-        rgb_pil_image           = open_image(image_path).convert("RGB")
-        img                     = self.transform(rgb_pil_image).to(DEVICE).unsqueeze(0)
-        with torch.no_grad():
-            image_features              = self.model.visual_encoder(img)
-            image_features              = self.model.vision_proj(image_features[:,0,:])
-        image_features = image_features / image_features.norm(dim=-1, keepdim=True)
-        return image_features.squeeze()

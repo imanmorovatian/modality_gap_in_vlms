@@ -12,10 +12,10 @@ import os
 # import numpy as np
 
 import torch
-from torchvision.datasets import CocoCaptions
 
 from utils.arg_parser import parse_args
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
+from utils.datasets.mscoco_captions import MSCOCOCaptions
 from utils.metrics.metrics import CD
 # from utils.multimodal_similarities import multimodal_similarities
 # from utils.chart_utils import boxplot
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     model = creat_model(model_name)
 
     if test_dataset == 'mscoco':
-        dataset = CocoCaptions(root=root_dir + '/data/images/mscoco_val2017/',
+        dataset = MSCOCOCaptions(root=root_dir + '/data/images/mscoco_val2017/',
 						annFile=root_dir + '/data/annotations/mscoco_val2017/captions_val2017.json',
                         transform=model.transform)
         

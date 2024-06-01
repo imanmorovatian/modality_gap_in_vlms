@@ -41,7 +41,7 @@ def creat_model(name: str):
 def apply_model(model, dataset, root_dir):
     text_features, image_features = model.encode(dataset, batch_size=32)
 
-    result_dir = root_dir + f'/reults/embeddings/{dataset.name}/{model.name}'
+    result_dir = root_dir + f'/results/embeddings/{dataset.name}/{model.name}'
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
     

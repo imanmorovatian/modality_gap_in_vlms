@@ -1,22 +1,58 @@
 import torch
-from PIL import Image
-
+from torch.utils.data import DataLoader
 from transformers import AutoImageProcessor, AutoTokenizer, FlavaModel
+
+from tqdm import tqdm
+
 from utils.model_utils import open_image
 
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 class CustomFLAVA():
     def __init__(self,):
-
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.processor = AutoImageProcessor.from_pretrained("facebook/flava-full")
         self.tokenizer = AutoTokenizer.from_pretrained("facebook/flava-full")
         self.model = FlavaModel.from_pretrained("facebook/flava-full")
-        self.model.to(DEVICE)
+        self.model.to(self.device)
         self.model.eval()
 
         self.name = 'FLAVA'
     
+    def encode(self, dataset, batch_size):
+        dataloader = DataLoader(dataset, batch_size=batch_size)
+
+        image_features = []
+        text_features = []
+
+        with torch.no_grad():
+            for batch in tqdm(dataloader):
+                images, text = batch
+                
+                text = self.tokenizer(text, return_tensors="pt")
+                text = text.to(self.device)
+                text = self.model.text_model(**text)
+                text = text.last_hidden_state[:, 0, :]
+                text = self.model.text_projection(text)
+
+                text_features.append(text)
+
+                images = open_image(images)
+                images = self.processor(images, return_tensors="pt")
+                images = images.to(self.device)
+                images = self.model.image_model(**images)
+                images = images.last_hidden_state[:, 0, :]
+                images = self.model.image_projection(image_features)
+
+                image_features.append(images)
+
+            text_features = torch.vstack(text_features)
+            text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)
+
+            image_features = torch.vstack(image_features)
+            image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)
+
+        return text_features.cpu().squeeze(), image_features.cpu().squeeze()
+
     def encode_text(self, caption: str):
         inputs = self.tokenizer(caption, return_tensors="pt")
         with torch.no_grad():

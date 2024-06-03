@@ -27,13 +27,15 @@ from utils.metrics.metrics import CD
 # from models.custom_align import CustomALIGN
 # from models.custom_imagebind import CustomImageBind
 # from models.custom_cyclip import CustomCyCLIP
-# from models.custom_flava import CustomFLAVA
+from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 
 
-def creat_model(name: str):
+def create_model(name: str):
     if name == 'ALBEF':
         return CustomALBEF()
+    elif name == 'FLAVA':
+        return CustomFLAVA()
     else:
         raise ValueError('The selected model is not implemented yet')
 
@@ -72,7 +74,7 @@ if __name__ == '__main__':
 
     root_dir = os.path.dirname(os.path.realpath(__file__))
 
-    model = creat_model(model_name)
+    model = create_model(model_name)
 
     if test_dataset == 'mscoco':
         dataset = MSCOCOCaptions(root=root_dir + '/data/images/mscoco_val2017/',

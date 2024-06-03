@@ -1,5 +1,6 @@
 import torch
 from torch.utils.data import DataLoader
+from torchvision import transforms
 from transformers import AutoImageProcessor, AutoTokenizer, FlavaModel
 
 from tqdm import tqdm
@@ -17,7 +18,17 @@ class CustomFLAVA():
         self.model.eval()
 
         self.name = 'FLAVA'
-    
+
+        normalize = transforms.Normalize(
+            (0.48145466, 0.4578275, 0.40821073),
+            (0.26862954, 0.26130258, 0.27577711))
+        
+        self.transform = transforms.Compose([
+                transforms.Resize((256, 256), interpolation=Image.BICUBIC),
+                transforms.ToTensor(),
+                normalize,
+            ])
+        
     def encode(self, dataset, batch_size):
         dataloader = DataLoader(dataset, batch_size=batch_size)
 

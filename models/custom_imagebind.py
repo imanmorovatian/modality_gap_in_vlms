@@ -1,5 +1,3 @@
-from PIL import Image
-
 import torch
 from torchvision import transforms
 from torch.utils.data import DataLoader
@@ -19,16 +17,20 @@ class CustomImageBind():
         self.model.to(self.device)
 
         self.name = 'ImageBind'
-
-        normalize = transforms.Normalize(
-            (0.48145466, 0.4578275, 0.40821073),
-            (0.26862954, 0.26130258, 0.27577711))
         
-        self.transform = transforms.Compose([
-                transforms.Resize((256, 256), interpolation=Image.BICUBIC),
+        self.transform = transforms.Compose(
+            [
+                transforms.Resize(
+                    224, interpolation=transforms.InterpolationMode.BICUBIC
+                ),
+                transforms.CenterCrop(224),
                 transforms.ToTensor(),
-                normalize,
-            ])
+                transforms.Normalize(
+                    mean=(0.48145466, 0.4578275, 0.40821073),
+                    std=(0.26862954, 0.26130258, 0.27577711),
+                ),
+            ]
+        )
         
     def encode(self, dataset, batch_size):
         dataloader = DataLoader(dataset, batch_size=batch_size)
@@ -41,13 +43,14 @@ class CustomImageBind():
                 images, text = batch
                 
                 text = text[0]
-                text = {ModalityType.TEXT: data.load_and_transform_text([text], self.device)}
+                text = {ModalityType.TEXT: data.load_and_transform_text(text, self.device)}
                 text = self.model(text)[ModalityType.TEXT]
 
                 text_features.append(text)
 
-                images = {ModalityType.VISION: data.load_and_transform_vision_data([images], self.device)}
-                images = self.model(input)[ModalityType.VISION]
+                images = images.to(self.device)
+                images = {ModalityType.VISION: images}
+                images = self.model(images)[ModalityType.VISION]
 
                 image_features.append(images)
 

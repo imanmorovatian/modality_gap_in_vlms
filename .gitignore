@@ -201,13 +201,22 @@ pip-selfcheck.json
 # Added by myself
 
 .vscode/
+
 VLPs/
+
+.checkpoints/
+
 results/
+
 data/images/
 data/annotations/
 data/pairs/
+
 pkgs/ALBEF/ALBEF.pth
+
 preprocess/amazon_categories/
 preprocess/amazon_edited_categories/
+
 cython_constraint.txt
+
 temp.py

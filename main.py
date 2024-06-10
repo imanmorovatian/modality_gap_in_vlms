@@ -25,7 +25,7 @@ from utils.metrics.metrics import CD
 
 # from models.custom_clip import CustomCLIP
 from models.custom_align import CustomALIGN
-# from models.custom_imagebind import CustomImageBind
+from models.custom_imagebind import CustomImageBind
 # from models.custom_cyclip import CustomCyCLIP
 from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
@@ -38,6 +38,8 @@ def create_model(name: str):
         return CustomFLAVA()
     elif name == 'ALIGN':
         return CustomALIGN()
+    elif name == 'ImageBind':
+        return CustomImageBind()
     else:
         raise ValueError('The selected model is not implemented yet')
 

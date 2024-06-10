@@ -26,7 +26,7 @@ from utils.metrics.metrics import CD
 from models.custom_clip import CustomCLIP
 from models.custom_align import CustomALIGN
 from models.custom_imagebind import CustomImageBind
-# from models.custom_cyclip import CustomCyCLIP
+from models.custom_cyclip import CustomCyCLIP
 from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 
@@ -44,6 +44,8 @@ def create_model(name: str):
         return CustomCLIP('CLIP_ViT-B32')
     elif name == 'CLIP_RN50':
         return CustomCLIP('CLIP_RN50')
+    elif name == 'CyCLIP':
+        return CustomCyCLIP()
     else:
         raise ValueError('The selected model is not implemented yet')
 

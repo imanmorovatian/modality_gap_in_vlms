@@ -51,3 +51,5 @@ class CustomCLIP():
 
             image_features = torch.vstack(image_features)
             image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)
+
+        return text_features.cpu().squeeze(), image_features.cpu().squeeze()

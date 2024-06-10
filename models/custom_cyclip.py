@@ -1,5 +1,8 @@
+from PIL import Image
+
 import torch
 from torch.utils.data import DataLoader
+from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
 
 from pkgs.CyCLIP.clip import load as load_model
 
@@ -17,6 +20,12 @@ class CustomCyCLIP():
             state_dict = {key[len("module."):]: value for key, value in state_dict.items()}
         self.model.load_state_dict(state_dict)
         self.model.eval()
+
+        self.transform = Compose([
+            Resize(self.model.visual.input_resolution, interpolation = Image.BICUBIC),
+            CenterCrop(self.model.visual.input_resolution), ToTensor(),
+            Normalize((0.48145466, 0.4578275, 0.40821073), (0.26862954, 0.26130258, 0.27577711))
+            ])
 
         self.name = 'CyCLIP'
     
@@ -40,7 +49,7 @@ class CustomCyCLIP():
 
                 text_features.append(text)
 
-                images = self.processor.process_image(images).to(self.device).unsqueeze(0)
+                images = images.to(self.device)
                 images = self.model.get_image_features(pixel_values = images)
 
                 image_features.append(images)

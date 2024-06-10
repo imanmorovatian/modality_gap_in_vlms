@@ -1,42 +1,53 @@
-import numpy as np
 import torch
-from PIL import Image
-
+from torch.utils.data import DataLoader
 import clip
 
-from utils.model_utils import open_image
+from tqdm import tqdm
 
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-name2encoder = {'ViT-B32' : 'ViT-B/32',
-                'RN50' : 'RN50'}
+name2encoder = {
+    'ViT-B32' : 'ViT-B/32',
+    'RN50' : 'RN50'
+    }
+
 
 class CustomCLIP():
     def __init__(self, model_name):
-        
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.vision_encoder = model_name.split('_')[-1]
-        self.model, self.transform = clip.load(name2encoder[self.vision_encoder], device=DEVICE)
-        self.model.to(DEVICE).eval()
+        self.model, self.transform = clip.load(name2encoder[self.vision_encoder], device=self.device)
+        self.model.to(self.device).eval()
 
         self.input_resolution = self.model.visual.input_resolution
         self.context_length = self.model.context_length
         self.vocab_size = self.model.vocab_size
 
-        self.name = model_name
-        # print("CLIP - clip parameters:", f"{np.sum([int(np.prod(p.shape)) for p in self.clip.parameters()]):,}")
-    
-    def encode_text(self, caption: str):
-        text_tokens = clip.tokenize(caption).to(DEVICE)
-        with torch.no_grad():
-            text_features = self.model.encode_text(text_tokens).float()
-        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
-        return text_features.squeeze()
+        self.name = 'CLIP'
 
-    def encode_image(self, image_path: str):
-        rgb_pil_image = open_image(image_path).convert("RGB")
-        image       = self.transform(rgb_pil_image)
-        image_input = torch.tensor(np.stack([image])).to(DEVICE)
+    def encode(self, dataset, batch_size):
+        dataloader = DataLoader(dataset, batch_size=batch_size)
+
+        image_features = []
+        text_features = []
+
         with torch.no_grad():
-            image_features = self.model.encode_image(image_input).float()
-        image_features = image_features / image_features.norm(dim=-1, keepdim=True)
-        return image_features.squeeze()
+            for batch in tqdm(dataloader):
+                images, text = batch
+                
+                text = text[0]
+                text = clip.tokenize(text)
+                text = text.to(self.device)
+                text = self.model.encode_text(text).float()
+
+                text_features.append(text)
+
+                images = images.to(self.device)
+                images = self.model.encode_image(images).float()
+
+                image_features.append(images)
+
+            text_features = torch.vstack(text_features)
+            text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)
+
+            image_features = torch.vstack(image_features)
+            image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)

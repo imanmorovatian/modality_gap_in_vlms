@@ -9,9 +9,9 @@ from PIL import Image
 from tqdm import tqdm
 from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize, RandomResizedCrop
 
-from utils import config
-from .model import build
-from .tokenizer import SimpleTokenizer as Tokenizer
+from pkgs.CyCLIP import config
+from pkgs.CyCLIP.model import build
+from pkgs.CyCLIP.tokenizer import SimpleTokenizer as Tokenizer
 
 models = {
     "RN50": "https://openaipublic.azureedge.net/clip/models/afeb0e10f9e5a86da6080e35cf09123aca3b358a0c3e3b6c78a7b63bc04b6762/RN50.pt",

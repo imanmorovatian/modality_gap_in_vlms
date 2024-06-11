@@ -22,7 +22,7 @@ class CustomCLIP():
         self.context_length = self.model.context_length
         self.vocab_size = self.model.vocab_size
 
-        self.name = 'CLIP'
+        self.name = model_name
 
     def encode(self, dataset, batch_size):
         dataloader = DataLoader(dataset, batch_size=batch_size)

@@ -29,6 +29,7 @@ from models.custom_imagebind import CustomImageBind
 from models.custom_cyclip import CustomCyCLIP
 from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
+from models.custom_bridgetower import CustomBridgeTower
 
 
 def create_model(name: str):
@@ -46,6 +47,8 @@ def create_model(name: str):
         return CustomCLIP('CLIP_RN50')
     elif name == 'CyCLIP':
         return CustomCyCLIP()
+    elif name == 'BridgeTower':
+        return CustomBridgeTower()
     else:
         raise ValueError('The selected model is not implemented yet')
 
@@ -80,7 +83,8 @@ if __name__ == '__main__':
                           'ImageBind',
                           'CyCLIP',
                           'FLAVA',
-                          'ALBEF']
+                          'ALBEF',
+                          'BridgeTower']
 
     root_dir = os.path.dirname(os.path.realpath(__file__))
 

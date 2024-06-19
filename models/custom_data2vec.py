@@ -43,7 +43,7 @@ class CustomData2Vec():
                 text_features.append(last_hidden_states[:,0,:])
 
                 images = images.to(self.device)
-                outputs = self.image_model(**images)
+                outputs = self.image_model(images)
 
                 last_hidden_states = outputs.last_hidden_state
 

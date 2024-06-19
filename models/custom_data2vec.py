@@ -42,9 +42,9 @@ class CustomData2Vec():
 
                 text_features.append(last_hidden_states[:,0,:])
 
+                images = torch.squeeze(images)
                 images = images.to(self.device)
                 outputs = self.image_model(images)
-
                 last_hidden_states = outputs.last_hidden_state
 
                 image_features.append(last_hidden_states[:,0,:])

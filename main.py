@@ -30,6 +30,7 @@ from models.custom_cyclip import CustomCyCLIP
 from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 from models.custom_bridgetower import CustomBridgeTower
+from models.custom_data2vec import CustomData2Vec
 
 
 def create_model(name: str):
@@ -49,6 +50,8 @@ def create_model(name: str):
         return CustomCyCLIP()
     elif name == 'BridgeTower':
         return CustomBridgeTower()
+    elif name == 'Data2Vec':
+        return CustomData2Vec()
     else:
         raise ValueError('The selected model is not implemented yet')
 
@@ -84,7 +87,8 @@ if __name__ == '__main__':
                           'CyCLIP',
                           'FLAVA',
                           'ALBEF',
-                          'BridgeTower']
+                          'BridgeTower',
+                          'Data2Vec']
 
     root_dir = os.path.dirname(os.path.realpath(__file__))
 

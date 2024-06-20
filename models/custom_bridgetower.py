@@ -4,9 +4,8 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from transformers import RobertaTokenizerFast, BridgeTowerImageProcessor, BridgeTowerModel
 
-tokenizer = RobertaTokenizerFast.from_pretrained("FacebookAI/roberta-base")
-
 from tqdm import tqdm
+
 
 class CustomBridgeTower():
     def __init__(self):

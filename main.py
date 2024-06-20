@@ -31,6 +31,7 @@ from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 from models.custom_bridgetower import CustomBridgeTower
 from models.custom_data2vec import CustomData2Vec
+from models.custom_perceiver import CustomPerceiver
 
 
 def create_model(name: str):
@@ -52,6 +53,8 @@ def create_model(name: str):
         return CustomBridgeTower()
     elif name == 'Data2Vec':
         return CustomData2Vec()
+    elif name == 'Perceiver':
+        return CustomPerceiver()
     else:
         raise ValueError('The selected model is not implemented yet')
 
@@ -88,7 +91,8 @@ if __name__ == '__main__':
                           'FLAVA',
                           'ALBEF',
                           'BridgeTower',
-                          'Data2Vec']
+                          'Data2Vec',
+                          'Perceiver']
 
     root_dir = os.path.dirname(os.path.realpath(__file__))
 

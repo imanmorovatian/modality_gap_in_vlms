@@ -10,28 +10,25 @@ from tqdm import tqdm
 class CustomPerceiver():
     def __init__(self):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        self.config = PerceiverConfig(image_size=224)
 
+        self.text_config = PerceiverConfig.from_pretrained('deepmind/language-perceiver')
         self.text_tokenizer = PerceiverTokenizer()
-        self.text_preprocessor = PerceiverTextPreprocessor(self.config)
-        self.text_model = PerceiverModel(self.config, input_preprocessor=self.text_preprocessor)
+        self.text_preprocessor = PerceiverTextPreprocessor(self.text_config)
+        self.text_model = PerceiverModel(self.text_config, input_preprocessor=self.text_preprocessor)
+        self.text_model = self.text_model.to(self.device)
 
+        self.image_config = PerceiverConfig.from_pretrained('deepmind/vision-perceiver-learned')
         self.image_processor = PerceiverImageProcessor()
         self.image_preprocessor = PerceiverImagePreprocessor(
-            self.config,
-            prep_type="conv1x1",
-            spatial_downsample=1,
-            out_channels=256,
-            position_encoding_type="trainable",
-            concat_or_add_pos="concat",
-            project_pos_dim=256,
-            trainable_position_encoding_kwargs=dict(
-                num_channels=256,
-                index_dims=self.config.image_size**2,
-            ),
+            self.image_config,
+            fourier_position_encoding_kwargs=dict(
+                max_resolution=(224, 224),
+                num_bands=64
+            )
         )
-        self.image_model = PerceiverModel(self.config, input_preprocessor=self.image_preprocessor)
-        
+        self.image_model = PerceiverModel(self.image_config, input_preprocessor=self.image_preprocessor)
+        self.image_model = self.image_model.to(self.device)
+
         self.name = 'Perceiver'
         
         self.transform = transforms.Compose([
@@ -57,7 +54,7 @@ class CustomPerceiver():
 
                 images = torch.squeeze(images)
                 images = images.to(self.device)
-                outputs = self.image_model(inputs=images.pixel_values)
+                outputs = self.image_model(inputs=images)
 
                 image_features.append(outputs['last_hidden_state'][:,0,:])
 

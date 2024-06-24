@@ -10,13 +10,19 @@ sys.path.append(
 import os
 import csv
 # import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 import torch
+
+from tqdm import tqdm
 
 from utils.arg_parser import parse_args
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
 from utils.metrics.metrics import CD, CMD
+from utils.chart_utils import similarities
+
 # from utils.multimodal_similarities import multimodal_similarities
 # from utils.chart_utils import boxplot
 # from utils.save_objects import save_objects
@@ -132,6 +138,50 @@ def compute_metrics(model_names, dataset_names):
                 writer.writerow([dataset, model, cmd_img_txt, cd_img_txt])
 
 
+def sim_dissim_boxplot(model_names, dataset):
+    result_dir = 'results/charts'
+    if not os.path.exists(result_dir):
+        os.makedirs(result_dir)
+
+    points = []
+    types = []
+    models = []
+
+    for model in tqdm(model_names, total=len(model_names)):
+        text_embedding = torch.load(f'results/embeddings/{dataset}/{model}/text.pt').cpu().numpy()
+        image_embedding = torch.load(f'results/embeddings/{dataset}/{model}/image.pt').cpu().numpy()
+
+        all_sim_img_txt, all_dissim_img_txt = similarities(image_embedding @ text_embedding.T)
+
+        all_sim_img_txt = all_sim_img_txt.tolist()
+        all_dissim_img_txt = all_dissim_img_txt.tolist()
+
+        points += all_sim_img_txt
+        types += ['similarity'] * len(all_sim_img_txt)
+        models += [model] * len(all_sim_img_txt)
+
+        points += all_dissim_img_txt
+        types += ['dissimilarity'] * len(all_dissim_img_txt)
+        models += [model] * len(all_dissim_img_txt)
+
+
+    data = {
+        'point': points,
+        'type': types,
+        'model': models
+    }
+
+    sns.set_theme(rc={'figure.figsize':(18,15)})
+    ax = sns.boxplot(data, x='model', y='point', hue='type')
+    ax.set(
+        title='Flickr Dataset',
+        xlabel=None,
+        ylabel=None,
+        )
+    ax.tick_params(axis='x', labelrotation=45)
+    plt.savefig(result_dir+f'/{dataset}.jpg')
+
+
 if __name__ == '__main__':
 
     # apply_model()
@@ -148,7 +198,10 @@ if __name__ == '__main__':
         'Data2Vec'
         ]
     dataset_names = ['Flickr', 'MSCOCO']
-    compute_metrics(model_names, dataset_names)
+
+    # compute_metrics(model_names, dataset_names)
+
+    sim_dissim_boxplot(model_names, 'MSCOCO')
 
     # all_sim_img, all_dissim_img, all_sim_txt, all_dissim_txt, all_sim_txtimg, all_dissim_txtimg = \
     #     multimodal_similarities(model, test_dataset)

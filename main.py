@@ -114,7 +114,7 @@ def compute_metrics(model_names, dataset_names):
     if not os.path.exists(os.path.join(result_dir, 'metrics.csv')):
         with open(os.path.join(result_dir, 'metrics.csv'), 'w', encoding='UTF8') as f:
             writer = csv.writer(f)
-            writer.writerow(['dataset', 'model', 'txt_img_cmd', 'txt_img_cd'])
+            writer.writerow(['dataset', 'model', 'cmd_img_txt', 'cd_img_txt'])
 
     for model in model_names:
         for dataset in dataset_names:
@@ -122,14 +122,14 @@ def compute_metrics(model_names, dataset_names):
             image_embedding = torch.load(f'results/embeddings/{dataset}/{model}/image.pt')
 
             cmd = CMD()
-            cmd_txt_img = round(cmd(text_embedding, image_embedding).item(), 2)
+            cmd_img_txt = round(cmd(image_embedding, text_embedding).item(), 2)
 
             cd = CD()
-            cd_txt_img = round(cd(text_embedding, image_embedding).item(), 2)
+            cd_img_txt = round(cd(image_embedding, text_embedding).item(), 2)
 
             with open(os.path.join(result_dir, 'metrics.csv'), 'a', encoding='UTF8') as f:
                 writer = csv.writer(f)
-                writer.writerow([dataset, model, cmd_txt_img, cd_txt_img])
+                writer.writerow([dataset, model, cmd_img_txt, cd_img_txt])
 
 
 if __name__ == '__main__':

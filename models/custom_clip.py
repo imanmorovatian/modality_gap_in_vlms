@@ -22,7 +22,12 @@ class CustomCLIP():
         self.context_length = self.model.context_length
         self.vocab_size = self.model.vocab_size
 
-        self.name = model_name
+        table = {
+            '_': None,
+            '-': None
+            }
+        mytable = str.maketrans(table)
+        self.name = model_name.translate(mytable)
 
     def encode(self, dataset, batch_size):
         dataloader = DataLoader(dataset, batch_size=batch_size)

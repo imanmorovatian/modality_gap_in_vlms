@@ -11,7 +11,7 @@ class CustomBridgeTower():
     def __init__(self):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.text_tokenizer = RobertaTokenizerFast.from_pretrained("FacebookAI/roberta-base")
-        self.image_preprocessor = BridgeTowerImageProcessor(do_resize=False)
+        self.image_preprocessor = BridgeTowerImageProcessor.from_pretrained("BridgeTower/bridgetower-base")
         self.model = BridgeTowerModel.from_pretrained('BridgeTower/bridgetower-base')
         self.model = self.model.to(self.device)
         
@@ -19,7 +19,7 @@ class CustomBridgeTower():
         
         self.transform = transforms.Compose([
                 transforms.Lambda(lambda img: torch.tensor(self.image_preprocessor.preprocess(img)['pixel_values']) ),
-                transforms.Resize((288, 288))
+                # transforms.Resize((288, 288))
             ])
     
     def encode(self, dataset, batch_size):

@@ -180,28 +180,29 @@ def sim_dissim_boxplot(model_names, dataset):
         )
     ax.tick_params(axis='x', labelrotation=45)
     plt.savefig(result_dir+f'/{dataset}.jpg')
+    print('Saved the image successfully')
 
 
 if __name__ == '__main__':
 
-    # apply_model()
+    apply_model()
 
-    model_names = [
-        'CLIPViTB32',
-        'CLIPRN50',
-        'ALIGN',
-        'ImageBind',
-        'CyCLIP',
-        'FLAVA',
-        'ALBEF',
-        'BridgeTower',
-        'Data2Vec'
-        ]
-    dataset_names = ['Flickr', 'MSCOCO']
+    # model_names = [
+    #     'CLIPViTB32',
+    #     'CLIPRN50',
+    #     'ALIGN',
+    #     'ImageBind',
+    #     'CyCLIP',
+    #     'FLAVA',
+    #     'ALBEF',
+    #     'BridgeTower',
+    #     'Data2Vec'
+    #     ]
+    # dataset_names = ['Flickr', 'MSCOCO']
 
     # compute_metrics(model_names, dataset_names)
 
-    sim_dissim_boxplot(model_names, 'MSCOCO')
+    # sim_dissim_boxplot(model_names, 'MSCOCO')
 
     # all_sim_img, all_dissim_img, all_sim_txt, all_dissim_txt, all_sim_txtimg, all_dissim_txtimg = \
     #     multimodal_similarities(model, test_dataset)

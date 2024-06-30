@@ -19,7 +19,7 @@ class CustomBridgeTower():
         
         self.transform = transforms.Compose([
                 transforms.Lambda(lambda img: torch.tensor(self.image_preprocessor.preprocess(img)['pixel_values']) ),
-                # transforms.Resize((288, 288))
+                transforms.Resize((288, 288))
             ])
     
     def encode(self, dataset, batch_size):

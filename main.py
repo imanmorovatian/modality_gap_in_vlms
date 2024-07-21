@@ -138,6 +138,24 @@ def compute_metrics(model_names, dataset_names):
                 writer.writerow([dataset, model, cmd_img_txt, cd_img_txt])
 
 
+def train_perceiver():
+    train_dataset = MSCOCOCaptions(root='data/images/mscoco_val2017/',
+						annFile='data/annotations/mscoco_val2017/captions_val2017.json',
+                        transform=model.transform)
+    
+    val_dataset = MSCOCOCaptions(root='data/images/mscoco_val2017/',
+						annFile='data/annotations/mscoco_val2017/captions_val2017.json',
+                        transform=model.transform)
+    
+    test_dataset = MSCOCOCaptions(root='data/images/mscoco_val2017/',
+						annFile='data/annotations/mscoco_val2017/captions_val2017.json',
+                        transform=model.transform)
+    
+    model = CustomPerceiver()
+    model.orchestrate_training(train_dataset, val_dataset, test_dataset,
+                               batch_size=8, no_epochs=1, save_path='.')
+
+
 def sim_dissim_boxplot(model_names, dataset):
     result_dir = 'results/charts'
     if not os.path.exists(result_dir):
@@ -185,22 +203,24 @@ def sim_dissim_boxplot(model_names, dataset):
 
 if __name__ == '__main__':
 
-    apply_model()
+    # apply_model()
 
-    # model_names = [
-    #     'CLIPViTB32',
-    #     'CLIPRN50',
-    #     'ALIGN',
-    #     'ImageBind',
-    #     'CyCLIP',
-    #     'FLAVA',
-    #     'ALBEF',
-    #     'BridgeTower',
-    #     'Data2Vec'
-    #     ]
-    # dataset_names = ['Flickr', 'MSCOCO']
+    model_names = [
+        'CLIPViTB32',
+        'CLIPRN50',
+        'ALIGN',
+        'ImageBind',
+        'CyCLIP',
+        'FLAVA',
+        'ALBEF',
+        'BridgeTower',
+        'Data2Vec',
+        'Perceiver'
+        ]
+    dataset_names = ['Flickr', 'MSCOCO']
 
-    # compute_metrics(model_names, dataset_names)
+    compute_metrics(model_names, dataset_names)
+
 
     # sim_dissim_boxplot(model_names, 'MSCOCO')
 

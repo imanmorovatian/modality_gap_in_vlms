@@ -204,6 +204,8 @@ pip-selfcheck.json
 
 VLPs/
 
+wandb/
+
 .checkpoints/
 
 results/

@@ -38,11 +38,8 @@ class CD(torch.nn.Module):
         super(CD, self).__init__()
 
     def forward(self, x1, x2):
-        normalized_x1 = torch.nn.functional.normalize(x1, p=2.0, dim=1)
-        mean_x1 = normalized_x1.mean(axis=0)
-
-        normalized_x2 = torch.nn.functional.normalize(x2, p=2.0, dim=1)
-        mean_x2 = normalized_x2.mean(axis=0)
+        mean_x1 = x1.mean(axis=0)
+        mean_x2 = x2.mean(axis=0)
 
         diff = mean_x1 - mean_x2
 

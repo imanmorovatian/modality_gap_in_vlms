@@ -86,6 +86,7 @@ class CustomPerceiver():
         for batch in tqdm(dataloader):
             images, text = batch
 
+            text = text[0]
             text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt')
             text = text.to(self.device)
             text_embeds = self.model(inputs={'text': text.input_ids,})['last_hidden_state'][:,0,:]
@@ -113,6 +114,7 @@ class CustomPerceiver():
             for batch in tqdm(dataloader):
                 images, text = batch
 
+                text = text[0]
                 text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt')
                 text = text.to(self.device)
                 text_embeds = self.model(inputs={'text': text.input_ids,})['last_hidden_state'][:,0,:]

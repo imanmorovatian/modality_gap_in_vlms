@@ -139,19 +139,21 @@ def compute_metrics(model_names, dataset_names):
 
 
 def train_perceiver():
-    train_dataset = MSCOCOCaptions(root='data/images/mscoco_val2017/',
-						annFile='data/annotations/mscoco_val2017/captions_val2017.json',
-                        transform=model.transform)
-    
-    val_dataset = MSCOCOCaptions(root='data/images/mscoco_val2017/',
-						annFile='data/annotations/mscoco_val2017/captions_val2017.json',
-                        transform=model.transform)
-    
-    test_dataset = MSCOCOCaptions(root='data/images/mscoco_val2017/',
-						annFile='data/annotations/mscoco_val2017/captions_val2017.json',
-                        transform=model.transform)
-    
     model = CustomPerceiver()
+
+    train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
+						annFile='data/annotations/flickr30k/1000_random_samples.token',
+                        transform=model.transform)
+    
+    val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
+						annFile='data/annotations/flickr30k/1000_random_samples.token',
+                        transform=model.transform)
+    
+    test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
+						annFile='data/annotations/flickr30k/1000_random_samples.token',
+                        transform=model.transform)
+    
+    
     model.orchestrate_training(train_dataset, val_dataset, test_dataset,
                                batch_size=8, no_epochs=1, save_path='.')
 
@@ -205,21 +207,23 @@ if __name__ == '__main__':
 
     # apply_model()
 
-    model_names = [
-        'CLIPViTB32',
-        'CLIPRN50',
-        'ALIGN',
-        'ImageBind',
-        'CyCLIP',
-        'FLAVA',
-        'ALBEF',
-        'BridgeTower',
-        'Data2Vec',
-        'Perceiver'
-        ]
-    dataset_names = ['Flickr', 'MSCOCO']
+    # model_names = [
+    #     'CLIPViTB32',
+    #     'CLIPRN50',
+    #     'ALIGN',
+    #     'ImageBind',
+    #     'CyCLIP',
+    #     'FLAVA',
+    #     'ALBEF',
+    #     'BridgeTower',
+    #     'Data2Vec',
+    #     'Perceiver'
+    #     ]
+    # dataset_names = ['Flickr', 'MSCOCO']
 
-    compute_metrics(model_names, dataset_names)
+    # compute_metrics(model_names, dataset_names)
+
+    train_perceiver()
 
 
     # sim_dissim_boxplot(model_names, 'MSCOCO')

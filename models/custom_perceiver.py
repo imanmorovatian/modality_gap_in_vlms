@@ -26,7 +26,7 @@ class SharedPerceiverPreprocessor(PerceiverMultimodalPreprocessor):
         
     def forward(
         self, inputs: Mapping[str, torch.Tensor], pos: Optional[torch.Tensor] = None,
-        network_input_is_1d: bool = True) -> PreprocessorOutputType:
+        network_input_is_1d: bool = True, *args, **kwargs) -> PreprocessorOutputType:
         for modality, data in inputs.items():
             inputs, modality_sizes, inputs_without_pos = self.modalities[modality](data)
 
@@ -117,16 +117,14 @@ class CustomPerceiver():
                 text = text[0]
                 text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt')
                 text = text.to(self.device)
-                text_embeds = self.model(inputs={'text': text.input_ids,})['last_hidden_state'][:,0,:]
+                text_embeds = self.model(inputs={'text': text.input_ids,})
+                text_embeds = text_embeds['last_hidden_state'][:,0,:]
 
                 images = torch.squeeze(images)
                 images = images.to(self.device)
                 img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 
-                optimizer.zero_grad()
                 loss = criterion(img_embeds, text_embeds)
-                loss.backward()
-                optimizer.step()
 
                 running_loss += loss.item()
 
@@ -161,7 +159,6 @@ class CustomPerceiver():
         }
 
         current_date = datetime.today().strftime('%Y-%m-%d')
-
         wandb.init(
             config=wandb_config,
             entity='iman_morovatian',
@@ -181,7 +178,7 @@ class CustomPerceiver():
 
             scheduler.step()
 
-        test_loss = self.evaluation(test_dataset, batch_size, optimizer)
+        test_loss = self.evaluation(test_dataset, batch_size, criterion, optimizer)
 
         wandb.log({'test_loss': test_loss})
         wandb.finish()

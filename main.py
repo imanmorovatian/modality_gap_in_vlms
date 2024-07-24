@@ -111,7 +111,6 @@ def apply_model():
     torch.save(text_features, result_dir+'/text.pt')
     torch.save(image_features, result_dir+'/image.pt')
 
-
 def compute_metrics(model_names, dataset_names):
     result_dir = 'results/metrics'
     if not os.path.exists(result_dir):
@@ -136,27 +135,6 @@ def compute_metrics(model_names, dataset_names):
             with open(os.path.join(result_dir, 'metrics.csv'), 'a', encoding='UTF8') as f:
                 writer = csv.writer(f)
                 writer.writerow([dataset, model, cmd_img_txt, cd_img_txt])
-
-
-def train_perceiver():
-    model = CustomPerceiver()
-
-    train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-						annFile='data/annotations/flickr30k/1000_random_samples.token',
-                        transform=model.transform)
-    
-    val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-						annFile='data/annotations/flickr30k/1000_random_samples.token',
-                        transform=model.transform)
-    
-    test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-						annFile='data/annotations/flickr30k/1000_random_samples.token',
-                        transform=model.transform)
-    
-    
-    model.orchestrate_training(train_dataset, val_dataset, test_dataset,
-                               batch_size=8, no_epochs=1, save_path='.')
-
 
 def sim_dissim_boxplot(model_names, dataset):
     result_dir = 'results/charts'
@@ -204,6 +182,7 @@ def sim_dissim_boxplot(model_names, dataset):
 
 
 if __name__ == '__main__':
+    pass
 
     # apply_model()
 
@@ -222,9 +201,6 @@ if __name__ == '__main__':
     # dataset_names = ['Flickr', 'MSCOCO']
 
     # compute_metrics(model_names, dataset_names)
-
-    train_perceiver()
-
 
     # sim_dissim_boxplot(model_names, 'MSCOCO')
 

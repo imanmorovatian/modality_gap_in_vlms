@@ -183,7 +183,7 @@ class CustomPerceiver():
         wandb.log({'test_loss': test_loss})
         wandb.finish()
 
-        torch.save(self.model.state_dict(), f'{save_path}/model_state_dict.pth')
+        torch.save(self.model.state_dict(), f'{save_path}/perceiver.pth')
         
     # def encode(self, dataset, batch_size):
     #     dataloader = DataLoader(dataset, batch_size=batch_size)

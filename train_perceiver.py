@@ -18,17 +18,17 @@ def parse_args():
 
 
 args = parse_args()
-test_dataset = args.DATASET
+dataset = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 NO_EPOCHS = args.NO_EPOCHS
 
-assert test_dataset in ['mscoco', 'flickr30k', 'amazon_products']
+assert dataset in ['mscoco', 'flickr30k', 'amazon_products']
     
 model = CustomPerceiver()
 
-if test_dataset == 'mscoco':
+if dataset == 'mscoco':
     pass
-elif test_dataset == 'flickr30k':
+elif dataset == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/train.token',
                         transform=model.transform)
@@ -44,9 +44,9 @@ else:
     raise ValueError('The selected dataset is not supported')
 
 
-result_dir = f'results/perceiver_checkpoint/{test_dataset}'
+result_dir = f'results/perceiver_checkpoint/{dataset}'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
-model.orchestrate_training(train_dataset, val_dataset, test_dataset,
+model.orchestrate_training(dataset, train_dataset, val_dataset, test_dataset,
                             batch_size=BATCH_SIZE, no_epochs=NO_EPOCHS, save_path=result_dir)

@@ -132,7 +132,7 @@ class CustomPerceiver():
 
         return epoch_loss
 
-    def orchestrate_training(self, train_dataset, val_dataset, test_dataset,
+    def orchestrate_training(self, dataset_name, train_dataset, val_dataset, test_dataset,
                              batch_size, no_epochs, save_path):
         
         criterion = NTXentLoss(temperature=0.5)
@@ -163,7 +163,7 @@ class CustomPerceiver():
             config=wandb_config,
             entity='iman_morovatian',
             project='Thesis',
-            name=f'Training Perceiver {current_date}'
+            name=f'Training Perceiver {dataset_name} {current_date}'
             )
 
         for epoch in range(no_epochs):

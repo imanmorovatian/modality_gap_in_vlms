@@ -30,15 +30,15 @@ if test_dataset == 'mscoco':
     pass
 elif test_dataset == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annFile='data/annotations/flickr30k/1000_random_samples.token',
+                        annFile='data/annotations/flickr30k/train.token',
                         transform=model.transform)
 
     val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annFile='data/annotations/flickr30k/1000_random_samples.token',
+                        annFile='data/annotations/flickr30k/val.token',
                         transform=model.transform)
 
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annFile='data/annotations/flickr30k/1000_random_samples.token',
+                        annFile='data/annotations/flickr30k/test.token',
                         transform=model.transform)
 else:
     raise ValueError('The selected dataset is not supported')

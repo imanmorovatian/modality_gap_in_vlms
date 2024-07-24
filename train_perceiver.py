@@ -44,7 +44,7 @@ else:
     raise ValueError('The selected dataset is not supported')
 
 
-result_dir = f'results/perceiver_checkpoint'
+result_dir = f'results/perceiver_checkpoint/{test_dataset}'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 

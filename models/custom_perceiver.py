@@ -32,9 +32,9 @@ class SharedPerceiverPreprocessor(PerceiverMultimodalPreprocessor):
 
         return inputs, modality_sizes, inputs_without_pos
     
-class NTXentLoss(nn.Module):
+class ContrastiveLoss(nn.Module):
     def __init__(self, temperature):
-        super(NTXentLoss, self).__init__()
+        super(ContrastiveLoss, self).__init__()
         self.temperature = temperature
         self.cosine_similarity = nn.CosineSimilarity(dim=-1)
     
@@ -135,7 +135,7 @@ class CustomPerceiver():
     def orchestrate_training(self, dataset_name, train_dataset, val_dataset, test_dataset,
                              batch_size, no_epochs, save_path):
         
-        criterion = NTXentLoss(temperature=0.5)
+        criterion = ContrastiveLoss(temperature=0.5)
 
         opt_lr = 1e-3
         opt_wd = 1e-4

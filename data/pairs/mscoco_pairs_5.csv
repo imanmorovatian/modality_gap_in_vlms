@@ -1,0 +1,251 @@
+img id,caption,category
+http://images.cocodataset.org/val2017/000000430875.jpg,The traffic lights glow green in the night sky.,outdoor
+http://images.cocodataset.org/val2017/000000379800.jpg,Small train like structure riding down a train way.,outdoor
+http://images.cocodataset.org/val2017/000000534639.jpg,A public transit train at one of its stations.,outdoor
+http://images.cocodataset.org/val2017/000000244019.jpg,A rusty fire hydrant is red white and blue.,outdoor
+http://images.cocodataset.org/val2017/000000252332.jpg,A close up of a Stop sign near woods. ,outdoor
+http://images.cocodataset.org/val2017/000000503841.jpg,two street lights that are both on the green light,outdoor
+http://images.cocodataset.org/val2017/000000522751.jpg,a traffic light attached to a pole with a sky in the background,outdoor
+http://images.cocodataset.org/val2017/000000396580.jpg,A body of calm water with a wooden canoe docked on the side and a home across the water.,outdoor
+http://images.cocodataset.org/val2017/000000461573.jpg,Two steel benches next to a walk way.,outdoor
+http://images.cocodataset.org/val2017/000000129135.jpg,A train that is on the tracks sitting in front of a bench.,outdoor
+http://images.cocodataset.org/val2017/000000162130.jpg,A wooden bench is sitting next to a grassy field.,outdoor
+http://images.cocodataset.org/val2017/000000212072.jpg,A stop sign leans to the right at a small town intersection,outdoor
+http://images.cocodataset.org/val2017/000000297343.jpg,A stop sign has been placed upside-down in the grass beside a building. ,outdoor
+http://images.cocodataset.org/val2017/000000056127.jpg,A picture of a restaurant interior is taken through a fish-eye lens.,outdoor
+http://images.cocodataset.org/val2017/000000372203.jpg,"A bench, a fire hydrant, and a street light are in the desert.",outdoor
+http://images.cocodataset.org/val2017/000000281179.jpg,A bright city street with a stop light and a big Christmas tree.,outdoor
+http://images.cocodataset.org/val2017/000000051961.jpg,A parking meter and wall that has graffiti on it.,outdoor
+http://images.cocodataset.org/val2017/000000069138.jpg,A red traffic light with a sad face drawn over it.,outdoor
+http://images.cocodataset.org/val2017/000000354829.jpg,The rain is pouring on the white car on the street. ,outdoor
+http://images.cocodataset.org/val2017/000000523241.jpg,A busy city intersection on a cloudy day.,outdoor
+http://images.cocodataset.org/val2017/000000350607.jpg,The bench sitting on the side of the road is multi-colored.,outdoor
+http://images.cocodataset.org/val2017/000000244379.jpg,View down a two lane road at a red stop signal.,outdoor
+http://images.cocodataset.org/val2017/000000230450.jpg,A row of parking meters on a curb side.,outdoor
+http://images.cocodataset.org/val2017/000000122745.jpg,A red stop sign is glowing against the dark sky.,outdoor
+http://images.cocodataset.org/val2017/000000537964.jpg,a black blue and red fire hydrant and some leaves and trees,outdoor
+http://images.cocodataset.org/val2017/000000088432.jpg,The street corner of a busy intersection in a town.,outdoor
+http://images.cocodataset.org/val2017/000000571008.jpg,some road signs showing the instructions on the road,outdoor
+http://images.cocodataset.org/val2017/000000109441.jpg,A large office building has shining mirrored windows.,outdoor
+http://images.cocodataset.org/val2017/000000311883.jpg,A train passes by a road on a railroad track,outdoor
+http://images.cocodataset.org/val2017/000000008762.jpg,A dusky evening with a green street light shining.,outdoor
+http://images.cocodataset.org/val2017/000000544605.jpg,A street sign is pictured against a cement wall.,outdoor
+http://images.cocodataset.org/val2017/000000327890.jpg,Three empty benches face each other beneath a canopy.,outdoor
+http://images.cocodataset.org/val2017/000000266082.jpg,A view of a modern building with skylight and a fire hydrant.,outdoor
+http://images.cocodataset.org/val2017/000000423798.jpg,"An empty street at night with bright lights shining from the light poles, and one very bight light reflecting off the pavement.",outdoor
+http://images.cocodataset.org/val2017/000000232646.jpg,A snow covered road with a stop sign next to it.,outdoor
+http://images.cocodataset.org/val2017/000000082846.jpg,A trolley car parked in a parking lot.,outdoor
+http://images.cocodataset.org/val2017/000000314541.jpg,The bench in the field is empty with no one around it.,outdoor
+http://images.cocodataset.org/val2017/000000427500.jpg,A broken fire hydrant on a city sidewalk.,outdoor
+http://images.cocodataset.org/val2017/000000372317.jpg,A red bus driving down a street next to a tall building.,outdoor
+http://images.cocodataset.org/val2017/000000307598.jpg,A yellow and green train is coming down the track.,outdoor
+http://images.cocodataset.org/val2017/000000496722.jpg,Two red mail boxes along a city street.,outdoor
+http://images.cocodataset.org/val2017/000000000724.jpg,An upside down stop sign by the road.,outdoor
+http://images.cocodataset.org/val2017/000000153568.jpg,A stop sign with additional warnings taped to it.,outdoor
+http://images.cocodataset.org/val2017/000000104198.jpg,Very detailed white roof behind a stop sign.,outdoor
+http://images.cocodataset.org/val2017/000000088218.jpg,A traffic sign is shown with traffic signs above it.,outdoor
+http://images.cocodataset.org/val2017/000000144706.jpg,the view on a street through a window on a rainy day,outdoor
+http://images.cocodataset.org/val2017/000000516708.jpg,Street signs and traffic lights on a city street,outdoor
+http://images.cocodataset.org/val2017/000000015746.jpg,A fire hydrant in front of a house with overgrown grass,outdoor
+http://images.cocodataset.org/val2017/000000369751.jpg,Parking meters and signage are on the side of the street,outdoor
+http://images.cocodataset.org/val2017/000000093154.jpg,The cars are travelling down the wet road.,outdoor
+http://images.cocodataset.org/val2017/000000364126.jpg,A person on a surfboard in the water.,person
+http://images.cocodataset.org/val2017/000000322610.jpg,A woman leaning against a store front with an umbrella.,person
+http://images.cocodataset.org/val2017/000000269316.jpg,A group of men playing a game of frisbee.,person
+http://images.cocodataset.org/val2017/000000187990.jpg,A man who is skateboarding on a ramp.,person
+http://images.cocodataset.org/val2017/000000042628.jpg,Many persons are busy in clearing the snow.,person
+http://images.cocodataset.org/val2017/000000119516.jpg,A woman wearing a dark colored dress stands curbside near a large building.,person
+http://images.cocodataset.org/val2017/000000308394.jpg,There is a woman sitting alone on a train next to a bag,person
+http://images.cocodataset.org/val2017/000000333402.jpg,A man standing in front of the open door of a bus.,person
+http://images.cocodataset.org/val2017/000000526728.jpg,A man and a woman are standing behind some suitcases.,person
+http://images.cocodataset.org/val2017/000000253742.jpg,Several people holding umbrellas and standing next to deer.,person
+http://images.cocodataset.org/val2017/000000338625.jpg,A double city bus is pulled up to a bus stop.,person
+http://images.cocodataset.org/val2017/000000328337.jpg,Young boy almost ready to throw a frisbee.,person
+http://images.cocodataset.org/val2017/000000172946.jpg,a group of people standing and holding video game remote controllers.,person
+http://images.cocodataset.org/val2017/000000445722.jpg,duffel bags and other equipment on a long boat,person
+http://images.cocodataset.org/val2017/000000356505.jpg,A woman riding a surfboard on a wave.,person
+http://images.cocodataset.org/val2017/000000498032.jpg,A somber woman in a pink T-shirt raises a torch.,person
+http://images.cocodataset.org/val2017/000000021167.jpg,some people standing in a room in formal wear,person
+http://images.cocodataset.org/val2017/000000373382.jpg,A tennis player has their racquet raised in the air.,person
+http://images.cocodataset.org/val2017/000000371552.jpg,a young boy on a soccer field standing in front of a ball.,person
+http://images.cocodataset.org/val2017/000000087476.jpg,He is teaching the boy how to ride a skateboard.,person
+http://images.cocodataset.org/val2017/000000064718.jpg,A man is swinging a tennis racket at a ball.,person
+http://images.cocodataset.org/val2017/000000401244.jpg,a man in the stance to throw a Frisbee ,person
+http://images.cocodataset.org/val2017/000000460967.jpg,A bus that is red white and blue with advertising on it driving down the street.,person
+http://images.cocodataset.org/val2017/000000479953.jpg, a girl wearing all green playing soccer on a soccer field,person
+http://images.cocodataset.org/val2017/000000071711.jpg,A large airplane museum with old war planes.,person
+http://images.cocodataset.org/val2017/000000442836.jpg,older man tries to block younger man's frisbee throw,person
+http://images.cocodataset.org/val2017/000000102805.jpg,The man found the frisbee by the parked cars.,person
+http://images.cocodataset.org/val2017/000000033759.jpg,a boy swinging his baseball bat at a baseball,person
+http://images.cocodataset.org/val2017/000000425227.jpg,A couple of people standing on a beach flying a kite.,person
+http://images.cocodataset.org/val2017/000000281759.jpg,"Five women walk down the street, holding umbrellas",person
+http://images.cocodataset.org/val2017/000000261535.jpg,A barefoot woman walking with a tennis racket and her hand on her butt. ,person
+http://images.cocodataset.org/val2017/000000010764.jpg,A catches crouches on a patch of dirt.,person
+http://images.cocodataset.org/val2017/000000144333.jpg,A woman sitting on a bike with a cellphone.,person
+http://images.cocodataset.org/val2017/000000424551.jpg,A skier is standing at the top of ski slope. ,person
+http://images.cocodataset.org/val2017/000000098716.jpg,A man sitting on a bench with a view of the ocean behind him.,person
+http://images.cocodataset.org/val2017/000000302882.jpg,The man is taking a photo of him self with his cellphone. ,person
+http://images.cocodataset.org/val2017/000000377635.jpg,A guy on a skate board high in the air.,person
+http://images.cocodataset.org/val2017/000000080022.jpg,A tennis player returns the ball using a backhand.,person
+http://images.cocodataset.org/val2017/000000343218.jpg,a man with a tennis racket gets ready to swing his racket ,person
+http://images.cocodataset.org/val2017/000000447314.jpg,A woman and girl flying a kite near a large castle.,person
+http://images.cocodataset.org/val2017/000000508312.jpg,A stove top and an oven in a kitchen with wooden cabinets.,person
+http://images.cocodataset.org/val2017/000000568439.jpg,Two double-decker buses going in opposite directions on a road.,person
+http://images.cocodataset.org/val2017/000000398905.jpg,Frizzy haired guy standing at a keyboard listening to the music.,person
+http://images.cocodataset.org/val2017/000000051712.jpg,A man with goggles on snow skiing on a mountain,person
+http://images.cocodataset.org/val2017/000000165039.jpg,A bus pulls over to the curb close to an intersection.,person
+http://images.cocodataset.org/val2017/000000147729.jpg,A man holding up his smart phone to take a picture.,person
+http://images.cocodataset.org/val2017/000000538458.jpg,two people standing on a paved sidewalk with skateboards,person
+http://images.cocodataset.org/val2017/000000332351.jpg,A group of surfers ride waves in the ocean.,person
+http://images.cocodataset.org/val2017/000000356094.jpg,A man is up to bat on a baseball field.,person
+http://images.cocodataset.org/val2017/000000226417.jpg,Many people are driving motorcycles through an intersection.,person
+http://images.cocodataset.org/val2017/000000335954.jpg,this is a salad in some glass bowls,kitchen
+http://images.cocodataset.org/val2017/000000203629.jpg,The man is giving a thumbs up while on his phone.,kitchen
+http://images.cocodataset.org/val2017/000000132329.jpg,A refrigerator mostly empty with only a few bottles of water inside.,kitchen
+http://images.cocodataset.org/val2017/000000243626.jpg,a pork chop some green beans on a white plate and a fork,kitchen
+http://images.cocodataset.org/val2017/000000075393.jpg,Some wooden objects and beads in a display case.,kitchen
+http://images.cocodataset.org/val2017/000000554838.jpg,I do not know what this is supposed to be..,kitchen
+http://images.cocodataset.org/val2017/000000267670.jpg,"A toilet, mirror and sink in a toilet",kitchen
+http://images.cocodataset.org/val2017/000000506310.jpg,A refrigerator freezer next to a  wall.,kitchen
+http://images.cocodataset.org/val2017/000000356347.jpg,A wooden spoon sticking out of a pot of food.,kitchen
+http://images.cocodataset.org/val2017/000000066841.jpg," A whimsical artistic toaster has eyes, a mouth, a nose, spoon feet, spoon ears, and a mixing beater tail.",kitchen
+http://images.cocodataset.org/val2017/000000282296.jpg,An old refrigerator stands against a wood-panelled wall,kitchen
+http://images.cocodataset.org/val2017/000000331569.jpg,A strawberry milk shake and two strawberries on a plate.,kitchen
+http://images.cocodataset.org/val2017/000000266206.jpg,The bathroom door has three panels of frosted glass.,kitchen
+http://images.cocodataset.org/val2017/000000005600.jpg,There are some appealing support ready to expend.  ,kitchen
+http://images.cocodataset.org/val2017/000000346638.jpg,"A blue moon beer is sitting on a desk along with a computer monitor, keyboard, mouse, computer, and speaker.",kitchen
+http://images.cocodataset.org/val2017/000000555009.jpg,A laptop computer sitting on top of a desk.,kitchen
+http://images.cocodataset.org/val2017/000000226171.jpg,"A desk with a computer, computer keyboard, mug, empty plastic bottle, red pen, and a laptop.",kitchen
+http://images.cocodataset.org/val2017/000000388258.jpg,A bicycle leaning against a bench as an airplane flies by.,kitchen
+http://images.cocodataset.org/val2017/000000437898.jpg,A clean kitchen with all the necessary appliances.,kitchen
+http://images.cocodataset.org/val2017/000000028452.jpg,The refrigerator has a drink and a carton of eggs in it.,kitchen
+http://images.cocodataset.org/val2017/000000222825.jpg,A kitchen with a stove top oven next to a white fridge.,kitchen
+http://images.cocodataset.org/val2017/000000187249.jpg,A bottle of mineral water by a TV that is on.,kitchen
+http://images.cocodataset.org/val2017/000000560011.jpg,A black mouse with blue light-up parts is next to a gray keyboard.,kitchen
+http://images.cocodataset.org/val2017/000000570782.jpg,Three computers without screens sit on a desk.,kitchen
+http://images.cocodataset.org/val2017/000000109976.jpg,An all white kitchen with an electric stovetop. ,kitchen
+http://images.cocodataset.org/val2017/000000035326.jpg,A stove back splash with a granite design.,kitchen
+http://images.cocodataset.org/val2017/000000429598.jpg,There is something missing under that wooden shelf.,kitchen
+http://images.cocodataset.org/val2017/000000287714.jpg,A white bathroom sink sitting under a bathroom mirror.,kitchen
+http://images.cocodataset.org/val2017/000000138856.jpg,A loaf of freshly baked artisan bread. ,kitchen
+http://images.cocodataset.org/val2017/000000197796.jpg,Cluttered bathroom with sink in foreground and towel on a rack.,kitchen
+http://images.cocodataset.org/val2017/000000051598.jpg,"The bathroom has a wall sink, medicine cabinet, toothbrush holder, and bare walls.",kitchen
+http://images.cocodataset.org/val2017/000000239627.jpg,A sink that has a few dishes and cleaning products.,kitchen
+http://images.cocodataset.org/val2017/000000464689.jpg,these stairs are leading up to an open door,kitchen
+http://images.cocodataset.org/val2017/000000045728.jpg,A cake with cream topping on the plate.,kitchen
+http://images.cocodataset.org/val2017/000000127494.jpg,A white plate of food on a table.,kitchen
+http://images.cocodataset.org/val2017/000000016439.jpg,A lap top computer is open and on and is sitting on a desk next to a glass of liquid and a lamp.,kitchen
+http://images.cocodataset.org/val2017/000000102707.jpg,A clear bottle and a glass set behind a burner on a stove,kitchen
+http://images.cocodataset.org/val2017/000000290768.jpg,A small kitchen has a checkered floor and a window.,kitchen
+http://images.cocodataset.org/val2017/000000302760.jpg,An image of a bathroom with a sink and mirror ,kitchen
+http://images.cocodataset.org/val2017/000000577584.jpg,A stoneware container on a pull out shelf in front of a microwave.,kitchen
+http://images.cocodataset.org/val2017/000000215644.jpg,A kitchen is shown in midst of repairs.,kitchen
+http://images.cocodataset.org/val2017/000000549674.jpg,Computer with two screens showing both screens and the keyboard.,kitchen
+http://images.cocodataset.org/val2017/000000426253.jpg,Food is cooking inside of a microwave oven.,kitchen
+http://images.cocodataset.org/val2017/000000536073.jpg,"A blender, bottle, glass and cutting board with knife on a counter.",kitchen
+http://images.cocodataset.org/val2017/000000512330.jpg,There is a refrigerator that is filled with food.,kitchen
+http://images.cocodataset.org/val2017/000000223789.jpg,This is someones sink in their bathroom in their home.,kitchen
+http://images.cocodataset.org/val2017/000000300233.jpg,The ingredients are on the kitchen counter next to the blender.,kitchen
+http://images.cocodataset.org/val2017/000000340697.jpg,Several rows of Crush soda in bottles in a refrigerator,kitchen
+http://images.cocodataset.org/val2017/000000292060.jpg,"A kitchen with ceiling fan, stove, and sink.",kitchen
+http://images.cocodataset.org/val2017/000000533958.jpg,A plate with a green salad and an egg,kitchen
+http://images.cocodataset.org/val2017/000000327592.jpg,Woman showing delight with plated chocolate desert dish .,food
+http://images.cocodataset.org/val2017/000000562059.jpg,A bowl of food is sitting next to fresh apples.,food
+http://images.cocodataset.org/val2017/000000001425.jpg,A meal is lying on a plate on a table.,food
+http://images.cocodataset.org/val2017/000000340015.jpg,A pizza with sausage tomato green peppers and cheese.,food
+http://images.cocodataset.org/val2017/000000146667.jpg,A woman digging through the storage compartment on her moped.,food
+http://images.cocodataset.org/val2017/000000289415.jpg,this is a pizza that is sliced up in pieces,food
+http://images.cocodataset.org/val2017/000000197022.jpg,I want the pizza that has extra cheese on it.,food
+http://images.cocodataset.org/val2017/000000420281.jpg,A man with thick black glasses eats a hotdog.,food
+http://images.cocodataset.org/val2017/000000356428.jpg,An open street market selling fruits and goods.,food
+http://images.cocodataset.org/val2017/000000496954.jpg,A serving slice of cake on a table.  ,food
+http://images.cocodataset.org/val2017/000000234779.jpg,Two sloppy joe sandwiches on two separate plates,food
+http://images.cocodataset.org/val2017/000000480122.jpg,A bowl of fruit is placed on a table in a kitchen.,food
+http://images.cocodataset.org/val2017/000000567898.jpg,Three pans filled with different types of food.,food
+http://images.cocodataset.org/val2017/000000526197.jpg,a table with dessert items sitting with displays posted up behind them,food
+http://images.cocodataset.org/val2017/000000044260.jpg,"Crisp, delicious apples hang on the dying branches of the tree.",food
+http://images.cocodataset.org/val2017/000000009914.jpg,A grilled chicken sandwich sits beside french fries made with real potatoes. ,food
+http://images.cocodataset.org/val2017/000000292024.jpg,A woman smiling and looking at a delicious looking pizza,food
+http://images.cocodataset.org/val2017/000000337498.jpg,A large slice of pizza with cheese and marinara sauce on a plate. ,food
+http://images.cocodataset.org/val2017/000000189451.jpg,A piece of cake and a knife on a plate.,food
+http://images.cocodataset.org/val2017/000000407524.jpg,A pasta dish with mushrooms and broccoli in a cream sauce,food
+http://images.cocodataset.org/val2017/000000370677.jpg,Some girls in colorful shirts standing by some pastries.,food
+http://images.cocodataset.org/val2017/000000138241.jpg,A burrito sitting on top of a white plate.,food
+http://images.cocodataset.org/val2017/000000352900.jpg,"A plate full of noodles and broccoli, next to a knife and fork.",food
+http://images.cocodataset.org/val2017/000000468925.jpg,"A plate of chicken fried steak with bananas on top, eggs and bacon.",food
+http://images.cocodataset.org/val2017/000000250901.jpg,A group of people getting their food from a bag.,food
+http://images.cocodataset.org/val2017/000000045550.jpg,Bearded man shows off his grilled cheese sandwiches.,food
+http://images.cocodataset.org/val2017/000000018575.jpg,"A place setting, including a burger, fries, a glass and condiments..",food
+http://images.cocodataset.org/val2017/000000034417.jpg,View through window of donut being made in kitchen assembly line.,food
+http://images.cocodataset.org/val2017/000000329542.jpg,A picture of a person touching a cupcake.,food
+http://images.cocodataset.org/val2017/000000127394.jpg,People sitting around a table several pans of food. ,food
+http://images.cocodataset.org/val2017/000000290619.jpg,A banana laying next to a plastic container with lid.,food
+http://images.cocodataset.org/val2017/000000465585.jpg,A large dish of chopped broccoli and cheese.,food
+http://images.cocodataset.org/val2017/000000059598.jpg,"A soda, banana and muffin are set near a laptop.",food
+http://images.cocodataset.org/val2017/000000276434.jpg,A couple cuts into a wedding cake with grapes and oranges. ,food
+http://images.cocodataset.org/val2017/000000485130.jpg,Wrestling ring sitting in the middle of an open room.,food
+http://images.cocodataset.org/val2017/000000450399.jpg,Amish men and women making homemade doughnuts at a flea market.,food
+http://images.cocodataset.org/val2017/000000254016.jpg,a doughnut factory making doughnuts in oil ,food
+http://images.cocodataset.org/val2017/000000185802.jpg,A giant banana is sitting in beach chair which is overlooking turquoise water.,food
+http://images.cocodataset.org/val2017/000000123321.jpg,The bowl of soup contains a large amount of broccoli.,food
+http://images.cocodataset.org/val2017/000000457262.jpg,A table topped with bananas next to a coin.,food
+http://images.cocodataset.org/val2017/000000376307.jpg,a person is sitting near a bunch of fruit,food
+http://images.cocodataset.org/val2017/000000263969.jpg,Man and woman holding a knife up to a small cake. ,food
+http://images.cocodataset.org/val2017/000000003501.jpg,"A bean and corn mixture, rice, and broccoli on a plate",food
+http://images.cocodataset.org/val2017/000000312552.jpg,Woman standing while eating pizza from a plate.,food
+http://images.cocodataset.org/val2017/000000287959.jpg,The sandwich had been cut and was ready to eat.,food
+http://images.cocodataset.org/val2017/000000322211.jpg,A BOX OF DOUGHNUTS JUST SHORT OF A DOZEN,food
+http://images.cocodataset.org/val2017/000000465806.jpg,A person reaches for a container on a counter. ,food
+http://images.cocodataset.org/val2017/000000479596.jpg,a bunch of fruit sit on sale for the public ,food
+http://images.cocodataset.org/val2017/000000114871.jpg,A banana sitting on top of a white plate next to a pastry.,food
+http://images.cocodataset.org/val2017/000000441491.jpg,Three women are taking a bite out of the same piece of pizza.,food
+http://images.cocodataset.org/val2017/000000493566.jpg,The last car of a train sits on train tracks.,vehicle
+http://images.cocodataset.org/val2017/000000553094.jpg,Fighter Jet with afterburners on flying almost vertically.,vehicle
+http://images.cocodataset.org/val2017/000000573943.jpg,"Yellow, white and blue trucks are parked in a parking lot.",vehicle
+http://images.cocodataset.org/val2017/000000502599.jpg,A group of planes near a large wall of windows.,vehicle
+http://images.cocodataset.org/val2017/000000525322.jpg,two stunt airplanes touching their wings as the fly,vehicle
+http://images.cocodataset.org/val2017/000000224051.jpg,Bicycle parked by the side of busy highway on a concrete slab. ,vehicle
+http://images.cocodataset.org/val2017/000000090631.jpg,A colorful fighter jet flying through a blue sky.,vehicle
+http://images.cocodataset.org/val2017/000000161044.jpg,The two airplanes are in the air next to eachother,vehicle
+http://images.cocodataset.org/val2017/000000275791.jpg,A large trains travels past a river that contains several different boats,vehicle
+http://images.cocodataset.org/val2017/000000050165.jpg,A small train moving along the tracks with a mountain town in the background.,vehicle
+http://images.cocodataset.org/val2017/000000300659.jpg,Seven jets fly in formation leaving trails of smoke behind them.,vehicle
+http://images.cocodataset.org/val2017/000000196843.jpg,"A painted school bus reads ""Van Gogh Museum Bus"".",vehicle
+http://images.cocodataset.org/val2017/000000577976.jpg,A construction truck is in front of the huge building. ,vehicle
+http://images.cocodataset.org/val2017/000000513181.jpg,A boat can be seen at the edge of the water and a building is in the background. ,vehicle
+http://images.cocodataset.org/val2017/000000240940.jpg,a cat siting on the ground watching a tv,vehicle
+http://images.cocodataset.org/val2017/000000478474.jpg,A truck that is sitting in the street.,vehicle
+http://images.cocodataset.org/val2017/000000201934.jpg,A white bus stopped alongside a sidewalk in the street.,vehicle
+http://images.cocodataset.org/val2017/000000459467.jpg,A small airplane is about to take off on the runway.,vehicle
+http://images.cocodataset.org/val2017/000000185157.jpg,A sign that might read parking here where bicycles are parked.,vehicle
+http://images.cocodataset.org/val2017/000000517523.jpg,A blue a white plane flying through the air.,vehicle
+http://images.cocodataset.org/val2017/000000347544.jpg,There is an old multi colored volvo parked next to a motel,vehicle
+http://images.cocodataset.org/val2017/000000494863.jpg,A brown train next to a large mountain.,vehicle
+http://images.cocodataset.org/val2017/000000149406.jpg,A motorcycle parked in front of green doors. ,vehicle
+http://images.cocodataset.org/val2017/000000015517.jpg,The view of a metropolitan area behind many buses.,vehicle
+http://images.cocodataset.org/val2017/000000455872.jpg,Black and white photo of an old dock with low water.,vehicle
+http://images.cocodataset.org/val2017/000000213816.jpg,A photo of the open door of a train.,vehicle
+http://images.cocodataset.org/val2017/000000490470.jpg,Several boats in the water with their sails down.,vehicle
+http://images.cocodataset.org/val2017/000000408830.jpg,A row of foreign motorcycles is lined up in front of a wooden fence.,vehicle
+http://images.cocodataset.org/val2017/000000256195.jpg,A metro style train engine passing under a bridge.,vehicle
+http://images.cocodataset.org/val2017/000000456865.jpg,an airplane sitting on the tarmac with clouds above it,vehicle
+http://images.cocodataset.org/val2017/000000443498.jpg,A passenger bus drives through a street at night. ,vehicle
+http://images.cocodataset.org/val2017/000000419882.jpg,a lot of trains that are parked next to each other,vehicle
+http://images.cocodataset.org/val2017/000000242287.jpg,"Bicycle leaning up against a dirty board, near outdoor market.",vehicle
+http://images.cocodataset.org/val2017/000000396568.jpg,A diesel locomotive hauling some freight through the countyside,vehicle
+http://images.cocodataset.org/val2017/000000431896.jpg,A passanger train stopped on the railroad tracks at a station.,vehicle
+http://images.cocodataset.org/val2017/000000509008.jpg,The school bus is colored yellow and pink.,vehicle
+http://images.cocodataset.org/val2017/000000365098.jpg,The inside bow section of a narrow metal boat floating on blue-green water. ,vehicle
+http://images.cocodataset.org/val2017/000000524742.jpg,a picture of graffiti on a subway train.,vehicle
+http://images.cocodataset.org/val2017/000000203317.jpg,A red bicycle leaned against a red stucco building with a graffiti covered door. ,vehicle
+http://images.cocodataset.org/val2017/000000066135.jpg,a long yellow train that is on a train track,vehicle
+http://images.cocodataset.org/val2017/000000424776.jpg,An airplane with the Swiss flag symbol is flying through the mountains.,vehicle
+http://images.cocodataset.org/val2017/000000311909.jpg,A very big white bus parked by the curb.,vehicle
+http://images.cocodataset.org/val2017/000000456394.jpg,A blue motorcycle parked on display  next to other vehicles.,vehicle
+http://images.cocodataset.org/val2017/000000234660.jpg,two trains on a track near one another ,vehicle
+http://images.cocodataset.org/val2017/000000452122.jpg,An airplane in route with a cloudy sky behind it.,vehicle
+http://images.cocodataset.org/val2017/000000113051.jpg,A boat traveling into a water filled tunnel.,vehicle
+http://images.cocodataset.org/val2017/000000108440.jpg,A train on top of an overpass bridge set of train tracks with fields on both side.,vehicle
+http://images.cocodataset.org/val2017/000000033109.jpg,A semi truck is driving down a street.,vehicle
+http://images.cocodataset.org/val2017/000000106281.jpg,A long silver train traveling through a small city.,vehicle
+http://images.cocodataset.org/val2017/000000543300.jpg,A large white boat in the open water.,vehicle

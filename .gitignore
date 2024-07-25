@@ -211,8 +211,6 @@ wandb/
 results/
 
 data/images/
-data/annotations/
-data/pairs/
 
 pkgs/ALBEF/ALBEF.pth
 pkgs/CyCLIP/cyclip_3m_best.pt

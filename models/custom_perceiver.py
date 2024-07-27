@@ -133,6 +133,8 @@ class CustomPerceiver():
                 text_embeds = text_embeds['last_hidden_state'][:,0,:]
 
                 images = torch.squeeze(images)
+                if len(images.size()) == 3:
+                    images = images.unsqueeze(0)
                 images = images.to(self.device)
                 img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 

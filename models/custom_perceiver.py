@@ -84,7 +84,7 @@ class CustomPerceiver():
         acc_loss = 0.0
         epoch_loss = 0.0
         acc_step = batch_size
-        dataloader = DataLoader(dataset, batch_size=batch_size)
+        dataloader = DataLoader(dataset, batch_size=1)
 
         for idx, batch in enumerate(dataloader):
             images, text = batch
@@ -95,6 +95,8 @@ class CustomPerceiver():
             text_embeds = self.model(inputs={'text': text.input_ids,})['last_hidden_state'][:,0,:]
 
             images = torch.squeeze(images)
+            if len(images.size()) == 3:
+                images = images.unsqueeze(0)
             images = images.to(self.device)
             img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 
@@ -118,7 +120,7 @@ class CustomPerceiver():
         acc_loss = 0.0
         epoch_loss = 0.0
         acc_step = batch_size
-        dataloader = DataLoader(dataset, batch_size=batch_size)
+        dataloader = DataLoader(dataset, batch_size=1)
 
         with torch.no_grad():
             for idx, batch in enumerate(dataloader):

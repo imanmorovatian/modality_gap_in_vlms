@@ -2,9 +2,19 @@ import numpy as np
 
 
 with open('data/annotations/flickr30k/results_20130124.token', 'r') as f:
-    data = [line for line in f]
+    # 1000092795.jpg#0	Two young guys with shaggy hair look at their hands while hanging out in the yard .
+    temp = {}
+    for line in f:
+        img_id, cap = line.split('\t')
+        img_id = img_id[:-2]
+        temp.setdefault(img_id, [])
+        temp[img_id].append(cap)
 
-    total = len(set( [line.split('#')[0] for line in data] ))
+    data = []
+    for img_id, captions in temp.items():
+        data.append( f'{img_id}#1\t{np.random.choice(captions, size=1)[0]}' )
+
+    total = len(data)
     train = (total // 5) * 3
     val = total // 5
     test = total - train -val

@@ -184,7 +184,7 @@ class CustomPerceiver():
         for epoch in range(no_epochs):
             train_loss = self.train(train_dataset, batch_size, criterion, optimizer)
             val_loss = self.evaluation(val_dataset, batch_size, criterion)
-
+            print(f'{epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
             wandb.log({
                 'epoch': epoch+1,
                 'train_loss': train_loss,
@@ -199,7 +199,8 @@ class CustomPerceiver():
         wandb.finish()
 
         torch.save(self.model.state_dict(), f'{save_path}/perceiver_{dataset_name}.pth')
-        
+        print(f'Saved model in {save_path}')
+
     # def encode(self, dataset, batch_size):
     #     dataloader = DataLoader(dataset, batch_size=batch_size)
 

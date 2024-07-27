@@ -10,7 +10,6 @@ from transformers import PerceiverConfig, PerceiverTokenizer, PerceiverImageProc
 from transformers.models.perceiver.modeling_perceiver import PerceiverTextPreprocessor, PerceiverImagePreprocessor, PerceiverMultimodalPreprocessor, PerceiverModelOutput
 from datetime import datetime
 import wandb
-from tqdm import tqdm
 
 
 PreprocessorOutputType = Tuple[torch.Tensor, Optional[torch.Tensor], torch.Tensor]
@@ -81,9 +80,12 @@ class CustomPerceiver():
     
     def train(self, dataset, batch_size, criterion, optimizer):
         self.model.train()
-        running_loss = 0.0
+        acc_loss = 0.0
+        epoch_loss = 0.0
+        acc_step = batch_size
         dataloader = DataLoader(dataset, batch_size=batch_size)
-        for batch in tqdm(dataloader):
+
+        for idx, batch in enumerate(dataloader):
             images, text = batch
 
             text = text[0]
@@ -95,23 +97,30 @@ class CustomPerceiver():
             images = images.to(self.device)
             img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 
-            optimizer.zero_grad()
-            loss = criterion(img_embeds, text_embeds)
+            loss = criterion(img_embeds, text_embeds) / acc_step
+            acc_loss += loss.item()
             loss.backward()
-            optimizer.step()
 
-            running_loss += loss.item()
+            if ((idx + 1) % acc_step == 0) or (idx + 1 == len(dataloader)):
+                optimizer.step()
+                optimizer.zero_grad()
 
-        epoch_loss = running_loss / len(dataloader)
+                epoch_loss += acc_loss
+                acc_loss = 0.0
+
+        epoch_loss = epoch_loss / (len(dataloader)/acc_step)
 
         return epoch_loss
 
-    def evaluation(self, dataset, batch_size, criterion, optimizer):
+    def evaluation(self, dataset, batch_size, criterion):
         self.model.eval()
-        running_loss = 0.0
+        acc_loss = 0.0
+        epoch_loss = 0.0
+        acc_step = batch_size
         dataloader = DataLoader(dataset, batch_size=batch_size)
+
         with torch.no_grad():
-            for batch in tqdm(dataloader):
+            for idx, batch in enumerate(dataloader):
                 images, text = batch
 
                 text = text[0]
@@ -124,11 +133,14 @@ class CustomPerceiver():
                 images = images.to(self.device)
                 img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 
-                loss = criterion(img_embeds, text_embeds)
+                loss = criterion(img_embeds, text_embeds) / acc_step
+                acc_loss = loss.item()
 
-                running_loss += loss.item()
+                if ((idx + 1) % acc_step == 0) or (idx + 1 == len(dataloader)):
+                    epoch_loss += acc_loss
+                    acc_loss = 0.0
 
-            epoch_loss = running_loss / len(dataloader)
+            epoch_loss = epoch_loss / (len(dataloader)/acc_step)
 
         return epoch_loss
 
@@ -168,7 +180,7 @@ class CustomPerceiver():
 
         for epoch in range(no_epochs):
             train_loss = self.train(train_dataset, batch_size, criterion, optimizer)
-            val_loss = self.evaluation(val_dataset, batch_size, criterion, optimizer)
+            val_loss = self.evaluation(val_dataset, batch_size, criterion)
 
             wandb.log({
                 'epoch': epoch+1,

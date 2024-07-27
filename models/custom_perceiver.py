@@ -8,6 +8,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from transformers import PerceiverConfig, PerceiverTokenizer, PerceiverImageProcessor, PerceiverModel
 from transformers.models.perceiver.modeling_perceiver import PerceiverTextPreprocessor, PerceiverImagePreprocessor, PerceiverMultimodalPreprocessor, PerceiverModelOutput
+import bitsandbytes as bnb
 from datetime import datetime
 import wandb
 
@@ -151,7 +152,7 @@ class CustomPerceiver():
 
         opt_lr = 1e-3
         opt_wd = 1e-4
-        optimizer = optimizer = optim.Adam(
+        optimizer = optimizer = bnb.optim.Adam8bit(
             self.model.parameters(),
             lr=opt_lr,
             weight_decay=opt_wd

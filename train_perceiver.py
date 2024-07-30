@@ -33,17 +33,17 @@ elif dataset == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/train.token',
                         transform=model.transform)
-    train_dataloader = DataLoader(train_dataset, batch_size=1)
+    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 
     val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/val.token',
                         transform=model.transform)
-    val_dataloader = DataLoader(val_dataset, batch_size=1)
+    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/test.token',
                         transform=model.transform)
-    test_dataloader = DataLoader(test_dataset, batch_size=1)
+    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
 
 else:
     raise ValueError('The selected dataset is not supported')

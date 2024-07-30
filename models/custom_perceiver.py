@@ -4,7 +4,7 @@ import torch
 from torch import optim
 import torch.nn as nn
 import torch.nn.functional as F
-
+from torch.cuda.amp import autocast, GradScaler
 from torchvision import transforms
 from transformers import PerceiverConfig, PerceiverTokenizer, PerceiverImageProcessor, PerceiverModel
 from transformers.models.perceiver.modeling_perceiver import PerceiverTextPreprocessor, PerceiverImagePreprocessor, PerceiverMultimodalPreprocessor, PerceiverModelOutput
@@ -79,80 +79,60 @@ class CustomPerceiver():
                 transforms.Lambda(lambda img: self.image_transform.preprocess(img, return_tensors="pt")['pixel_values'])
             ])
     
-    def train(self, dataloader, batch_size, criterion, optimizer):
+    def train(self, dataloader, criterion, optimizer, grad_scaler):
         self.model.train()
         epoch_loss = 0.0
-        batch_text = []
-        batch_images = []
 
-        for idx, batch in enumerate(dataloader):
+        for batch in dataloader:
+            
             images, text = batch
+            optimizer.zero_grad()
 
-            text = text[0]
-            text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt')
-            text = text.to(self.device)
-            text_embeds = self.model(inputs={'text': text.input_ids,})['last_hidden_state'][:,0,:]
-            batch_text.append(text_embeds)
+            with autocast():
+                text = text[0]
+                text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt').to(self.device)
+                text_embeds = self.model(inputs={'text': text.input_ids,})['last_hidden_state'][:,0,:]
 
-            images = torch.squeeze(images)
-            if len(images.size()) == 3:
-                images = images.unsqueeze(0)
-            images = images.to(self.device)
-            img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
-            batch_images.append(img_embeds)
+                images = torch.squeeze(images)
+                if len(images.size()) == 3:
+                    images = images.unsqueeze(0)
+                images = images.to(self.device)
+                img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 
-            if (idx + 1) % batch_size == 0:
-                batch_text = torch.stack(batch_text).to(self.device)
-                batch_images = torch.stack(batch_images).to(self.device)
-
-                loss = criterion(batch_text, batch_images)
+                loss = criterion(text_embeds, img_embeds)
                 epoch_loss += loss.item()
-                loss.backward()
-                optimizer.step()
-                optimizer.zero_grad()
 
-                batch_text = []
-                batch_images = []
-
-        epoch_loss = epoch_loss / (len(dataloader)/batch_size)
+            grad_scaler.scale(loss).backward()
+            grad_scaler.step(optimizer)
+            grad_scaler.update()
+            
+        epoch_loss = epoch_loss / len(dataloader)
 
         return epoch_loss
 
-    def evaluation(self, dataloader, batch_size, criterion):
+    def evaluation(self, dataloader, criterion):
         self.model.eval()
         epoch_loss = 0.0
-        batch_text = []
-        batch_images = []
 
         with torch.no_grad():
-            for idx, batch in enumerate(dataloader):
+            for batch in dataloader:
                 images, text = batch
 
                 text = text[0]
-                text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt')
-                text = text.to(self.device)
+                text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt').to(self.device)
                 text_embeds = self.model(inputs={'text': text.input_ids,})
                 text_embeds = text_embeds['last_hidden_state'][:,0,:]
-                batch_text.append(text_embeds)
                 
                 images = torch.squeeze(images)
                 if len(images.size()) == 3:
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
                 img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
-                batch_images.append(img_embeds)
 
-                if (idx + 1) % batch_size == 0:
-                    batch_text = torch.stack(batch_text).to(self.device)
-                    batch_images = torch.stack(batch_images).to(self.device)
+                loss = criterion(text_embeds, img_embeds)
+                epoch_loss += loss.item()
 
-                    loss = criterion(batch_text, batch_images)
-                    epoch_loss += loss.item()
-
-                    batch_text = []
-                    batch_images = []
-
-            epoch_loss = epoch_loss / (len(dataloader)/batch_size)
+            epoch_loss = epoch_loss / len(dataloader)
 
         return epoch_loss
 
@@ -171,6 +151,8 @@ class CustomPerceiver():
         
         gamma_value = 0.95
         scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=gamma_value)
+
+        grad_scaler = GradScaler()
 
         wandb_config = {
             'batch_size': batch_size,
@@ -191,8 +173,8 @@ class CustomPerceiver():
             )
 
         for epoch in range(no_epochs):
-            train_loss = self.train(train_dataloader, batch_size, criterion, optimizer)
-            val_loss = self.evaluation(val_dataloader, batch_size, criterion)
+            train_loss = self.train(train_dataloader, criterion, optimizer, grad_scaler)
+            val_loss = self.evaluation(val_dataloader, criterion)
             print(f'{epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
             wandb.log({
                 'epoch': epoch+1,

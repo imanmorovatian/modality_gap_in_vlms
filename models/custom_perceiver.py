@@ -54,7 +54,16 @@ class CustomPerceiver():
     def __init__(self):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-        self.config = PerceiverConfig(d_model=64, d_latents=1024, image_size=224, qk_channels=1024)
+        self.config = PerceiverConfig(
+            num_latents=32,
+            d_latents=64,
+            d_model=64,
+            num_self_attends_per_block=4,
+            num_self_attention_heads=4,
+            num_cross_attention_heads=1,
+            #qk_channels=1024,
+            image_size=224)
+        
         self.preprocessor = SharedPerceiverPreprocessor(
             modalities={
                 'text': PerceiverTextPreprocessor(self.config),
@@ -67,7 +76,8 @@ class CustomPerceiver():
                                                     concat_pos=False))
             },
             min_padding_size=0
-        )   
+        )
+           
         self.text_tokenizer = PerceiverTokenizer()
         self.model = PerceiverModel(self.config, input_preprocessor=self.preprocessor).to(self.device)
 
@@ -155,6 +165,7 @@ class CustomPerceiver():
         grad_scaler = GradScaler()
 
         wandb_config = {
+            'number_of_parameters': sum(p.numel() for p in self.model.parameters()),
             'batch_size': batch_size,
             'number_of_epochs': no_epochs,
             'optimizer': 'Adam',

@@ -2,7 +2,6 @@ import numpy as np
 
 
 with open('data/annotations/flickr30k/results_20130124.token', 'r') as f:
-    # 1000092795.jpg#0	Two young guys with shaggy hair look at their hands while hanging out in the yard .
     temp = {}
     for line in f:
         img_id, cap = line.split('\t')

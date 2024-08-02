@@ -7,8 +7,7 @@ import torch.nn.functional as F
 from torch.cuda.amp import autocast, GradScaler
 from torchvision import transforms
 from transformers import PerceiverConfig, PerceiverTokenizer, PerceiverImageProcessor, PerceiverModel
-from transformers.models.perceiver.modeling_perceiver import PerceiverTextPreprocessor, PerceiverImagePreprocessor, PerceiverMultimodalPreprocessor, PerceiverModelOutput
-import bitsandbytes as bnb
+from transformers.models.perceiver.modeling_perceiver import PerceiverTextPreprocessor, PerceiverImagePreprocessor, PerceiverMultimodalPreprocessor
 from datetime import datetime
 import wandb
 
@@ -55,13 +54,12 @@ class CustomPerceiver():
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         self.config = PerceiverConfig(
-            num_latents=32,
-            d_latents=64,
+            num_latents=256,
+            d_latents=512,
             d_model=64,
             num_self_attends_per_block=4,
             num_self_attention_heads=4,
             num_cross_attention_heads=1,
-            #qk_channels=1024,
             image_size=224)
         
         self.preprocessor = SharedPerceiverPreprocessor(
@@ -153,7 +151,7 @@ class CustomPerceiver():
 
         opt_lr = 1e-3
         opt_wd = 1e-4
-        optimizer = optimizer = bnb.optim.Adam8bit(
+        optimizer = optimizer = optim.Adam(
             self.model.parameters(),
             lr=opt_lr,
             weight_decay=opt_wd
@@ -186,7 +184,7 @@ class CustomPerceiver():
         for epoch in range(no_epochs):
             train_loss = self.train(train_dataloader, criterion, optimizer, grad_scaler)
             val_loss = self.evaluation(val_dataloader, criterion)
-            print(f'{epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
+            print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
             wandb.log({
                 'epoch': epoch+1,
                 'train_loss': train_loss,
@@ -195,7 +193,7 @@ class CustomPerceiver():
 
             scheduler.step()
 
-        test_loss = self.evaluation(test_dataloader, batch_size, criterion)
+        test_loss = self.evaluation(test_dataloader, criterion)
 
         wandb.log({'test_loss': test_loss})
         wandb.finish()

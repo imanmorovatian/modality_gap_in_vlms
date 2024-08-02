@@ -28,7 +28,22 @@ assert dataset in ['mscoco', 'flickr30k', 'amazon_products']
 model = CustomPerceiver()
 
 if dataset == 'mscoco':
-    pass
+    train_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
+						annFile='data/annotations/mscoco/train2017edited_captions.json',
+                        transform=model.transform)
+    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
+
+    val_dataset = MSCOCOCaptions(root='data/images/mscoco/val2017/',
+						annFile='data/annotations/mscoco/val2017_captions.json',
+                        transform=model.transform)
+    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+
+    # test split is sampled from train split
+    test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
+						annFile='data/annotations/mscoco/test2017_captions.json',
+                        transform=model.transform)
+    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+    
 elif dataset == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/train.token',

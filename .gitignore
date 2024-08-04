@@ -214,6 +214,7 @@ data/images/
 
 pkgs/ALBEF/ALBEF.pth
 pkgs/CyCLIP/cyclip_3m_best.pt
+pkgs/Perceiver
 
 preprocess/amazon_categories/
 preprocess/amazon_edited_categories/

@@ -24,7 +24,7 @@ dataset = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 NO_EPOCHS = args.NO_EPOCHS
 
-assert dataset in ['mscoco', 'flickr30k', 'amazon_products']
+assert dataset in ['mscoco', 'flickr30k', 'ConceptualCaptions', 'amazon_products']
     
 model = CustomPerceiver()
 

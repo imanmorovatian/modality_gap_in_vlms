@@ -4,6 +4,7 @@ from torch.utils.data import DataLoader
 
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
+from utils.datasets.conceptual_captions import ConceptualCaptions
 from models.custom_perceiver import CustomPerceiver
 
 
@@ -57,6 +58,22 @@ elif dataset == 'flickr30k':
 
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/test.token',
+                        transform=model.transform)
+    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+
+elif dataset == 'ConceptualCaptions':
+    train_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
+                        annFile='data/annotations/conceptualCaptions/train.csv',
+                        transform=model.transform)
+    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
+
+    val_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
+                        annFile='data/annotations/conceptualCaptions/val.csv',
+                        transform=model.transform)
+    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+
+    test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
+                        annFile='data/annotations/conceptualCaptions/test.csv',
                         transform=model.transform)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
 

@@ -84,7 +84,7 @@ class CustomPerceiver():
         self.name = 'Perceiver'
         
         self.transform = transforms.Compose([
-                transforms.Lambda(lambda img: self.image_transform.preprocess(img, return_tensors="pt")['pixel_values'])
+                transforms.Lambda(lambda img: self.image_transform.preprocess(img, input_data_format='channels_last', return_tensors='pt')['pixel_values'])
             ])
     
     def train(self, dataloader, criterion, optimizer, grad_scaler):

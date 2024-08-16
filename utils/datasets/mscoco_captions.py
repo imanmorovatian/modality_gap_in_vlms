@@ -23,15 +23,17 @@ class MSCOCOCaptions(Dataset):
         self,
         root: str,
         annFile: str,
-        transform: Optional[Callable] = None,
-        target_transform: Optional[Callable] = None,
+        image_transform: Optional[Callable] = None,
+        caption_transform: Optional[Callable] = None,
+        max_length_tokenizer: int = 512,
         no_cap_per_img = 1
     ) -> None:
         super(MSCOCOCaptions, self).__init__()
         self.name = 'MSCOCO'
         self.root = root
-        self.transform = transform
-        self.target_transform = target_transform
+        self.image_transform = image_transform
+        self.caption_transform = caption_transform
+        self.max_length_tokenizer = max_length_tokenizer
         self.annFile = os.path.expanduser(annFile)
         
         with open(self.annFile) as f:
@@ -75,20 +77,24 @@ class MSCOCOCaptions(Dataset):
         # Image
         filename = os.path.join(self.root, img_id)
         img = Image.open(filename).convert("RGB")
-        if self.transform is not None:
-            img = self.transform(img)
+        if self.image_transform is not None:
+            img = self.image_transform(img)
 
         # Captions
-        targets = self.annotations[img_id]
+        captions = self.annotations[img_id]
         
         # wanna limit the size of target here but error happened when search relevant
         # target = self.__remove_punctuation(target)
         # target = self.__limit_length(target)
         
-        if self.target_transform is not None:
-            targets = self.target_transform(targets)
+        if self.caption_transform is not None:
+            captions = self.caption_transform(captions,
+                                              padding='max_length',
+                                              max_length=self.max_length_tokenizer,
+                                              truncation=True,
+                                              return_tensors='pt')['input_ids']
 
-        return img, targets
+        return img, captions
 
     def __len__(self) -> int:
         return len(self.ids)

@@ -31,50 +31,59 @@ model = CustomPerceiver()
 if dataset == 'mscoco':
     train_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
 						annFile='data/annotations/mscoco/train2017edited_captions.json',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 
     val_dataset = MSCOCOCaptions(root='data/images/mscoco/val2017/',
 						annFile='data/annotations/mscoco/val2017_captions.json',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
     # test split is sampled from train split
     test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
 						annFile='data/annotations/mscoco/test2017_captions.json',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
     
 elif dataset == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/train.token',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 
     val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/val.token',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/test.token',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
 
 elif dataset == 'ConceptualCaptions':
     train_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/train.csv',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 
     val_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/val.csv',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
     test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/test.csv',
-                        transform=model.transform)
+                        image_transform=model.transform,
+                        caption_transform=model.text_tokenizer)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
 
 else:

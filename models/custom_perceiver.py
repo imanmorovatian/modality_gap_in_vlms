@@ -97,9 +97,9 @@ class CustomPerceiver():
             optimizer.zero_grad()
 
             with autocast():
-                # text = text[0]
-                text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt').to(self.device)
-                text_embeds = self.model(inputs={'text': text.input_ids,})['last_hidden_state'][:,0,:]
+                text = text.squeeze()
+                text = text.to(self.device)
+                text_embeds = self.model(inputs={'text': text,})['last_hidden_state'][:,0,:]
 
                 images = torch.squeeze(images)
                 if len(images.size()) == 3:
@@ -126,9 +126,9 @@ class CustomPerceiver():
             for batch in dataloader:
                 images, text = batch
 
-                # text = text[0]
-                text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt').to(self.device)
-                text_embeds = self.model(inputs={'text': text.input_ids,})
+                text = text.squeeze()
+                text = text.to(self.device)
+                text_embeds = self.model(inputs={'text': text,})
                 text_embeds = text_embeds['last_hidden_state'][:,0,:]
                 
                 images = torch.squeeze(images)

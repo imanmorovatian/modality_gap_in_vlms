@@ -24,7 +24,7 @@ dataset = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 NO_EPOCHS = args.NO_EPOCHS
 
-assert dataset in ['mscoco', 'flickr30k', 'ConceptualCaptions', 'amazon_products']
+assert dataset in ['mscoco', 'flickr30k', 'conceptualCaptions']
     
 model = CustomPerceiver()
 
@@ -67,7 +67,7 @@ elif dataset == 'flickr30k':
                         caption_transform=model.text_tokenizer)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
 
-elif dataset == 'ConceptualCaptions':
+elif dataset == 'conceptualCaptions':
     train_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/train.csv',
                         image_transform=model.transform,

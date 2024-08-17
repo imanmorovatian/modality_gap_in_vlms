@@ -201,33 +201,36 @@ class CustomPerceiver():
         torch.save(self.model.state_dict(), f'{save_path}/perceiver_{dataset_name}.pth')
         print(f'Saved model in {save_path}')
 
-    # def encode(self, dataset, batch_size):
-    #     dataloader = DataLoader(dataset, batch_size=batch_size)
+    def encode(self, dataloader):
 
-    #     image_features = []
-    #     text_features = []
+        image_features = []
+        text_features = []
 
-    #     with torch.no_grad():
-    #         for batch in tqdm(dataloader):
-    #             images, text = batch
+        with torch.no_grad():
+            for batch in dataloader:
+                images, text = batch
 
-    #             text = text[0]
-    #             text = self.text_tokenizer(text, padding=True, truncation=True, return_tensors='pt')
-    #             text = text.to(self.device)
-    #             outputs = self.text_model(inputs=text.input_ids, attention_mask=text.attention_mask)
+                text = text.squeeze()
+                if len(text.size()) == 3:
+                    text = torch.flatten(text, start_dim=0, end_dim=1)
+                text = text.to(self.device)
+                text_embeds = self.model(inputs={'text': text,})
+                text_embeds = text_embeds['last_hidden_state'][:,0,:]
 
-    #             text_features.append(outputs['last_hidden_state'][:,0,:])
+                text_features.append(text_embeds)
 
-    #             images = torch.squeeze(images)
-    #             images = images.to(self.device)
-    #             outputs = self.image_model(inputs=images)
+                images = torch.squeeze(images)
+                if len(images.size()) == 3:
+                    images = images.unsqueeze(0)
+                images = images.to(self.device)
+                img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 
-    #             image_features.append(outputs['last_hidden_state'][:,0,:])
+                image_features.append(img_embeds)
 
-    #         text_features = torch.vstack(text_features)
-    #         text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)
+            text_features = torch.vstack(text_features)
+            text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)
 
-    #         image_features = torch.vstack(image_features)
-    #         image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)
+            image_features = torch.vstack(image_features)
+            image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)
 
-    #     return text_features.cpu().squeeze(), image_features.cpu().squeeze()
+        return text_features.cpu().squeeze(), image_features.cpu().squeeze()

@@ -50,6 +50,7 @@ def parse_args():
     parser.add_argument("--model", type=str, required=True, help='name of the model', dest='MODEL')
     parser.add_argument("--dataset", type=str, required=True, help='name of the dataset', dest='DATASET')
     parser.add_argument('--batch_size', type=int, required=True, help='batch size', dest='BATCH_SIZE')
+    parser.add_argument('--captions_per_image', type=int, required=True, help='number of captions per image', dest='CPI')
 
     args = parser.parse_args()
 
@@ -60,6 +61,7 @@ args = parse_args()
 MODEL = args.MODEL
 dataset = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
+CPI = args.CPI # captions per image
 
 assert dataset in ['mscoco', 'flickr30k', 'conceptualCaptions']
 
@@ -80,21 +82,24 @@ if dataset == 'mscoco':
     test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
 						annFile='data/annotations/mscoco/test2017_captions.json',
                         image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
+                        caption_transform=model.text_tokenizer,
+                        no_cap_per_img=CPI)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
     
 elif dataset == 'flickr30k':
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/test.token',
                         image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
+                        caption_transform=model.text_tokenizer,
+                        no_cap_per_img=CPI)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
 
 elif dataset == 'conceptualCaptions':
     test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/test.csv',
                         image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
+                        caption_transform=model.text_tokenizer,
+                        no_cap_per_img=CPI)
     test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
 
 else:

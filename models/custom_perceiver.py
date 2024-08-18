@@ -210,9 +210,7 @@ class CustomPerceiver():
             for batch in dataloader:
                 images, text = batch
 
-                text = text.squeeze()
-                if len(text.size()) == 3:
-                    text = torch.flatten(text, start_dim=0, end_dim=1)
+                text = torch.flatten(text, start_dim=0, end_dim=1)
                 text = text.to(self.device)
                 text_embeds = self.model(inputs={'text': text,})
                 text_embeds = text_embeds['last_hidden_state'][:,0,:]

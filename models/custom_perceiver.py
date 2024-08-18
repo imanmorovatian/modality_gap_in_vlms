@@ -97,7 +97,7 @@ class CustomPerceiver():
             optimizer.zero_grad()
 
             with autocast():
-                text = text.squeeze()
+                text = torch.flatten(text, start_dim=0, end_dim=1)
                 text = text.to(self.device)
                 text_embeds = self.model(inputs={'text': text,})['last_hidden_state'][:,0,:]
 
@@ -126,7 +126,7 @@ class CustomPerceiver():
             for batch in dataloader:
                 images, text = batch
 
-                text = text.squeeze()
+                text = torch.flatten(text, start_dim=0, end_dim=1)
                 text = text.to(self.device)
                 text_embeds = self.model(inputs={'text': text,})
                 text_embeds = text_embeds['last_hidden_state'][:,0,:]
@@ -202,11 +202,10 @@ class CustomPerceiver():
         print(f'Saved model in {save_path}')
 
     def encode(self, dataloader):
-
+        self.model.eval()
         image_features = []
         text_features = []
 
-        self.model.eval()
         with torch.no_grad():
             for batch in dataloader:
                 images, text = batch

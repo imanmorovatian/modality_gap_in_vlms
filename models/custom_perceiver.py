@@ -206,6 +206,7 @@ class CustomPerceiver():
         image_features = []
         text_features = []
 
+        self.model.eval()
         with torch.no_grad():
             for batch in dataloader:
                 images, text = batch

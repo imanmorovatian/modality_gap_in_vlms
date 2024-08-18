@@ -209,11 +209,16 @@ class CustomPerceiver():
         with torch.no_grad():
             for batch in dataloader:
                 images, text = batch
-
-                text = torch.flatten(text, start_dim=0, end_dim=1)
+                
+                no_captions = text.size()[1]
                 text = text.to(self.device)
-                text_embeds = self.model(inputs={'text': text,})
-                text_embeds = text_embeds['last_hidden_state'][:,0,:]
+                text_embeds = []
+
+                for i in range(no_captions):
+                    temp = self.model(inputs={'text': text[:,i,:],})
+                    text_embeds.append( temp['last_hidden_state'][:,0,:] )
+
+                text_embeds = torch.vstack(text_embeds)
 
                 text_features.append(text_embeds)
 

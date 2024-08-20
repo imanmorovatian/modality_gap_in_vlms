@@ -27,6 +27,7 @@ class CrossModalRetrieval:
                  text_encodings,
                  text_to_image_map,
                  image_to_text_map,
+                 cpi, # the number of captions per image
                  search_space='unimodal',
                  k_vals: List[int]=[1, 5, 10]):
         
@@ -36,7 +37,7 @@ class CrossModalRetrieval:
         self.text_encodings = text_encodings
         self.text_to_image_map = text_to_image_map
         self.image_to_text_map = image_to_text_map
-
+        self.cpi = cpi
         self.device = self.image_encodings.device
         
         self.search_space = search_space
@@ -48,11 +49,11 @@ class CrossModalRetrieval:
         t = np.ones((n, n))
 
         for i in range(n):
-            start_col = 5 * (i // 5)
-            t[i, start_col:start_col+5] = 0
+            start_col = self.cpi * (i // self.cpi)
+            t[i, start_col:start_col+self.cpi] = 0
 
         mask = torch.tensor(t, dtype=torch.bool)
-        return torch.masked_select(text_text_dist, mask).reshape(n, n-5)
+        return torch.masked_select(text_text_dist, mask).reshape(n, n-self.cpi)
     
     def __recall_at_k(self):
 
@@ -80,11 +81,11 @@ class CrossModalRetrieval:
 
         # Sort in descending order; first is the biggest logit
         inds = torch.argsort(dist_matrix, dim=1, descending=True)
-        inds = inds.to(self.device)
+        # inds = inds.to(self.device)
 
         for k in self.k_vals:
             # Extract top k indices only
-            topk = inds[:, :k]
+            topk = inds[:, :k].to(self.device)
 
             # Correct iff one of the top_k values equals the correct image (as given by text_to_image_map)
             correct = torch.eq(topk, self.text_to_image_map.unsqueeze(-1)).any(dim=1)
@@ -101,17 +102,16 @@ class CrossModalRetrieval:
             uni         = uni.cpu()
             cross       = cross.T
             dist_matrix = torch.cat([cross,uni], dim=1)
-            print('SHAPE', dist_matrix.shape)
             
         dist_matrix = dist_matrix.cpu()
 
         # Sort in descending order; first is the biggest logit
         inds = torch.argsort(dist_matrix, dim=1, descending=True)
-        inds = inds.to(self.device)
+        # inds = inds.to(self.device)
 
         for k in self.k_vals:
             # Extract top k indices only
-            topk = inds[:, :k]
+            topk = inds[:, :k].to(self.device)
 
             correct = torch.zeros((num_im,), dtype=torch.bool).cuda()
 

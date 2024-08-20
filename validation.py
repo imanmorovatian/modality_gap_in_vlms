@@ -1,12 +1,12 @@
-# python3 --model Perceiver --dataset flickr30k --captions_per_image 5
 import os
 import csv
 import torch
 import argparse
 
-from models.custom_perceiver import ContrastiveLoss
 from utils.metrics.retrieval import CrossModalRetrieval
 from utils.metrics.metrics import CMD, CD
+
+from models.custom_perceiver import ContrastiveLoss
 
 
 def parse_args():
@@ -25,6 +25,7 @@ MODEL = args.MODEL
 DATASET = args.DATASET
 CPI = args.CPI # captions per image
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+BATCH_SIZE = 128
 
 assert DATASET in ['mscoco', 'flickr30k', 'conceptualCaptions']
 
@@ -46,8 +47,15 @@ text_embeddings = text_embeddings.to(DEVICE)
 image_embeddings = torch.load(f'results/embeddings/{DATASET}/{MODEL}/image.pt')
 image_embeddings = image_embeddings.to(DEVICE)
 
+
+temp_text_embeddings = text_embeddings[::CPI]
+no_batch = image_embeddings.size()[0] // BATCH_SIZE
+loss = 0.0
 criterion = ContrastiveLoss(temperature=0.5)
-loss = criterion(text_embeddings, image_embeddings).item()
+for i in range(0, image_embeddings.size()[0], BATCH_SIZE):
+    loss += criterion(temp_text_embeddings[i:i+BATCH_SIZE, :], image_embeddings[i:i+BATCH_SIZE, :]).item()
+
+loss /= no_batch
 
 
 image_to_text_map = []
@@ -76,6 +84,7 @@ retrieval_obj = CrossModalRetrieval(image_encodings=image_embeddings,
                                     text_encodings=text_embeddings,
                                     text_to_image_map=text_to_image_map,
                                     image_to_text_map=image_to_text_map,
+                                    cpi=CPI,
                                     search_space='unimodal',
                                     k_vals=[1,5,10])
 metrics['retrieval_unimodal'] = retrieval_obj.compute()
@@ -85,6 +94,7 @@ retrieval_obj = CrossModalRetrieval(image_encodings=image_embeddings,
                                     text_encodings=text_embeddings,
                                     text_to_image_map=text_to_image_map,
                                     image_to_text_map=image_to_text_map,
+                                    cpi=CPI,
                                     search_space='multimodal',
                                     k_vals=[1,5,10])
 metrics['retrieval_multimodal'] = retrieval_obj.compute()
@@ -121,13 +131,13 @@ if not os.path.exists(os.path.join(result_dir, 'metrics.csv')):
 with open(os.path.join(result_dir, 'metrics.csv'), 'a', encoding='UTF8') as f:
     rows = [DATASET, MODEL, loss, metrics['cmd_img_txt'], metrics['cd_img_txt']]
 
-    for i in len(metrics['retrieval_unimodal'][0]):
-        rows.append(['retrieval_unimodal'][1][i])
-        rows.append(['retrieval_unimodal'][2][i])
+    for i in range(len(metrics['retrieval_unimodal'][0])):
+        rows.append(metrics['retrieval_unimodal'][1][i])
+        rows.append(metrics['retrieval_unimodal'][2][i])
 
-    for k in metrics['retrieval_multimodal'][0]:
-        rows.append(['retrieval_multimodal'][1][i])
-        rows.append(['retrieval_multimodal'][2][i])
+    for i in range(len(metrics['retrieval_multimodal'][0])):
+        rows.append(metrics['retrieval_multimodal'][1][i])
+        rows.append(metrics['retrieval_multimodal'][2][i])
 
     writer = csv.writer(f)
     writer.writerow(rows)

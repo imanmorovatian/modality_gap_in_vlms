@@ -1,55 +1,57 @@
 import torch
-from torch.utils.data import DataLoader
-import clip
-
-from tqdm import tqdm
-
-
-name2encoder = {
-    'ViT-B32' : 'ViT-B/32',
-    'RN50' : 'RN50'
-    }
+from torchvision import transforms
+from transformers import CLIPProcessor, CLIPModel
 
 
 class CustomCLIP():
-    def __init__(self, model_name):
+    def __init__(self, pre_trained: bool):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.vision_encoder = model_name.split('_')[-1]
-        self.model, self.transform = clip.load(name2encoder[self.vision_encoder], device=self.device)
-        self.model.to(self.device).eval()
 
-        self.input_resolution = self.model.visual.input_resolution
-        self.context_length = self.model.context_length
-        self.vocab_size = self.model.vocab_size
+        if pre_trained:
+            self.model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(self.device)
 
-        table = {
-            '_': None,
-            '-': None
-            }
-        mytable = str.maketrans(table)
-        self.name = model_name.translate(mytable)
+            #  wraps CLIPImageProcessor and CLIPTokenizer into a single instance to both encode the text and prepare the images.
+            self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+            self.text_tokenizer = self.processor
+            self.transform = transforms.Compose([
+                transforms.Lambda(lambda img: self.processor(images=img, return_tensors='pt')['pixel_values'])
+            ])
 
-    def encode(self, dataset, batch_size):
-        dataloader = DataLoader(dataset, batch_size=batch_size)
-
+            self.name = 'PretrainedCLIP'
+        else:
+            self.name = 'CLIP'
+        
+    def encode(self, dataloader):
+        self.model.eval()
         image_features = []
         text_features = []
 
         with torch.no_grad():
-            for batch in tqdm(dataloader):
+            for batch in dataloader:
                 images, text = batch
                 
-                text = text[0]
-                text = clip.tokenize(text)
+                no_captions = text['input_ids'].size()[1]
                 text = text.to(self.device)
-                text = self.model.encode_text(text).float()
+                text_embeds = []
 
-                text_features.append(text)
+                for i in range(no_captions):
+                    temp = self.model.get_text_features(
+                        input_ids=text['input_ids'][:,i,:],
+                        attention_mask=text['attention_mask'][:,i,:]
+                        )
+                    text_embeds.append(temp)
+        
+                text_embeds = torch.vstack(text_embeds)
+                text_features.append(text_embeds)
 
+                images = torch.squeeze(images)
+                if len(images.size()) == 3:
+                    images = images.unsqueeze(0)
                 images = images.to(self.device)
-                images = self.model.encode_image(images).float()
+                img_embeds = self.model.get_image_features(images)
 
-                image_features.append(images)
+                image_features.append(img_embeds)
+
 
             text_features = torch.vstack(text_features)
             text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)

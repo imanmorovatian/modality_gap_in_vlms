@@ -27,10 +27,10 @@ def create_model(name, dataset=None):
         return CustomALIGN()
     elif name == 'ImageBind':
         return CustomImageBind()
-    elif name == 'CLIP_ViT-B32':
-        return CustomCLIP('CLIP_ViT-B32')
-    elif name == 'CLIP_RN50':
-        return CustomCLIP('CLIP_RN50')
+    elif name == 'PretrainedCLIP':
+        return CustomCLIP(pre_trained=True)
+    elif name == 'CLIP':
+        return None
     elif name == 'CyCLIP':
         return CustomCyCLIP()
     elif name == 'BridgeTower':
@@ -65,8 +65,8 @@ CPI = args.CPI # captions per image
 
 assert dataset in ['mscoco', 'flickr30k', 'conceptualCaptions']
 
-assert MODEL in ['CLIP_ViT-B32',
-                'CLIP_RN50',
+assert MODEL in ['PretrainedCLIP',
+                'CLIP',
                 'ALIGN',
                 'ImageBind',
                 'CyCLIP',

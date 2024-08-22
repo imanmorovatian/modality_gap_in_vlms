@@ -25,7 +25,7 @@ class Flickr30kCaptions(Dataset):
         annFile: str,
         image_transform: Optional[Callable] = None,
         caption_transform: Optional[Callable] = None,
-        max_length_tokenizer: int = 512,
+        max_length_tokenizer: int = 64,
         no_cap_per_img = 1
     ) -> None:
         super(Flickr30kCaptions, self).__init__()
@@ -81,7 +81,7 @@ class Flickr30kCaptions(Dataset):
                                               padding='max_length',
                                               max_length=self.max_length_tokenizer,
                                               truncation=True,
-                                              return_tensors='pt')['input_ids']
+                                              return_tensors='pt')
 
         return img, captions
 

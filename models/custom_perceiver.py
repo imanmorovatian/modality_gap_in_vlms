@@ -97,9 +97,13 @@ class CustomPerceiver():
             optimizer.zero_grad()
 
             with autocast():
-                text = torch.flatten(text, start_dim=0, end_dim=1)
+                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
+                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
                 text = text.to(self.device)
-                text_embeds = self.model(inputs={'text': text,})['last_hidden_state'][:,0,:]
+                text_embeds = self.model(
+                    inputs={'text': text['input_ids'],},
+                    attention_mask=text['attention_mask']
+                )['last_hidden_state'][:,0,:]
 
                 images = torch.squeeze(images)
                 if len(images.size()) == 3:
@@ -126,9 +130,13 @@ class CustomPerceiver():
             for batch in dataloader:
                 images, text = batch
 
-                text = torch.flatten(text, start_dim=0, end_dim=1)
+                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
+                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
                 text = text.to(self.device)
-                text_embeds = self.model(inputs={'text': text,})
+                text_embeds = self.model(
+                    inputs={'text': text['input_ids'],},
+                    attention_mask=text['attention_mask']
+                )
                 text_embeds = text_embeds['last_hidden_state'][:,0,:]
                 
                 images = torch.squeeze(images)
@@ -210,16 +218,18 @@ class CustomPerceiver():
             for batch in dataloader:
                 images, text = batch
                 
-                no_captions = text.size()[1]
+                no_captions = text['input_ids'].size()[1]
                 text = text.to(self.device)
                 text_embeds = []
 
                 for i in range(no_captions):
-                    temp = self.model(inputs={'text': text[:,i,:],})
+                    temp = self.model(
+                        inputs={'text': text['input_ids'][:,i,:],},
+                        attention_mask=text['attention_mask'][:,i,:]
+                        )
                     text_embeds.append( temp['last_hidden_state'][:,0,:] )
 
                 text_embeds = torch.vstack(text_embeds)
-
                 text_features.append(text_embeds)
 
                 images = torch.squeeze(images)

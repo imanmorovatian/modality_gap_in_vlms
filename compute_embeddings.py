@@ -30,7 +30,9 @@ def create_model(name, dataset=None):
     elif name == 'PretrainedCLIP':
         return CustomCLIP(pre_trained=True)
     elif name == 'CLIP':
-        return None
+        model = CustomCLIP(pre_trained=False)
+        model.model.load_state_dict(torch.load(f'pkgs/CLIP/clip_{dataset}.pth'))
+        return model
     elif name == 'CyCLIP':
         return CustomCyCLIP()
     elif name == 'BridgeTower':

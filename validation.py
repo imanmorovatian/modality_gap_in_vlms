@@ -29,8 +29,8 @@ BATCH_SIZE = 128
 
 assert DATASET in ['mscoco', 'flickr30k', 'conceptualCaptions']
 
-assert MODEL in ['CLIP_ViT-B32',
-                'CLIP_RN50',
+assert MODEL in ['PretrainedCLIP',
+                'CLIP',
                 'ALIGN',
                 'ImageBind',
                 'CyCLIP',

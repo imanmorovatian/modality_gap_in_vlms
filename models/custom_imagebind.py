@@ -1,3 +1,5 @@
+from functools import partial
+
 import torch
 from torchvision import transforms
 from torch.utils.data import DataLoader
@@ -6,18 +8,17 @@ from pkgs.ImageBind import data
 from pkgs.ImageBind.models import imagebind_model
 from pkgs.ImageBind.models.imagebind_model import ModalityType
 
-from tqdm import tqdm
+
+def text_tokenizer(text, device, *args, **kwargs):
+    return {ModalityType.TEXT: data.load_and_transform_text(text, device)}
 
 
 class CustomImageBind():
-    def __init__(self,):
+    def __init__(self, pretrained=True):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.model = imagebind_model.imagebind_huge(pretrained=True)
-        self.model.eval()
+        self.model = imagebind_model.imagebind_huge(pretrained=pretrained)
         self.model.to(self.device)
-
-        self.name = 'ImageBind'
-        
+        self.text_tokenizer = partial(text_tokenizer, device=self.device)
         self.transform = transforms.Compose(
             [
                 transforms.Resize(
@@ -31,28 +32,38 @@ class CustomImageBind():
                 ),
             ]
         )
-        
-    def encode(self, dataset, batch_size):
-        dataloader = DataLoader(dataset, batch_size=batch_size)
 
+        self.name = 'ImageBind'
+        
+    def encode(self, dataloader):
+        self.model.eval()
         image_features = []
         text_features = []
 
         with torch.no_grad():
-            for batch in tqdm(dataloader):
+            for batch in dataloader:
                 images, text = batch
+                text = text['text']
                 
-                text = text[0]
-                text = {ModalityType.TEXT: data.load_and_transform_text(text, self.device)}
-                text = self.model(text)[ModalityType.TEXT]
+                no_captions = text.size()[1]
+                text = text.to(self.device)
+                text_embeds = []
+                
+                for i in range(no_captions):
+                    temp = self.model(text[:,i,:])[ModalityType.TEXT]
+                    text_embeds.append(temp)
 
-                text_features.append(text)
+                text_embeds = torch.vstack(text_embeds)
+                text_features.append(text_embeds)
 
+                images = torch.squeeze(images)
+                if len(images.size()) == 3:
+                    images = images.unsqueeze(0)
                 images = images.to(self.device)
                 images = {ModalityType.VISION: images}
-                images = self.model(images)[ModalityType.VISION]
+                img_embeds = self.model(images)[ModalityType.VISION]
 
-                image_features.append(images)
+                image_features.append(img_embeds)
 
             text_features = torch.vstack(text_features)
             text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)

@@ -10,14 +10,10 @@ class CustomFLAVA():
     def __init__(self,):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.processor = AutoImageProcessor.from_pretrained("facebook/flava-full")
-        self.processor = partial(self.processor, return_tensors='pt')
+        self.transform = partial(self.processor, return_tensors='pt')
         self.text_tokenizer = AutoTokenizer.from_pretrained("facebook/flava-full")
         self.model = FlavaModel.from_pretrained("facebook/flava-full")
         self.model.to(self.device)
-        self.transform = transforms.Compose([
-                transforms.Resize((256, 256), interpolation=Image.BICUBIC),
-                transforms.ToTensor()
-            ])
         
         self.name = 'FLAVA'
         

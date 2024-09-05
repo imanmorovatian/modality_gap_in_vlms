@@ -6,7 +6,7 @@ import numpy as np
 from itertools import combinations
 from tqdm import tqdm
 
-from utils.read_dataset import read_dataset
+from utils.datasets.read_dataset import read_dataset
 from utils.chart_utils import similarities
 from utils.metrics.metrics import CMD
 

@@ -1,14 +1,44 @@
 import re
 import yaml
 from PIL import Image
-from tqdm import tqdm
+from functools import partial
 
 import torch
-from torch.utils.data import DataLoader
 from torchvision import transforms
 
 from pkgs.ALBEF.model_pretrain import ALBEF
 from pkgs.ALBEF.tokenization_bert import BertTokenizer
+
+
+def pre_caption(caption, max_words=30):
+    caption = (
+        re.sub(
+            r"([,.'!?\"()*#:;~])",
+            "",
+            caption.lower(),
+        )
+        .replace("-", " ")
+        .replace("/", " ")
+    )
+
+    caption = re.sub(
+        r"\s{2,}",
+        " ",
+        caption,
+    )
+    caption = caption.rstrip("\n")
+    caption = caption.strip(" ")
+
+    # truncate caption
+    caption_words = caption.split(" ")
+    if len(caption_words) > max_words:
+        caption = " ".join(caption_words[:max_words])
+    return caption
+
+
+def text_tokenizer(text, tokenizer, *args, **kwargs):
+    text = [pre_caption(t) for t in text]
+    return tokenizer(text, **kwargs)
 
 
 class CustomALBEF:
@@ -17,11 +47,11 @@ class CustomALBEF:
         config = yaml.load(open('pkgs/ALBEF/Pretrain.yaml', 'r'), Loader=yaml.Loader)
         self.text_encoder = 'bert-base-uncased'
         self.tokenizer = BertTokenizer.from_pretrained(self.text_encoder)
+        self.text_tokenizer = partial(text_tokenizer, tokenizer=self.tokenizer)
         self.model = ALBEF(config=config, tokenizer=self.tokenizer, text_encoder=self.text_encoder)
         self.model.load_state_dict(torch.load('pkgs/ALBEF/ALBEF.pth',
                                               map_location=torch.device(self.device))['model'])
         self.model = self.model.to(self.device)
-        self.model.eval()
         self.name = 'ALBEF'
 
         normalize = transforms.Normalize(
@@ -33,60 +63,41 @@ class CustomALBEF:
                 transforms.ToTensor(),
                 normalize,
             ])
-    
-    def pre_caption(self, caption, max_words=30):
-        caption = (
-            re.sub(
-                r"([,.'!?\"()*#:;~])",
-                "",
-                caption.lower(),
-            )
-            .replace("-", " ")
-            .replace("/", " ")
-        )
-
-        caption = re.sub(
-            r"\s{2,}",
-            " ",
-            caption,
-        )
-        caption = caption.rstrip("\n")
-        caption = caption.strip(" ")
-
-        # truncate caption
-        caption_words = caption.split(" ")
-        if len(caption_words) > max_words:
-            caption = " ".join(caption_words[:max_words])
-        return caption
-    
-    def encode(self, dataset, batch_size):
-        dataloader = DataLoader(dataset, batch_size=batch_size)
-
+        
+    def encode(self, dataloader):
+        self.model.eval()
         image_features = []
         text_features = []
 
         with torch.no_grad():
-            for batch in tqdm(dataloader):
+            for batch in dataloader:
                 images, text = batch
 
-                text = text[0]
-                text = [self.pre_caption(t) for t in text]
-                text = self.tokenizer(text, padding=True, truncation=True, return_tensors="pt")
+                no_captions = text['input_ids'].size()[1]
                 text = text.to(self.device)
-                text = self.model.text_encoder.bert(text.input_ids,
-                                                   attention_mask = text.attention_mask,
+                text_embeds = []
+
+                for i in range(no_captions):
+                    input_temp = {key: value[:,i,:] for key, value in text.items()}
+                    temp = self.model.text_encoder.bert(input_temp['input_ids'],
+                                                   attention_mask = input_temp['attention_mask'],
                                                    return_dict = True,
                                                    mode = 'text')
-                text = text.last_hidden_state
-                text = self.model.text_proj(text[:,0,:])
+                    temp = temp.last_hidden_state
+                    temp = self.model.text_proj(temp[:,0,:])
+                    text_embeds.append(temp)
                 
-                text_features.append(text)
+                text_embeds = torch.vstack(text_embeds)
+                text_features.append(text_embeds)
 
+                images = torch.squeeze(images)
+                if len(images.size()) == 3:
+                    images = images.unsqueeze(0)
                 images = images.to(self.device)
                 images = self.model.visual_encoder(images)
-                images = self.model.vision_proj(images[:,0,:])
+                img_embeds = self.model.vision_proj(images[:,0,:])
 
-                image_features.append(images)
+                image_features.append(img_embeds)
 
             text_features = torch.vstack(text_features)
             text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)

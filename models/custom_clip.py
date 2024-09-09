@@ -207,3 +207,12 @@ class CustomCLIP():
             image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)
 
         return text_features.cpu().squeeze(), image_features.cpu().squeeze()
+    
+    def encode_image(self, images):
+        return self.model.get_image_features(images)
+
+    def encode_text(self, text):
+        return self.model.get_text_features(
+                        input_ids=text['input_ids'],
+                        attention_mask=text['attention_mask']
+                        )

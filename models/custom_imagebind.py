@@ -50,7 +50,7 @@ class CustomImageBind():
                 text_embeds = []
                 
                 for i in range(no_captions):
-                    temp = self.model(text[:,i,:])[ModalityType.TEXT]
+                    temp = self.model({ModalityType.TEXT: text[:,i,:]})[ModalityType.TEXT]
                     text_embeds.append(temp)
 
                 text_embeds = torch.vstack(text_embeds)

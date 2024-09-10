@@ -10,6 +10,7 @@ from transformers import PerceiverConfig, PerceiverTokenizer, PerceiverImageProc
 from transformers.models.perceiver.modeling_perceiver import PerceiverTextPreprocessor, PerceiverImagePreprocessor, PerceiverMultimodalPreprocessor
 from datetime import datetime
 import wandb
+from tqdm import tqdm
 
 
 PreprocessorOutputType = Tuple[torch.Tensor, Optional[torch.Tensor], torch.Tensor]
@@ -229,11 +230,11 @@ class CustomPerceiver():
         text_features = []
 
         with torch.no_grad():
-            for batch in dataloader:
+            for batch in tqdm(dataloader):
                 images, text = batch
                 
                 batch_size, captions_per_image, _ = text['input_ids'].size()
-                for i in range(batch_size):
+                for ـ in range(batch_size):
                     # the next image corresponds to text captions [text_index ... text_index + captions_per_image - 1]
                     text_indices = list(range(text_index, text_index + captions_per_image))
                     image_to_text_map.append(text_indices)
@@ -267,8 +268,8 @@ class CustomPerceiver():
                 total_batches += 1
 
 
-            text_to_image_map = torch.LongTensor(text_to_image_map)
-            image_to_text_map = torch.LongTensor(image_to_text_map)
+            text_to_image_map = torch.Tensor(text_to_image_map)
+            image_to_text_map = torch.Tensor(image_to_text_map)
 
             text_features = torch.vstack(text_features)
             text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)

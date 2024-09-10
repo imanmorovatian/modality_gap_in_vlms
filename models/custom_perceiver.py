@@ -84,7 +84,14 @@ class CustomPerceiver():
         self.name = 'Perceiver'
         
         self.transform = transforms.Compose([
-                transforms.Lambda(lambda img: self.image_transform.preprocess(img, input_data_format='channels_last', return_tensors='pt')['pixel_values'])
+
+                transforms.Lambda(
+                    lambda img: self.image_transform.preprocess(
+                        img,
+                        input_data_format='channels_last',
+                        return_tensors='pt')['pixel_values']
+                    )
+
             ])
     
     def train(self, dataloader, criterion, optimizer, grad_scaler):
@@ -209,8 +216,15 @@ class CustomPerceiver():
         torch.save(self.model.state_dict(), f'{save_path}/perceiver_{dataset_name}.pth')
         print(f'Saved model in {save_path}')
 
-    def encode(self, dataloader):
+    def encode_for_retrieval(self, dataloader, criterion):
         self.model.eval()
+
+        image_to_text_map = []
+        text_to_image_map = []
+        text_index = 0
+        image_index = 0
+        total_loss = 0
+        total_batches = 0
         image_features = []
         text_features = []
 
@@ -218,18 +232,26 @@ class CustomPerceiver():
             for batch in dataloader:
                 images, text = batch
                 
-                no_captions = text['input_ids'].size()[1]
-                text = text.to(self.device)
-                text_embeds = []
+                batch_size, captions_per_image, _ = text['input_ids'].size()
+                for i in range(batch_size):
+                    # the next image corresponds to text captions [text_index ... text_index + captions_per_image - 1]
+                    text_indices = list(range(text_index, text_index + captions_per_image))
+                    image_to_text_map.append(text_indices)
+                    text_index += captions_per_image
 
-                for i in range(no_captions):
-                    temp = self.model(
-                        inputs={'text': text['input_ids'][:,i,:],},
-                        attention_mask=text['attention_mask'][:,i,:]
-                        )
-                    text_embeds.append( temp['last_hidden_state'][:,0,:] )
+                    # Each of the next captions_per_image text captions correspond to the same image
+                    text_to_image_map += [image_index] * captions_per_image
+                    image_index += 1
 
-                text_embeds = torch.vstack(text_embeds)
+                for k in text.keys():
+                    text[k] = torch.flatten(text[k], start_dim=0, end_dim=1)
+                    text[k] = text[k].to(self.device)
+
+                text_embeds = self.model(
+                    inputs={'text': text['input_ids'],},
+                    attention_mask=text['attention_mask']
+                    )['last_hidden_state'][:,0,:]
+
                 text_features.append(text_embeds)
 
                 images = torch.squeeze(images)
@@ -240,10 +262,27 @@ class CustomPerceiver():
 
                 image_features.append(img_embeds)
 
+                loss = criterion(img_embeds, text_embeds[::captions_per_image])
+                total_loss += loss.item()
+                total_batches += 1
+
+
+            text_to_image_map = torch.LongTensor(text_to_image_map)
+            image_to_text_map = torch.LongTensor(image_to_text_map)
+
             text_features = torch.vstack(text_features)
             text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)
 
             image_features = torch.vstack(image_features)
             image_features = torch.nn.functional.normalize(image_features, p=2.0, dim=1)
 
-        return text_features.cpu().squeeze(), image_features.cpu().squeeze()
+            avg_loss = total_loss / total_batches
+
+
+        return {
+            'text_embeddings': text_features.cpu().squeeze(),
+            'image_embeddings': image_features.cpu().squeeze(),
+            'text_to_image_mapping': text_to_image_map.cpu().squeeze(),
+            'image_to_text_mapping': image_to_text_map.cpu().squeeze(),
+            'loss': avg_loss
+        }

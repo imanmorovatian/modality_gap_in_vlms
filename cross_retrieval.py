@@ -56,6 +56,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True, help='name of the model', dest='MODEL')
     parser.add_argument("--dataset", type=str, required=True, help='name of the dataset', dest='DATASET')
+    parser.add_argument('--batch_size', type=int, required=True, help='batch size', dest='BATCH_SIZE')
     parser.add_argument('--captions_per_image', type=int, required=True, help='number of captions per image', dest='CPI')
 
     args = parser.parse_args()
@@ -66,8 +67,9 @@ def parse_args():
 args = parse_args()
 MODEL = args.MODEL
 dataset = args.DATASET
+BATCH_SIZE = args.BATCH_SIZE
 CPI = args.CPI # captions per image
-BATCH_SIZE = 128
+
 
 assert dataset in ['mscoco', 'flickr30k', 'conceptualCaptions']
 

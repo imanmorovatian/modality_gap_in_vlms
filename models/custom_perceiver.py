@@ -244,15 +244,16 @@ class CustomPerceiver():
                     text_to_image_map += [image_index] * captions_per_image
                     image_index += 1
 
-                for k in text.keys():
-                    text[k] = torch.flatten(text[k], start_dim=0, end_dim=1)
-                    text[k] = text[k].to(self.device)
+                text = text.to(self.device)
+                text_embeds = []
+                for i in range(captions_per_image):
+                    temp = self.model(
+                        inputs={'text': text['input_ids'][:,i,:],},
+                        attention_mask=text['attention_mask'][:,i,:]
+                        )
+                    text_embeds.append( temp['last_hidden_state'][:,0,:] )
 
-                text_embeds = self.model(
-                    inputs={'text': text['input_ids'],},
-                    attention_mask=text['attention_mask']
-                    )['last_hidden_state'][:,0,:]
-
+                text_embeds = torch.vstack(text_embeds)
                 text_features.append(text_embeds)
 
                 images = torch.squeeze(images)
@@ -268,8 +269,8 @@ class CustomPerceiver():
                 total_batches += 1
 
 
-            text_to_image_map = torch.Tensor(text_to_image_map)
-            image_to_text_map = torch.Tensor(image_to_text_map)
+            text_to_image_map = torch.Tensor(text_to_image_map).to(self.device)
+            image_to_text_map = torch.Tensor(image_to_text_map).to(self.device)
 
             text_features = torch.vstack(text_features)
             text_features = torch.nn.functional.normalize(text_features, p=2.0, dim=1)
@@ -281,9 +282,9 @@ class CustomPerceiver():
 
 
         return {
-            'text_embeddings': text_features.cpu().squeeze(),
-            'image_embeddings': image_features.cpu().squeeze(),
-            'text_to_image_mapping': text_to_image_map.cpu().squeeze(),
-            'image_to_text_mapping': image_to_text_map.cpu().squeeze(),
+            'text_embeddings': text_features.squeeze(),
+            'image_embeddings': image_features.squeeze(),
+            'text_to_image_mapping': text_to_image_map.squeeze(),
+            'image_to_text_mapping': image_to_text_map.squeeze(),
             'loss': avg_loss
         }

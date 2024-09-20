@@ -1,23 +1,61 @@
-import torch
-from torch import optim
-from torch.cuda.amp import autocast, GradScaler
-from torchvision import transforms
-from transformers import CLIPTextConfig, CLIPVisionConfig, CLIPConfig, CLIPProcessor, CLIPModel
-from models.custom_perceiver import ContrastiveLoss
-
+from PIL import Image
 from datetime import datetime
 import wandb
 from tqdm import tqdm
+from functools import partial
+
+import torch
+from torch.optim import AdamW
+from torch.cuda.amp import autocast, GradScaler
+from torchvision import transforms
+from transformers import CLIPTextConfig, CLIPVisionConfig, CLIPConfig, CLIPProcessor, CLIPModel
+
+from models.clip_training import CLIP
+from models.custom_perceiver import ContrastiveLoss
+
+from utils.simple_tokenizer import SimpleTokenizer
+from utils.custom_schedulers import get_cosine_schedule_with_warmup
+
+
+def tokenize(captions, tokenizer, context_length=77, *args, **kwargs):
+    sot_token = tokenizer.encoder["<|startoftext|>"]
+    eot_token = tokenizer.encoder["<|endoftext|>"]
+    
+    result = []
+    for text in captions:
+        tokens = [sot_token] + tokenizer.encode(text) + [eot_token]
+        tokens = torch.Tensor(tokens)
+        fixed_size_tokens = torch.zeros(context_length, dtype=torch.long)
+
+        if len(tokens) >= context_length:
+            fixed_size_tokens = tokens[:context_length]
+        else:
+            fixed_size_tokens[:len(tokens)] = tokens
+
+        result.append(fixed_size_tokens)
+
+    return torch.vstack(result)
 
 
 class CustomCLIP():
-    def __init__(self, pre_trained: bool):
+    def __init__(self, pre_trained: bool, input_resolution=224):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        #  wraps CLIPImageProcessor and CLIPTokenizer into a single instance to both encode the text and prepare the images.
-        self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-        self.text_tokenizer = self.processor
+        # self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+
+        # self.text_tokenizer = self.processor
+        # self.transform = transforms.Compose([
+        #     transforms.Lambda(lambda img: self.processor(images=img, return_tensors='pt')['pixel_values'])
+        # ])
+
+        _tokenizer = SimpleTokenizer()
+        self.text_tokenizer = partial(tokenize, tokenizer=_tokenizer)
+
         self.transform = transforms.Compose([
-            transforms.Lambda(lambda img: self.processor(images=img, return_tensors='pt')['pixel_values'])
+            transforms.Resize(input_resolution, interpolation=Image.BICUBIC),
+            transforms.CenterCrop(input_resolution),
+            lambda image: image.convert("RGB"),
+            transforms.ToTensor(),
+            transforms. Normalize((0.4225, 0.4012, 0.3659), (0.2681, 0.2635, 0.2763)),
         ])
         
         if pre_trained:
@@ -25,59 +63,49 @@ class CustomCLIP():
             self.name = 'PretrainedCLIP'
 
         else:
-            vision_config = CLIPVisionConfig(
-                hidden_size=128,
-                num_hidden_layers=4,
-                num_attention_heads=4,
-                intermediate_size=256,
-            )
-
-            text_config = CLIPTextConfig(
-                hidden_size=128,
-                num_hidden_layers=4,
-                num_attention_heads=4,
-                intermediate_size=256
-            )
+            model_params = {
+                'embed_dim': 1024,
+                'image_resolution': 224,
+                'vision_layers': (3, 4, 6, 3),
+                'vision_width': 64,
+                'vision_patch_size': None,
+                'context_length': 77,
+                'vocab_size': 49408,
+                'transformer_width': 512,
+                'transformer_heads': 8,
+                'transformer_layers': 6
+            }
             
-            config = CLIPConfig(
-                vision_config=vision_config.to_dict(),
-                text_config=text_config.to_dict(),
-                projection_dim=512,
-            )
-            
-            self.model = CLIPModel(config).to(self.device)
+            self.model = CLIP(**model_params).to(self.device)
             self.name = 'CLIP'
         
-    def train(self, dataloader, criterion, optimizer, grad_scaler):
+    def train(self, dataloader, criterion, optimizer, scheduler):
         self.model.train()
         epoch_loss = 0.0
 
         for batch in dataloader:
-            
             images, text = batch
             optimizer.zero_grad()
 
             with autocast():
-                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
-                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+                text = text[:,-1,:]
                 text = text.to(self.device)
-                text_embeds = self.model.get_text_features(
-                    input_ids=text['input_ids'],
-                    attention_mask=text['attention_mask']
-                )
 
                 images = torch.squeeze(images)
                 if len(images.size()) == 3:
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
-                img_embeds = self.model.get_image_features(images)
 
-                loss = criterion(text_embeds, img_embeds)
+                img_embeds, text_embeds = self.model(images, text)
+
+                img_embeds = img_embeds / img_embeds.norm(dim=-1, keepdim=True)
+                text_embeds = text_embeds / text_embeds.norm(dim=-1, keepdim=True)
+
+                loss = criterion(img_embeds, text_embeds)
+                loss.backward()
                 epoch_loss += loss.item()
-
-            grad_scaler.scale(loss).backward()
-            grad_scaler.step(optimizer)
-            grad_scaler.update()
+                optimizer.step()
+                scheduler.step() 
             
         epoch_loss = epoch_loss / len(dataloader)
 
@@ -91,21 +119,20 @@ class CustomCLIP():
             for batch in dataloader:
                 images, text = batch
 
-                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
-                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+                text = text[:,-1,:]
                 text = text.to(self.device)
-                text_embeds = self.model.get_text_features(
-                    input_ids=text['input_ids'],
-                    attention_mask=text['attention_mask']
-                )
-                
+
                 images = torch.squeeze(images)
                 if len(images.size()) == 3:
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
-                img_embeds = self.model.get_image_features(images)
 
-                loss = criterion(text_embeds, img_embeds)
+                img_embeds, text_embeds = self.model(images, text)
+
+                img_embeds = img_embeds / img_embeds.norm(dim=-1, keepdim=True)
+                text_embeds = text_embeds / text_embeds.norm(dim=-1, keepdim=True)
+
+                loss = criterion(img_embeds, text_embeds)
                 epoch_loss += loss.item()
 
             epoch_loss = epoch_loss / len(dataloader)
@@ -116,50 +143,39 @@ class CustomCLIP():
                              batch_size, no_epochs, save_path):
         
         criterion = ContrastiveLoss(temperature=0.5)
-
-        opt_lr = 1e-3
-        opt_wd = 1e-4
-        optimizer = optimizer = optim.Adam(
-            self.model.parameters(),
-            lr=opt_lr,
-            weight_decay=opt_wd
-        )
         
-        gamma_value = 0.95
-        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=gamma_value)
-
-        grad_scaler = GradScaler()
-
+        optimizer = AdamW(self.model.parameters(), lr=5e-4, eps=1.0e-08, weight_decay=0.1)
+        
+        gradient_accumulation_steps = 1
+        t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
+        num_warmup_steps = int(0.20 * t_total)
+        scheduler = get_cosine_schedule_with_warmup(
+            optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=t_total
+            )
+        
         wandb_config = {
             'number_of_parameters': sum(p.numel() for p in self.model.parameters()),
             'batch_size': batch_size,
             'number_of_epochs': no_epochs,
-            'optimizer': 'Adam',
-            'optimizer_learning_rate': opt_lr,
-            'optimizer_weight_decay': opt_wd,
-            'scheduler': 'ExponentialLR',
-            'scheduler_gamma': gamma_value
         }
 
-        current_date = datetime.today().strftime('%Y-%m-%d')
         wandb.init(
             config=wandb_config,
             entity='iman_morovatian',
             project='Thesis',
-            name=f'Training CLIP {dataset_name} {current_date}'
+            name=f'Training CLIP {dataset_name}'
             )
 
         for epoch in range(no_epochs):
-            train_loss = self.train(train_dataloader, criterion, optimizer, grad_scaler)
+            train_loss = self.train(train_dataloader, criterion, optimizer, scheduler)
             val_loss = self.evaluation(val_dataloader, criterion)
+            
             print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
             wandb.log({
                 'epoch': epoch+1,
                 'train_loss': train_loss,
                 'val_loss': val_loss
             })
-
-            scheduler.step()
 
         test_loss = self.evaluation(test_dataloader, criterion)
 

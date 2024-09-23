@@ -198,10 +198,10 @@ class CustomCLIP():
         text_features = []
 
         with torch.no_grad():
-            for batch in tqdm(dataloader):
+            for batch in dataloader:
                 images, text = batch
                 
-                batch_size, captions_per_image, _ = text['input_ids'].size()
+                batch_size, captions_per_image, _ = text.size()
                 for ـ in range(batch_size):
                     # the next image corresponds to text captions [text_index ... text_index + captions_per_image - 1]
                     text_indices = list(range(text_index, text_index + captions_per_image))
@@ -212,32 +212,19 @@ class CustomCLIP():
                     text_to_image_map += [image_index] * captions_per_image
                     image_index += 1
 
-                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
-                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+                text = torch.flatten(text, start_dim=0, end_dim=1)
                 text = text.to(self.device)
-                text_embeds = self.model.get_text_features(
-                        input_ids=text['input_ids'],
-                        attention_mask=text['attention_mask']
-                        )
-                # text_embeds = []
-                # for i in range(captions_per_image):
-                #     temp = self.model.get_text_features(
-                #         input_ids=text['input_ids'][:,i,:],
-                #         attention_mask=text['attention_mask'][:,i,:]
-                #         )
-                #     text_embeds.append(temp)
-        
-                # text_embeds = torch.vstack(text_embeds)
-                text_features.append(text_embeds)
-
+                
                 images = torch.squeeze(images)
                 if len(images.size()) == 3:
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
-                img_embeds = self.model.get_image_features(images)
+
+                img_embeds, text_embeds = self.model(images, text)
 
                 image_features.append(img_embeds)
-
+                text_features.append(text_embeds)
+                
                 loss = criterion(img_embeds, text_embeds[::captions_per_image])
                 total_loss += loss.item()
                 total_batches += 1

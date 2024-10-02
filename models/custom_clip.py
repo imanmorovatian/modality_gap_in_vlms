@@ -1,20 +1,18 @@
 from PIL import Image
-from datetime import datetime
-import wandb
-from tqdm import tqdm
 from functools import partial
+import wandb
 
 import torch
 from torch.optim import AdamW
-from torch.cuda.amp import autocast, GradScaler
+from torch.cuda.amp import autocast
 from torchvision import transforms
-from transformers import CLIPTextConfig, CLIPVisionConfig, CLIPConfig, CLIPProcessor, CLIPModel
+from transformers import CLIPModel
 
 from models.clip_training import CLIP
-from models.custom_perceiver import ContrastiveLoss
 
 from utils.simple_tokenizer import SimpleTokenizer
 from utils.custom_schedulers import get_cosine_schedule_with_warmup
+from utils.contrastive_loss import compute_contrastive_loss
 
 
 def tokenize(captions, tokenizer, context_length=77, *args, **kwargs):
@@ -39,13 +37,7 @@ def tokenize(captions, tokenizer, context_length=77, *args, **kwargs):
 
 class CustomCLIP():
     def __init__(self, pre_trained: bool, input_resolution=224):
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        # self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-
-        # self.text_tokenizer = self.processor
-        # self.transform = transforms.Compose([
-        #     transforms.Lambda(lambda img: self.processor(images=img, return_tensors='pt')['pixel_values'])
-        # ])
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         _tokenizer = SimpleTokenizer()
         self.text_tokenizer = partial(tokenize, tokenizer=_tokenizer)
@@ -79,7 +71,7 @@ class CustomCLIP():
             self.model = CLIP(**model_params).to(self.device)
             self.name = 'CLIP'
         
-    def train(self, dataloader, criterion, optimizer, scheduler):
+    def train(self, dataloader, optimizer, scheduler):
         self.model.train()
         epoch_loss = 0.0
 
@@ -96,12 +88,10 @@ class CustomCLIP():
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
 
-                img_embeds, text_embeds = self.model(images, text)
-
-                img_embeds = img_embeds / img_embeds.norm(dim=-1, keepdim=True)
-                text_embeds = text_embeds / text_embeds.norm(dim=-1, keepdim=True)
-
-                loss = criterion(img_embeds, text_embeds)
+                img_embeds, text_embeds = self.model(images, text)                
+                temperature = self.model.logit_scale.exp()
+                
+                loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
                 loss.backward()
                 epoch_loss += loss.item()
                 optimizer.step()
@@ -111,7 +101,7 @@ class CustomCLIP():
 
         return epoch_loss      
 
-    def evaluation(self, dataloader, criterion):
+    def evaluation(self, dataloader):
         self.model.eval()
         epoch_loss = 0.0
 
@@ -127,12 +117,10 @@ class CustomCLIP():
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
 
-                img_embeds, text_embeds = self.model(images, text)
-
-                img_embeds = img_embeds / img_embeds.norm(dim=-1, keepdim=True)
-                text_embeds = text_embeds / text_embeds.norm(dim=-1, keepdim=True)
-
-                loss = criterion(img_embeds, text_embeds)
+                img_embeds, text_embeds = self.model(images, text)                
+                temperature = self.model.logit_scale.exp()
+                
+                loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
                 epoch_loss += loss.item()
 
             epoch_loss = epoch_loss / len(dataloader)
@@ -141,9 +129,7 @@ class CustomCLIP():
 
     def orchestrate_training(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
                              batch_size, no_epochs, save_path):
-        
-        criterion = ContrastiveLoss(temperature=0.5)
-        
+                
         optimizer = AdamW(self.model.parameters(), lr=5e-4, eps=1.0e-08, weight_decay=0.1)
         
         gradient_accumulation_steps = 1
@@ -167,8 +153,8 @@ class CustomCLIP():
             )
 
         for epoch in range(no_epochs):
-            train_loss = self.train(train_dataloader, criterion, optimizer, scheduler)
-            val_loss = self.evaluation(val_dataloader, criterion)
+            train_loss = self.train(train_dataloader, optimizer, scheduler)
+            val_loss = self.evaluation(val_dataloader)
             
             print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
             wandb.log({
@@ -177,7 +163,7 @@ class CustomCLIP():
                 'val_loss': val_loss
             })
 
-        test_loss = self.evaluation(test_dataloader, criterion)
+        test_loss = self.evaluation(test_dataloader)
 
         wandb.log({'test_loss': test_loss})
         wandb.finish()

@@ -32,24 +32,7 @@ class SharedPerceiverPreprocessor(PerceiverMultimodalPreprocessor):
 
         return inputs, modality_sizes, inputs_without_pos
     
-class ContrastiveLoss(nn.Module):
-    def __init__(self, temperature):
-        super(ContrastiveLoss, self).__init__()
-        self.temperature = temperature
-        self.cosine_similarity = nn.CosineSimilarity(dim=-1)
-    
-    def forward(self, img_embeds, txt_embeds):
-
-        batch_size = img_embeds.size(0)
-        labels = torch.arange(batch_size).to(img_embeds.device)
         
-        logits = self.cosine_similarity(img_embeds.unsqueeze(1), txt_embeds.unsqueeze(0)) * np.exp(self.temperature)
-        
-        loss_img = F.cross_entropy(logits, labels)
-        loss_txt = F.cross_entropy(logits.T, labels)
-        
-        return (loss_img + loss_txt) / 2
-    
 class CustomPerceiver():
     def __init__(self):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'

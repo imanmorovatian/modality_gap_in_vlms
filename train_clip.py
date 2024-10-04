@@ -23,6 +23,7 @@ args = parse_args()
 dataset = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 NO_EPOCHS = args.NO_EPOCHS
+NUM_WORKERS = 4
 
 assert dataset in ['mscoco', 'flickr30k', 'conceptualCaptions']
     
@@ -33,58 +34,58 @@ if dataset == 'mscoco':
 						annFile='data/annotations/mscoco/train2017edited_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
+    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     val_dataset = MSCOCOCaptions(root='data/images/mscoco/val2017/',
 						annFile='data/annotations/mscoco/val2017_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     # test split is sampled from train split
     test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
 						annFile='data/annotations/mscoco/test2017_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
     
 elif dataset == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/train.token',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
+    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/val.token',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annFile='data/annotations/flickr30k/test.token',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
 elif dataset == 'conceptualCaptions':
     train_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/train.csv',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
+    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     val_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/val.csv',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annFile='data/annotations/conceptualCaptions/test.csv',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
 else:
     raise ValueError('The selected dataset is not supported')

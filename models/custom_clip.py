@@ -95,6 +95,7 @@ class CustomCLIP():
                 loss.backward()
                 epoch_loss += loss.item()
                 optimizer.step()
+                self.model.logit_scale.data = torch.clamp(self.model.logit_scale.data, 0, 4.6052)
                 scheduler.step() 
             
         epoch_loss = epoch_loss / len(dataloader)

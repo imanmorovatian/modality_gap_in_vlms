@@ -172,7 +172,7 @@ class CustomCLIP():
         torch.save(self.model.state_dict(), f'{save_path}/clip_{dataset_name}.pth')
         print(f'Saved model in {save_path}')
 
-    def encode_for_retrieval(self, dataloader, criterion):
+    def encode_for_retrieval(self, dataloader):
         self.model.eval()
         
         image_to_text_map = []
@@ -212,7 +212,9 @@ class CustomCLIP():
                 image_features.append(img_embeds)
                 text_features.append(text_embeds)
                 
-                loss = criterion(img_embeds, text_embeds[::captions_per_image])
+                temperature = self.model.logit_scale.exp()
+                
+                loss = compute_contrastive_loss(img_embeds, text_embeds[::captions_per_image], temperature)
                 total_loss += loss.item()
                 total_batches += 1
 

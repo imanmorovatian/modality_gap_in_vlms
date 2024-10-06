@@ -115,7 +115,7 @@ else:
 
 criterion = ContrastiveLoss(temperature=0.5)
 
-retrieval_inputs = model.encode_for_retrieval(test_dataloader, criterion)
+retrieval_inputs = model.encode_for_retrieval(test_dataloader)
 
 metrics = {}
 

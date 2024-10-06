@@ -13,7 +13,7 @@ from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
 from models.custom_bridgetower import CustomBridgeTower
 from models.custom_data2vec import CustomData2Vec
-from models.custom_perceiver import CustomPerceiver, ContrastiveLoss
+from models.custom_perceiver import CustomPerceiver
 
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
@@ -112,8 +112,6 @@ elif dataset == 'conceptualCaptions':
 
 else:
     raise ValueError('The selected dataset is not supported')
-
-criterion = ContrastiveLoss(temperature=0.5)
 
 retrieval_inputs = model.encode_for_retrieval(test_dataloader)
 

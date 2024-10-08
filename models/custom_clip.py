@@ -4,7 +4,7 @@ import wandb
 
 import torch
 from torch.optim import AdamW
-from torch.cuda.amp import autocast
+from torch.cuda.amp import autocast, GradScaler
 from torchvision import transforms
 from transformers import CLIPModel
 
@@ -22,7 +22,7 @@ def tokenize(captions, tokenizer, context_length=77, *args, **kwargs):
     result = []
     for text in captions:
         tokens = [sot_token] + tokenizer.encode(text) + [eot_token]
-        tokens = torch.Tensor(tokens)
+        tokens = torch.Tensor(tokens, dtype=torch.long)
         fixed_size_tokens = torch.zeros(context_length, dtype=torch.long)
 
         if len(tokens) >= context_length:
@@ -71,7 +71,7 @@ class CustomCLIP():
             self.model = CLIP(**model_params).to(self.device)
             self.name = 'CLIP'
         
-    def train(self, dataloader, optimizer, scheduler):
+    def train(self, dataloader, optimizer, scheduler, grad_scaler):
         self.model.train()
         epoch_loss = 0.0
 
@@ -92,11 +92,15 @@ class CustomCLIP():
                 temperature = self.model.logit_scale.exp()
                 
                 loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
-                loss.backward()
-                epoch_loss += loss.item()
-                optimizer.step()
-                self.model.logit_scale.data = torch.clamp(self.model.logit_scale.data, 0, 4.6052)
-                scheduler.step() 
+
+            grad_scaler.scale(loss).backward()
+            grad_scaler.step(optimizer)
+            grad_scaler.update()
+
+            epoch_loss += loss.item()
+
+            self.model.logit_scale.data = torch.clamp(self.model.logit_scale.data, 0, 4.6052)
+            scheduler.step() 
             
         epoch_loss = epoch_loss / len(dataloader)
 
@@ -118,13 +122,15 @@ class CustomCLIP():
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
 
-                img_embeds, text_embeds = self.model(images, text)                
-                temperature = self.model.logit_scale.exp()
+                with autocast():
+                    img_embeds, text_embeds = self.model(images, text)                
+                    temperature = self.model.logit_scale.exp()
+                    
+                    loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
                 
-                loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
                 epoch_loss += loss.item()
 
-            epoch_loss = epoch_loss / len(dataloader)
+        epoch_loss = epoch_loss / len(dataloader)
 
         return epoch_loss
 
@@ -133,6 +139,8 @@ class CustomCLIP():
                 
         optimizer = AdamW(self.model.parameters(), lr=5e-4, eps=1.0e-08, weight_decay=0.1)
         
+        grad_scaler = GradScaler()
+
         gradient_accumulation_steps = 1
         t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
         num_warmup_steps = int(0.20 * t_total)
@@ -154,7 +162,7 @@ class CustomCLIP():
             )
 
         for epoch in range(no_epochs):
-            train_loss = self.train(train_dataloader, optimizer, scheduler)
+            train_loss = self.train(train_dataloader, optimizer, scheduler, grad_scaler)
             val_loss = self.evaluation(val_dataloader)
             
             print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')

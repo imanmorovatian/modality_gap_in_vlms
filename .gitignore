@@ -219,8 +219,8 @@ pkgs/CyCLIP/cyclip_3m_best.pt
 pkgs/Perceiver
 pkgs/CLIP
 
-preprocess/amazon_categories/
-preprocess/amazon_edited_categories/
+preprocess/amazon/amazon_categories/
+preprocess/amazon/amazon_edited_categories/
 
 cython_constraint.txt
 

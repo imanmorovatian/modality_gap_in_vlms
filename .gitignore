@@ -214,6 +214,8 @@ data/images/
 
 experiment_scripts/
 
+data/
+
 pkgs/ALBEF/ALBEF.pth
 pkgs/CyCLIP/cyclip_3m_best.pt
 pkgs/Perceiver

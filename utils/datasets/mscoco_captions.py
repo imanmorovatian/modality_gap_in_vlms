@@ -1,7 +1,8 @@
 import os
-import random
 import json
-import pandas as pd
+from collections import OrderedDict, defaultdict
+import numpy as np
+from pathlib import Path
 from PIL import Image
 from typing import Callable, Optional
 
@@ -12,17 +13,19 @@ class MSCOCOCaptions(Dataset):
     """
     Args:
         root (string): Root directory where images are downloaded to.
-        annFile (string): Path to annotation file.
-        transform (callable, optional): A function/transform that takes in a PIL image
+        annotations_file (string): Path to annotation file.
+        image_transform (callable, optional): A function/transform that takes in a PIL image
             and returns a transformed version. E.g, ``transforms.PILToTensor``
-        target_transform (callable, optional): A function/transform that takes in the
+        caption_transform (callable, optional): A function/transform that takes in the
             target and transforms it.
+        max_length_tokenizer (int): The maximum length required by some text tokenizers,
+        no_cap_per_img (int): The number of captions for an image. Could be between 1 and 5 
     """
 
     def __init__(
         self,
         root: str,
-        annFile: str,
+        annotations_file: str,
         image_transform: Optional[Callable] = None,
         caption_transform: Optional[Callable] = None,
         max_length_tokenizer: int = 64,
@@ -34,34 +37,24 @@ class MSCOCOCaptions(Dataset):
         self.image_transform = image_transform
         self.caption_transform = caption_transform
         self.max_length_tokenizer = max_length_tokenizer
-        self.annFile = os.path.expanduser(annFile)
-        
-        with open(self.annFile) as f:
-            json_file = json.load(f)
-            
-            captions = json_file['annotations'] # image_id --> common, (id: id of caption), caption
-            df_captions = pd.DataFrame(captions)
+        self.cpi = no_cap_per_img
 
-            images = json_file['images'] # license, file_name, coco_url, height, width, date_captured,
-                                        # flickr_url, (id: id of image) --> common
-            df_images = pd.DataFrame(images)
-            df_images = df_images[['file_name', 'id']]
-            
-            df_img_cap = pd.merge(df_images, df_captions, left_on='id', right_on='image_id')
-            df_img_cap = df_img_cap[['file_name', 'image_id', 'caption']]
+        f_name = Path(annotations_file)
+        with f_name.open('rt') as handle:
+            annotations = json.load(handle, object_hook=OrderedDict)
 
-            df_img_cap_final = pd.DataFrame(
-                [
-                    {
-                        'file_name': info['file_name'].to_list()[0],
-                        'caption': random.choices(info['caption'].to_list(), k=no_cap_per_img)
-                    }
-                    for img_id, info in df_img_cap.groupby('image_id')
-                ]
-            )
+        self.img_id_to_file_name = {}
+        for img_info in annotations['images']:
+            img_id = img_info['id']
+            file_name = img_info['file_name']
+            self.img_id_to_file_name[img_id] = file_name
+    
+        self.img_id_to_captions = defaultdict(list)
+        for caption_info in annotations['annotations']:
+            img_id = caption_info['image_id']
+            self.img_id_to_captions[img_id].append(caption_info['caption'])
 
-            self.annotations = df_img_cap_final.set_index('file_name')['caption'].to_dict()
-            self.ids = list(self.annotations.keys())
+        self.img_ids = list(self.img_id_to_file_name.keys())
 
     def __getitem__(self, index: int):
         """
@@ -72,33 +65,35 @@ class MSCOCOCaptions(Dataset):
             tuple: Tuple (image, target). target is a list of captions for the image.
         """
 
-        img_id = self.ids[index]
+        img_id = self.img_ids[index]
 
         # Image
-        filename = os.path.join(self.root, img_id)
+        filename = os.path.join(self.root, self.img_id_to_file_name[img_id])
         img = Image.open(filename).convert("RGB")
         if self.image_transform is not None:
             img = self.image_transform(img)
 
         # Captions
-        captions = self.annotations[img_id]
-        
+        captions = np.random.choice(self.img_id_to_captions[img_id], size=self.cpi)
+
         # wanna limit the size of target here but error happened when search relevant
         # target = self.__remove_punctuation(target)
         # target = self.__limit_length(target)
         
         if self.caption_transform is not None:
-            captions = self.caption_transform(captions,
-                                              padding='max_length',
-                                              max_length=self.max_length_tokenizer,
-                                              truncation=True,
-                                              return_tensors='pt')
+            captions = self.caption_transform(
+                captions,
+                padding='max_length',
+                max_length=self.max_length_tokenizer,
+                truncation=True,
+                return_tensors='pt')
 
         return img, captions
 
     def __len__(self) -> int:
-        return len(self.ids)
+        return len(self.img_ids)
     
+
     # def __remove_punctuation(self,texts):
     #     punctuation = string.punctuation
     #     translator = str.maketrans('', '', punctuation)

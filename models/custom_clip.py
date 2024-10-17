@@ -1,12 +1,10 @@
 from PIL import Image
-from functools import partial
 import wandb
 
 import torch
 from torch.optim import AdamW
 from torch.cuda.amp import autocast, GradScaler
 from torchvision import transforms
-from transformers import CLIPModel
 
 from models.clip_training import CLIP
 
@@ -15,43 +13,22 @@ from utils.custom_schedulers import get_cosine_schedule_with_warmup
 from utils.contrastive_loss import compute_contrastive_loss
 
 
-def tokenize(captions, tokenizer, context_length=77, *args, **kwargs):
-    sot_token = tokenizer.encoder["<|startoftext|>"]
-    eot_token = tokenizer.encoder["<|endoftext|>"]
-    
-    result = []
-    for text in captions:
-        tokens = [sot_token] + tokenizer.encode(text) + [eot_token]
-        tokens = torch.Tensor(tokens, dtype=torch.long)
-        fixed_size_tokens = torch.zeros(context_length, dtype=torch.long)
-
-        if len(tokens) >= context_length:
-            fixed_size_tokens = tokens[:context_length]
-        else:
-            fixed_size_tokens[:len(tokens)] = tokens
-
-        result.append(fixed_size_tokens)
-
-    return torch.vstack(result)
-
-
 class CustomCLIP():
     def __init__(self, pre_trained: bool, input_resolution=224):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-        _tokenizer = SimpleTokenizer()
-        self.text_tokenizer = partial(tokenize, tokenizer=_tokenizer)
+        self._tokenizer = SimpleTokenizer()
 
         self.transform = transforms.Compose([
             transforms.Resize(input_resolution, interpolation=Image.BICUBIC),
             transforms.CenterCrop(input_resolution),
-            lambda image: image.convert("RGB"),
+            # lambda image: image.convert("RGB"),
             transforms.ToTensor(),
             transforms. Normalize((0.4225, 0.4012, 0.3659), (0.2681, 0.2635, 0.2763)),
         ])
         
         if pre_trained:
-            self.model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(self.device)
+            # create the model and load the pre-trained weights
             self.name = 'PretrainedCLIP'
 
         else:
@@ -68,9 +45,31 @@ class CustomCLIP():
                 'transformer_layers': 6
             }
             
-            self.model = CLIP(**model_params).to(self.device)
+            self.model = CLIP(**model_params)
+            self.model = self.model.to(self.device)
             self.name = 'CLIP'
         
+    def text_tokenizer(self, captions, *args, **kwargs):
+        context_length=77
+
+        sot_token = self._tokenizer.encoder["<|startoftext|>"]
+        eot_token = self._tokenizer.encoder["<|endoftext|>"]
+        
+        result = []
+        for text in captions:
+            tokens = [sot_token] + self._tokenizer.encode(text) + [eot_token]
+            tokens = torch.tensor(tokens, dtype=torch.long)
+            fixed_size_tokens = torch.zeros(context_length, dtype=torch.long)
+
+            if len(tokens) >= context_length:
+                fixed_size_tokens = tokens[:context_length]
+            else:
+                fixed_size_tokens[:len(tokens)] = tokens
+
+            result.append(fixed_size_tokens)
+
+        return torch.vstack(result)
+
     def train(self, dataloader, optimizer, scheduler, grad_scaler):
         self.model.train()
         epoch_loss = 0.0
@@ -80,6 +79,7 @@ class CustomCLIP():
             optimizer.zero_grad()
 
             with autocast():
+                # for the training, one caption per image is used
                 text = text[:,-1,:]
                 text = text.to(self.device)
 

@@ -37,6 +37,7 @@ def create_model(name, dataset=None):
     elif name == 'CLIP':
         model = CustomCLIP(pre_trained=False)
         model.model.load_state_dict(torch.load(f'pkgs/CLIP/clip_{dataset}.pth'))
+        # model.model.load_state_dict( torch.load(f'pkgs/CLIP/checkpoint_34_61985.pt')['model_state_dict'] )
         return model
     elif name == 'CyCLIP':
         return CustomCyCLIP()
@@ -88,7 +89,7 @@ model = create_model(MODEL, dataset)
 
 if dataset == 'mscoco':
     test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
-						annFile='data/annotations/mscoco/test2017_captions.json',
+						annotations_file='data/annotations/mscoco/test2017_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer,
                         no_cap_per_img=CPI)
@@ -96,7 +97,7 @@ if dataset == 'mscoco':
     
 elif dataset == 'flickr30k':
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annFile='data/annotations/flickr30k/test.token',
+                        annotations_file='data/annotations/flickr30k/test.token',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer,
                         no_cap_per_img=CPI)
@@ -104,7 +105,7 @@ elif dataset == 'flickr30k':
 
 elif dataset == 'conceptualCaptions':
     test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
-                        annFile='data/annotations/conceptualCaptions/test.csv',
+                        annotations_file='data/annotations/conceptualCaptions/test.csv',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer,
                         no_cap_per_img=CPI)

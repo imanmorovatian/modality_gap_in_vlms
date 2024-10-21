@@ -1,6 +1,6 @@
 import os
 import argparse
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
@@ -49,20 +49,23 @@ if dataset_name == 'mscoco':
 						annotations_file='data/annotations/mscoco/train2017_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    train_sampler = RandomSampler(train_dataset)
+    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     val_dataset = MSCOCOCaptions(root='data/images/mscoco/val2017/',
 						annotations_file='data/annotations/mscoco/val2017_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    val_sampler = SequentialSampler(val_dataset)
+    val_dataloader = DataLoader(val_dataset, sampler=val_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     # test split is sampled from train split
     test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
 						annotations_file='data/annotations/mscoco/test2017_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
     
 elif dataset_name == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
@@ -110,5 +113,5 @@ result_dir = f'pkgs/{MODEL}'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
-model.orchestrate_training(dataset_name, val_dataloader, val_dataloader, test_dataloader,
-                            BATCH_SIZE,NO_EPOCHS, result_dir)
+model.orchestrate_training(dataset_name, train_dataloader, val_dataloader, test_dataloader,
+                            BATCH_SIZE, NO_EPOCHS, result_dir)

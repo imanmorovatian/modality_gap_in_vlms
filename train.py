@@ -11,8 +11,10 @@ from models.custom_perceiver import CustomPerceiver
 
 
 def create_model(name):
-    if name == 'CLIP':
-        return CustomCLIP(pre_trained=False)
+    if name == 'CLIP_RN50':
+        return CustomCLIP(vision_encoder='RN50', pre_trained=False)
+    elif name == 'CLIP_ViT':
+        return CustomCLIP(vision_encoder='ViT', pre_trained=False)
     elif name == 'Perceiver':
         return CustomPerceiver()
     else:
@@ -40,7 +42,7 @@ NUM_WORKERS = 2
 
 
 assert dataset_name in ['mscoco', 'flickr30k', 'conceptualCaptions']
-assert MODEL in ['CLIP', 'Perceiver']
+assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver']
 
 model = create_model(MODEL)
     
@@ -72,38 +74,44 @@ elif dataset_name == 'flickr30k':
                         annotations_file='data/annotations/flickr30k/train.token',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    train_sampler = RandomSampler(train_dataset)
+    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annotations_file='data/annotations/flickr30k/val.token',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    val_sampler = SequentialSampler(val_dataset)
+    val_dataloader = DataLoader(val_dataset, sampler=val_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annotations_file='data/annotations/flickr30k/test.token',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
 elif dataset_name == 'conceptualCaptions':
     train_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annotations_file='data/annotations/conceptualCaptions/train.csv',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    train_sampler = RandomSampler(train_dataset)
+    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     val_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annotations_file='data/annotations/conceptualCaptions/val.csv',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    val_sampler = SequentialSampler(val_dataset)
+    val_dataloader = DataLoader(val_dataset, sampler=val_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annotations_file='data/annotations/conceptualCaptions/test.csv',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
 else:
     raise ValueError('The selected dataset is not supported')

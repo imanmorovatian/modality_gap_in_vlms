@@ -74,7 +74,9 @@ class MSCOCOCaptions(Dataset):
             img = self.image_transform(img)
 
         # Captions
-        captions = np.random.choice(self.img_id_to_captions[img_id], size=self.cpi)
+        captions = list(
+            map(str, np.random.choice(self.img_id_to_captions[img_id], size=self.cpi))
+            )
 
         # wanna limit the size of target here but error happened when search relevant
         # target = self.__remove_punctuation(target)

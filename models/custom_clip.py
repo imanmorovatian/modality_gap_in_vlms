@@ -14,41 +14,54 @@ from utils.contrastive_loss import compute_contrastive_loss
 
 
 class CustomCLIP():
-    def __init__(self, pre_trained: bool, input_resolution=224):
+    def __init__(self, vision_encoder: str, pre_trained: bool):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         self._tokenizer = SimpleTokenizer()
 
         self.transform = transforms.Compose([
-            transforms.Resize(input_resolution, interpolation=Image.BICUBIC),
-            transforms.CenterCrop(input_resolution),
+            transforms.Resize(224, interpolation=Image.BICUBIC),
+            transforms.CenterCrop(224),
             # lambda image: image.convert("RGB"),
             transforms.ToTensor(),
             transforms. Normalize((0.4225, 0.4012, 0.3659), (0.2681, 0.2635, 0.2763)),
         ])
         
-        if pre_trained:
-            # create the model and load the pre-trained weights
-            self.name = 'PretrainedCLIP'
+        self.name = 'CLIP'
+
+        model_params = {
+            # general params
+            'embed_dim': 1024,
+            'image_resolution': 224,
+            # common between RN50 and ViT
+            'vision_width': 64,
+            # Text encoder params
+            'context_length': 77,
+            'vocab_size': 49408,
+            'transformer_width': 512,
+            'transformer_heads': 8,
+            'transformer_layers': 6
+        }
+
+        if vision_encoder == 'RN50':
+            model_params['vision_layers'] = (3, 4, 6, 3)
+            model_params['vision_patch_size'] = None
+
+            self.name += '_RN50'
 
         else:
-            model_params = {
-                'embed_dim': 1024,
-                'image_resolution': 224,
-                'vision_layers': (3, 4, 6, 3),
-                'vision_width': 64,
-                'vision_patch_size': None,
-                'context_length': 77,
-                'vocab_size': 49408,
-                'transformer_width': 512,
-                'transformer_heads': 8,
-                'transformer_layers': 6
-            }
-            
-            self.model = CLIP(**model_params)
-            self.model = self.model.to(self.device)
-            self.name = 'CLIP'
-        
+            model_params['vision_layers'] = 6 # Originally, it is 12
+            model_params['vision_patch_size'] = 32
+
+            self.name += '_ViT32'
+
+        self.model = CLIP(**model_params)
+        self.model = self.model.to(self.device)
+
+        if pre_trained:
+            # create the model and load the pre-trained weights
+            self.name += '_Pre-trained'
+      
     def text_tokenizer(self, captions, *args, **kwargs):
         context_length=77
 

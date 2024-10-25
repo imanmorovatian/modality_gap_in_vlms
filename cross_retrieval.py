@@ -3,7 +3,7 @@ import argparse
 import csv
 
 import torch
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, SequentialSampler
 
 from models.custom_clip import CustomCLIP
 from models.custom_align import CustomALIGN
@@ -34,10 +34,13 @@ def create_model(name, dataset=None):
         return CustomImageBind()
     elif name == 'PretrainedCLIP':
         return CustomCLIP(pre_trained=True)
-    elif name == 'CLIP':
-        model = CustomCLIP(pre_trained=False)
-        model.model.load_state_dict(torch.load(f'pkgs/CLIP/clip_{dataset}.pth'))
-        # model.model.load_state_dict( torch.load(f'pkgs/CLIP/checkpoint_34_61985.pt')['model_state_dict'] )
+    elif name == 'CLIP_RN50':
+        model = CustomCLIP(vision_encoder='RN50', pre_trained=False)
+        model.model.load_state_dict(torch.load(f'pkgs/CLIP_RN50/clip_{dataset}.pth'))
+        return model
+    elif name == 'CLIP_ViT':
+        model = CustomCLIP(vision_encoder='ViT', pre_trained=False)
+        model.model.load_state_dict(torch.load(f'pkgs/CLIP_ViT/clip_{dataset}.pth'))
         return model
     elif name == 'CyCLIP':
         return CustomCyCLIP()
@@ -70,12 +73,14 @@ MODEL = args.MODEL
 dataset = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 CPI = args.CPI # captions per image
+NUM_WORKERS = 2
 
 
 assert dataset in ['mscoco', 'flickr30k', 'conceptualCaptions']
 
 assert MODEL in ['PretrainedCLIP',
-                'CLIP',
+                'CLIP_RN50',
+                'CLIP_ViT',
                 'ALIGN',
                 'ImageBind',
                 'CyCLIP',
@@ -93,7 +98,8 @@ if dataset == 'mscoco':
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer,
                         no_cap_per_img=CPI)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
     
 elif dataset == 'flickr30k':
     test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
@@ -101,7 +107,8 @@ elif dataset == 'flickr30k':
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer,
                         no_cap_per_img=CPI)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
 elif dataset == 'conceptualCaptions':
     test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
@@ -109,7 +116,8 @@ elif dataset == 'conceptualCaptions':
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer,
                         no_cap_per_img=CPI)
-    test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
 else:
     raise ValueError('The selected dataset is not supported')

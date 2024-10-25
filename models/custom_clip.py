@@ -13,6 +13,9 @@ from utils.custom_schedulers import get_cosine_schedule_with_warmup
 from utils.contrastive_loss import compute_contrastive_loss
 
 
+# number of parameters of CLIP ViT -> 45,341,505
+# number of parameters of CLIP RN50 -> 83,092,833
+
 class CustomCLIP():
     def __init__(self, vision_encoder: str, pre_trained: bool):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'

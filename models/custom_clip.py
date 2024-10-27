@@ -1,90 +1,37 @@
-from PIL import Image
 import wandb
 
 import torch
 from torch.optim import AdamW
 from torch.cuda.amp import autocast, GradScaler
-from torchvision import transforms
 
-from models.clip_training import CLIP
+from utils.clip import clip
 
-from utils.simple_tokenizer import SimpleTokenizer
 from utils.custom_schedulers import get_cosine_schedule_with_warmup
 from utils.contrastive_loss import compute_contrastive_loss
 
-
-# number of parameters of CLIP ViT -> 45,341,505
-# number of parameters of CLIP RN50 -> 83,092,833
 
 class CustomCLIP():
     def __init__(self, vision_encoder: str, pre_trained: bool):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-        self._tokenizer = SimpleTokenizer()
-
-        self.transform = transforms.Compose([
-            transforms.Resize(224, interpolation=Image.BICUBIC),
-            transforms.CenterCrop(224),
-            # lambda image: image.convert("RGB"),
-            transforms.ToTensor(),
-            transforms. Normalize((0.4225, 0.4012, 0.3659), (0.2681, 0.2635, 0.2763)),
-        ])
-        
-        self.name = 'CLIP'
-
-        model_params = {
-            # general params
-            'embed_dim': 1024,
-            'image_resolution': 224,
-            # common between RN50 and ViT
-            'vision_width': 64,
-            # Text encoder params
-            'context_length': 77,
-            'vocab_size': 49408,
-            'transformer_width': 512,
-            'transformer_heads': 8,
-            'transformer_layers': 6
-        }
-
         if vision_encoder == 'RN50':
-            model_params['vision_layers'] = (3, 4, 6, 3)
-            model_params['vision_patch_size'] = None
-
-            self.name += '_RN50'
-
+            self.model, self.transform = clip.load(name='RN50', pretrained=pre_trained, device=self.device, fp32=True)
+            self.name = 'CLIP_RN50'
         else:
-            model_params['vision_layers'] = 6 # Originally, it is 12
-            model_params['vision_patch_size'] = 32
-
-            self.name += '_ViT32'
-
-        self.model = CLIP(**model_params)
-        self.model = self.model.to(self.device)
+            self.model, self.transform = clip.load(name='ViT-B/32', pretrained=pre_trained, device=self.device, fp32=True)
+            self.name = 'CLIP_ViT32'
 
         if pre_trained:
-            # create the model and load the pre-trained weights
             self.name += '_Pre-trained'
-      
+
+        # if you want to reduce the number of layers of text transformer
+        # self.model.transformer.layers = 6
+        # self.model.transformer.resblocks = self.model.transformer.resblocks[:6]
+
+        self._tokenizer = clip.tokenize
+
     def text_tokenizer(self, captions, *args, **kwargs):
-        context_length=77
-
-        sot_token = self._tokenizer.encoder["<|startoftext|>"]
-        eot_token = self._tokenizer.encoder["<|endoftext|>"]
-        
-        result = []
-        for text in captions:
-            tokens = [sot_token] + self._tokenizer.encode(text) + [eot_token]
-            tokens = torch.tensor(tokens, dtype=torch.long)
-            fixed_size_tokens = torch.zeros(context_length, dtype=torch.long)
-
-            if len(tokens) >= context_length:
-                fixed_size_tokens = tokens[:context_length]
-            else:
-                fixed_size_tokens[:len(tokens)] = tokens
-
-            result.append(fixed_size_tokens)
-
-        return torch.vstack(result)
+        return self._tokenizer(texts=captions, context_length=77, truncate=True)
 
     def train(self, dataloader, optimizer, scheduler, grad_scaler):
         self.model.train()
@@ -104,7 +51,8 @@ class CustomCLIP():
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
 
-                img_embeds, text_embeds = self.model(images, text)                
+                img_embeds = self.model.encode_image(images)
+                text_embeds = self.model.encode_text(text)                
                 temperature = self.model.logit_scale.exp()
                 
                 loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
@@ -139,7 +87,8 @@ class CustomCLIP():
                 images = images.to(self.device)
 
                 with autocast():
-                    img_embeds, text_embeds = self.model(images, text)                
+                    img_embeds = self.model.encode_image(images)
+                    text_embeds = self.model.encode_text(text)                
                     temperature = self.model.logit_scale.exp()
                     
                     loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
@@ -231,7 +180,8 @@ class CustomCLIP():
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
 
-                img_embeds, text_embeds = self.model(images, text)
+                img_embeds = self.model.encode_image(images)
+                text_embeds = self.model.encode_text(text) 
 
                 image_features.append(img_embeds)
                 text_features.append(text_embeds)

@@ -8,6 +8,7 @@ from utils.datasets.conceptual_captions import ConceptualCaptions
 
 from models.custom_clip import CustomCLIP
 from models.custom_perceiver import CustomPerceiver
+from models.custom_visiontextdualencoder import CustomVTDE
 
 
 def create_model(name):
@@ -17,6 +18,12 @@ def create_model(name):
         return CustomCLIP(vision_encoder='ViT', pre_trained=False)
     elif name == 'Perceiver':
         return CustomPerceiver()
+    elif name == 'VTDE':
+        return CustomVTDE(
+            frozen_text_encoder=False,
+            frozen_image_encoder=True,
+            pretrained_text_encoder=True,
+            pretrained_image_encoder=True)
     else:
         raise ValueError('The selected model is not implemented yet')
     
@@ -42,7 +49,7 @@ NUM_WORKERS = 2
 
 
 assert dataset_name in ['mscoco', 'flickr30k', 'conceptualCaptions']
-assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver']
+assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver', 'VTDE']
 
 model = create_model(MODEL)
     
@@ -121,5 +128,7 @@ result_dir = f'pkgs/{MODEL}'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
-model.orchestrate_training(dataset_name, train_dataloader, val_dataloader, test_dataloader,
+# --model VTDE --dataset mscoco --batch_size 2 --no_epochs 1
+#TODO change dataloaders
+model.orchestrate_training(dataset_name, val_dataloader, val_dataloader, val_dataloader,
                             BATCH_SIZE, NO_EPOCHS, result_dir)

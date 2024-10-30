@@ -18,9 +18,21 @@ def create_model(name):
         return CustomCLIP(vision_encoder='ViT', pre_trained=False)
     elif name == 'Perceiver':
         return CustomPerceiver()
-    elif name == 'VTDE':
+    elif name == 'VTDE_LU':
         return CustomVTDE(
             frozen_text_encoder=False,
+            frozen_image_encoder=True,
+            pretrained_text_encoder=True,
+            pretrained_image_encoder=True)
+    elif name == 'VTDE_Lu':
+        return CustomVTDE(
+            frozen_text_encoder=False,
+            frozen_image_encoder=True,
+            pretrained_text_encoder=False,
+            pretrained_image_encoder=True)
+    elif name == 'VTDE_LL':
+        return CustomVTDE(
+            frozen_text_encoder=True,
             frozen_image_encoder=True,
             pretrained_text_encoder=True,
             pretrained_image_encoder=True)
@@ -49,7 +61,7 @@ NUM_WORKERS = 2
 
 
 assert dataset_name in ['mscoco', 'flickr30k', 'conceptualCaptions']
-assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver', 'VTDE']
+assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver', 'VTDE_LU', 'VTDE_Lu', 'VTDE_LL']
 
 model = create_model(MODEL)
     
@@ -128,7 +140,5 @@ result_dir = f'pkgs/{MODEL}'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
-# --model VTDE --dataset mscoco --batch_size 2 --no_epochs 1
-#TODO change dataloaders
-model.orchestrate_training(dataset_name, val_dataloader, val_dataloader, val_dataloader,
+model.orchestrate_training(dataset_name, train_dataloader, val_dataloader, test_dataset,
                             BATCH_SIZE, NO_EPOCHS, result_dir)

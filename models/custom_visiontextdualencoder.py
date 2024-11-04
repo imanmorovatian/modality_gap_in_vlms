@@ -187,7 +187,7 @@ class CustomVTDE():
             config=wandb_config,
             entity='iman_morovatian',
             project='Thesis',
-            name=f'Training CLIP {dataset_name}'
+            name=f'Training VTDE {dataset_name}'
             )
 
         for epoch in range(no_epochs):

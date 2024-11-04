@@ -30,10 +30,10 @@ def create_model(name):
             frozen_image_encoder=True,
             pretrained_text_encoder=False,
             pretrained_image_encoder=True)
-    elif name == 'VTDE_LL':
+    elif name == 'VTDE_UU':
         return CustomVTDE(
-            frozen_text_encoder=True,
-            frozen_image_encoder=True,
+            frozen_text_encoder=False,
+            frozen_image_encoder=False,
             pretrained_text_encoder=True,
             pretrained_image_encoder=True)
     else:
@@ -61,7 +61,7 @@ NUM_WORKERS = 2
 
 
 assert dataset_name in ['mscoco', 'flickr30k', 'conceptualCaptions']
-assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver', 'VTDE_LU', 'VTDE_Lu', 'VTDE_LL']
+assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver', 'VTDE_LU', 'VTDE_Lu', 'VTDE_UU']
 
 model = create_model(MODEL)
     

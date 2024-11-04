@@ -88,7 +88,7 @@ class CustomVTDE():
             if pretrained_image_encoder:
                 self.name += '_U'
             else:
-                self.name += '-u'
+                self.name += '_u'
 
         if frozen_text_encoder:
             self.name += 'L'
@@ -165,13 +165,14 @@ class CustomVTDE():
     def orchestrate_training(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
                              batch_size, no_epochs, save_path):
                 
-        optimizer = AdamW(self.model.parameters(), lr=5e-4, eps=1.0e-08, weight_decay=0.1)
+        optimizer = AdamW(self.model.parameters(), lr=5e-5, eps=1.0e-08, weight_decay=0.1)
         
         grad_scaler = GradScaler()
 
         gradient_accumulation_steps = 1
         t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
-        num_warmup_steps = int(0.20 * t_total)
+        # num_warmup_steps = int(0.20 * t_total)
+        num_warmup_steps = 0
         scheduler = get_cosine_schedule_with_warmup(
             optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=t_total
             )

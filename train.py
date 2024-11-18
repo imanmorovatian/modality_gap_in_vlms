@@ -140,5 +140,5 @@ result_dir = f'pkgs/{MODEL}'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
-model.orchestrate_training(dataset_name, train_dataloader, val_dataloader, test_dataset,
+model.orchestrate_training(dataset_name, train_dataloader, val_dataloader, test_dataloader,
                             BATCH_SIZE, NO_EPOCHS, result_dir)

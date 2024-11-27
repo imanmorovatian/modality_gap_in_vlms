@@ -229,5 +229,7 @@ preprocess/amazon/amazon_edited_categories/
 
 cython_constraint.txt
 
+.python-version
+
 temp.py
 temp.ipynb

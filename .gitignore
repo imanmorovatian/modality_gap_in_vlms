@@ -222,6 +222,7 @@ pkgs/Perceiver
 pkgs/CLIP
 pkgs/CLIP_ViT
 pkgs/CLIP_RN50
+pkgs/VTDE*
 
 preprocess/amazon/amazon_categories/
 preprocess/amazon/amazon_edited_categories/

@@ -30,38 +30,14 @@ class CustomVTDE():
     def __init__(self,
                  frozen_text_encoder: bool,
                  frozen_image_encoder: bool,
-                 pretrained_text_encoder: bool = None,
-                 pretrained_image_encoder: bool = None):
+                 pretrained_text_encoder: bool,
+                 pretrained_image_encoder: bool,
+                 local_pre_trained_weights: str = None):
         
         _text_checkpoint = 'google-bert/bert-base-uncased'
         _vision_checkpoint = 'google/vit-base-patch32-384'
 
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-        _config_text = BertConfig.from_pretrained(_text_checkpoint)
-        _config_vision = ViTConfig.from_pretrained(_vision_checkpoint)
-        _config = VisionTextDualEncoderConfig.from_vision_text_configs(
-            text_config=_config_text,
-            vision_config=_config_vision)
-        
-        if pretrained_text_encoder:
-            _text_model = AutoModel.from_pretrained(_text_checkpoint)
-        else:
-            _text_model = None
-        
-        if pretrained_image_encoder:
-            if isinstance(_config.vision_config, CLIPVisionConfig):
-                _vision_model = CLIPVisionModel.from_pretrained(_vision_checkpoint)
-            else:
-                _vision_model = AutoModel.from_pretrained(_vision_checkpoint)
-        else:
-            _vision_model = None
-
-        self.model = VisionTextDualEncoderModel(
-            config=_config,
-            text_model=_text_model,
-            vision_model=_vision_model)
-        self.model = self.model.to(self.device)
 
         self._image_preprocessor= AutoImageProcessor.from_pretrained(_vision_checkpoint)
         self.transform = transforms.Compose([
@@ -72,31 +48,65 @@ class CustomVTDE():
         
         self.text_tokenizer = AutoTokenizer.from_pretrained(_text_checkpoint)
 
-        if frozen_text_encoder:
-            for param in self.model.text_model.parameters():
-                param.requires_grad = False
+        if local_pre_trained_weights is None:
 
-        if frozen_image_encoder:
-            for param in self.model.vision_model.parameters():
-                param.requires_grad = False
-
-        self.name = 'VTDE'
-
-        if frozen_image_encoder:
-            self.name += '_L'
-        else:
-            if pretrained_image_encoder:
-                self.name += '_U'
-            else:
-                self.name += '_u'
-
-        if frozen_text_encoder:
-            self.name += 'L'
-        else:
+            _config_text = BertConfig.from_pretrained(_text_checkpoint)
+            _config_vision = ViTConfig.from_pretrained(_vision_checkpoint)
+            _config = VisionTextDualEncoderConfig.from_vision_text_configs(
+                text_config=_config_text,
+                vision_config=_config_vision)
+            
             if pretrained_text_encoder:
-                self.name += 'U'
+                _text_model = AutoModel.from_pretrained(_text_checkpoint)
             else:
-                self.name += 'u'
+                _text_model = None
+            
+            if pretrained_image_encoder:
+                if isinstance(_config.vision_config, CLIPVisionConfig):
+                    _vision_model = CLIPVisionModel.from_pretrained(_vision_checkpoint)
+                else:
+                    _vision_model = AutoModel.from_pretrained(_vision_checkpoint)
+            else:
+                _vision_model = None
+
+            self.model = VisionTextDualEncoderModel(
+                config=_config,
+                text_model=_text_model,
+                vision_model=_vision_model)
+            self.model = self.model.to(self.device)
+
+            if frozen_text_encoder:
+                for param in self.model.text_model.parameters():
+                    param.requires_grad = False
+
+            if frozen_image_encoder:
+                for param in self.model.vision_model.parameters():
+                    param.requires_grad = False
+
+            self.name = 'VTDE'
+
+            if frozen_image_encoder:
+                self.name += '_L'
+            else:
+                if pretrained_image_encoder:
+                    self.name += '_U'
+                else:
+                    self.name += '_u'
+
+            if frozen_text_encoder:
+                self.name += 'L'
+            else:
+                if pretrained_text_encoder:
+                    self.name += 'U'
+                else:
+                    self.name += 'u'
+        
+        else:
+
+            self.model = VisionTextDualEncoderModel.from_pretrained(local_pre_trained_weights)
+            self.model = self.model.to(self.device)
+
+            self.name = local_pre_trained_weights.split('/')[-1]
 
     def train(self, dataloader, optimizer, scheduler, grad_scaler):
         self.model.train()
@@ -245,7 +255,7 @@ class CustomVTDE():
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
                 
-                with autocast:
+                with autocast():
                     img_embeds = self.model.get_image_features(images)
                     text_embeds = self.model.get_text_features(text.input_ids, text.attention_mask)
 

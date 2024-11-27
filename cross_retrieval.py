@@ -14,6 +14,7 @@ from models.custom_albef import CustomALBEF
 from models.custom_bridgetower import CustomBridgeTower
 from models.custom_data2vec import CustomData2Vec
 from models.custom_perceiver import CustomPerceiver
+from models.custom_visiontextdualencoder import CustomVTDE
 
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
@@ -42,6 +43,27 @@ def create_model(name, dataset=None):
         model = CustomCLIP(vision_encoder='ViT', pre_trained=False)
         model.model.load_state_dict(torch.load(f'pkgs/CLIP_ViT/clip_{dataset}.pth'))
         return model
+    elif name == 'VTDE_LU':
+        return CustomVTDE(
+            frozen_text_encoder=None,
+            frozen_image_encoder=None,
+            pretrained_text_encoder=None,
+            pretrained_image_encoder=None,
+            local_pre_trained_weights='pkgs/VTDE_LU')
+    elif name == 'VTDE_Lu':
+        return CustomVTDE(
+            frozen_text_encoder=None,
+            frozen_image_encoder=None,
+            pretrained_text_encoder=None,
+            pretrained_image_encoder=None,
+            local_pre_trained_weights='pkgs/VTDE_Lu')
+    elif name == 'VTDE_UU':
+        return CustomVTDE(
+            frozen_text_encoder=None,
+            frozen_image_encoder=None,
+            pretrained_text_encoder=None,
+            pretrained_image_encoder=None,
+            local_pre_trained_weights='pkgs/VTDE_UU')
     elif name == 'CyCLIP':
         return CustomCyCLIP()
     elif name == 'BridgeTower':
@@ -75,6 +97,12 @@ BATCH_SIZE = args.BATCH_SIZE
 CPI = args.CPI # captions per image
 NUM_WORKERS = 2
 
+# MODEL = 'VTDE_Lu'
+# dataset = 'mscoco'
+# BATCH_SIZE = 128
+# CPI = 5
+# NUM_WORKERS = 2
+
 
 assert dataset in ['mscoco', 'flickr30k', 'conceptualCaptions']
 
@@ -88,7 +116,10 @@ assert MODEL in ['PretrainedCLIP',
                 'ALBEF',
                 'BridgeTower',
                 'Data2Vec',
-                'Perceiver']
+                'Perceiver',
+                'VTDE_LU',
+                'VTDE_Lu',
+                'VTDE_UU']
 
 model = create_model(MODEL, dataset)
 

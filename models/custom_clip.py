@@ -7,7 +7,7 @@ from torch.cuda.amp import autocast, GradScaler
 from utils.clip import clip
 
 from utils.custom_schedulers import get_cosine_schedule_with_warmup
-from utils.contrastive_loss import compute_contrastive_loss
+from utils.loss import compute_clip_loss
 
 
 class CustomCLIP():
@@ -55,7 +55,7 @@ class CustomCLIP():
                 text_embeds = self.model.encode_text(text)                
                 temperature = self.model.logit_scale.exp()
                 
-                loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
+                loss = compute_clip_loss(img_embeds, text_embeds, temperature)
 
             grad_scaler.scale(loss).backward()
             grad_scaler.step(optimizer)
@@ -91,7 +91,7 @@ class CustomCLIP():
                     text_embeds = self.model.encode_text(text)                
                     temperature = self.model.logit_scale.exp()
                     
-                    loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
+                    loss = compute_clip_loss(img_embeds, text_embeds, temperature)
                 
                 epoch_loss += loss.item()
 
@@ -188,7 +188,7 @@ class CustomCLIP():
                 
                 temperature = self.model.logit_scale.exp()
                 
-                loss = compute_contrastive_loss(img_embeds, text_embeds[::captions_per_image], temperature)
+                loss = compute_clip_loss(img_embeds, text_embeds[::captions_per_image], temperature)
                 total_loss += loss.item()
                 total_batches += 1
 

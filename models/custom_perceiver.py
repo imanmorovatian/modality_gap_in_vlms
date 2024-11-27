@@ -1,16 +1,17 @@
 import numpy as np
 from typing import Optional, Mapping, Tuple, Callable
+import wandb
+
 import torch
 from torch import optim
-import torch.nn as nn
-import torch.nn.functional as F
 from torch.cuda.amp import autocast, GradScaler
 from torchvision import transforms
+
 from transformers import PerceiverConfig, PerceiverTokenizer, PerceiverImageProcessor, PerceiverModel
 from transformers.models.perceiver.modeling_perceiver import PerceiverTextPreprocessor, PerceiverImagePreprocessor, PerceiverMultimodalPreprocessor
-from datetime import datetime
-import wandb
-from tqdm import tqdm
+
+from utils.loss import compute_clip_loss
+from utils.custom_schedulers import get_cosine_schedule_with_warmup
 
 
 PreprocessorOutputType = Tuple[torch.Tensor, Optional[torch.Tensor], torch.Tensor]
@@ -38,82 +39,89 @@ class CustomPerceiver():
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         self.config = PerceiverConfig(
-            num_latents=256,
-            d_latents=512,
-            d_model=64,
-            num_self_attends_per_block=4,
-            num_self_attention_heads=4,
-            num_cross_attention_heads=1,
+            num_latents=256, # default=256, reduced=256
+            d_latents=768, # default=1280, reduced=512
+            # d_model=128, # default=768, reduced=64
+            num_self_attends_per_block=20, #default=26, reduced=4
+            num_self_attention_heads=8, #default=8, reduced=4
+            num_cross_attention_heads=8, #default=8, reduced=1
             image_size=224)
         
-        self.preprocessor = SharedPerceiverPreprocessor(
+        self.preprocessor = PerceiverMultimodalPreprocessor(
             modalities={
                 'text': PerceiverTextPreprocessor(self.config),
-                'image': PerceiverImagePreprocessor(self.config,
-                                                    out_channels=64,
-                                                    concat_or_add_pos='add',
-                                                    fourier_position_encoding_kwargs=dict(
-                                                    max_resolution=(224, 224),
-                                                    num_bands=16,
-                                                    concat_pos=False))
+                'image': PerceiverImagePreprocessor(
+                    self.config,
+                    out_channels=128,
+                    concat_or_add_pos='add',
+                    fourier_position_encoding_kwargs=dict(
+                    max_resolution=(224, 224),
+                    num_bands=32,
+                    concat_pos=False))
             },
             min_padding_size=0
         )
            
-        self.text_tokenizer = PerceiverTokenizer()
-        self.model = PerceiverModel(self.config, input_preprocessor=self.preprocessor).to(self.device)
+        self.model = PerceiverModel(self.config, input_preprocessor=self.preprocessor)
+        self.model.logit_scale = torch.nn.Parameter(torch.ones([]) * np.log(1 / 0.07))
+        self.model = self.model.to(self.device)
 
+        self.text_tokenizer = PerceiverTokenizer()
         self.image_transform = PerceiverImageProcessor()
-        
+        self.transform = transforms.Compose([
+            transforms.Lambda(
+                lambda img: self.image_transform.preprocess(
+                    img,
+                    input_data_format='channels_last',
+                    return_tensors='pt')['pixel_values']
+                )
+        ])
+
         self.name = 'Perceiver'
         
-        self.transform = transforms.Compose([
-
-                transforms.Lambda(
-                    lambda img: self.image_transform.preprocess(
-                        img,
-                        input_data_format='channels_last',
-                        return_tensors='pt')['pixel_values']
-                    )
-
-            ])
-    
-    def train(self, dataloader, criterion, optimizer, grad_scaler):
+    def train(self, dataloader, optimizer, scheduler, grad_scaler):
         self.model.train()
         epoch_loss = 0.0
 
         for batch in dataloader:
-            
             images, text = batch
             optimizer.zero_grad()
 
             with autocast():
-                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
-                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+                text['input_ids'] = text['input_ids'][:,-1,:]
+                text['attention_mask'] = text['attention_mask'][:,-1,:]
                 text = text.to(self.device)
-                text_embeds = self.model(
-                    inputs={'text': text['input_ids'],},
-                    attention_mask=text['attention_mask']
-                )['last_hidden_state'][:,0,:]
+                # text_embeds = self.model(
+                #     inputs={'text': text['input_ids'],},
+                #     attention_mask=text['attention_mask']
+                # )['last_hidden_state'][:,0,:]
 
                 images = torch.squeeze(images)
                 if len(images.size()) == 3:
                     images = images.unsqueeze(0)
                 images = images.to(self.device)
-                img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
-
-                loss = criterion(text_embeds, img_embeds)
-                epoch_loss += loss.item()
+                # img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
+                
+                temp = self.model(inputs={'text': text['input_ids'], 'image': images},
+                                  attention_mask=text['attention_mask'])
+                
+                temperature = self.model.logit_scale.exp()
+                loss = compute_clip_loss(img_embeds, text_embeds, temperature)
 
             grad_scaler.scale(loss).backward()
             grad_scaler.step(optimizer)
             grad_scaler.update()
+
+            epoch_loss += loss.item()
+
+            self.model.logit_scale.data = torch.clamp(self.model.logit_scale.data, 0, 4.6052)
+            scheduler.step()
             
         epoch_loss = epoch_loss / len(dataloader)
 
         return epoch_loss
 
-    def evaluation(self, dataloader, criterion):
+    def evaluation(self, dataloader):
         self.model.eval()
         epoch_loss = 0.0
 
@@ -121,22 +129,24 @@ class CustomPerceiver():
             for batch in dataloader:
                 images, text = batch
 
-                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
-                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
-                text = text.to(self.device)
-                text_embeds = self.model(
-                    inputs={'text': text['input_ids'],},
-                    attention_mask=text['attention_mask']
-                )
-                text_embeds = text_embeds['last_hidden_state'][:,0,:]
-                
-                images = torch.squeeze(images)
-                if len(images.size()) == 3:
-                    images = images.unsqueeze(0)
-                images = images.to(self.device)
-                img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
+                with autocast():
+                    text['input_ids'] = text['input_ids'][:,-1,:]
+                    text['attention_mask'] = text['attention_mask'][:,-1,:]
+                    text = text.to(self.device)
+                    text_embeds = self.model(
+                        inputs={'text': text['input_ids'],},
+                        attention_mask=text['attention_mask']
+                    )['last_hidden_state'][:,0,:]
+                    
+                    images = torch.squeeze(images)
+                    if len(images.size()) == 3:
+                        images = images.unsqueeze(0)
+                    images = images.to(self.device)
+                    img_embeds = self.model(inputs={'image': images,})['last_hidden_state'][:,0,:]
 
-                loss = criterion(text_embeds, img_embeds)
+                    temperature = self.model.logit_scale.exp()
+                    loss = compute_clip_loss(img_embeds, text_embeds, temperature)
+
                 epoch_loss += loss.item()
 
             epoch_loss = epoch_loss / len(dataloader)
@@ -146,43 +156,33 @@ class CustomPerceiver():
     def orchestrate_training(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
                              batch_size, no_epochs, save_path):
         
-        criterion = ContrastiveLoss(temperature=0.5)
-
-        opt_lr = 1e-3
-        opt_wd = 1e-4
-        optimizer = optimizer = optim.Adam(
-            self.model.parameters(),
-            lr=opt_lr,
-            weight_decay=opt_wd
-            )
+        optimizer = optim.AdamW(self.model.parameters(), lr=5e-4, eps=1.0e-08, weight_decay=0.1)
         
-        gamma_value = 0.95
-        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=gamma_value)
-
         grad_scaler = GradScaler()
 
-        wandb_config = {
-            'number_of_parameters': sum(p.numel() for p in self.model.parameters()),
-            'batch_size': batch_size,
-            'number_of_epochs': no_epochs,
-            'optimizer': 'Adam',
-            'optimizer_learning_rate': opt_lr,
-            'optimizer_weight_decay': opt_wd,
-            'scheduler': 'ExponentialLR',
-            'scheduler_gamma': gamma_value
-        }
-
-        current_date = datetime.today().strftime('%Y-%m-%d')
-        wandb.init(
-            config=wandb_config,
-            entity='iman_morovatian',
-            project='Thesis',
-            name=f'Training Perceiver {dataset_name} {current_date}'
+        gradient_accumulation_steps = 1
+        t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
+        num_warmup_steps = int(0.20 * t_total)
+        scheduler = get_cosine_schedule_with_warmup(
+            optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=t_total
             )
 
+        # wandb_config = {
+        #     'number_of_parameters': sum(p.numel() for p in self.model.parameters()),
+        #     'batch_size': batch_size,
+        #     'number_of_epochs': no_epochs,
+        # }
+
+        # wandb.init(
+        #     config=wandb_config,
+        #     entity='iman_morovatian',
+        #     project='Thesis',
+        #     name=f'Training Perceiver {dataset_name}'
+        #     )
+
         for epoch in range(no_epochs):
-            train_loss = self.train(train_dataloader, criterion, optimizer, grad_scaler)
-            val_loss = self.evaluation(val_dataloader, criterion)
+            train_loss = self.train(train_dataloader, optimizer, scheduler, grad_scaler)
+            val_loss = self.evaluation(val_dataloader)
             print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
             wandb.log({
                 'epoch': epoch+1,
@@ -190,9 +190,8 @@ class CustomPerceiver():
                 'val_loss': val_loss
             })
 
-            scheduler.step()
 
-        test_loss = self.evaluation(test_dataloader, criterion)
+        test_loss = self.evaluation(test_dataloader)
 
         wandb.log({'test_loss': test_loss})
         wandb.finish()

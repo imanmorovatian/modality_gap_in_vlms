@@ -18,7 +18,7 @@ from transformers import (
 import wandb
 
 from utils.custom_schedulers import get_cosine_schedule_with_warmup
-from utils.contrastive_loss import compute_contrastive_loss
+from utils.loss import compute_clip_loss
 
 
 # Lu = Locked image, unlocked text from scratch
@@ -130,7 +130,7 @@ class CustomVTDE():
                 img_embeds = self.model.get_image_features(images)
                 text_embeds = self.model.get_text_features(text.input_ids, text.attention_mask)              
                 temperature = self.model.logit_scale.exp()
-                loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
+                loss = compute_clip_loss(img_embeds, text_embeds, temperature)
 
             grad_scaler.scale(loss).backward()
             grad_scaler.step(optimizer)
@@ -164,7 +164,7 @@ class CustomVTDE():
                     img_embeds = self.model.get_image_features(images)
                     text_embeds = self.model.get_text_features(text.input_ids, text.attention_mask)              
                     temperature = self.model.logit_scale.exp()
-                    loss = compute_contrastive_loss(img_embeds, text_embeds, temperature)
+                    loss = compute_clip_loss(img_embeds, text_embeds, temperature)
                 
                 epoch_loss += loss.item()
 
@@ -263,7 +263,7 @@ class CustomVTDE():
                     text_features.append(text_embeds)
                     
                     temperature = self.model.logit_scale.exp()
-                    loss = compute_contrastive_loss(img_embeds, text_embeds[::captions_per_image], temperature)
+                    loss = compute_clip_loss(img_embeds, text_embeds[::captions_per_image], temperature)
                 
                 total_loss += loss.item()
                 total_batches += 1

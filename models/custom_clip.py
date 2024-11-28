@@ -1,3 +1,4 @@
+import os
 import wandb
 
 import torch
@@ -11,7 +12,12 @@ from utils.loss import compute_clip_loss
 
 
 class CustomCLIP():
-    def __init__(self, vision_encoder: str, pre_trained: bool):
+    def __init__(self,
+                 vision_encoder: str,
+                 frozen_text_encoder: bool,
+                 frozen_image_encoder: bool,
+                 pre_trained: bool):
+        
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         if vision_encoder == 'RN50':
@@ -21,19 +27,51 @@ class CustomCLIP():
             self.model, self.transform = clip.load(name='ViT-B/32', pretrained=pre_trained, device=self.device, fp32=True)
             self.name = 'CLIP_ViT32'
 
-        if pre_trained:
-            self.name += '_Pre-trained'
+        if frozen_image_encoder:
+            self.name += '_L'
+        else:
+            if pre_trained:
+                self.name += '_U'
+            else:
+                self.name += '_u'
+
+        if frozen_text_encoder:
+            self.name += 'L'
+        else:
+            if pre_trained:
+                self.name += 'U'
+            else:
+                self.name += 'u'
 
         # if you want to reduce the number of layers of text transformer
         # self.model.transformer.layers = 6
         # self.model.transformer.resblocks = self.model.transformer.resblocks[:6]
+        
+        if frozen_text_encoder:
+            self.model.positional_embedding.requires_grad = False
+            self.model.ln_final.bias.requires_grad = False
+            self.model.ln_final.weight.requires_grad = False
+            self.model.token_embedding.weight.requires_grad = False
 
+            for name, param in self.model.named_parameters():
+                if name.startswith('transformer'):
+                    param.requires_grad = False
+
+        if frozen_image_encoder:
+            for name, param in self.model.named_parameters():
+                if name.startswith('visual'):
+                    param.requires_grad = False
+
+        # projection layers
+        self.model.text_projection.requires_grad = True
+        self.model.visual.proj.requires_grad = True
+            
         self._tokenizer = clip.tokenize
 
     def text_tokenizer(self, captions, *args, **kwargs):
         return self._tokenizer(texts=captions, context_length=77, truncate=True)
 
-    def train(self, dataloader, optimizer, scheduler, grad_scaler):
+    def train(self, dataloader, loss_function, optimizer, scheduler, grad_scaler):
         self.model.train()
         epoch_loss = 0.0
 
@@ -55,7 +93,7 @@ class CustomCLIP():
                 text_embeds = self.model.encode_text(text)                
                 temperature = self.model.logit_scale.exp()
                 
-                loss = compute_clip_loss(img_embeds, text_embeds, temperature)
+                loss = loss_function(img_embeds, text_embeds, temperature)
 
             grad_scaler.scale(loss).backward()
             grad_scaler.step(optimizer)
@@ -70,7 +108,7 @@ class CustomCLIP():
 
         return epoch_loss      
 
-    def evaluation(self, dataloader):
+    def evaluation(self, dataloader, loss_function):
         self.model.eval()
         epoch_loss = 0.0
 
@@ -91,7 +129,7 @@ class CustomCLIP():
                     text_embeds = self.model.encode_text(text)                
                     temperature = self.model.logit_scale.exp()
                     
-                    loss = compute_clip_loss(img_embeds, text_embeds, temperature)
+                    loss = loss_function(img_embeds, text_embeds, temperature)
                 
                 epoch_loss += loss.item()
 
@@ -100,15 +138,20 @@ class CustomCLIP():
         return epoch_loss
 
     def orchestrate_training(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
-                             batch_size, no_epochs, save_path):
+                             loss_function, batch_size, no_epochs):
                 
         optimizer = AdamW(self.model.parameters(), lr=5e-4, eps=1.0e-08, weight_decay=0.1)
         
         grad_scaler = GradScaler()
 
-        gradient_accumulation_steps = 1
-        t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
-        num_warmup_steps = int(0.20 * t_total)
+        t_total = len(train_dataloader) * no_epochs
+        
+        if self.name.split('_')[2] == 'LL':
+            # it is just finetunning the projection layers
+            num_warmup_steps = 0
+        else:
+            num_warmup_steps = int(0.20 * t_total)
+        
         scheduler = get_cosine_schedule_with_warmup(
             optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=t_total
             )
@@ -123,12 +166,12 @@ class CustomCLIP():
             config=wandb_config,
             entity='iman_morovatian',
             project='Thesis',
-            name=f'Training CLIP {dataset_name}'
+            name=f'Training {self.name} {dataset_name} {loss_function.__name__}'
             )
 
         for epoch in range(no_epochs):
-            train_loss = self.train(train_dataloader, optimizer, scheduler, grad_scaler)
-            val_loss = self.evaluation(val_dataloader)
+            train_loss = self.train(train_dataloader, loss_function, optimizer, scheduler, grad_scaler)
+            val_loss = self.evaluation(val_dataloader, loss_function)
             
             print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
             wandb.log({
@@ -142,8 +185,14 @@ class CustomCLIP():
         wandb.log({'test_loss': test_loss})
         wandb.finish()
 
-        torch.save(self.model.state_dict(), f'{save_path}/clip_{dataset_name}.pth')
-        print(f'Saved model in {save_path}')
+        model_name, vision_encoder, ext_name = self.name.split('_')
+        loss_name = loss_function.__name__.split('compute_')[-1]
+        folder = f'weights/{model_name}'
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+
+        torch.save(self.model.state_dict(), f'{folder}/{vision_encoder}_{ext_name}_{loss_name}_{dataset_name}.pth')
+        print(f'Saved model in {folder}')
 
     def encode_for_retrieval(self, dataloader):
         self.model.eval()

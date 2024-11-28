@@ -6,30 +6,45 @@ from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
 from utils.datasets.conceptual_captions import ConceptualCaptions
 
+from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
+
 from models.custom_clip import CustomCLIP
 from models.custom_perceiver import CustomPerceiver
 from models.custom_visiontextdualencoder import CustomVTDE
 
 
 def create_model(name):
-    if name == 'CLIP_RN50':
-        return CustomCLIP(vision_encoder='RN50', pre_trained=False)
-    elif name == 'CLIP_ViT':
-        return CustomCLIP(vision_encoder='ViT', pre_trained=False)
+    if name == 'CLIP_RN50_LL':
+        # just fine tunning the projection layers
+        return CustomCLIP(vision_encoder='RN50',
+                          frozen_text_encoder=True,
+                          frozen_image_encoder=True,
+                          pre_trained=True)
+    
+    elif name == 'CLIP_ViT_LL':
+        # just fine tunning the projection layers
+        return CustomCLIP(vision_encoder='ViT',
+                          frozen_text_encoder=True,
+                          frozen_image_encoder=True,
+                          pre_trained=True)
+    
     elif name == 'Perceiver':
         return CustomPerceiver()
+    
     elif name == 'VTDE_LU':
         return CustomVTDE(
             frozen_text_encoder=False,
             frozen_image_encoder=True,
             pretrained_text_encoder=True,
             pretrained_image_encoder=True)
+    
     elif name == 'VTDE_Lu':
         return CustomVTDE(
             frozen_text_encoder=False,
             frozen_image_encoder=True,
             pretrained_text_encoder=False,
             pretrained_image_encoder=True)
+    
     elif name == 'VTDE_UU':
         return CustomVTDE(
             frozen_text_encoder=False,
@@ -43,6 +58,7 @@ def create_model(name):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True, help='name of the model', dest='MODEL')
+    parser.add_argument("--loss", type=str, required=True, help='name of the loss function', dest='LOSS')
     parser.add_argument("--dataset", type=str, required=True, help='name of the dataset', dest='DATASET')
     parser.add_argument('--batch_size', type=int, required=True, help='batch size', dest='BATCH_SIZE')
     parser.add_argument('--no_epochs', type=int, required=True, help='number of epochs', dest='NO_EPOCHS')
@@ -54,18 +70,24 @@ def parse_args():
 
 args = parse_args()
 MODEL = args.MODEL
-dataset_name = args.DATASET
+LOSS = args.LOSS
+DATASET = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 NO_EPOCHS = args.NO_EPOCHS
 NUM_WORKERS = 2
 
+assert MODEL in ['CLIP_RN50_LL',
+                 'CLIP_ViT_LL',
+                 'VTDE_LU', 'VTDE_Lu', 'VTDE_UU',
+                 'Perceiver']
 
-assert dataset_name in ['mscoco', 'flickr30k', 'conceptualCaptions']
-assert MODEL in ['CLIP_RN50', 'CLIP_ViT', 'Perceiver', 'VTDE_LU', 'VTDE_Lu', 'VTDE_UU']
+assert DATASET in ['mscoco', 'flickr30k', 'conceptualCaptions']
+
+assert LOSS in ['clip', 'cua', 'cuaxu']
 
 model = create_model(MODEL)
     
-if dataset_name == 'mscoco':
+if DATASET == 'mscoco':
     train_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
 						annotations_file='data/annotations/mscoco/train2017_captions.json',
                         image_transform=model.transform,
@@ -88,7 +110,7 @@ if dataset_name == 'mscoco':
     test_sampler = SequentialSampler(test_dataset)
     test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
     
-elif dataset_name == 'flickr30k':
+elif DATASET == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
                         annotations_file='data/annotations/flickr30k/train.token',
                         image_transform=model.transform,
@@ -110,7 +132,7 @@ elif dataset_name == 'flickr30k':
     test_sampler = SequentialSampler(test_dataset)
     test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
-elif dataset_name == 'conceptualCaptions':
+elif DATASET == 'conceptualCaptions':
     train_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
                         annotations_file='data/annotations/conceptualCaptions/train.csv',
                         image_transform=model.transform,
@@ -135,10 +157,14 @@ elif dataset_name == 'conceptualCaptions':
 else:
     raise ValueError('The selected dataset is not supported')
 
+if LOSS == 'clip':
+    loss_function = compute_clip_loss
+elif LOSS == 'cua':
+    loss_function = compute_CUA_loss
+elif LOSS == 'cuaxu':
+    loss_function = compute_CUAXU_loss
+else:
+    raise ValueError('The selected loss is not supported')
 
-result_dir = f'pkgs/{MODEL}'
-if not os.path.exists(result_dir):
-    os.makedirs(result_dir)
-
-model.orchestrate_training(dataset_name, train_dataloader, val_dataloader, test_dataloader,
-                            BATCH_SIZE, NO_EPOCHS, result_dir)
+model.orchestrate_training(DATASET, train_dataloader, val_dataloader, test_dataloader,
+                            loss_function, BATCH_SIZE, NO_EPOCHS)

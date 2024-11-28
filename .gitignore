@@ -224,6 +224,8 @@ pkgs/CLIP_ViT
 pkgs/CLIP_RN50
 pkgs/VTDE*
 
+weights/
+
 preprocess/amazon/amazon_categories/
 preprocess/amazon/amazon_edited_categories/
 

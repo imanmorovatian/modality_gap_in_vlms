@@ -89,7 +89,7 @@ model = create_model(MODEL)
     
 if DATASET == 'mscoco':
     train_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
-						annotations_file='data/annotations/mscoco/train2017_captions.json',
+						annotations_file='data/annotations/mscoco/train2017full_captions.json',
                         image_transform=model.transform,
                         caption_transform=model.text_tokenizer)
     train_sampler = RandomSampler(train_dataset)
@@ -103,12 +103,14 @@ if DATASET == 'mscoco':
     val_dataloader = DataLoader(val_dataset, sampler=val_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
     # test split is sampled from train split
-    test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
-						annotations_file='data/annotations/mscoco/test2017_captions.json',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    test_sampler = SequentialSampler(test_dataset)
-    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    # test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
+	# 					annotations_file='data/annotations/mscoco/test2017_captions.json',
+    #                     image_transform=model.transform,
+    #                     caption_transform=model.text_tokenizer)
+    # test_sampler = SequentialSampler(test_dataset)
+    # test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
+    
+    test_dataloader = val_dataloader
     
 elif DATASET == 'flickr30k':
     train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',

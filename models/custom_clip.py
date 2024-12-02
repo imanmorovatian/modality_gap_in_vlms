@@ -8,15 +8,15 @@ from torch.cuda.amp import autocast, GradScaler
 from utils.clip import clip
 
 from utils.custom_schedulers import get_cosine_schedule_with_warmup
-from utils.loss import compute_clip_loss
 
 
 class CustomCLIP():
     def __init__(self,
                  vision_encoder: str,
-                 frozen_text_encoder: bool,
-                 frozen_image_encoder: bool,
-                 pre_trained: bool):
+                 frozen_text_encoder: bool = True,
+                 frozen_image_encoder: bool = True,
+                 pre_trained: bool = True,
+                 local_pre_trained_weights: str = None):
         
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -26,6 +26,9 @@ class CustomCLIP():
         else:
             self.model, self.transform = clip.load(name='ViT-B/32', pretrained=pre_trained, device=self.device, fp32=True)
             self.name = 'CLIP_ViT32'
+
+        if local_pre_trained_weights:
+            self.model.load_state_dict(torch.load(local_pre_trained_weights))
 
         if frozen_image_encoder:
             self.name += '_L'
@@ -180,7 +183,7 @@ class CustomCLIP():
                 'val_loss': val_loss
             })
 
-        test_loss = self.evaluation(test_dataloader)
+        test_loss = self.evaluation(test_dataloader, loss_function)
 
         wandb.log({'test_loss': test_loss})
         wandb.finish()
@@ -194,7 +197,7 @@ class CustomCLIP():
         torch.save(self.model.state_dict(), f'{folder}/{vision_encoder}_{ext_name}_{loss_name}_{dataset_name}.pth')
         print(f'Saved model in {folder}')
 
-    def encode_for_retrieval(self, dataloader):
+    def encode_for_retrieval(self, dataloader, loss_function):
         self.model.eval()
         
         image_to_text_map = []
@@ -237,7 +240,7 @@ class CustomCLIP():
                 
                 temperature = self.model.logit_scale.exp()
                 
-                loss = compute_clip_loss(img_embeds, text_embeds[::captions_per_image], temperature)
+                loss = loss_function(img_embeds, text_embeds[::captions_per_image], temperature)
                 total_loss += loss.item()
                 total_batches += 1
 

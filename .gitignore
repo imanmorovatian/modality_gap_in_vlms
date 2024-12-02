@@ -216,14 +216,6 @@ experiment_scripts/
 
 data/
 
-pkgs/ALBEF/ALBEF.pth
-pkgs/CyCLIP/cyclip_3m_best.pt
-pkgs/Perceiver
-pkgs/CLIP
-pkgs/CLIP_ViT
-pkgs/CLIP_RN50
-pkgs/VTDE*
-
 weights/
 
 preprocess/amazon/amazon_categories/

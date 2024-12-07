@@ -13,20 +13,63 @@ from models.custom_perceiver import CustomPerceiver
 from models.custom_visiontextdualencoder import CustomVTDE
 
 
-def create_model(name):
+def create_model(name, local_weights=None):
     if name == 'CLIP_RN50_LL':
         # just fine tunning the projection layers
         return CustomCLIP(vision_encoder='RN50',
                           frozen_text_encoder=True,
                           frozen_image_encoder=True,
-                          pre_trained=True)
+                          frozen_projection_layers=False)
     
     elif name == 'CLIP_ViT_LL':
-        # just fine tunning the projection layers
+        # just fine tunning just the projection layers
         return CustomCLIP(vision_encoder='ViT',
                           frozen_text_encoder=True,
                           frozen_image_encoder=True,
-                          pre_trained=True)
+                          frozen_projection_layers=False)
+    
+    elif name == 'CLIP_ViT_LU':
+        # Freeze the image encoder, while fine tune the text encoder
+        return CustomCLIP(vision_encoder='ViT',
+                          frozen_text_encoder=False,
+                          frozen_image_encoder=True,
+                          frozen_projection_layers=False)
+    
+    elif name == 'CLIP_ViT_UL':
+        # Freeze the text encoder, while fine tune the image encoder
+        return CustomCLIP(vision_encoder='ViT',
+                          frozen_text_encoder=True,
+                          frozen_image_encoder=False,
+                          frozen_projection_layers=False)
+    
+    elif name == 'CLIP_ViT_UU':
+        # Fine tune the whole model
+        return CustomCLIP(vision_encoder='ViT',
+                          frozen_text_encoder=False,
+                          frozen_image_encoder=False,
+                          frozen_projection_layers=False)
+    
+    elif name == 'CLIP_ViT_UL+LU':
+        # Firtly, finetune the image encoder (using the local weights), and then finetune the text encoder
+        return CustomCLIP(vision_encoder='ViT',
+                          frozen_text_encoder=False,
+                          text_encoder_from_local=False,
+                          frozen_image_encoder=True,
+                          image_encoder_from_local=True,
+                          frozen_projection_layers=False,
+                          projection_layers_from_local=False,
+                          local_pretrained_weights_path=local_weights)
+    
+    elif name == 'CLIP_ViT_LU+UL':
+        # Firtly, finetune the text encoder (using the local weights), and then finetune the image encoder
+        return CustomCLIP(vision_encoder='ViT',
+                          frozen_text_encoder=True,
+                          text_encoder_from_local=True,
+                          frozen_image_encoder=False,
+                          image_encoder_from_local=False,
+                          frozen_projection_layers=False,
+                          projection_layers_from_local=False,
+                          local_pretrained_weights_path=local_weights)
     
     elif name == 'Perceiver':
         return CustomPerceiver()
@@ -58,6 +101,8 @@ def create_model(name):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True, help='name of the model', dest='MODEL')
+    parser.add_argument("--local-weights", type=str, required=False,
+                        help='the local path in which the pretrained weights are saved', dest='PATH')
     parser.add_argument("--loss", type=str, required=True, help='name of the loss function', dest='LOSS')
     parser.add_argument("--dataset", type=str, required=True, help='name of the dataset', dest='DATASET')
     parser.add_argument('--batch_size', type=int, required=True, help='batch size', dest='BATCH_SIZE')
@@ -70,6 +115,7 @@ def parse_args():
 
 args = parse_args()
 MODEL = args.MODEL
+PATH = args.PATH
 LOSS = args.LOSS
 DATASET = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
@@ -77,7 +123,7 @@ NO_EPOCHS = args.NO_EPOCHS
 NUM_WORKERS = 2
 
 assert MODEL in ['CLIP_RN50_LL',
-                 'CLIP_ViT_LL',
+                 'CLIP_ViT_LL', 'CLIP_ViT_LU', 'CLIP_ViT_UL', 'CLIP_ViT_UU', 'CLIP_ViT_UL+LU', 'CLIP_ViT_LU+UL',
                  'VTDE_LU', 'VTDE_Lu', 'VTDE_UU',
                  'Perceiver']
 
@@ -85,7 +131,7 @@ assert DATASET in ['mscoco', 'flickr30k', 'conceptualCaptions']
 
 assert LOSS in ['clip', 'cua', 'cuaxu']
 
-model = create_model(MODEL)
+model = create_model(MODEL, PATH)
     
 if DATASET == 'mscoco':
     train_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',

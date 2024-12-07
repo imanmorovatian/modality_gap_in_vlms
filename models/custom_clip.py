@@ -14,41 +14,60 @@ class CustomCLIP():
     def __init__(self,
                  vision_encoder: str,
                  frozen_text_encoder: bool = True,
+                 text_encoder_from_local: bool = False,
                  frozen_image_encoder: bool = True,
-                 pre_trained: bool = True,
-                 local_pre_trained_weights: str = None):
+                 image_encoder_from_local: bool = False,
+                 frozen_projection_layers: bool = False,
+                 projection_layers_from_local: bool = False,
+                 local_pretrained_weights_path: str = None):
         
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         if vision_encoder == 'RN50':
-            self.model, self.transform = clip.load(name='RN50', pretrained=pre_trained, device=self.device, fp32=True)
+            self.model, self.transform = clip.load(name='RN50', pretrained=True, device='cpu', fp32=True)
             self.name = 'CLIP_RN50'
         else:
-            self.model, self.transform = clip.load(name='ViT-B/32', pretrained=pre_trained, device=self.device, fp32=True)
+            self.model, self.transform = clip.load(name='ViT-B/32', pretrained=True, device='cpu', fp32=True)
             self.name = 'CLIP_ViT32'
-
-        if local_pre_trained_weights:
-            self.model.load_state_dict(torch.load(local_pre_trained_weights))
-
-        if frozen_image_encoder:
-            self.name += '_L'
-        else:
-            if pre_trained:
-                self.name += '_U'
-            else:
-                self.name += '_u'
-
-        if frozen_text_encoder:
-            self.name += 'L'
-        else:
-            if pre_trained:
-                self.name += 'U'
-            else:
-                self.name += 'u'
+        
+        self._tokenizer = clip.tokenize
 
         # if you want to reduce the number of layers of text transformer
         # self.model.transformer.layers = 6
         # self.model.transformer.resblocks = self.model.transformer.resblocks[:6]
+
+        # By default, weights are loaded from the Internet. If you want to load some specific weights from
+        # the local, you must specify using the *_from_local arguments
+        if local_pretrained_weights_path is not None:
+            local_state_dict = torch.load(local_pretrained_weights_path, map_location=torch.device('cpu'))
+            hybrid_state_dict = {}
+
+            if text_encoder_from_local:
+                hybrid_state_dict['positional_embedding'] = local_state_dict['positional_embedding']
+                hybrid_state_dict['ln_final.bias'] = local_state_dict['ln_final.bias']
+                hybrid_state_dict['ln_final.weight'] = local_state_dict['ln_final.weight'] 
+                hybrid_state_dict['token_embedding.weight'] = local_state_dict['token_embedding.weight']
+
+                for name, param in local_state_dict.items():
+                    if name.startswith('transformer'):
+                        hybrid_state_dict[name] = param
+
+            if image_encoder_from_local:
+                for name, param in local_state_dict.items():
+                    if name.startswith('visual'):
+                        hybrid_state_dict[name] = param
+
+            if projection_layers_from_local:
+                hybrid_state_dict['text_projection'] = local_state_dict['text_projection']
+                hybrid_state_dict['visual.proj'] = local_state_dict['visual.proj']
+
+            filled_params = set(hybrid_state_dict.keys())
+            for name, param in self.model.named_parameters():
+                if name not in filled_params:
+                    hybrid_state_dict[name] = param
+
+            self.model.load_state_dict(hybrid_state_dict)
+
         
         if frozen_text_encoder:
             self.model.positional_embedding.requires_grad = False
@@ -65,12 +84,39 @@ class CustomCLIP():
                 if name.startswith('visual'):
                     param.requires_grad = False
 
-        # projection layers
-        self.model.text_projection.requires_grad = True
-        self.model.visual.proj.requires_grad = True
-            
-        self._tokenizer = clip.tokenize
+        if frozen_projection_layers:
+            self.model.text_projection.requires_grad = False
+            self.model.visual.proj.requires_grad = False
 
+        self.model = self.model.to(self.device)
+
+
+        if frozen_image_encoder:
+            self.name += '_L' # (L)ocked 
+            if image_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'I' # loaded from the (I)nternet
+        else:
+            self.name += '_U' # (U)nlocked
+            if image_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'I' # loaded from the (I)nternet
+
+        if frozen_text_encoder:
+            self.name += 'L' # (L)ocked 
+            if text_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'I' # loaded from the (I)nternet
+        else:
+            self.name += 'U' # (U)nlocked
+            if text_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'I' # loaded from the (I)nternet
+            
     def text_tokenizer(self, captions, *args, **kwargs):
         return self._tokenizer(texts=captions, context_length=77, truncate=True)
 
@@ -149,8 +195,11 @@ class CustomCLIP():
 
         t_total = len(train_dataloader) * no_epochs
         
-        if self.name.split('_')[2] == 'LL':
-            # it is just finetunning the projection layers
+        if self.name.split('_')[2][0]== 'L' and self.name.split('_')[2][0] == 'L':
+            # self.name.split('_')[2] is (L or U)(l or I)(L or U)(l or I)
+            # so self.name.split('_')[2][0]== 'L' and self.name.split('_')[2][0] == 'L' means
+            # just finetunning the projection layers
+
             num_warmup_steps = 0
         else:
             num_warmup_steps = int(0.20 * t_total)

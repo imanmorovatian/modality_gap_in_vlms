@@ -96,26 +96,26 @@ class CustomCLIP():
             if image_encoder_from_local:
                 self.name += 'l' # loaded from (l)ocal
             else:
-                self.name += 'I' # loaded from the (I)nternet
+                self.name += 'i' # loaded from the (I)nternet
         else:
             self.name += '_U' # (U)nlocked
             if image_encoder_from_local:
                 self.name += 'l' # loaded from (l)ocal
             else:
-                self.name += 'I' # loaded from the (I)nternet
+                self.name += 'i' # loaded from the (I)nternet
 
         if frozen_text_encoder:
             self.name += 'L' # (L)ocked 
             if text_encoder_from_local:
                 self.name += 'l' # loaded from (l)ocal
             else:
-                self.name += 'I' # loaded from the (I)nternet
+                self.name += 'i' # loaded from the (I)nternet
         else:
             self.name += 'U' # (U)nlocked
             if text_encoder_from_local:
                 self.name += 'l' # loaded from (l)ocal
             else:
-                self.name += 'I' # loaded from the (I)nternet
+                self.name += 'i' # loaded from the (I)nternet
             
     def text_tokenizer(self, captions, *args, **kwargs):
         return self._tokenizer(texts=captions, context_length=77, truncate=True)

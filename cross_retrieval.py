@@ -11,14 +11,14 @@ from utils.datasets.conceptual_captions import ConceptualCaptions
 from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
 
 from models.custom_clip import CustomCLIP
-from models.custom_align import CustomALIGN
-from models.custom_imagebind import CustomImageBind
-from models.custom_cyclip import CustomCyCLIP
-from models.custom_flava import CustomFLAVA
-from models.custom_albef import CustomALBEF
-from models.custom_bridgetower import CustomBridgeTower
-from models.custom_data2vec import CustomData2Vec
-from models.custom_perceiver import CustomPerceiver
+# from models.custom_align import CustomALIGN
+# from models.custom_imagebind import CustomImageBind
+# from models.custom_cyclip import CustomCyCLIP
+# from models.custom_flava import CustomFLAVA
+# from models.custom_albef import CustomALBEF
+# from models.custom_bridgetower import CustomBridgeTower
+# from models.custom_data2vec import CustomData2Vec
+# from models.custom_perceiver import CustomPerceiver
 from models.custom_visiontextdualencoder import CustomVTDE
 
 from utils.metrics.retrieval import CrossModalRetrieval
@@ -26,32 +26,62 @@ from utils.metrics.metrics import CMD, CD
 
 
 def create_model(name, local_path=None):
-    if name == 'ALBEF':
-        return CustomALBEF()
-    elif name == 'FLAVA':
-        return CustomFLAVA()
-    elif name == 'ALIGN':
-        return CustomALIGN()
-    elif name == 'ImageBind':
-        return CustomImageBind()
-    elif name == 'BridgeTower':
-        return CustomBridgeTower()
-    elif name == 'Data2Vec':
-        return CustomData2Vec()
-    elif name == 'CyCLIP':
-        return CustomCyCLIP()
+    # if name == 'ALBEF':
+    #     return CustomALBEF()
+    # elif name == 'FLAVA':
+    #     return CustomFLAVA()
+    # elif name == 'ALIGN':
+    #     return CustomALIGN()
+    # elif name == 'ImageBind':
+    #     return CustomImageBind()
+    # elif name == 'BridgeTower':
+    #     return CustomBridgeTower()
+    # elif name == 'Data2Vec':
+    #     return CustomData2Vec()
+    # elif name == 'CyCLIP':
+    #     return CustomCyCLIP()
     
-    elif name == 'zero_shot_CLIP_RN50':
-        return CustomCLIP(vision_encoder='RN50', pre_trained=True)
+    if name == 'zero_shot_CLIP_RN50':
+        return CustomCLIP(
+            vision_encoder='RN50',
+            frozen_text_encoder=True,
+            text_encoder_from_local=False,
+            frozen_image_encoder=True,
+            image_encoder_from_local=False,
+            frozen_projection_layers=True,
+            projection_layers_from_local=False)
     
     elif name == 'zero_shot_CLIP_ViT':
-        return CustomCLIP(vision_encoder='ViT', pre_trained=True)
+        return CustomCLIP(
+            vision_encoder='ViT',
+            frozen_text_encoder=True,
+            text_encoder_from_local=False,
+            frozen_image_encoder=True,
+            image_encoder_from_local=False,
+            frozen_projection_layers=True,
+            projection_layers_from_local=False)
 
     elif name == 'CLIP_RN50':
-        return CustomCLIP(vision_encoder='RN50', pre_trained=False, local_pre_trained_weights=local_path)
+        return CustomCLIP(
+            vision_encoder='RN50',
+            frozen_text_encoder=True,
+            text_encoder_from_local=True,
+            frozen_image_encoder=True,
+            image_encoder_from_local=True,
+            frozen_projection_layers=True,
+            projection_layers_from_local=True,
+            local_pretrained_weights_path=local_path)
     
     elif name == 'CLIP_ViT':
-        return CustomCLIP(vision_encoder='ViT', pre_trained=False, local_pre_trained_weights=local_path)
+        return CustomCLIP(
+            vision_encoder='ViT',
+            frozen_text_encoder=True,
+            text_encoder_from_local=True,
+            frozen_image_encoder=True,
+            image_encoder_from_local=True,
+            frozen_projection_layers=True,
+            projection_layers_from_local=True,
+            local_pretrained_weights_path=local_path)
 
     elif name == 'VTDE_LU':
         return CustomVTDE(
@@ -77,9 +107,9 @@ def create_model(name, local_path=None):
             pretrained_image_encoder=None,
             local_pre_trained_weights='pkgs/VTDE_UU')
 
-    elif name == 'Perceiver':
-        model = CustomPerceiver()
-        return model
+    # elif name == 'Perceiver':
+    #     model = CustomPerceiver()
+    #     return model
     
     else:
         raise ValueError('The selected model is not implemented yet')
@@ -108,6 +138,15 @@ DATASET = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 CPI = args.CPI # captions per image
 NUM_WORKERS = 2
+
+# for debugging
+# MODEL = 'CLIP_ViT'
+# PATH = 'weights/CLIP/ViT32_LiUi_clip_loss_mscoco.pth'
+# LOSS = 'clip'
+# DATASET = 'mscoco'
+# BATCH_SIZE = 128
+# CPI = 5 # captions per image
+# NUM_WORKERS = 2
 
 assert MODEL in ['ALBEF', 'FLAVA', 'ALIGN', 'ImageBind', 'BridgeTower', 'Data2Vec', 'CyCLIP',
                  'zero_shot_CLIP_RN50', 'zero_shot_CLIP_ViT',
@@ -205,9 +244,10 @@ result_dir = 'results/metrics'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
+file_name = os.path.join(result_dir, 'finetune.csv')
 # writing column names
-if not os.path.exists(os.path.join(result_dir, 'finetune.csv')):
-    with open(os.path.join(result_dir, 'finetune.csv'), 'w', encoding='UTF8') as f:
+if not os.path.exists(file_name):
+    with open(file_name, 'w', encoding='UTF8') as f:
         rows = ['dataset', 'model', 'path', 'loss', 'cmd_img_txt', 'cd_img_txt']
 
         for k in metrics['retrieval_unimodal'][0]:
@@ -222,7 +262,7 @@ if not os.path.exists(os.path.join(result_dir, 'finetune.csv')):
         writer.writerow(rows)
 
 # writing column values
-with open(os.path.join(result_dir, 'finetune.csv'), 'a', encoding='UTF8') as f:
+with open(file_name, 'a', encoding='UTF8') as f:
     rows = [DATASET,
             MODEL,
             PATH if PATH is not None else 'None',

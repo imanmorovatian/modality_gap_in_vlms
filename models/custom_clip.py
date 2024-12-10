@@ -189,21 +189,12 @@ class CustomCLIP():
     def orchestrate_training(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
                              loss_function, batch_size, no_epochs):
                 
-        optimizer = AdamW(self.model.parameters(), lr=5e-4, eps=1.0e-08, weight_decay=0.1)
-        
+        optimizer = AdamW(self.model.parameters(), lr=5e-5, eps=1.0e-08, weight_decay=0.1)
         grad_scaler = GradScaler()
-
-        t_total = len(train_dataloader) * no_epochs
-        
-        if self.name.split('_')[2][0]== 'L' and self.name.split('_')[2][0] == 'L':
-            # self.name.split('_')[2] is (L or U)(l or I)(L or U)(l or I)
-            # so self.name.split('_')[2][0]== 'L' and self.name.split('_')[2][0] == 'L' means
-            # just finetunning the projection layers
-
-            num_warmup_steps = 0
-        else:
-            num_warmup_steps = int(0.20 * t_total)
-        
+        gradient_accumulation_steps = 1
+        t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
+        # num_warmup_steps = int(0.20 * t_total)
+        num_warmup_steps = 0
         scheduler = get_cosine_schedule_with_warmup(
             optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=t_total
             )

@@ -81,7 +81,7 @@ class CustomCLIP():
 
         if frozen_image_encoder:
             for name, param in self.model.named_parameters():
-                if name.startswith('visual'):
+                if name.startswith('visual') and name != 'visual.proj':
                     param.requires_grad = False
 
         if frozen_projection_layers:

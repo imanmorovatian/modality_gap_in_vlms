@@ -6,7 +6,7 @@ train_file: ['data/coco.json',
                'data/sbu.json'
                ]
 # each train_file (json) contains a python list where each item is {'image': img_path, 'caption': text or list_of_text }
-bert_config: 'pkgs/ALBEF/config_bert.json'
+bert_config: 'utils/ALBEF/config_bert.json'
 
 image_res: 256
 vision_width: 768

@@ -6,8 +6,8 @@
 '''
 
 from functools import partial
-from pkgs.ALBEF.vit import VisionTransformer, interpolate_pos_embed
-from pkgs.ALBEF.xbert import BertConfig, BertForMaskedLM
+from utils.ALBEF.vit import VisionTransformer, interpolate_pos_embed
+from utils.ALBEF.xbert import BertConfig, BertForMaskedLM
 
 import torch
 import torch.nn.functional as F

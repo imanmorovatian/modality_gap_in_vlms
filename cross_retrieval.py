@@ -2,6 +2,7 @@ import os
 import argparse
 import csv
 
+import torch
 from torch.utils.data import DataLoader, SequentialSampler
 
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
@@ -15,7 +16,7 @@ from models.custom_clip import CustomCLIP
 # from models.custom_imagebind import CustomImageBind
 # from models.custom_cyclip import CustomCyCLIP
 # from models.custom_flava import CustomFLAVA
-# from models.custom_albef import CustomALBEF
+from models.custom_albef import CustomALBEF
 # from models.custom_bridgetower import CustomBridgeTower
 # from models.custom_data2vec import CustomData2Vec
 # from models.custom_perceiver import CustomPerceiver
@@ -26,8 +27,8 @@ from utils.metrics.metrics import CMD, CD
 
 
 def create_model(name, local_path=None):
-    # if name == 'ALBEF':
-    #     return CustomALBEF()
+    if name == 'ALBEF':
+        return CustomALBEF()
     # elif name == 'FLAVA':
     #     return CustomFLAVA()
     # elif name == 'ALIGN':
@@ -41,7 +42,7 @@ def create_model(name, local_path=None):
     # elif name == 'CyCLIP':
     #     return CustomCyCLIP()
     
-    if name == 'zero_shot_CLIP_RN50':
+    elif name == 'zero_shot_CLIP_RN50':
         return CustomCLIP(
             vision_encoder='RN50',
             frozen_text_encoder=True,
@@ -124,6 +125,7 @@ def parse_args():
     parser.add_argument("--dataset", type=str, required=True, help='name of the dataset', dest='DATASET')
     parser.add_argument('--batch_size', type=int, required=True, help='batch size', dest='BATCH_SIZE')
     parser.add_argument('--captions_per_image', type=int, required=True, help='number of captions per image', dest='CPI')
+    parser.add_argument('--save-embds', action='store_true', help='whether to save the embeddings of images and text', dest='SAVE_EMBDS')
 
     args = parser.parse_args()
 
@@ -137,15 +139,18 @@ LOSS = args.LOSS
 DATASET = args.DATASET
 BATCH_SIZE = args.BATCH_SIZE
 CPI = args.CPI # captions per image
+SAVE_EMBDS = args.SAVE_EMBDS # whether to save the embeddings of images and text
 NUM_WORKERS = 2
 
 # for debugging
-# MODEL = 'CLIP_ViT'
+# os.environ['TORCH_HOME']='/nfs/home/morovatian/.cache/torch'
+# MODEL = 'ALBEF'
 # PATH = 'weights/CLIP/ViT32_LiUi_clip_loss_mscoco.pth'
 # LOSS = 'clip'
 # DATASET = 'mscoco'
-# BATCH_SIZE = 128
+# BATCH_SIZE = 2
 # CPI = 5 # captions per image
+# SAVE_EMBDS = False
 # NUM_WORKERS = 2
 
 assert MODEL in ['ALBEF', 'FLAVA', 'ALIGN', 'ImageBind', 'BridgeTower', 'Data2Vec', 'CyCLIP',
@@ -208,6 +213,15 @@ else:
 
 retrieval_inputs = model.encode_for_retrieval(test_dataloader, loss_function)
 
+if SAVE_EMBDS:
+    result_dir = f'results/embeddings/{MODEL}/{DATASET}/'
+    if not os.path.exists(result_dir):
+        os.makedirs(result_dir)
+
+    torch.save(retrieval_inputs['image_embeddings'], result_dir+'image.pt')
+    torch.save(retrieval_inputs['text_embeddings'], result_dir+'text.pt')
+    
+
 metrics = {}
 
 retrieval_obj = CrossModalRetrieval(image_encodings=retrieval_inputs['image_embeddings'],
@@ -244,7 +258,7 @@ result_dir = 'results/metrics'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
-file_name = os.path.join(result_dir, 'finetune.csv')
+file_name = os.path.join(result_dir, 'pretrained.csv')
 # writing column names
 if not os.path.exists(file_name):
     with open(file_name, 'w', encoding='UTF8') as f:

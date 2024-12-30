@@ -14,13 +14,13 @@ from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
 from models.custom_clip import CustomCLIP
 from models.custom_align import CustomALIGN
 from models.custom_imagebind import CustomImageBind
-# from models.custom_cyclip import CustomCyCLIP
+from models.custom_cyclip import CustomCyCLIP
 from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
+# from models.custom_visiontextdualencoder import CustomVTDE
+# from models.custom_perceiver import CustomPerceiver
 # from models.custom_bridgetower import CustomBridgeTower
 # from models.custom_data2vec import CustomData2Vec
-# from models.custom_perceiver import CustomPerceiver
-from models.custom_visiontextdualencoder import CustomVTDE
 
 from utils.metrics.retrieval import CrossModalRetrieval
 from utils.metrics.metrics import CMD, CD
@@ -29,18 +29,18 @@ from utils.metrics.metrics import CMD, CD
 def create_model(name, local_path=None):
     if name == 'ALBEF':
         return CustomALBEF()
+    
     elif name == 'FLAVA':
         return CustomFLAVA()
+    
     elif name == 'ALIGN':
         return CustomALIGN()
+    
     elif name == 'ImageBind':
         return CustomImageBind()
-    # elif name == 'BridgeTower':
-    #     return CustomBridgeTower()
-    # elif name == 'Data2Vec':
-    #     return CustomData2Vec()
-    # elif name == 'CyCLIP':
-    #     return CustomCyCLIP()
+    
+    elif name == 'CyCLIP':
+        return CustomCyCLIP()
     
     elif name == 'zero_shot_CLIP_RN50':
         return CustomCLIP(
@@ -84,33 +84,39 @@ def create_model(name, local_path=None):
             projection_layers_from_local=True,
             local_pretrained_weights_path=local_path)
 
-    elif name == 'VTDE_LU':
-        return CustomVTDE(
-            frozen_text_encoder=None,
-            frozen_image_encoder=None,
-            pretrained_text_encoder=None,
-            pretrained_image_encoder=None,
-            local_pre_trained_weights='pkgs/VTDE_LU')
+    # elif name == 'VTDE_LU':
+    #     return CustomVTDE(
+    #         frozen_text_encoder=None,
+    #         frozen_image_encoder=None,
+    #         pretrained_text_encoder=None,
+    #         pretrained_image_encoder=None,
+    #         local_pre_trained_weights='pkgs/VTDE_LU')
     
-    elif name == 'VTDE_Lu':
-        return CustomVTDE(
-            frozen_text_encoder=None,
-            frozen_image_encoder=None,
-            pretrained_text_encoder=None,
-            pretrained_image_encoder=None,
-            local_pre_trained_weights='pkgs/VTDE_Lu')
+    # elif name == 'VTDE_Lu':
+    #     return CustomVTDE(
+    #         frozen_text_encoder=None,
+    #         frozen_image_encoder=None,
+    #         pretrained_text_encoder=None,
+    #         pretrained_image_encoder=None,
+    #         local_pre_trained_weights='pkgs/VTDE_Lu')
     
-    elif name == 'VTDE_UU':
-        return CustomVTDE(
-            frozen_text_encoder=None,
-            frozen_image_encoder=None,
-            pretrained_text_encoder=None,
-            pretrained_image_encoder=None,
-            local_pre_trained_weights='pkgs/VTDE_UU')
+    # elif name == 'VTDE_UU':
+    #     return CustomVTDE(
+    #         frozen_text_encoder=None,
+    #         frozen_image_encoder=None,
+    #         pretrained_text_encoder=None,
+    #         pretrained_image_encoder=None,
+    #         local_pre_trained_weights='pkgs/VTDE_UU')
 
     # elif name == 'Perceiver':
     #     model = CustomPerceiver()
     #     return model
+
+    # elif name == 'BridgeTower':
+    #     return CustomBridgeTower()
+
+    # elif name == 'Data2Vec':
+    #     return CustomData2Vec()
     
     else:
         raise ValueError('The selected model is not implemented yet')
@@ -144,7 +150,7 @@ NUM_WORKERS = 2
 
 # for debugging
 # os.environ['TORCH_HOME']='/nfs/home/morovatian/.cache/torch'
-# MODEL = 'ImageBind'
+# MODEL = 'CyCLIP'
 # PATH = 'weights/CLIP/ViT32_LiUi_clip_loss_mscoco.pth'
 # LOSS = 'clip'
 # DATASET = 'mscoco'

@@ -86,7 +86,8 @@ class CustomCLIP():
 
         if frozen_projection_layers:
             self.model.text_projection.requires_grad = False
-            self.model.visual.proj.requires_grad = False
+            if vision_encoder != 'RN50':
+                self.model.visual.proj.requires_grad = False
 
         self.model = self.model.to(self.device)
 

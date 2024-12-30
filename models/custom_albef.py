@@ -118,7 +118,7 @@ class CustomALBEF:
                 image_features.append(img_embeds)
                 text_features.append(text_embeds)
                 
-                temperature = 1 / 0.07
+                temperature = self.model.temp
                 
                 loss = loss_function(img_embeds, text_embeds[::captions_per_image], temperature)
                 total_loss += loss.item()

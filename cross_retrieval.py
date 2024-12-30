@@ -13,7 +13,7 @@ from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
 
 from models.custom_clip import CustomCLIP
 from models.custom_align import CustomALIGN
-# from models.custom_imagebind import CustomImageBind
+from models.custom_imagebind import CustomImageBind
 # from models.custom_cyclip import CustomCyCLIP
 from models.custom_flava import CustomFLAVA
 from models.custom_albef import CustomALBEF
@@ -33,8 +33,8 @@ def create_model(name, local_path=None):
         return CustomFLAVA()
     elif name == 'ALIGN':
         return CustomALIGN()
-    # elif name == 'ImageBind':
-    #     return CustomImageBind()
+    elif name == 'ImageBind':
+        return CustomImageBind()
     # elif name == 'BridgeTower':
     #     return CustomBridgeTower()
     # elif name == 'Data2Vec':
@@ -144,7 +144,7 @@ NUM_WORKERS = 2
 
 # for debugging
 # os.environ['TORCH_HOME']='/nfs/home/morovatian/.cache/torch'
-# MODEL = 'ALIGN'
+# MODEL = 'ImageBind'
 # PATH = 'weights/CLIP/ViT32_LiUi_clip_loss_mscoco.pth'
 # LOSS = 'clip'
 # DATASET = 'mscoco'

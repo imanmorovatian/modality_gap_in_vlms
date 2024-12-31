@@ -87,39 +87,55 @@ def draw_boxplot(model_names: list[str], dataset: str):
     plt.savefig(f'{result_dir}/{dataset}.jpg')
     print(f'Saved {dataset}.jpg successfully in {result_dir}')
 
-def draw_umap(model: str, dataset: str, n_neighbors: int):
-    image_embeddings = torch.load(f'results/embeddings/{model}/{dataset}/image.pt',
-                                  map_location=torch.device('cpu')).numpy()
-    
-    text_embeddings = torch.load(f'results/embeddings/{model}/{dataset}/text.pt',
-                                 map_location=torch.device('cpu')).numpy()
+def draw_umap(model_names: list[str], dataset: str, n_neighbors: int, n_row: int, n_col: int):
+    fig, axes = plt.subplots(n_row, n_col, figsize=(15, 20))
+    axes = axes.flatten()
 
-    
-    embeddings = np.concatenate([image_embeddings, text_embeddings], axis=0)
-    labels = np.array([0] * len(image_embeddings) + [1] * len(text_embeddings))
+    for idx, model in enumerate(tqdm(model_names, total=len(model_names))):
 
-    reducer = umap.UMAP(n_neighbors=n_neighbors, n_components=2, metric='cosine', min_dist=0.1, spread=1.0, random_state=42)
-    umap_results = reducer.fit_transform(embeddings)
+        image_embeddings = torch.load(f'results/embeddings/{model}/{dataset}/image.pt',
+                                    map_location=torch.device('cpu')).numpy()
+        
+        text_embeddings = torch.load(f'results/embeddings/{model}/{dataset}/text.pt',
+                                    map_location=torch.device('cpu')).numpy()
 
-    
-    plt.figure(figsize=(10, 7))
-    for label, color, marker in zip([0, 1], ['blue', 'red'], ['o', 'x']):
-        plt.scatter(
-            umap_results[labels == label, 0],
-            umap_results[labels == label, 1],
-            label="Image" if label == 0 else "Text",
-            c=color,
-            marker=marker,
-            alpha=0.7
-        )
+        
+        embeddings = np.concatenate([image_embeddings, text_embeddings], axis=0)
+        labels = np.array([0] * len(image_embeddings) + [1] * len(text_embeddings))
 
-    plt.xlabel("UMAP Dimension 1")
-    plt.ylabel("UMAP Dimension 2")
-    plt.legend()
+        reducer = umap.UMAP(n_neighbors=n_neighbors, n_components=2, metric='cosine', min_dist=0.2, spread=1.2)
+        umap_results = reducer.fit_transform(embeddings)
+
+        ax = axes[idx]
+        for label, color, marker in zip([0, 1], ['blue', 'red'], ['o', 'x']):
+            ax.scatter(
+                umap_results[labels == label, 0],
+                umap_results[labels == label, 1],
+                label="Image" if label == 0 else "Text",
+                c=color,
+                marker=marker,
+                alpha=0.7
+            )
+
+        ax.set_title(model)
+        ax.legend()
+        
+        if idx % 2 == 0:
+            ax.set_ylabel("UMAP Dimension 2")
+        if idx >= len(model_names) - 2:
+            ax.set_xlabel("UMAP Dimension 1")
+
+
+    # Hide any unused subplots
+    for i in range(len(model_names), len(axes)):
+        fig.delaxes(axes[i])
+
+    # automatically adjust the spacing between subplots in a figure
+    plt.tight_layout()
 
     result_dir = 'results/plots/umap'
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
-    plt.savefig(f'{result_dir}/{model}_{dataset}.jpg')
-    print(f'Saved {model}_{dataset}.jpg successfully in {result_dir}')
+    plt.savefig(f'{result_dir}/{model_names}_{dataset}.jpg')
+    print(f'Saved {model_names}_{dataset}.jpg successfully in {result_dir}')

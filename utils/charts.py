@@ -40,7 +40,7 @@ def similarities(sim_matrix):
 
     return np.diagonal(sim_matrix), off_diag(sim_matrix)
 
-def draw_boxplot(model_names: list[str], dataset: str):
+def draw_boxplot(model_names: list[str], dataset: str, no_captions: int = 5):
     points = []
     types = []
     models = []
@@ -49,6 +49,7 @@ def draw_boxplot(model_names: list[str], dataset: str):
 
         text_embedding = torch.load(f'results/embeddings/{model}/{dataset}/text.pt',
                                     map_location=torch.device('cpu')).numpy()
+        text_embedding = text_embedding[::no_captions]
         
         image_embedding = torch.load(f'results/embeddings/{model}/{dataset}/image.pt',
                                      map_location=torch.device('cpu')).numpy()

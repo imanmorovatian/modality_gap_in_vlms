@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import pandas as pd
 import umap
 import torch
 import seaborn as sns
@@ -84,10 +85,15 @@ def draw_boxplot(model_names: list[str], dataset: str):
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
-    plt.savefig(f'{result_dir}/{dataset}.jpg')
-    print(f'Saved {dataset}.jpg successfully in {result_dir}')
+    img_name = ','.join(model_names)
+    img_name += f'_{dataset}.jpg'
 
-def draw_umap(model_names: list[str], dataset: str, n_neighbors: int, n_row: int, n_col: int):
+    plt.savefig(f'{result_dir}/{img_name}')
+    print(f'Saved {img_name} successfully in {result_dir}')
+
+def draw_umap(model_names: list[str], dataset: str, n_row: int, n_col: int,
+              n_neighbors: int = 10, min_dist: int = 0.2, spread: int = 1.2):
+    
     fig, axes = plt.subplots(n_row, n_col, figsize=(15, 20))
     axes = axes.flatten()
 
@@ -103,7 +109,14 @@ def draw_umap(model_names: list[str], dataset: str, n_neighbors: int, n_row: int
         embeddings = np.concatenate([image_embeddings, text_embeddings], axis=0)
         labels = np.array([0] * len(image_embeddings) + [1] * len(text_embeddings))
 
-        reducer = umap.UMAP(n_neighbors=n_neighbors, n_components=2, metric='cosine', min_dist=0.2, spread=1.2)
+        reducer = umap.UMAP(
+            n_neighbors=n_neighbors,
+            n_components=2,
+            metric='cosine',
+            min_dist=min_dist,
+            spread=spread
+            )
+
         umap_results = reducer.fit_transform(embeddings)
 
         ax = axes[idx]
@@ -111,7 +124,7 @@ def draw_umap(model_names: list[str], dataset: str, n_neighbors: int, n_row: int
             ax.scatter(
                 umap_results[labels == label, 0],
                 umap_results[labels == label, 1],
-                label="Image" if label == 0 else "Text",
+                label='Image' if label == 0 else 'Text',
                 c=color,
                 marker=marker,
                 alpha=0.7
@@ -120,10 +133,11 @@ def draw_umap(model_names: list[str], dataset: str, n_neighbors: int, n_row: int
         ax.set_title(model)
         ax.legend()
         
-        if idx % 2 == 0:
-            ax.set_ylabel("UMAP Dimension 2")
-        if idx >= len(model_names) - 2:
-            ax.set_xlabel("UMAP Dimension 1")
+        if idx % n_col == 0:
+            ax.set_ylabel('UMAP Dimension 2')
+
+        if idx >= len(model_names) - ((n_row-1) * n_col):
+            ax.set_xlabel('UMAP Dimension 1')
 
 
     # Hide any unused subplots
@@ -137,5 +151,8 @@ def draw_umap(model_names: list[str], dataset: str, n_neighbors: int, n_row: int
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
-    plt.savefig(f'{result_dir}/{model_names}_{dataset}.jpg')
-    print(f'Saved {model_names}_{dataset}.jpg successfully in {result_dir}')
+    img_name = ','.join(model_names)
+    img_name += f'_{dataset}.jpg'
+
+    plt.savefig(f'{result_dir}/{img_name}')
+    print(f'Saved {img_name} successfully in {result_dir}')

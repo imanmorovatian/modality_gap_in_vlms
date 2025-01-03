@@ -34,7 +34,7 @@ The instances file has the following format:
     ----------------------------
 """
 
-with open('data/annotations/mscoco_val2017/captions_val2017.json') as f:
+with open('data/annotations/mscoco/val2017_captions.json') as f:
     json_file = json.load(f)
     
     captions = json_file['annotations']
@@ -61,7 +61,7 @@ with open('data/annotations/mscoco_val2017/captions_val2017.json') as f:
     )
 
 
-    with open('data/annotations/mscoco_val2017/instances_val2017.json') as f:
+    with open('data/annotations/mscoco/val2017_instances.json') as f:
         json_file = json.load(f)
 
         df_img_cat = pd.DataFrame(
@@ -99,10 +99,6 @@ with open('data/annotations/mscoco_val2017/captions_val2017.json') as f:
         )
 
         df_final = pd.merge(df_img_cap_final, df_img_cat_final, how='inner', on='image_id')
-        df_final = df_final[['file_name', 'image_id', 'caption', 'coco_url', 'flickr_url', 'super_categories', 'categories']]
-        
-        classes = df_final['super_categories'].unique().tolist()
-        class_ids = {name:idx for idx, name in enumerate(classes)}
-        df_final['class'] = df_final['super_categories'].apply(lambda x: class_ids[x])
-        df_final = df_final[['coco_url', 'caption', 'class', 'super_categories']]
-        df_final.to_csv('data/classified/mscoco_classified.csv', index=False)
+        # df_final = df_final[['file_name', 'image_id', 'caption', 'coco_url', 'flickr_url', 'super_categories', 'categories']]
+        df_final = df_final[['image_id', 'caption', 'categories']]
+        df_final.to_csv('data/classified/mscoco_val2017.csv', index=False)

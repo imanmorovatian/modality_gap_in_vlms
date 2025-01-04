@@ -40,32 +40,38 @@ def similarities(sim_matrix):
 
     return np.diagonal(sim_matrix), off_diag(sim_matrix)
 
-def draw_boxplot(model_names: list[str], dataset: str, no_captions: int = 5):
+def draw_boxplot(model_names: list[str], dataset: str):
     points = []
     types = []
     models = []
 
     for model in tqdm(model_names, total=len(model_names)):
 
-        text_embedding = torch.load(f'results/embeddings/{model}/{dataset}/text.pt',
+        text_embedding = torch.load(f'results/embeddings/visualization/{model}/{dataset}/text.pt',
                                     map_location=torch.device('cpu')).numpy()
-        text_embedding = text_embedding[::no_captions]
+        text_embedding1 = text_embedding[::2]
+        text_embedding2 = text_embedding[1::2]
         
-        image_embedding = torch.load(f'results/embeddings/{model}/{dataset}/image.pt',
+        image_embedding = torch.load(f'results/embeddings/visualization/{model}/{dataset}/image.pt',
                                      map_location=torch.device('cpu')).numpy()
+        image_embedding1 = image_embedding[::2]
+        image_embedding2 = image_embedding[1::2]
 
-        all_sim_img_txt, all_dissim_img_txt = similarities(image_embedding @ text_embedding.T)
+        
+        positive_text_similarities, _ = similarities(text_embedding1 @ text_embedding2.T)
+        points += positive_text_similarities.tolist()
+        types += ['text-text'] * len(positive_text_similarities)
+        models += [model] * len(positive_text_similarities)
 
-        all_sim_img_txt = all_sim_img_txt.tolist()
-        all_dissim_img_txt = all_dissim_img_txt.tolist()
+        positive_image_similarities, _ = similarities(image_embedding1 @ image_embedding2.T)
+        points += positive_image_similarities.tolist()
+        types += ['image-image'] * len(positive_image_similarities)
+        models += [model] * len(positive_image_similarities)
 
-        points += all_sim_img_txt
-        types += ['similarity'] * len(all_sim_img_txt)
-        models += [model] * len(all_sim_img_txt)
-
-        points += all_dissim_img_txt
-        types += ['dissimilarity'] * len(all_dissim_img_txt)
-        models += [model] * len(all_dissim_img_txt)
+        positive_paired_similarities, _ = similarities(image_embedding1 @ text_embedding1.T)
+        points += positive_paired_similarities.tolist()
+        types += ['image-text'] * len(positive_paired_similarities)
+        models += [model] * len(positive_paired_similarities)
 
 
     data = {
@@ -78,7 +84,7 @@ def draw_boxplot(model_names: list[str], dataset: str, no_captions: int = 5):
     ax = sns.boxplot(data, x='model', y='point', hue='type')
     ax.set(
         xlabel=None,
-        ylabel=None,
+        ylabel='Cosine Similarity',
         )
     ax.tick_params(axis='x', labelrotation=45)
 
@@ -100,10 +106,10 @@ def draw_umap(model_names: list[str], dataset: str, n_row: int, n_col: int,
 
     for idx, model in enumerate(tqdm(model_names, total=len(model_names))):
 
-        image_embeddings = torch.load(f'results/embeddings/{model}/{dataset}/image.pt',
+        image_embeddings = torch.load(f'results/embeddings/retrieval/{model}/{dataset}/image.pt',
                                     map_location=torch.device('cpu')).numpy()
         
-        text_embeddings = torch.load(f'results/embeddings/{model}/{dataset}/text.pt',
+        text_embeddings = torch.load(f'results/embeddings/retrieval/{model}/{dataset}/text.pt',
                                     map_location=torch.device('cpu')).numpy()
 
         

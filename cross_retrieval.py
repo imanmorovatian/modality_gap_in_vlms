@@ -23,7 +23,7 @@ from models.custom_albef import CustomALBEF
 # from models.custom_data2vec import CustomData2Vec
 
 from utils.metrics.retrieval import CrossModalRetrieval
-from utils.metrics.metrics import CMD, CD
+from utils.metrics.measure_gap import CMD, CD
 
 
 def create_model(name, local_path=None):

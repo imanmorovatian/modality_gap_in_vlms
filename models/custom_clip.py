@@ -1,12 +1,16 @@
 import os
+import pandas as pd
 import wandb
-
 import torch
-from torch.optim import AdamW
+import torch.nn as nn
+from torch.optim import Adam, AdamW
+from torch.optim.lr_scheduler import StepLR
 from torch.cuda.amp import autocast, GradScaler
+import torchvision.datasets as datasets
+from pathlib import Path
+from tqdm import tqdm
 
 from utils.clip import clip
-
 from utils.custom_schedulers import get_cosine_schedule_with_warmup
 
 
@@ -121,7 +125,7 @@ class CustomCLIP():
     def text_tokenizer(self, captions, *args, **kwargs):
         return self._tokenizer(texts=captions, context_length=77, truncate=True)
 
-    def train(self, dataloader, loss_function, optimizer, scheduler, grad_scaler):
+    def train(self, dataloader, loss_function, optimizer, scheduler, grad_scaler, add_heads=False):
         self.model.train()
         epoch_loss = 0.0
 
@@ -140,8 +144,14 @@ class CustomCLIP():
                 images = images.to(self.device)
 
                 img_embeds = self.model.encode_image(images)
-                text_embeds = self.model.encode_text(text)                
-                temperature = self.model.logit_scale.exp()
+                text_embeds = self.model.encode_text(text)
+
+                if add_heads:
+                    img_embeds = self.model.img_head(img_embeds)
+                    text_embeds = self.model.txt_head(text_embeds)
+                    temperature = 0.1
+                else:            
+                    temperature = self.model.logit_scale.exp()
                 
                 loss = loss_function(img_embeds, text_embeds, temperature)
 
@@ -151,14 +161,16 @@ class CustomCLIP():
 
             epoch_loss += loss.item()
 
-            self.model.logit_scale.data = torch.clamp(self.model.logit_scale.data, 0, 4.6052)
+            if add_heads is False:
+                self.model.logit_scale.data = torch.clamp(self.model.logit_scale.data, 0, 4.6052)
+                
             scheduler.step() 
             
         epoch_loss = epoch_loss / len(dataloader)
 
         return epoch_loss      
 
-    def evaluation(self, dataloader, loss_function):
+    def evaluation(self, dataloader, loss_function, add_heads=False):
         self.model.eval()
         epoch_loss = 0.0
 
@@ -177,7 +189,13 @@ class CustomCLIP():
                 with autocast():
                     img_embeds = self.model.encode_image(images)
                     text_embeds = self.model.encode_text(text)                
-                    temperature = self.model.logit_scale.exp()
+                    
+                    if add_heads:
+                        img_embeds = self.model.img_head(img_embeds)
+                        text_embeds = self.model.txt_head(text_embeds)
+                        temperature = 0.1
+                    else:            
+                        temperature = self.model.logit_scale.exp()
                     
                     loss = loss_function(img_embeds, text_embeds, temperature)
                 
@@ -305,3 +323,69 @@ class CustomCLIP():
             'image_to_text_mapping': image_to_text_map.squeeze(),
             'loss': avg_loss
         }
+    
+    def train_heads_for_simat(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
+                             loss_function, batch_size, no_epochs, output_dim=512, eps=0.01):
+        # Adopted from https://github.com/facebookresearch/SIMAT/blob/main/adaptation.py
+        
+        for name, param in self.model.named_parameters():
+            param.requires_grad = False
+
+        self.model.img_head = nn.Linear(512, output_dim)
+        self.model.img_head.weight.data = torch.eye(*self.model.img_head.weight.data.shape) + eps * self.model.img_head.weight.data
+        self.model.img_head.bias.data = eps * self.model.img_head.bias.data
+        
+        self.model.txt_head = nn.Linear(512, output_dim)
+        self.model.txt_head.weight.data = torch.eye(*self.model.txt_head.weight.data.shape) + eps * self.model.txt_head.weight.data
+        self.model.txt_head.bias.data = eps * self.model.txt_head.bias.data
+
+        self.model = self.model.to(self.device)
+
+        opt = Adam([
+            {'params': self.model.img_head.parameters(), 'lr': 1e-3},
+            {'params': self.model.txt_head.parameters(), 'lr': 1e-3}],
+            lr=1e-3)
+        
+        sched = StepLR(opt, step_size=25, gamma=0.1)
+
+        grad_scaler = GradScaler()
+
+        wandb_config = {
+            'number_of_parameters': sum(p.numel() for p in self.model.parameters()),
+            'batch_size': batch_size,
+            'number_of_epochs': no_epochs,
+        }
+
+        wandb.init(
+            config=wandb_config,
+            entity='iman_morovatian',
+            project='Thesis',
+            name=f'Fine Tunning heads for {self.name} {dataset_name} {loss_function.__name__}'
+        )
+
+        for epoch in range(no_epochs):
+            train_loss = self.train(train_dataloader, loss_function, opt, sched, grad_scaler, add_heads=True)
+            val_loss = self.evaluation(val_dataloader, loss_function, add_heads=True)
+            
+            print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
+            wandb.log({
+                'epoch': epoch+1,
+                'train_loss': train_loss,
+                'val_loss': val_loss
+            })
+
+        test_loss = self.evaluation(test_dataloader, loss_function, add_heads=True)
+
+        wandb.log({'test_loss': test_loss})
+        wandb.finish()
+
+        model_name, vision_encoder, ext_name = self.name.split('_')
+        loss_name = loss_function.__name__.split('compute_')[-1]
+        folder = f'weights/simat/{model_name}'
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+
+        torch.save(self.model.img_head.state_dict(), f'{folder}/{vision_encoder}_{ext_name}_{loss_name}_{dataset_name}_img_head.pth')
+        torch.save(self.model.txt_head.state_dict(), f'{folder}/{vision_encoder}_{ext_name}_{loss_name}_{dataset_name}_txt_head.pth')
+        print(f'Saved heads in {folder}')
+

@@ -1,10 +1,12 @@
-import os
 import argparse
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
+import torchvision.transforms as T
 
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
 from utils.datasets.conceptual_captions import ConceptualCaptions
+
+from PIL import Image
 
 from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
 
@@ -70,6 +72,27 @@ def create_model(name, local_weights=None):
                           frozen_projection_layers=False,
                           projection_layers_from_local=False,
                           local_pretrained_weights_path=local_weights)
+
+    elif name == 'CLIP_ViT_heads':
+        if local_weights is None:
+            model = CustomCLIP(vision_encoder='Vit')
+        else:
+            model = CustomCLIP(vision_encoder='ViT',
+                              text_encoder_from_local=True,
+                              image_encoder_from_local=True,
+                              projection_layers_from_local=True,
+                              frozen_projection_layers=True,
+                              local_pretrained_weights_path=local_weights)
+        
+        model.transform = T.Compose([
+            T.Resize(size=256, interpolation=Image.BICUBIC),
+            T.RandomCrop(224),
+            T.RandomHorizontalFlip(),
+            T.ToTensor(),
+            T.Normalize(mean=(0.48145466, 0.4578275, 0.40821073), 
+                        std=(0.26862954, 0.26130258, 0.27577711))])
+
+        return model
     
     elif name == 'Perceiver':
         return CustomPerceiver()
@@ -122,8 +145,17 @@ BATCH_SIZE = args.BATCH_SIZE
 NO_EPOCHS = args.NO_EPOCHS
 NUM_WORKERS = 2
 
+# MODEL = 'CLIP_ViT_heads'
+# PATH = 'weights/retrieval/CLIP/ViT32_LiUi_clip_loss_mscoco.pth'
+# LOSS = 'clip'
+# DATASET = 'mscoco'
+# BATCH_SIZE = 2
+# NO_EPOCHS = 1
+# NUM_WORKERS = 2
+
 assert MODEL in ['CLIP_RN50_LL',
                  'CLIP_ViT_LL', 'CLIP_ViT_LU', 'CLIP_ViT_UL', 'CLIP_ViT_UU', 'CLIP_ViT_UL+LU', 'CLIP_ViT_LU+UL',
+                 'CLIP_ViT_heads',
                  'VTDE_LU', 'VTDE_Lu', 'VTDE_UU',
                  'Perceiver']
 
@@ -214,5 +246,11 @@ elif LOSS == 'cuaxu':
 else:
     raise ValueError('The selected loss is not supported')
 
-model.orchestrate_training(DATASET, train_dataloader, val_dataloader, test_dataloader,
-                            loss_function, BATCH_SIZE, NO_EPOCHS)
+if 'heads' in MODEL:
+    model.train_heads_for_simat(
+        DATASET, train_dataloader, val_dataloader, test_dataloader,
+        loss_function, BATCH_SIZE, NO_EPOCHS)
+else:
+    model.orchestrate_training(
+        DATASET, train_dataloader, val_dataloader, test_dataloader,
+        loss_function, BATCH_SIZE, NO_EPOCHS)

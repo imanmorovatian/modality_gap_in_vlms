@@ -8,7 +8,6 @@ from torch.optim.lr_scheduler import StepLR
 from torch.cuda.amp import autocast, GradScaler
 import torchvision.datasets as datasets
 from pathlib import Path
-from tqdm import tqdm
 
 from utils.clip import clip
 from utils.custom_schedulers import get_cosine_schedule_with_warmup
@@ -393,7 +392,7 @@ class CustomCLIP():
         # Adopted from https://github.com/facebookresearch/SIMAT/blob/main/encode.py
 
         img_enc = torch.cat([
-            self.model.encode_image(b.to(self.device)).cpu().detach() for b, i in tqdm(dataloader)
+            self.model.encode_image(b.to(self.device)).cpu().detach() for b, i in dataloader
             ]).float()
 
         fnames = [x[0].name for x in datasets.ImageFolder('data/images/simat/', loader=Path)]
@@ -406,7 +405,7 @@ class CustomCLIP():
         tokens = self._tokenizer(words)
 
         word_encs = torch.cat([
-            self.model.encode_text(b.to(self.device)).cpu().detach() for b in tqdm(tokens.split(32))
+            self.model.encode_text(b.to(self.device)).cpu().detach() for b in tokens.split(32)
             ])
 
         w2we = dict(zip(words, word_encs))

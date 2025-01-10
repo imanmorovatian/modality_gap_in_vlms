@@ -389,3 +389,26 @@ class CustomCLIP():
         torch.save(self.model.txt_head.state_dict(), f'{folder}/{vision_encoder}_{ext_name}_{loss_name}_{dataset_name}_txt_head.pth')
         print(f'Saved heads in {folder}')
 
+    def encode_for_simat(self, dataloader):
+        # Adopted from https://github.com/facebookresearch/SIMAT/blob/main/encode.py
+
+        img_enc = torch.cat([
+            self.model.encode_image(b.to(self.device)).cpu().detach() for b, i in tqdm(dataloader)
+            ]).float()
+
+        fnames = [x[0].name for x in datasets.ImageFolder('data/images/simat/', loader=Path)]
+        region_ids = [int(x[:-4]) for x in fnames]
+
+        img_enc_mapping = dict(zip(region_ids, img_enc))
+
+        transfos = pd.read_csv('data/annotations/simat/transfos.csv', index_col=0)
+        words = list(set(transfos.target) | set(transfos.value))
+        tokens = self._tokenizer(words)
+
+        word_encs = torch.cat([
+            self.model.encode_text(b.to(self.device)).cpu().detach() for b in tqdm(tokens.split(32))
+            ])
+
+        w2we = dict(zip(words, word_encs))
+
+        return img_enc_mapping, w2we

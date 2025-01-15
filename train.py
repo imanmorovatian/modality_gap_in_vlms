@@ -1,12 +1,7 @@
 import argparse
-from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 
 from utils.create_models import create_model
-
-from utils.datasets.flickr30k_captions import Flickr30kCaptions
-from utils.datasets.mscoco_captions import MSCOCOCaptions
-from utils.datasets.conceptual_captions import ConceptualCaptions
-
+from utils.create_dataloaders import create_dataloaders
 from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
 
 
@@ -34,14 +29,6 @@ BATCH_SIZE = args.BATCH_SIZE
 NO_EPOCHS = args.NO_EPOCHS
 NUM_WORKERS = 2
 
-# MODEL = 'CLIP_ViT_heads'
-# PATH = 'weights/retrieval/CLIP/ViT32_LiUi_clip_loss_mscoco.pth'
-# LOSS = 'clip'
-# DATASET = 'mscoco'
-# BATCH_SIZE = 2
-# NO_EPOCHS = 1
-# NUM_WORKERS = 2
-
 assert MODEL in [
     'CLIP_ViT_LL', 'CLIP_ViT_LU', 'CLIP_ViT_UL', 'CLIP_ViT_UU', 'CLIP_ViT_UL+LU', 'CLIP_ViT_LU+UL',
     'VISTA_LU', 'VISTA_UL', 'VISTA_UU', 'VISTA_UL+LU', 'VISTA_LU+UL']
@@ -51,78 +38,9 @@ assert DATASET in ['mscoco', 'flickr30k', 'conceptualCaptions']
 assert LOSS in ['clip', 'cua', 'cuaxu']
 
 model = create_model(MODEL, PATH)
-    
-if DATASET == 'mscoco':
-    train_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
-						annotations_file='data/annotations/mscoco/train2017full_captions.json',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    train_sampler = RandomSampler(train_dataset)
-    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
 
-    val_dataset = MSCOCOCaptions(root='data/images/mscoco/val2017/',
-						annotations_file='data/annotations/mscoco/val2017_captions.json',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    val_sampler = SequentialSampler(val_dataset)
-    val_dataloader = DataLoader(val_dataset, sampler=val_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-    # test split is sampled from train split
-    # test_dataset = MSCOCOCaptions(root='data/images/mscoco/train2017/',
-	# 					annotations_file='data/annotations/mscoco/test2017_captions.json',
-    #                     image_transform=model.transform,
-    #                     caption_transform=model.text_tokenizer)
-    # test_sampler = SequentialSampler(test_dataset)
-    # test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-    
-    test_dataloader = val_dataloader
-    
-elif DATASET == 'flickr30k':
-    train_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annotations_file='data/annotations/flickr30k/train.token',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    train_sampler = RandomSampler(train_dataset)
-    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-    val_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annotations_file='data/annotations/flickr30k/val.token',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    val_sampler = SequentialSampler(val_dataset)
-    val_dataloader = DataLoader(val_dataset, sampler=val_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-    test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annotations_file='data/annotations/flickr30k/test.token',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    test_sampler = SequentialSampler(test_dataset)
-    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-elif DATASET == 'conceptualCaptions':
-    train_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
-                        annotations_file='data/annotations/conceptualCaptions/train.csv',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    train_sampler = RandomSampler(train_dataset)
-    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-    val_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
-                        annotations_file='data/annotations/conceptualCaptions/val.csv',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    val_sampler = SequentialSampler(val_dataset)
-    val_dataloader = DataLoader(val_dataset, sampler=val_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-    test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
-                        annotations_file='data/annotations/conceptualCaptions/test.csv',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer)
-    test_sampler = SequentialSampler(test_dataset)
-    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-else:
-    raise ValueError('The selected dataset is not supported')
+train_dataloader, val_dataloader, test_dataloader = create_dataloaders(
+    DATASET, model.transform, model.text_tokenizer, 1, BATCH_SIZE, NUM_WORKERS)
 
 if LOSS == 'clip':
     loss_function = compute_clip_loss
@@ -133,11 +51,7 @@ elif LOSS == 'cuaxu':
 else:
     raise ValueError('The selected loss is not supported')
 
-if 'heads' in MODEL:
-    model.train_heads_for_simat(
-        DATASET, train_dataloader, val_dataloader, test_dataloader,
-        loss_function, BATCH_SIZE, NO_EPOCHS)
-else:
-    model.orchestrate_training(
-        DATASET, train_dataloader, val_dataloader, test_dataloader,
-        loss_function, BATCH_SIZE, NO_EPOCHS)
+
+model.orchestrate_training(
+    DATASET, train_dataloader, val_dataloader, test_dataloader,
+    loss_function, BATCH_SIZE, NO_EPOCHS)

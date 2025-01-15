@@ -1,15 +1,13 @@
-import os
 import argparse
+import os
 import csv
-
 import torch
-from torch.utils.data import DataLoader, SequentialSampler
 
-from utils.datasets.flickr30k_captions import Flickr30kCaptions
-from utils.datasets.mscoco_captions import MSCOCOCaptions
-from utils.datasets.conceptual_captions import ConceptualCaptions
-
+from utils.create_models import create_model
+from utils.create_dataloaders import create_dataloaders
 from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
+from utils.metrics.measure_gap import CD, CMD
+from utils.metrics.retrieval import CrossModalRetrieval
 
 
 def parse_args():
@@ -38,17 +36,6 @@ CPI = args.CPI # captions per image
 SAVE_EMBDS = args.SAVE_EMBDS # whether to save the embeddings of images and text
 NUM_WORKERS = 2
 
-# for debugging
-# os.environ['TORCH_HOME']='/nfs/home/morovatian/.cache/torch'
-# MODEL = 'CyCLIP'
-# PATH = 'weights/CLIP/ViT32_LiUi_clip_loss_mscoco.pth'
-# LOSS = 'clip'
-# DATASET = 'mscoco'
-# BATCH_SIZE = 2
-# CPI = 5 # captions per image
-# SAVE_EMBDS = False
-# NUM_WORKERS = 2
-
 assert MODEL in [
     'ALBEF', 'FLAVA', 'ALIGN', 'ImageBind', 'CyCLIP',
     'zero_shot_CLIP_RN50', 'zero_shot_CLIP_ViT',
@@ -67,36 +54,8 @@ assert LOSS in ['clip', 'cua', 'cuaxu']
 
 model = create_model(MODEL, PATH)
 
-if DATASET == 'mscoco':
-    test_dataset = MSCOCOCaptions(root='data/images/mscoco/val2017/',
-						annotations_file='data/annotations/mscoco/val2017_captions.json',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer,
-                        no_cap_per_img=CPI)
-    test_sampler = SequentialSampler(test_dataset)
-    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-    
-elif DATASET == 'flickr30k':
-    test_dataset = Flickr30kCaptions(root='data/images/flickr30k/',
-                        annotations_file='data/annotations/flickr30k/test.token',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer,
-                        no_cap_per_img=CPI)
-    test_sampler = SequentialSampler(test_dataset)
-    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-elif DATASET == 'conceptualCaptions':
-    test_dataset = ConceptualCaptions(root='data/images/conceptualCaptions/',
-                        annotations_file='data/annotations/conceptualCaptions/test.csv',
-                        image_transform=model.transform,
-                        caption_transform=model.text_tokenizer,
-                        no_cap_per_img=CPI)
-    test_sampler = SequentialSampler(test_dataset)
-    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS)
-
-else:
-    raise ValueError('The selected dataset is not supported')
-
+_, _, test_dataloader = create_dataloaders(
+    DATASET, model.transform, model.text_tokenizer, CPI, BATCH_SIZE, NUM_WORKERS)
 
 if LOSS == 'clip':
     loss_function = compute_clip_loss
@@ -120,24 +79,29 @@ if SAVE_EMBDS:
 
 metrics = {}
 
-retrieval_obj = CrossModalRetrieval(image_encodings=retrieval_inputs['image_embeddings'],
-                                    text_encodings=retrieval_inputs['text_embeddings'],
-                                    text_to_image_map=retrieval_inputs['text_to_image_mapping'],
-                                    image_to_text_map=retrieval_inputs['image_to_text_mapping'],
-                                    cpi=CPI,
-                                    search_space='unimodal',
-                                    k_vals=[1,5,10])
+retrieval_obj = CrossModalRetrieval(
+    image_encodings=retrieval_inputs['image_embeddings'],
+    text_encodings=retrieval_inputs['text_embeddings'],
+    text_to_image_map=retrieval_inputs['text_to_image_mapping'],
+    image_to_text_map=retrieval_inputs['image_to_text_mapping'],
+    cpi=CPI,
+    search_space='unimodal',
+    k_vals=[1,5,10])
+
 metrics['retrieval_unimodal'] = retrieval_obj.compute()
 
 
-retrieval_obj = CrossModalRetrieval(image_encodings=retrieval_inputs['image_embeddings'],
-                                    text_encodings=retrieval_inputs['text_embeddings'],
-                                    text_to_image_map=retrieval_inputs['text_to_image_mapping'],
-                                    image_to_text_map=retrieval_inputs['image_to_text_mapping'],
-                                    cpi=CPI,
-                                    search_space='multimodal',
-                                    k_vals=[1,5,10])
+retrieval_obj = CrossModalRetrieval(
+    image_encodings=retrieval_inputs['image_embeddings'],
+    text_encodings=retrieval_inputs['text_embeddings'],
+    text_to_image_map=retrieval_inputs['text_to_image_mapping'],
+    image_to_text_map=retrieval_inputs['image_to_text_mapping'],
+    cpi=CPI,
+    search_space='multimodal',
+    k_vals=[1,5,10])
+
 metrics['retrieval_multimodal'] = retrieval_obj.compute()
+
 
 cmd = CMD()
 metrics['cmd_img_txt'] = round(

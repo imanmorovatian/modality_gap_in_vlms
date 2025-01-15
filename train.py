@@ -1,125 +1,14 @@
 import argparse
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
-import torchvision.transforms as T
+
+from utils.create_models import create_model
 
 from utils.datasets.flickr30k_captions import Flickr30kCaptions
 from utils.datasets.mscoco_captions import MSCOCOCaptions
 from utils.datasets.conceptual_captions import ConceptualCaptions
 
-from PIL import Image
-
 from utils.loss import compute_clip_loss, compute_CUA_loss, compute_CUAXU_loss
 
-from models.custom_clip import CustomCLIP
-from models.custom_perceiver import CustomPerceiver
-from models.custom_visiontextdualencoder import CustomVTDE
-
-
-def create_model(name, local_weights=None):
-    if name == 'CLIP_RN50_LL':
-        # just fine tunning the projection layers
-        return CustomCLIP(vision_encoder='RN50',
-                          frozen_text_encoder=True,
-                          frozen_image_encoder=True,
-                          frozen_projection_layers=False)
-    
-    elif name == 'CLIP_ViT_LL':
-        # just fine tunning just the projection layers
-        return CustomCLIP(vision_encoder='ViT',
-                          frozen_text_encoder=True,
-                          frozen_image_encoder=True,
-                          frozen_projection_layers=False)
-    
-    elif name == 'CLIP_ViT_LU':
-        # Freeze the image encoder, while fine tune the text encoder
-        return CustomCLIP(vision_encoder='ViT',
-                          frozen_text_encoder=False,
-                          frozen_image_encoder=True,
-                          frozen_projection_layers=False)
-    
-    elif name == 'CLIP_ViT_UL':
-        # Freeze the text encoder, while fine tune the image encoder
-        return CustomCLIP(vision_encoder='ViT',
-                          frozen_text_encoder=True,
-                          frozen_image_encoder=False,
-                          frozen_projection_layers=False)
-    
-    elif name == 'CLIP_ViT_UU':
-        # Fine tune the whole model
-        return CustomCLIP(vision_encoder='ViT',
-                          frozen_text_encoder=False,
-                          frozen_image_encoder=False,
-                          frozen_projection_layers=False)
-    
-    elif name == 'CLIP_ViT_UL+LU':
-        # Firtly, finetune the image encoder (using the local weights), and then finetune the text encoder
-        return CustomCLIP(vision_encoder='ViT',
-                          frozen_text_encoder=False,
-                          text_encoder_from_local=False,
-                          frozen_image_encoder=True,
-                          image_encoder_from_local=True,
-                          frozen_projection_layers=False,
-                          projection_layers_from_local=False,
-                          local_pretrained_weights_path=local_weights)
-    
-    elif name == 'CLIP_ViT_LU+UL':
-        # Firtly, finetune the text encoder (using the local weights), and then finetune the image encoder
-        return CustomCLIP(vision_encoder='ViT',
-                          frozen_text_encoder=True,
-                          text_encoder_from_local=True,
-                          frozen_image_encoder=False,
-                          image_encoder_from_local=False,
-                          frozen_projection_layers=False,
-                          projection_layers_from_local=False,
-                          local_pretrained_weights_path=local_weights)
-
-    elif name == 'CLIP_ViT_heads':
-        if local_weights is None:
-            model = CustomCLIP(vision_encoder='Vit')
-        else:
-            model = CustomCLIP(vision_encoder='ViT',
-                              text_encoder_from_local=True,
-                              image_encoder_from_local=True,
-                              projection_layers_from_local=True,
-                              frozen_projection_layers=True,
-                              local_pretrained_weights_path=local_weights)
-        
-        model.transform = T.Compose([
-            T.Resize(size=256, interpolation=Image.BICUBIC),
-            T.RandomCrop(224),
-            T.RandomHorizontalFlip(),
-            T.ToTensor(),
-            T.Normalize(mean=(0.48145466, 0.4578275, 0.40821073), 
-                        std=(0.26862954, 0.26130258, 0.27577711))])
-
-        return model
-    
-    elif name == 'Perceiver':
-        return CustomPerceiver()
-    
-    elif name == 'VTDE_LU':
-        return CustomVTDE(
-            frozen_text_encoder=False,
-            frozen_image_encoder=True,
-            pretrained_text_encoder=True,
-            pretrained_image_encoder=True)
-    
-    elif name == 'VTDE_Lu':
-        return CustomVTDE(
-            frozen_text_encoder=False,
-            frozen_image_encoder=True,
-            pretrained_text_encoder=False,
-            pretrained_image_encoder=True)
-    
-    elif name == 'VTDE_UU':
-        return CustomVTDE(
-            frozen_text_encoder=False,
-            frozen_image_encoder=False,
-            pretrained_text_encoder=True,
-            pretrained_image_encoder=True)
-    else:
-        raise ValueError('The selected model is not implemented yet')
-    
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -153,11 +42,9 @@ NUM_WORKERS = 2
 # NO_EPOCHS = 1
 # NUM_WORKERS = 2
 
-assert MODEL in ['CLIP_RN50_LL',
-                 'CLIP_ViT_LL', 'CLIP_ViT_LU', 'CLIP_ViT_UL', 'CLIP_ViT_UU', 'CLIP_ViT_UL+LU', 'CLIP_ViT_LU+UL',
-                 'CLIP_ViT_heads',
-                 'VTDE_LU', 'VTDE_Lu', 'VTDE_UU',
-                 'Perceiver']
+assert MODEL in [
+    'CLIP_ViT_LL', 'CLIP_ViT_LU', 'CLIP_ViT_UL', 'CLIP_ViT_UU', 'CLIP_ViT_UL+LU', 'CLIP_ViT_LU+UL',
+    'VISTA_LU', 'VISTA_UL', 'VISTA_UU', 'VISTA_UL+LU', 'VISTA_LU+UL']
 
 assert DATASET in ['mscoco', 'flickr30k', 'conceptualCaptions']
 

@@ -10,113 +10,7 @@ from utils.datasets.conceptual_captions import ConceptualCaptions
 
 from utils.loss import compute_clip_loss
 
-from models.custom_clip import CustomCLIP
-from models.custom_align import CustomALIGN
-from models.custom_imagebind import CustomImageBind
-from models.custom_cyclip import CustomCyCLIP
-from models.custom_flava import CustomFLAVA
-from models.custom_albef import CustomALBEF
-# from models.custom_visiontextdualencoder import CustomVTDE
-# from models.custom_perceiver import CustomPerceiver
-# from models.custom_bridgetower import CustomBridgeTower
-# from models.custom_data2vec import CustomData2Vec
 
-
-def create_model(name, local_path=None):
-    if name == 'ALBEF':
-        return CustomALBEF()
-    
-    elif name == 'FLAVA':
-        return CustomFLAVA()
-    
-    elif name == 'ALIGN':
-        return CustomALIGN()
-    
-    elif name == 'ImageBind':
-        return CustomImageBind()
-    
-    elif name == 'CyCLIP':
-        return CustomCyCLIP()
-    
-    elif name == 'zero_shot_CLIP_RN50':
-        return CustomCLIP(
-            vision_encoder='RN50',
-            frozen_text_encoder=True,
-            text_encoder_from_local=False,
-            frozen_image_encoder=True,
-            image_encoder_from_local=False,
-            frozen_projection_layers=True,
-            projection_layers_from_local=False)
-    
-    elif name == 'zero_shot_CLIP_ViT':
-        return CustomCLIP(
-            vision_encoder='ViT',
-            frozen_text_encoder=True,
-            text_encoder_from_local=False,
-            frozen_image_encoder=True,
-            image_encoder_from_local=False,
-            frozen_projection_layers=True,
-            projection_layers_from_local=False)
-
-    elif name == 'CLIP_RN50':
-        return CustomCLIP(
-            vision_encoder='RN50',
-            frozen_text_encoder=True,
-            text_encoder_from_local=True,
-            frozen_image_encoder=True,
-            image_encoder_from_local=True,
-            frozen_projection_layers=True,
-            projection_layers_from_local=True,
-            local_pretrained_weights_path=local_path)
-    
-    elif name == 'CLIP_ViT':
-        return CustomCLIP(
-            vision_encoder='ViT',
-            frozen_text_encoder=True,
-            text_encoder_from_local=True,
-            frozen_image_encoder=True,
-            image_encoder_from_local=True,
-            frozen_projection_layers=True,
-            projection_layers_from_local=True,
-            local_pretrained_weights_path=local_path)
-
-    # elif name == 'VTDE_LU':
-    #     return CustomVTDE(
-    #         frozen_text_encoder=None,
-    #         frozen_image_encoder=None,
-    #         pretrained_text_encoder=None,
-    #         pretrained_image_encoder=None,
-    #         local_pre_trained_weights='pkgs/VTDE_LU')
-    
-    # elif name == 'VTDE_Lu':
-    #     return CustomVTDE(
-    #         frozen_text_encoder=None,
-    #         frozen_image_encoder=None,
-    #         pretrained_text_encoder=None,
-    #         pretrained_image_encoder=None,
-    #         local_pre_trained_weights='pkgs/VTDE_Lu')
-    
-    # elif name == 'VTDE_UU':
-    #     return CustomVTDE(
-    #         frozen_text_encoder=None,
-    #         frozen_image_encoder=None,
-    #         pretrained_text_encoder=None,
-    #         pretrained_image_encoder=None,
-    #         local_pre_trained_weights='pkgs/VTDE_UU')
-
-    # elif name == 'Perceiver':
-    #     model = CustomPerceiver()
-    #     return model
-
-    # elif name == 'BridgeTower':
-    #     return CustomBridgeTower()
-
-    # elif name == 'Data2Vec':
-    #     return CustomData2Vec()
-    
-    else:
-        raise ValueError('The selected model is not implemented yet')
-    
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True, help='name of the model', dest='MODEL')
@@ -148,12 +42,12 @@ NUM_WORKERS = 0
 # SAVE_EMBDS = False
 # NUM_WORKERS = 2
 
-assert MODEL in ['ALBEF', 'FLAVA', 'ALIGN', 'ImageBind', 'BridgeTower', 'Data2Vec', 'CyCLIP',
-                 'zero_shot_CLIP_RN50', 'zero_shot_CLIP_ViT',
-                 'CLIP_RN50', 'CLIP_ViT',
-                 'zero_shot_VTDE',
-                 'VTDE',
-                 'Perceiver']
+assert MODEL in [
+    'ALBEF', 'FLAVA', 'ALIGN', 'ImageBind', 'CyCLIP',
+    'zero_shot_CLIP_RN50', 'zero_shot_CLIP_ViT',
+    'CLIP_ViT',
+    'zero_shot_VISTA',
+    'VISTA']
 
 if MODEL.startswith('CLIP') or MODEL == 'VTDE':
     if PATH is None:

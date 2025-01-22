@@ -20,7 +20,7 @@ class ConceptualCaptions(Dataset):
     def __init__(
         self,
         root: str,
-        annFile: str,
+        annotations_file: str,
         image_transform: Optional[Callable] = None,
         caption_transform: Optional[Callable] = None,
         max_length_tokenizer: int = 64,
@@ -32,7 +32,7 @@ class ConceptualCaptions(Dataset):
         self.image_transform = image_transform
         self.caption_transform = caption_transform
         self.max_length_tokenizer = max_length_tokenizer
-        self.annFile = os.path.expanduser(annFile)
+        self.annFile = os.path.expanduser(annotations_file)
         ann = pd.read_csv(self.annFile)
         self.annotations = ann.set_index('id')['caption'].to_dict()
         self.ids = list(self.annotations.keys())

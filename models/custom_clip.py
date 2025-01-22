@@ -248,11 +248,11 @@ class CustomCLIP():
 
         model_name, vision_encoder, ext_name = self.name.split('_')
         loss_name = loss_function.__name__.split('compute_')[-1]
-        folder = f'weights/{model_name}'
+        folder = f'weights/finetuned/{model_name}/{dataset_name}'
         if not os.path.exists(folder):
             os.makedirs(folder)
 
-        torch.save(self.model.state_dict(), f'{folder}/{vision_encoder}_{ext_name}_{loss_name}_{dataset_name}.pth')
+        torch.save(self.model.state_dict(), f'{folder}/{vision_encoder}_{ext_name}_{loss_name}.pth')
         print(f'Saved model in {folder}')
 
     def encode_for_retrieval(self, dataloader, loss_function):

@@ -69,12 +69,19 @@ else:
 retrieval_inputs = model.encode_for_retrieval(test_dataloader, loss_function)
 
 if SAVE_EMBDS:
-    result_dir = f'results/embeddings/{MODEL}/{DATASET}/'
+    result_dir = f'results/embeddings/retrieval/{MODEL}/{DATASET}/'
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
-    torch.save(retrieval_inputs['image_embeddings'], result_dir+'image.pt')
-    torch.save(retrieval_inputs['text_embeddings'], result_dir+'text.pt')
+    if PATH:
+        name = PATH.split('ViT32_')[-1]
+        name = name.split('.pth')[0]
+        name += '_'
+    else:
+        name = 'zero_shot_'
+
+    torch.save(retrieval_inputs['image_embeddings'], result_dir+name+'image.pt')
+    torch.save(retrieval_inputs['text_embeddings'], result_dir+name+'text.pt')
     
 
 metrics = {}
@@ -114,11 +121,11 @@ metrics['cd_img_txt'] = round(
     2)
 
 
-result_dir = 'results/metrics'
+result_dir = 'results/retrieval'
 if not os.path.exists(result_dir):
     os.makedirs(result_dir)
 
-file_name = os.path.join(result_dir, 'pretrained.csv')
+file_name = os.path.join(result_dir, 'finetune.csv')
 # writing column names
 if not os.path.exists(file_name):
     with open(file_name, 'w', encoding='UTF8') as f:

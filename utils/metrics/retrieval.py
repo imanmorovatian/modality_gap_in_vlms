@@ -36,7 +36,12 @@ class CrossModalRetrieval:
         self.image_encodings = image_encodings
         self.text_encodings = text_encodings
         self.text_to_image_map = text_to_image_map
-        self.image_to_text_map = image_to_text_map
+
+        if image_to_text_map.ndim == 1:
+            self.image_to_text_map = image_to_text_map.unsqueeze(-1)
+        else:
+            self.image_to_text_map = image_to_text_map
+            
         self.cpi = cpi
         self.device = self.image_encodings.device
         
@@ -60,7 +65,7 @@ class CrossModalRetrieval:
         num_text = self.text_encodings.shape[0]
         num_im = self.image_encodings.shape[0]
 
-        captions_per_image = self.image_to_text_map.shape[1]
+        captions_per_image = self.cpi
 
         # TEXT-TO-IMAGE
         text_to_image_recall = []

@@ -14,8 +14,17 @@ def create_model(name, local_path=None):
     elif name == 'FLAVA':
         return CustomFLAVA()
     
-    elif name == 'ALIGN':
+    elif name == 'zero_shot_ALIGN' or name == 'ALIGN_LL':
         return CustomALIGN()
+
+    elif name == 'ALIGN_LU':
+        return CustomALIGN(frozen_text_encoder=False)
+    
+    elif name == 'ALIGN_UL':
+        return CustomALIGN(frozen_image_encoder=False)
+    
+    elif name == 'ALIGN_UU':
+        return CustomALIGN(frozen_image_encoder=False, frozen_text_encoder=False)
     
     elif name == 'ImageBind':
         return CustomImageBind()

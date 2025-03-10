@@ -31,6 +31,7 @@ NUM_WORKERS = 2
 
 assert MODEL in [
     'CLIP_ViT_LL', 'CLIP_ViT_LU', 'CLIP_ViT_UL', 'CLIP_ViT_UU', 'CLIP_ViT_UL+LU', 'CLIP_ViT_LU+UL',
+    'ALIGN_LL', 'ALIGN_LU', 'ALIGN_UL', 'ALIGN_UU',
     'VISTA_LU', 'VISTA_UL', 'VISTA_UU', 'VISTA_UL+LU', 'VISTA_LU+UL']
 
 assert DATASET in ['mscoco', 'flickr30k', 'conceptualCaptions']

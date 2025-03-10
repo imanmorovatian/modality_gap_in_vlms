@@ -1,16 +1,28 @@
+import os
 import torch
+from torch.optim import AdamW
+from torch.cuda.amp import autocast, GradScaler
 from torchvision import transforms
 from transformers import AutoTokenizer, AutoProcessor, AlignModel
+import wandb
+from utils.custom_schedulers import get_cosine_schedule_with_warmup
 
 
 class CustomALIGN():
-    def __init__(self):
+    def __init__(self,
+                 frozen_text_encoder: bool = True,
+                 text_encoder_from_local: bool = False,
+                 frozen_image_encoder: bool = True,
+                 image_encoder_from_local: bool = False,
+                 frozen_projection_layers: bool = False,
+                 projection_layers_from_local: bool = False,
+                 local_pretrained_weights_path: str = None):
+        
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         self.text_tokenizer = AutoTokenizer.from_pretrained('kakaobrain/align-base')
 
         self.model = AlignModel.from_pretrained('kakaobrain/align-base')
-        self.model = self.model.to(self.device)
 
         self.name = 'ALIGN'
 
@@ -18,7 +30,206 @@ class CustomALIGN():
         self.transform = transforms.Compose([
             transforms.Lambda(lambda img: self._processor(images=img, return_tensors='pt')),
         ])
-	
+
+        if local_pretrained_weights_path is not None:
+            local_state_dict = torch.load(local_pretrained_weights_path, map_location=torch.device('cpu'))
+            hybrid_state_dict = {}
+
+            if text_encoder_from_local:
+                for name, param in local_state_dict.items():
+                    if name.startswith('text_model'):
+                        hybrid_state_dict[name] = param
+
+            if image_encoder_from_local:
+                for name, param in local_state_dict.items():
+                    if name.startswith('vision_model'):
+                        hybrid_state_dict[name] = param
+
+            if projection_layers_from_local:
+                hybrid_state_dict['text_projection.weight'] = local_state_dict['text_projection.weight']
+                hybrid_state_dict['text_projection.bias'] = local_state_dict['text_projection.bias']
+
+            filled_params = set(hybrid_state_dict.keys())
+            for name, param in self.model.named_parameters():
+                if name not in filled_params:
+                    hybrid_state_dict[name] = param
+
+            self.model.load_state_dict(hybrid_state_dict)
+
+        
+        if frozen_text_encoder:
+            for name, param in self.model.named_parameters():
+                if name.startswith('text_model'):
+                    param.requires_grad = False
+
+        if frozen_image_encoder:
+            for name, param in self.model.named_parameters():
+                if name.startswith('vision_model'):
+                    param.requires_grad = False
+
+        if frozen_projection_layers:
+            self.model.text_projection.weight= False
+            self.model.text_projection.bias= False
+
+        self.model = self.model.to(self.device)
+
+
+        if frozen_image_encoder:
+            self.name += '_L' # (L)ocked 
+            if image_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+        else:
+            self.name += '_U' # (U)nlocked
+            if image_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+
+        if frozen_text_encoder:
+            self.name += 'L' # (L)ocked 
+            if text_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+        else:
+            self.name += 'U' # (U)nlocked
+            if text_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+
+    def train(self, dataloader, loss_function, optimizer, scheduler, grad_scaler):
+        self.model.train()
+        epoch_loss = 0.0
+
+        for batch in dataloader:
+            images, text = batch
+            optimizer.zero_grad()
+
+            text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
+            text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+            text = text.to(self.device)
+
+            images['pixel_values'] = torch.squeeze(images['pixel_values'])
+            if len(images['pixel_values'].size()) == 3:
+                images['pixel_values'] = images['pixel_values'].unsqueeze(0)
+            images = images.to(self.device)
+
+            with autocast(enabled=False):
+
+                text_embeds = self.model.get_text_features(
+                    input_ids = text['input_ids'],
+                    attention_mask = text['attention_mask']).float()
+                                
+                img_embeds = self.model.get_image_features(pixel_values=images['pixel_values']).float()
+            
+                temperature = self.model.temperature
+                
+                loss = loss_function(img_embeds, text_embeds, temperature)
+            
+            loss.backward()
+            optimizer.step()
+
+            # grad_scaler.scale(loss).backward()
+            # grad_scaler.step(optimizer)
+            # grad_scaler.update()
+
+            epoch_loss += loss.item()
+
+            scheduler.step() 
+            
+        epoch_loss = epoch_loss / len(dataloader)
+
+        return epoch_loss      
+
+    def evaluation(self, dataloader, loss_function):
+        self.model.eval()
+        epoch_loss = 0.0
+
+        with torch.no_grad():
+            for batch in dataloader:
+                images, text = batch
+
+                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
+                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+                text = text.to(self.device)
+
+                images['pixel_values'] = torch.squeeze(images['pixel_values'])
+                if len(images['pixel_values'].size()) == 3:
+                    images['pixel_values'] = images['pixel_values'].unsqueeze(0)
+                images = images.to(self.device)
+
+                with autocast(enabled=False):
+
+                    text_embeds = self.model.get_text_features(
+                        input_ids = text['input_ids'],
+                        attention_mask = text['attention_mask']).float()
+                                    
+                    img_embeds = self.model.get_image_features(pixel_values=images['pixel_values']).float()
+                
+                    temperature = self.model.temperature
+                    
+                    loss = loss_function(img_embeds, text_embeds, temperature)
+                
+                epoch_loss += loss.item()
+
+        epoch_loss = epoch_loss / len(dataloader)
+
+        return epoch_loss
+
+    def orchestrate_training(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
+                             loss_function, batch_size, no_epochs):
+        
+        optimizer = AdamW(self.model.parameters(), lr=5e-5, eps=1.0e-08, weight_decay=0.1)
+        grad_scaler = GradScaler()
+        gradient_accumulation_steps = 1
+        t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
+        # num_warmup_steps = int(0.20 * t_total)
+        num_warmup_steps = 0
+        scheduler = get_cosine_schedule_with_warmup(
+            optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=t_total
+            )
+        
+        wandb_config = {
+            'number_of_parameters': sum(p.numel() for p in self.model.parameters()),
+            'batch_size': batch_size,
+            'number_of_epochs': no_epochs,
+        }
+
+        wandb.init(
+            config=wandb_config,
+            entity='iman_morovatian',
+            project='Thesis',
+            name=f'Training {self.name} {dataset_name} {loss_function.__name__}'
+            )
+
+        for epoch in range(no_epochs):
+            train_loss = self.train(train_dataloader, loss_function, optimizer, scheduler, grad_scaler)
+            val_loss = self.evaluation(val_dataloader, loss_function)
+            
+            print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
+            wandb.log({
+                'epoch': epoch+1,
+                'train_loss': train_loss,
+                'val_loss': val_loss
+            })
+
+        test_loss = self.evaluation(test_dataloader, loss_function)
+
+        wandb.log({'test_loss': test_loss})
+        wandb.finish()
+
+        model_name, ext_name = self.name.split('_')
+        loss_name = loss_function.__name__.split('compute_')[-1]
+        folder = f'weights/finetuned/{model_name}/{dataset_name}'
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+
+        torch.save(self.model.state_dict(), f'{folder}/{ext_name}_{loss_name}.pth')
+        print(f'Saved model in {folder}')
+
     def encode_for_retrieval(self, dataloader, loss_function):
         self.model.eval()
         

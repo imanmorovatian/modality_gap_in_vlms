@@ -11,8 +11,17 @@ def create_model(name, local_path=None):
     if name == 'ALBEF':
         return CustomALBEF()
     
-    elif name == 'FLAVA':
+    elif name == 'zero_shot_FLAVA' or name == 'FLAVA_LL':
         return CustomFLAVA()
+    
+    elif name == 'FLAVA_LU':
+        return CustomFLAVA(frozen_text_encoder=False)
+    
+    elif name == 'FLAVA_UL':
+        return CustomFLAVA(frozen_image_encoder=False)
+    
+    elif name == 'FLAVA_UU':
+        return CustomFLAVA(frozen_image_encoder=False, frozen_text_encoder=False)
     
     elif name == 'zero_shot_ALIGN' or name == 'ALIGN_LL':
         return CustomALIGN()

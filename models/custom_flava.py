@@ -1,23 +1,263 @@
+import os
 from functools import partial
-
+import wandb
 import torch
+from torch.optim import AdamW
+from torch.cuda.amp import autocast, GradScaler
 from transformers import AutoImageProcessor, AutoTokenizer, FlavaModel
+
+from utils.custom_schedulers import get_cosine_schedule_with_warmup
 
 
 class CustomFLAVA():
-    def __init__(self,):
+    def __init__(self,
+        frozen_text_encoder: bool = True,
+        text_encoder_from_local: bool = False,
+        frozen_image_encoder: bool = True,
+        image_encoder_from_local: bool = False,
+        frozen_multimodal_encoder: bool = True,
+        multimodal_encoder_from_local: bool = False,
+        frozen_projection_layers: bool = False,
+        projection_layers_from_local: bool = False,
+        local_pretrained_weights_path: str = None):
+            
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         self.processor = AutoImageProcessor.from_pretrained('facebook/flava-full')
-
         self.transform = partial(self.processor, return_tensors='pt')
 
         self.text_tokenizer = AutoTokenizer.from_pretrained('facebook/flava-full')
 
         self.model = FlavaModel.from_pretrained('facebook/flava-full')
-        self.model.to(self.device)
         
         self.name = 'FLAVA'
+        
+
+        if local_pretrained_weights_path is not None:
+            local_state_dict = torch.load(local_pretrained_weights_path, map_location=torch.device('cpu'))
+            hybrid_state_dict = {}
+
+            if text_encoder_from_local:
+                for name, param in local_state_dict.items():
+                    if name.startswith('text_model'):
+                        hybrid_state_dict[name] = param
+
+            if image_encoder_from_local:
+                for name, param in local_state_dict.items():
+                    if name.startswith('image_model'):
+                        hybrid_state_dict[name] = param
+
+            if multimodal_encoder_from_local:
+                for name, param in local_state_dict.items():
+                    if name.startswith('multimodal_model'):
+                        hybrid_state_dict[name] = param
+
+            if projection_layers_from_local:
+                hybrid_state_dict['image_projection.weight'] = local_state_dict['image_projection.weight']
+                hybrid_state_dict['image_projection.bias'] = local_state_dict['image_projection.bias']
+                hybrid_state_dict['text_projection.weight'] = local_state_dict['text_projection.weight']
+                hybrid_state_dict['text_projection.bias'] = local_state_dict['text_projection.bias']
+                hybrid_state_dict['image_to_mm_projection.weight'] = local_state_dict['image_to_mm_projection.weight']
+                hybrid_state_dict['image_to_mm_projection.bias'] = local_state_dict['image_to_mm_projection.bias']
+                hybrid_state_dict['text_to_mm_projection.weight'] = local_state_dict['text_to_mm_projection.weight']
+                hybrid_state_dict['text_to_mm_projection.bias'] = local_state_dict['text_to_mm_projection.bias']
+
+            filled_params = set(hybrid_state_dict.keys())
+            for name, param in self.model.named_parameters():
+                if name not in filled_params:
+                    hybrid_state_dict[name] = param
+
+            self.model.load_state_dict(hybrid_state_dict)
+
+        
+        if frozen_text_encoder:
+            for name, param in self.model.named_parameters():
+                if name.startswith('text_model'):
+                    param.requires_grad = False
+
+        if frozen_image_encoder:
+            for name, param in self.model.named_parameters():
+                if name.startswith('image_model'):
+                    param.requires_grad = False
+
+        if frozen_multimodal_encoder:
+            for name, param in self.model.named_parameters():
+                if name.startswith('multimodal_model'):
+                    param.requires_grad = False
+
+        if frozen_projection_layers:
+            self.model.image_projection.weight.requires_grad  = False
+            self.model.image_projection.bias.requires_grad  = False
+            self.model.text_projection.weight.requires_grad  = False
+            self.model.text_projection.bias.requires_grad  = False
+            self.model.image_to_mm_projection.weight.requires_grad  = False
+            self.model.image_to_mm_projection.bias.requires_grad  = False
+            self.model.text_to_mm_projection.weight.requires_grad  = False
+            self.model.text_to_mm_projection.bias.requires_grad  = False
+
+
+        self.model = self.model.to(self.device)
+
+
+        if frozen_image_encoder:
+            self.name += '_L' # (L)ocked 
+            if image_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+        else:
+            self.name += '_U' # (U)nlocked
+            if image_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+
+        if frozen_text_encoder:
+            self.name += 'L' # (L)ocked 
+            if text_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+        else:
+            self.name += 'U' # (U)nlocked
+            if text_encoder_from_local:
+                self.name += 'l' # loaded from (l)ocal
+            else:
+                self.name += 'i' # loaded from the (I)nternet
+
+    def train(self, dataloader, loss_function, optimizer, scheduler, grad_scaler):
+        self.model.train()
+        epoch_loss = 0.0
+
+        for batch in dataloader:
+            images, text = batch
+            optimizer.zero_grad()
+
+            text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
+            text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+            text = text.to(self.device)
+
+            images['pixel_values'] = torch.squeeze(images['pixel_values'])
+            if len(images['pixel_values'].size()) == 3:
+                images['pixel_values'] = images['pixel_values'].unsqueeze(0)
+            images = images.to(self.device)
+
+            with autocast():
+                text_embeds = self.model.text_model(
+                input_ids = text['input_ids'],
+                attention_mask = text['attention_mask']
+                ).last_hidden_state
+                text_embeds = self.model.text_projection(text_embeds[:,0,:])
+
+                img_embeds = self.model.image_model(images['pixel_values']).last_hidden_state
+                img_embeds = self.model.image_projection(img_embeds[:,0,:])
+
+                temperature = self.model.logit_scale.exp()
+                
+                loss = loss_function(img_embeds, text_embeds, temperature)
+
+
+            grad_scaler.scale(loss).backward()
+            grad_scaler.step(optimizer)
+            grad_scaler.update()
+
+            epoch_loss += loss.item()
+
+            self.model.logit_scale.data.clamp_(0, 4.6052)
+                
+            scheduler.step() 
+            
+        epoch_loss = epoch_loss / len(dataloader)
+
+        return epoch_loss      
+
+    def evaluation(self, dataloader, loss_function):
+        self.model.eval()
+        epoch_loss = 0.0
+
+        with torch.no_grad():
+            for batch in dataloader:
+                images, text = batch
+
+                text['input_ids'] = torch.flatten(text['input_ids'], start_dim=0, end_dim=1)
+                text['attention_mask'] = torch.flatten(text['attention_mask'], start_dim=0, end_dim=1)
+                text = text.to(self.device)
+
+                images['pixel_values'] = torch.squeeze(images['pixel_values'])
+                if len(images['pixel_values'].size()) == 3:
+                    images['pixel_values'] = images['pixel_values'].unsqueeze(0)
+                images = images.to(self.device)
+
+                with autocast():
+                    text_embeds = self.model.text_model(
+                    input_ids = text['input_ids'],
+                    attention_mask = text['attention_mask']
+                    ).last_hidden_state
+                    text_embeds = self.model.text_projection(text_embeds[:,0,:])
+
+                    img_embeds = self.model.image_model(images['pixel_values']).last_hidden_state
+                    img_embeds = self.model.image_projection(img_embeds[:,0,:])
+
+                    temperature = self.model.logit_scale.exp()
+                    
+                    loss = loss_function(img_embeds, text_embeds, temperature)
+                
+                epoch_loss += loss.item()
+
+        epoch_loss = epoch_loss / len(dataloader)
+
+        return epoch_loss
+
+    def orchestrate_training(self, dataset_name, train_dataloader, val_dataloader, test_dataloader,
+                             loss_function, batch_size, no_epochs):
+                
+        optimizer = AdamW(self.model.parameters(), lr=5e-5, eps=1.0e-08, weight_decay=0.1)
+        grad_scaler = GradScaler()
+        gradient_accumulation_steps = 1
+        t_total = len(train_dataloader) // gradient_accumulation_steps * no_epochs
+        # num_warmup_steps = int(0.20 * t_total)
+        num_warmup_steps = 0
+        scheduler = get_cosine_schedule_with_warmup(
+            optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=t_total
+            )
+        
+        wandb_config = {
+            'number_of_parameters': sum(p.numel() for p in self.model.parameters()),
+            'batch_size': batch_size,
+            'number_of_epochs': no_epochs,
+        }
+
+        wandb.init(
+            config=wandb_config,
+            entity='iman_morovatian',
+            project='Thesis',
+            name=f'Training {self.name} {dataset_name} {loss_function.__name__}'
+            )
+
+        for epoch in range(no_epochs):
+            train_loss = self.train(train_dataloader, loss_function, optimizer, scheduler, grad_scaler)
+            val_loss = self.evaluation(val_dataloader, loss_function)
+            
+            print(f'Epoch: {epoch+1} --> train loss = {train_loss}, validation loss = {val_loss}')
+            wandb.log({
+                'epoch': epoch+1,
+                'train_loss': train_loss,
+                'val_loss': val_loss
+            })
+
+        test_loss = self.evaluation(test_dataloader, loss_function)
+
+        wandb.log({'test_loss': test_loss})
+        wandb.finish()
+
+        model_name, ext_name = self.name.split('_')
+        loss_name = loss_function.__name__.split('compute_')[-1]
+        folder = f'weights/finetuned/{model_name}/{dataset_name}'
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+
+        torch.save(self.model.state_dict(), f'{folder}/{ext_name}_{loss_name}.pth')
+        print(f'Saved model in {folder}')
 
     def encode_for_retrieval(self, dataloader, loss_function):
         self.model.eval()

@@ -1,50 +1,97 @@
-# Modality-Invariance Evaluation for Visual-Language Models (VLMs)
+# Mitigating the Modality Gap in Vision-Language Pre-Trained Models
 
 ## Overview
+This repo contains the code related to a part of the work I conducted during my master's thesis. I proposed a fine-tunig method for the modality gap reduction in vision-language models.
+Fine-tuning can be carried out using three different loss functions
+* L<sub>clip</sub>
+* L<sub>CUA</sub>
+* L<sub>CUAXU</sub>
 
-This project focuses on evaluating the modality-invariance of representations derived from Visual-Language Models (VLMs) on two widely used datasets: MSCOCO and Flickr30k. The goal is to assess the ability of these models to generate similar representations for different modalities (text and image). The evaluated models include CLIP (ViT-B/32, ResNet50), ALIGN, ALBEF, Florence, Uni-Perceiver, and ImageBind.
+Based on the model, there are four different fine-tuning strategies
+* LL
+* LU
+* UL
+* UU
+
+After fine-tuning, the effect of the gap reduction is examined through the performance of models on two downstream tasks
+
+* cross-modality retrieval
+* multimodal vector arithmetic.
+
+Also, it is possible to measure the gap through two metrics
+
+* Central Distance (CD): defines the modality gap as the difference between the center of image embeddings and text embeddings
+* Central Moment Discrepancy (CMD): measures the distributional difference between two feature sets by comparing their higher-order moments
+
+Furthermore, for the visualization, the code can provide the UMAP and box plots of image and text embeddings.
 
 ## Models
 
-The following Visual-Language Models (VLMs) are evaluated in this project:
+The following Visual-Language Models are supported
 
-1. **CLIP (ViT-B/32)**
-2. **CLIP (ResNet50)**
-3. **ALIGN**
-4. **ALBEF**
-5. **FLAVA**
-7. **ImageBind**
-8. **CyCLIP**
+* ALBEF
+* ALIGN
+* CLIP (ViT-B/32)
+* CLIP (ResNet50)
+* CyCLIP
+* FLAVA
+* ImageBind
+* VISTA
 
 ## Datasets
 
-The evaluation is performed on two datasets:
+The following datasets are supported
 
-1. **MSCOCO**
-2. **Flickr30k**
-
-## Evaluation
-
-### 1. Similarity Distribution
-
-Boxplots are generated to visualize the distribution of similarities among positive and negative pairs for different modalities, including:
-
-- Text-Text
-- Image-Image
-- Image-Text
-
-### 2. t-SNE Visualization
-
-t-SNE (t-Distributed Stochastic Neighbor Embedding) plots are created to visualize the relationships and clustering of features in both images and text.
-
-
+* Flickr30k
+* MSCOCO
+* Conceptual Captions
 
 ## How to Run
 
-Follow these steps to reproduce the evaluation:
+### Environment
+Create the environment using ```requirements.txt```
 
-1. Clone the repository:
+### Preprocess
 
-```bash
-git clone https://github.com/your-username/your-repository.git
-cd your-repository
+1. create the following folders
+<pre> <code>
+   ├── data/
+
+    │ ├── images/
+
+      │ ├── flickr30k/
+
+      │ ├── mscoco/
+
+        │ ├── train2017/
+
+        │ ├── val2017/
+
+      | ├── visualGenom/
+
+    │ ├── annotations/
+
+      │ ├── flickr30k/
+
+      │ ├── mscoco/
+
+    │ ├── bpe/
+</code> </pre>
+
+2. Download the images of flickr30, MSCOCO (train and test 2017) and Visual Genom datasets. Put them in the corresponding folders.
+3. Download the annotation files of flickr30 and MSCOCO (train and test 2017; captions.json). Put them in the corresponding folders. 
+4. run ``` preprocess/flickr30k/split.py```
+5. run ```preprocess/conceptualCaptions/sample.py``` and then  ```preprocess/conceptualCaptions/split.py``` to prepare
+6. run ```preprocess/simat/prepare_dataset.py```
+
+### Fine-tune
+run ```train.py``` with the required arguments. The required arguments are mentioned at the beginning of the file
+
+### Cross-modality retrieval
+run ```cross_retrieval.py``` with the required arguments. The required arguments are mentioned at the beginning of the file
+
+### Multimodal vector arithmetic
+run ```simat.py``` with the required arguments. The required arguments are mentioned at the beginning of the file
+
+### Generate embedding for other uses
+run ```compute_embeds.py``` with the required arguments. The required arguments are mentioned at the beginning of the file

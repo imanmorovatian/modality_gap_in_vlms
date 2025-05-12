@@ -81,7 +81,7 @@ Create the environment using ```requirements.txt```
 2. Download the images of flickr30, MSCOCO (train and test 2017) and Visual Genom datasets. Put them in the corresponding folders.
 3. Download the annotation files of flickr30 and MSCOCO (train and test 2017; captions.json). Put them in the corresponding folders. 
 4. run ``` preprocess/flickr30k/split.py```
-5. run ```preprocess/conceptualCaptions/sample.py``` and then  ```preprocess/conceptualCaptions/split.py``` to prepare
+5. run ```preprocess/conceptualCaptions/sample.py``` and then  ```preprocess/conceptualCaptions/split.py```
 6. run ```preprocess/simat/prepare_dataset.py```
 
 ### Fine-tune
